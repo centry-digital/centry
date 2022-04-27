@@ -1,7 +1,8 @@
 const radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
 const radioDivs = document.querySelectorAll(".w-radio");
 for (const radioDiv of radioDivs) {
-	radioDiv.setAttribute("onclick", "selectRadio()");	
+	radioDiv.style.cursor = "pointer";
+    radioDiv.setAttribute("onclick", "selectRadio()");	
 }
 function selectRadio() {
 	console.log("eventListener triggered")
