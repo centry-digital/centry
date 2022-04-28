@@ -265,7 +265,7 @@ function selectRadio() {
   }
   
   for (let i = 0; i < radioButtons.length; i++) {
-    let j = Math.round(i/2);
+    let j = Math.round(i/2) - 1;
     if (radioButtons[i].checked) {
     	radioDivs[i].classList.add("active");
       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
