@@ -264,22 +264,17 @@ function selectRadio() {
     radioDiv.setAttribute("onclick", "selectRadio()");	
   }
   
-  for (let i = 0; i <= (radioButtons.length / 2); i++) {
+  for (let i = 0; i < radioButtons.length; i++) {
+    let j = Math.round(i/2);
     if (radioButtons[i].checked) {
     	radioDivs[i].classList.add("active");
       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
-      if (shareholderType == "individual") {
-      	console.log("shareholderType is individual");
-        individualShareholderGroup[i].classList.remove("hide");
-        console.log(individualShareholderGroup[i]);
-        corporateShareholderGroup[i].classList.add("hide");
-        console.log(corporateShareholderGroup[i]);
+      if (shareholderType == "individual") {      	
+        individualShareholderGroup[j].classList.remove("hide");
+        corporateShareholderGroup[j].classList.add("hide");
       } else if (shareholderType == "corporate") {
-        console.log("shareholderType is corporate");
-      	corporateShareholderGroup[i].classList.remove("hide");
-        console.log(corporateShareholderGroup[i]);
-        individualShareholderGroup[i].classList.add("hide");
-        console.log(individualShareholderGroup[i]);
+      	corporateShareholderGroup[j].classList.remove("hide");
+        individualShareholderGroup[j].classList.add("hide");
       }
     } else {
     	radioDivs[i].classList.remove("active");
