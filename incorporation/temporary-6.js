@@ -1,3 +1,16 @@
+//switching between individual and corporate shareholder type
+const radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
+const radioDivs = document.querySelectorAll(".w-radio");
+const individualShareholderGroup = document.querySelector('div[data-shareholder-group="individual"]');
+const corporateShareholderGroup = document.querySelector('div[data-shareholder-group="corporate"]');
+
+for (const radioDiv of radioDivs) {
+	radioDiv.style.cursor = "pointer";
+  radioDiv.setAttribute("onclick", "selectRadio()");	
+}
+
+calculateShares();
+
 //add shareholder
 const addShareholderButton = document.getElementById("add-shareholder-button");
 addShareholderButton.setAttribute("onClick", "addShareholderInputGroup()");
@@ -111,6 +124,7 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput1.setAttribute("data-name", "Shareholder Type");
   shareholderTypeRadioInput1.setAttribute("required", "");
   shareholderTypeRadioInput1.setAttribute("checked", "");
+  shareholderTypeRadioSpan1.innerText = "Individual";
   shareholderTypeRadioSpan1.setAttribute("for", "individual-shareholder");
   shareholderTypeRadio2.setAttribute("data-shareholder-type", "corporate");
   shareholderTypeRadio2.setAttribute("onclick", "selectRadio()");
@@ -118,6 +132,7 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
   shareholderTypeRadioInput2.setAttribute("data-name", "Shareholder Type");
   shareholderTypeRadioInput2.setAttribute("required", "");
+  shareholderTypeRadioSpan1.innerText = "Corporate";
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
   
   //Set input field - Individual shareholder Name
@@ -237,7 +252,41 @@ function addShareholderInputGroup() {
   calculateShares();
 }
 
+//remove shareholder input group
 function removeShareholder(el) {
 	const shareholder = el.target.parentElement.parentElement.parentElement;
   shareholder.remove();
+}
+
+function selectRadio() {
+  for (let i = 0; i < radioButtons.length; i++) {
+    let shareholderType;
+    if (radioButtons[i].checked) {
+    	radioDivs[i].classList.add("active");
+      shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
+      if (shareholderType == "individual") {
+      	individualShareholderGroup.classList.remove("hide")
+        corporateShareholderGroup.classList.add("hide")
+      } else if (shareholderType == "corporate") {
+      	corporateShareholderGroup.classList.remove("hide")
+        individualShareholderGroup.classList.add("hide")
+      }
+    } else {
+    	radioDivs[i].classList.remove("active");
+    }
+  }
+}
+
+//calculate number of shares
+function calculateShares() {
+  const sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
+  const sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+  for (let i = 0; i < sharesPercent.length; i++) {
+    sharesPercent[i].addEventListener("keyup", function() {
+      percentage = sharesPercent[i].value;
+      percentToNumber = Math.round(percentage);
+      sharesNumber[i].innerText = percentToNumber;
+      }
+    );
+  }
 }

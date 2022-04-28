@@ -41,5 +41,4 @@ function calculateShares() {
     );
   }
 }
-
 calculateShares();
