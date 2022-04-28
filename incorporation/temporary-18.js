@@ -1,4 +1,5 @@
-let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType, i, j;
+// let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType, i, j;
+
 
 selectRadio()
 calculateShares();
@@ -252,51 +253,51 @@ function removeShareholder(el) {
   shareholder.remove();
 }
 
-function selectRadio() {
-  //switching between individual and corporate shareholder type
-  individualShareholderGroup = document.querySelectorAll('div[data-shareholder-group="individual"]');
-  corporateShareholderGroup = document.querySelectorAll('div[data-shareholder-group="corporate"]');
-  radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
-  radioDivs = document.querySelectorAll(".w-radio");
+// function selectRadio() {
+//   //switching between individual and corporate shareholder type
+//   individualShareholderGroup = document.querySelectorAll('div[data-shareholder-group="individual"]');
+//   corporateShareholderGroup = document.querySelectorAll('div[data-shareholder-group="corporate"]');
+//   radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
+//   radioDivs = document.querySelectorAll(".w-radio");
   
-  for (const radioDiv of radioDivs) {
-    radioDiv.style.cursor = "pointer";
-    radioDiv.setAttribute("onclick", "selectRadio()");	
-  }
+//   for (const radioDiv of radioDivs) {
+//     radioDiv.style.cursor = "pointer";
+//     radioDiv.setAttribute("onclick", "selectRadio()");	
+//   }
   
-  for (i = 0; i < radioButtons.length; i++) {
-    if (i == 0) {
-      j = 0;
-    } else {
-      j = Math.round(i / 2) - 1;
-    }
-    console.log(j);
-    if (radioButtons[i].checked) {
-    	radioDivs[i].classList.add("active");
-      shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
-      if (shareholderType == "individual") {      	
-        individualShareholderGroup[j].classList.remove("hide");
-        console.log(j, individualShareholderGroup[j]);
-        corporateShareholderGroup[j].classList.add("hide");
-      } else if (shareholderType == "corporate") {
-      	corporateShareholderGroup[j].classList.remove("hide");
-        individualShareholderGroup[j].classList.add("hide");
-      }
-    } else {
-    	radioDivs[i].classList.remove("active");
-    }
-  }
-}
+//   for (i = 0; i < radioButtons.length; i++) {
+//     if (i == 0) {
+//       j = 0;
+//     } else {
+//       j = Math.round(i / 2) - 1;
+//     }
+//     console.log(j);
+//     if (radioButtons[i].checked) {
+//     	radioDivs[i].classList.add("active");
+//       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
+//       if (shareholderType == "individual") {      	
+//         individualShareholderGroup[j].classList.remove("hide");
+//         console.log(j, individualShareholderGroup[j]);
+//         corporateShareholderGroup[j].classList.add("hide");
+//       } else if (shareholderType == "corporate") {
+//       	corporateShareholderGroup[j].classList.remove("hide");
+//         individualShareholderGroup[j].classList.add("hide");
+//       }
+//     } else {
+//     	radioDivs[i].classList.remove("active");
+//     }
+//   }
+// }
 
-//calculate number of shares
-function calculateShares() {
-  const sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
-  const sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
-  for (let i = 0; i < sharesPercent.length; i++) {
-    sharesPercent[i].addEventListener("keyup", function() {
-      percentage = sharesPercent[i].value;
-      percentToNumber = Math.round(percentage);
-      sharesNumber[i].innerText = percentToNumber;
-    });
-  }
-}
+// //calculate number of shares
+// function calculateShares() {
+//   const sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
+//   const sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+//   for (let i = 0; i < sharesPercent.length; i++) {
+//     sharesPercent[i].addEventListener("keyup", function() {
+//       percentage = sharesPercent[i].value;
+//       percentToNumber = Math.round(percentage);
+//       sharesNumber[i].innerText = percentToNumber;
+//     });
+//   }
+// }
