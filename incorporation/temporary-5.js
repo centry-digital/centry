@@ -181,9 +181,18 @@ function addShareholderInputGroup() {
   
   //Shareholder type
   inputSubGroup100Type.appendChild(shareholderTypeLabelWrapper);
+  inputSubGroup100Type.appendChild(shareholderType);
   shareholderTypeLabelWrapper.appendChild(shareholderTypeLabel);
   shareholderTypeLabelWrapper.appendChild(removeShareholderButton);
-  
+  shareholderType.appendChild(shareholderTypeRadio1);
+  shareholderType.appendChild(shareholderTypeRadio2);
+  shareholderTypeRadio1.appendChild(shareholderTypeRadioLabel1);
+  shareholderTypeRadio1.appendChild(shareholderTypeRadioInput1);
+  shareholderTypeRadio1.appendChild(shareholderTypeRadioSpan1);
+  shareholderTypeRadio2.appendChild(shareholderTypeRadioLabel2);
+  shareholderTypeRadio2.appendChild(shareholderTypeRadioInput2);
+  shareholderTypeRadio2.appendChild(shareholderTypeRadioSpan2);
+
   //Individual Shareholder
   inputSubGroupInd.appendChild(inputSubGroup100Ind);
   inputSubGroup100Ind.appendChild(shareholderNameLabelInd);
