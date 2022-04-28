@@ -265,7 +265,7 @@ function selectRadio() {
   }
   
   for (i = 0; i < radioButtons.length; i++) {
-    if (i = 0) {
+    if (i == 0) {
       j = 0;
     } else {
       j = Math.round(i / 2) - 1;
