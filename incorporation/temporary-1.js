@@ -151,7 +151,7 @@ function addShareholderInputGroup() {
   inputSubGroupCorp.appendChild(inputSubGroup100Corp2);
   inputSubGroup100Corp1.appendChild(shareholderNameLabelCorp1);
   inputSubGroup100Corp1.appendChild(inputWrapperCorp1);
-  inputWrapperCorp1.appendChild(shareholderNameCorp2);
+  inputWrapperCorp1.appendChild(shareholderNameCorp1);
   inputSubGroup100Corp2.appendChild(shareholderNameLabelCorp2);
   inputSubGroup100Corp2.appendChild(inputWrapperCorp2);
   inputWrapperCorp2.appendChild(shareholderNameCorp2);
