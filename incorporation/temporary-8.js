@@ -1,14 +1,6 @@
-//switching between individual and corporate shareholder type
-const radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
-const radioDivs = document.querySelectorAll(".w-radio");
-const individualShareholderGroup = document.querySelector('div[data-shareholder-group="individual"]');
-const corporateShareholderGroup = document.querySelector('div[data-shareholder-group="corporate"]');
+let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs
 
-for (const radioDiv of radioDivs) {
-	radioDiv.style.cursor = "pointer";
-  radioDiv.setAttribute("onclick", "selectRadio()");	
-}
-
+selectRadio()
 calculateShares();
 
 //add shareholder
@@ -259,17 +251,28 @@ function removeShareholder(el) {
 }
 
 function selectRadio() {
+  //switching between individual and corporate shareholder type
+  individualShareholderGroup = document.querySelectorAll('div[data-shareholder-group="individual"]');
+  corporateShareholderGroup = document.querySelectorAll('div[data-shareholder-group="corporate"]');
+  radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
+  radioDivs = document.querySelectorAll(".w-radio");
+  
+  for (const radioDiv of radioDivs) {
+    radioDiv.style.cursor = "pointer";
+    radioDiv.setAttribute("onclick", "selectRadio()");	
+  }
+  
   for (let i = 0; i < radioButtons.length; i++) {
     let shareholderType;
     if (radioButtons[i].checked) {
     	radioDivs[i].classList.add("active");
       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
       if (shareholderType == "individual") {
-      	individualShareholderGroup.classList.remove("hide")
-        corporateShareholderGroup.classList.add("hide")
+      	individualShareholderGroup[i].classList.remove("hide")
+        corporateShareholderGroup[i].classList.add("hide")
       } else if (shareholderType == "corporate") {
-      	corporateShareholderGroup.classList.remove("hide")
-        individualShareholderGroup.classList.add("hide")
+      	corporateShareholderGroup[i].classList.remove("hide")
+        individualShareholderGroup[i].classList.add("hide")
       }
     } else {
     	radioDivs[i].classList.remove("active");
