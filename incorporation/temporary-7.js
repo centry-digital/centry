@@ -24,12 +24,12 @@ function addShareholderInputGroup() {
   	  const shareholderTypeLabel = document.createElement("label");
       const removeShareholderButton = document.createElement("button");
     const shareholderType = document.createElement("div");
-      const shareholderTypeRadio1 = document.createElement("div");
-        const shareholderTypeRadioLabel1 = document.createElement("label");
+      const shareholderTypeRadio1 = document.createElement("label");
+        const shareholderTypeRadioLabel1 = document.createElement("div");
         const shareholderTypeRadioInput1 = document.createElement("input");
         const shareholderTypeRadioSpan1 = document.createElement("span");
-      const shareholderTypeRadio2 = document.createElement("div");
-        const shareholderTypeRadioLabel2 = document.createElement("label");
+      const shareholderTypeRadio2 = document.createElement("label");
+        const shareholderTypeRadioLabel2 = document.createElement("div");
         const shareholderTypeRadioInput2 = document.createElement("input");
         const shareholderTypeRadioSpan2 = document.createElement("span");
   const inputSubGroupInd = document.createElement("div");
@@ -132,7 +132,7 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
   shareholderTypeRadioInput2.setAttribute("data-name", "Shareholder Type");
   shareholderTypeRadioInput2.setAttribute("required", "");
-  shareholderTypeRadioSpan1.innerText = "Corporate";
+  shareholderTypeRadioSpan2.innerText = "Corporate";
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
   
   //Set input field - Individual shareholder Name
