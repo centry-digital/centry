@@ -7,8 +7,18 @@ function addShareholderInputGroup() {
   //Create elements
   const shareholderInputGroup = document.createElement("div");
   const inputSubGroup100Type = document.createElement("div");
-  	const shareholderTypeLabel = document.createElement("label");
-    //radio wrapper
+    const shareholderTypeLabelWrapper = document.createElement("div");
+  	  const shareholderTypeLabel = document.createElement("label");
+      const removeShareholderButton = document.createElement("button");
+    const shareholderType = document.createElement("div");
+      const shareholderTypeRadio1 = document.createElement("div");
+        const shareholderTypeRadioLabel1 = document.createElement("label");
+        const shareholderTypeRadioInput1 = document.createElement("input");
+        const shareholderTypeRadioSpan1 = document.createElement("span");
+      const shareholderTypeRadio2 = document.createElement("div");
+        const shareholderTypeRadioLabel2 = document.createElement("label");
+        const shareholderTypeRadioInput2 = document.createElement("input");
+        const shareholderTypeRadioSpan2 = document.createElement("span");
   const inputSubGroupInd = document.createElement("div");
   	const inputSubGroup100Ind = document.createElement("div");
     	const shareholderNameLabelInd = document.createElement("label");
@@ -43,13 +53,30 @@ function addShareholderInputGroup() {
   //Add classes
   shareholderInputGroup.classList.add("shareholder-input-group-additional");
   	inputSubGroup100Type.classList.add("input-subgroup-100");
-    	shareholderTypeLabel.classList.add("field-label");
+      shareholderTypeLabelWrapper.classList.add("shareholder-label-wrapper");	
+        shareholderTypeLabel.classList.add("field-label");
+        removeShareholderButton.classList.add("shareholder-remove", "text-sm");
+      shareholderType.classList.add("radio-wrapper");
+        shareholderTypeRadio1.classList.add("shareholder-type","text-sm","active","w-radio");
+        shareholderTypeRadio1.style.cursor = "pointer";
+          shareholderTypeRadioLabel1.classList.add("w-form-formradioinput","w-form-formradioinput--inputType-custom","radio-button","w-radio-input","w-redirected-checked");
+          shareholderTypeRadioInput1.style.opacity = "0";
+          shareholderTypeRadioInput1.style.position = "absolute";
+          shareholderTypeRadioInput1.style.zIndex = "-1";
+          shareholderTypeRadioSpan1.classList.add("radio-button-label","w-form-label");
+        shareholderTypeRadio2.classList.add("shareholder-type","text-sm","w-radio");
+        shareholderTypeRadio2.style.cursor = "pointer";
+          shareholderTypeRadioLabel2.classList.add("w-form-formradioinput","w-form-formradioinput--inputType-custom","radio-button","w-radio-input");
+          shareholderTypeRadioInput2.style.opacity = "0";
+          shareholderTypeRadioInput2.style.position = "absolute";
+          shareholderTypeRadioInput2.style.zIndex = "-1";
+          shareholderTypeRadioSpan2.classList.add("radio-button-label","w-form-label");
   	inputSubGroupInd.classList.add("individual-shareholder-group");
       inputSubGroup100Ind.classList.add("input-subgroup-100");
         shareholderNameLabelInd.classList.add("field-label");
         inputWrapperInd.classList.add("input-wrapper");
           shareholderNameInd.classList.add("centry-text-field", "text-sm");
-    inputSubGroupCorp.classList.add("corporate-shareholder-group");
+    inputSubGroupCorp.classList.add("corporate-shareholder-group", "hide");
       inputSubGroup100Corp1.classList.add("input-subgroup-100");
         shareholderNameLabelCorp1.classList.add("field-label");
         inputWrapperCorp1.classList.add("input-wrapper");
@@ -75,8 +102,23 @@ function addShareholderInputGroup() {
   
   //Set input field - Shareholder Type
   shareholderTypeLabel.innerText = "Type of shareholder";
-//  removeDirectorButton.type = "button";
-//  removeDirectorButton.innerText = "remove";
+  removeShareholderButton.type = "button";
+  removeShareholderButton.innerText = "remove";
+  shareholderTypeRadio1.setAttribute("data-shareholder-type", "individual");
+  shareholderTypeRadio1.setAttribute("onclick", "selectRadio()");
+  shareholderTypeRadioInput1.setAttribute("name", "Shareholder-Type");
+  shareholderTypeRadioInput1.setAttribute("value", "individual-shareholder");
+  shareholderTypeRadioInput1.setAttribute("data-name", "Shareholder Type");
+  shareholderTypeRadioInput1.setAttribute("required");
+  shareholderTypeRadioInput1.setAttribute("checked");
+  shareholderTypeRadioSpan1.setAttribute("for", "individual-shareholder");
+  shareholderTypeRadio2.setAttribute("data-shareholder-type", "corporate");
+  shareholderTypeRadio2.setAttribute("onclick", "selectRadio()");
+  shareholderTypeRadioInput2.setAttribute("name", "Shareholder-Type");
+  shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
+  shareholderTypeRadioInput2.setAttribute("data-name", "Shareholder Type");
+  shareholderTypeRadioInput2.setAttribute("required");
+  shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
   
   //Set input field - Individual shareholder Name
   shareholderNameLabelInd.innerText = "Shareholder name";
@@ -138,7 +180,9 @@ function addShareholderInputGroup() {
   shareholderInputGroup.appendChild(inputSubGroup100Shares);
   
   //Shareholder type
-  inputSubGroup100Type.appendChild(shareholderTypeLabel);
+  inputSubGroup100Type.appendChild(shareholderTypeLabelWrapper);
+  shareholderTypeLabelWrapper.appendChild(shareholderTypeLabel);
+  shareholderTypeLabelWrapper.appendChild(removeShareholderButton);
   
   //Individual Shareholder
   inputSubGroupInd.appendChild(inputSubGroup100Ind);
@@ -178,7 +222,13 @@ function addShareholderInputGroup() {
   
   //Append element to DOM
   shareholderGroup.appendChild(shareholderInputGroup);
+  removeShareholderButton.addEventListener("click", removeShareholder);
 
   //rerun function to calculate shares
   calculateShares();
+}
+
+function removeShareholder(el) {
+	const shareholder = el.target.parentElement.parentElement.parentElement;
+  shareholder.remove();
 }
