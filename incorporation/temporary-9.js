@@ -128,6 +128,7 @@ function addShareholderInputGroup() {
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
   
   //Set input field - Individual shareholder Name
+  inputSubGroupInd.setAttribute("data-shareholder-group", "individual");
   shareholderNameLabelInd.innerText = "Shareholder name";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
@@ -136,6 +137,7 @@ function addShareholderInputGroup() {
   shareholderNameInd.setAttribute("required", "");
   
   //Set input field - Corporate shareholder name
+  inputSubGroupCorp.setAttribute("data-shareholder-group", "corporate");
   shareholderNameLabelCorp1.innerText = "Corporate shareholder name";
   shareholderNameCorp1.type = "text";
   shareholderNameCorp1.name = "Corporate-shareholder-name";
