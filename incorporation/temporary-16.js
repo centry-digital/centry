@@ -265,7 +265,11 @@ function selectRadio() {
   }
   
   for (i = 0; i < radioButtons.length; i++) {
-    j = Math.round(i/2) - 1;
+    if (i = 0) {
+      j = 0;
+    } else {
+      j = Math.round(i / 2) - 1;
+    }
     console.log(j);
     if (radioButtons[i].checked) {
     	radioDivs[i].classList.add("active");
