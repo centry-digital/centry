@@ -178,9 +178,7 @@ function addShareholderInputGroup() {
   
   //Append element to DOM
   shareholderGroup.appendChild(shareholderInputGroup);
-}
 
-function removeDirector(el) {
-	const director = el.target.parentElement.parentElement.parentElement;
-  director.remove();
+  //rerun function to calculate shares
+  calculateShares();
 }
