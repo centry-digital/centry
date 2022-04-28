@@ -109,15 +109,15 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput1.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput1.setAttribute("value", "individual-shareholder");
   shareholderTypeRadioInput1.setAttribute("data-name", "Shareholder Type");
-  shareholderTypeRadioInput1.setAttribute("required");
-  shareholderTypeRadioInput1.setAttribute("checked");
+  shareholderTypeRadioInput1.setAttribute("required", "");
+  shareholderTypeRadioInput1.setAttribute("checked", "");
   shareholderTypeRadioSpan1.setAttribute("for", "individual-shareholder");
   shareholderTypeRadio2.setAttribute("data-shareholder-type", "corporate");
   shareholderTypeRadio2.setAttribute("onclick", "selectRadio()");
   shareholderTypeRadioInput2.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
   shareholderTypeRadioInput2.setAttribute("data-name", "Shareholder Type");
-  shareholderTypeRadioInput2.setAttribute("required");
+  shareholderTypeRadioInput2.setAttribute("required", "");
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
   
   //Set input field - Individual shareholder Name
