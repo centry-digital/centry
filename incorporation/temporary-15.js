@@ -1,4 +1,4 @@
-let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType;
+let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType, i, j;
 
 selectRadio()
 calculateShares();
@@ -264,13 +264,15 @@ function selectRadio() {
     radioDiv.setAttribute("onclick", "selectRadio()");	
   }
   
-  for (let i = 0; i < radioButtons.length; i++) {
-    let j = Math.round(i/2) - 1;
+  for (i = 0; i < radioButtons.length; i++) {
+    j = Math.round(i/2) - 1;
+    console.log(j);
     if (radioButtons[i].checked) {
     	radioDivs[i].classList.add("active");
       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
       if (shareholderType == "individual") {      	
         individualShareholderGroup[j].classList.remove("hide");
+        console.log(j, individualShareholderGroup[j]);
         corporateShareholderGroup[j].classList.add("hide");
       } else if (shareholderType == "corporate") {
       	corporateShareholderGroup[j].classList.remove("hide");
