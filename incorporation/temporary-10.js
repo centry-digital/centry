@@ -1,4 +1,4 @@
-let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs
+let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType;
 
 selectRadio()
 calculateShares();
@@ -252,35 +252,40 @@ function removeShareholder(el) {
   shareholder.remove();
 }
 
-function selectRadio() {
-  //switching between individual and corporate shareholder type
-  individualShareholderGroup = document.querySelectorAll('div[data-shareholder-group="individual"]');
-  corporateShareholderGroup = document.querySelectorAll('div[data-shareholder-group="corporate"]');
-  radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
-  radioDivs = document.querySelectorAll(".w-radio");
+// function selectRadio() {
+//   //switching between individual and corporate shareholder type
+//   individualShareholderGroup = document.querySelectorAll('div[data-shareholder-group="individual"]');
+//   corporateShareholderGroup = document.querySelectorAll('div[data-shareholder-group="corporate"]');
+//   radioButtons = document.querySelectorAll('input[name="Shareholder-Type"]');
+//   radioDivs = document.querySelectorAll(".w-radio");
   
-  for (const radioDiv of radioDivs) {
-    radioDiv.style.cursor = "pointer";
-    radioDiv.setAttribute("onclick", "selectRadio()");	
-  }
+//   for (const radioDiv of radioDivs) {
+//     radioDiv.style.cursor = "pointer";
+//     radioDiv.setAttribute("onclick", "selectRadio()");	
+//   }
   
-  for (let i = 0; i < radioButtons.length; i++) {
-    let shareholderType;
-    if (radioButtons[i].checked) {
-    	radioDivs[i].classList.add("active");
-      shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
-      if (shareholderType == "individual") {
-      	individualShareholderGroup[i].classList.remove("hide")
-        corporateShareholderGroup[i].classList.add("hide")
-      } else if (shareholderType == "corporate") {
-      	corporateShareholderGroup[i].classList.remove("hide")
-        individualShareholderGroup[i].classList.add("hide")
-      }
-    } else {
-    	radioDivs[i].classList.remove("active");
-    }
-  }
-}
+//   for (let i = 0; i < radioButtons.length; i++) {
+//     if (radioButtons[i].checked) {
+//     	radioDivs[i].classList.add("active");
+//       shareholderType = radioDivs[i].getAttribute("data-shareholder-type");
+//       if (shareholderType == "individual") {
+//       	console.log("shareholderType is individual");
+//         individualShareholderGroup[i].classList.remove("hide");
+//         console.log(individualShareholderGroup[i]);
+//         corporateShareholderGroup[i].classList.add("hide");
+//         console.log(corporateShareholderGroup[i]);
+//       } else if (shareholderType == "corporate") {
+//         console.log("shareholderType is corporate");
+//       	corporateShareholderGroup[i].classList.remove("hide");
+//         console.log(corporateShareholderGroup[i]);
+//         individualShareholderGroup[i].classList.add("hide");
+//         console.log(individualShareholderGroup[i]);
+//       }
+//     } else {
+//     	radioDivs[i].classList.remove("active");
+//     }
+//   }
+// }
 
 //calculate number of shares
 function calculateShares() {
@@ -291,7 +296,6 @@ function calculateShares() {
       percentage = sharesPercent[i].value;
       percentToNumber = Math.round(percentage);
       sharesNumber[i].innerText = percentToNumber;
-      }
-    );
+    });
   }
 }
