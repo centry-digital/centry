@@ -1,7 +1,7 @@
 // let individualShareholderGroup, corporateShareholderGroup, radioButtons, radioDivs, shareholderType, i, j;
 
 
-selectRadio()
+// selectRadio();
 calculateShares();
 
 //add shareholder
@@ -289,15 +289,15 @@ function removeShareholder(el) {
 //   }
 // }
 
-//calculate number of shares
-function calculateShares() {
-  const sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
-  const sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
-  for (let i = 0; i < sharesPercent.length; i++) {
-    sharesPercent[i].addEventListener("keyup", function() {
-      percentage = sharesPercent[i].value;
-      percentToNumber = Math.round(percentage);
-      sharesNumber[i].innerText = percentToNumber;
-    });
-  }
-}
+// //calculate number of shares
+// function calculateShares() {
+//   const sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
+//   const sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+//   for (let i = 0; i < sharesPercent.length; i++) {
+//     sharesPercent[i].addEventListener("keyup", function() {
+//       percentage = sharesPercent[i].value;
+//       percentToNumber = Math.round(percentage);
+//       sharesNumber[i].innerText = percentToNumber;
+//     });
+//   }
+// }
