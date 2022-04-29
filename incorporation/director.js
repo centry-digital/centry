@@ -54,6 +54,7 @@ function addDirectorInputGroup() {
   directorName.type = "text";
   directorName.name = "Director-name";
   directorName.setAttribute("data-name", "Director-name");
+  directorName.setAttribute("data-incorporation-data", "director-name");
   directorName.setAttribute("maxlength", "256");
   directorName.setAttribute("required", "");
   
@@ -62,6 +63,7 @@ function addDirectorInputGroup() {
   directorEmail.type = "email";
   directorEmail.name = "Director-email";
   directorEmail.setAttribute("data-name", "Director-email");
+  directorEmail.setAttribute("data-incorporation-data", "director-email");
   directorEmail.setAttribute("maxlength", "256");
   directorEmail.setAttribute("required", "");
   
@@ -70,6 +72,7 @@ function addDirectorInputGroup() {
   directorPhone.type = "phone";
   directorPhone.name = "Director-phone";
   directorPhone.setAttribute("data-name", "Director-phone");
+  directorPhone.setAttribute("data-incorporation-data", "director-phone");
   directorPhone.setAttribute("maxlength", "256");
   directorPhone.setAttribute("required", "");
 
@@ -77,6 +80,7 @@ function addDirectorInputGroup() {
   directorCountryLabel.innerText = "Country of Residence";
   directorCountry.name = "Director-country-of-residence";
   directorCountry.setAttribute("data-name", "Director-country-of-residence");
+  directorCountry.setAttribute("data-incorporation-data", "director-country");
   directorCountry.setAttribute("data-select-type", "director-country");
   directorCountry.setAttribute("required", "");
   

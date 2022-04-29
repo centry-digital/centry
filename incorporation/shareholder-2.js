@@ -104,8 +104,8 @@ function addShareholderInputGroup() {
   shareholderTypeLabel.innerText = "Type of shareholder";
   removeShareholderButton.type = "button";
   removeShareholderButton.innerText = "remove";
+  shareholderType.setAttribute("data-incorporation-data", "shareholder-type");
   shareholderTypeRadio1.setAttribute("data-shareholder-type", "individual");
-  // shareholderTypeRadio1.setAttribute("onclick", "selectRadio()");
   shareholderTypeRadio1.addEventListener("click", selectRadio);
   shareholderTypeRadioInput1.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput1.setAttribute("value", "individual-shareholder");
@@ -115,7 +115,6 @@ function addShareholderInputGroup() {
   shareholderTypeRadioSpan1.innerText = "Individual";
   shareholderTypeRadioSpan1.setAttribute("for", "individual-shareholder");
   shareholderTypeRadio2.setAttribute("data-shareholder-type", "corporate");
-  // shareholderTypeRadio2.setAttribute("onclick", "selectRadio()");
   shareholderTypeRadio2.addEventListener("click", selectRadio);
   shareholderTypeRadioInput2.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
@@ -129,6 +128,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelInd.innerText = "Shareholder name";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
+  shareholderNameInd.setAttribute("data-incorporation-data", "individual-shareholder-name");
   shareholderNameInd.setAttribute("data-name", "Individual-shareholder-name");
   shareholderNameInd.setAttribute("maxlength", "256");
   shareholderNameInd.setAttribute("required", "");
@@ -138,6 +138,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelCorp1.innerText = "Corporate shareholder name";
   shareholderNameCorp1.type = "text";
   shareholderNameCorp1.name = "Corporate-shareholder-name";
+  shareholderNameCorp1.setAttribute("data-incorporation-data", "corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("data-name", "Corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("maxlength", "256");
   shareholderNameCorp1.setAttribute("required", "");
@@ -146,6 +147,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelCorp2.innerText = "Corporate representative name";
   shareholderNameCorp2.type = "text";
   shareholderNameCorp2.name = "Corporate-representative-name";
+  shareholderNameCorp2.setAttribute("data-incorporation-data", "corporate-representative-name");
   shareholderNameCorp2.setAttribute("data-name", "Corporate-representative-name");
   shareholderNameCorp2.setAttribute("maxlength", "256");
   shareholderNameCorp2.setAttribute("required", "");
@@ -154,6 +156,7 @@ function addShareholderInputGroup() {
   shareholderEmailLabel.innerText = "Email address";
   shareholderEmail.type = "email";
   shareholderEmail.name = "Shareholder-email";
+  shareholderEmail.setAttribute("data-incorporation-data", "shareholder-email");
   shareholderEmail.setAttribute("data-name", "Shareholder-email");
   shareholderEmail.setAttribute("maxlength", "256");
   shareholderEmail.setAttribute("required", "");
@@ -162,6 +165,7 @@ function addShareholderInputGroup() {
   shareholderPhoneLabel.innerText = "Phone number";
   shareholderPhone.type = "phone";
   shareholderPhone.name = "Shareholder-phone";
+  shareholderPhone.setAttribute("data-incorporation-data", "shareholder-phone");
   shareholderPhone.setAttribute("data-name", "Shareholder-phone");
   shareholderPhone.setAttribute("maxlength", "256");
   shareholderPhone.setAttribute("required", "");
@@ -170,6 +174,7 @@ function addShareholderInputGroup() {
   shareholderSharesLabel.innerText = "Number of Shares";
   inputShareholderSharesPct.type = "text";
   inputShareholderSharesPct.name = "Number-of-shares";
+  inputShareholderSharesPct.setAttribute("data-incorporation-data", "number-of-shares");
   inputShareholderSharesPct.setAttribute("data-name", "Number-of-shares");
   inputShareholderSharesPct.setAttribute("data-shareholding", "percent");
   inputShareholderSharesPct.setAttribute("maxlength", "256");
