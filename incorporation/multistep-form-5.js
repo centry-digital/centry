@@ -6,6 +6,7 @@ let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
 let reviewBackButton = document.getElementById("review-page-back");
 
+reviewBackButton.addEventListener("click", getPrevTab);
 incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
@@ -103,10 +104,11 @@ function updateButtons() {
 	if (activeTabId == "w-tabs-0-data-w-tab-0" || activeTabId == "w-tabs-0-data-w-tab-5") {
   	incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
-    reviewBackButton.remove("hide");
+    reviewBackButton.classList.remove("hide");
   } else {
     incNextButton.innerText = "Next";
   	incPrevButton.classList.remove("hide");
-    reviewBackButton.add("hide");
+    reviewBackButton.classList.add("hide");
   }
 }
+updateButtons();
