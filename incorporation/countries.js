@@ -256,7 +256,9 @@ let options = countries.map(country => `<option value="${country.code}">${countr
 let lastDirectorSelect = 0;
 let directorCountrySelect, directorCountrySelectLast;
 function mapDirectorCountrySelect() {
+  console.log("start querySelectorAll");
   directorCountrySelect = document.querySelectorAll('select[data-select-type="director-country"]');
+  console.log("end querySelectorAll");
   directorCountrySelectLast = directorCountrySelect[lastDirectorSelect];
   directorCountrySelectLast.innerHTML = options;
   lastDirectorSelect++;
