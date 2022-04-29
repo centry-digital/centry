@@ -1,4 +1,4 @@
-let directorCountrySelect = document.querySelector("#director-country");
+let directorCountrySelect = document.querySelector('select[data-select-type="directory-country"]');
 let countries = 
   [
     { code: "MY", name: "Malaysia" },
