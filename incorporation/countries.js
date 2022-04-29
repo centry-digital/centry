@@ -1,6 +1,3 @@
-let directorCountrySelect = document.querySelectorAll('select[data-select-type="director-country"]');
-let lastDirectorSelect = 0;
-let directorCountrySelectLast = directorCountrySelect[lastDirectorSelect];
 let countries = 
   [
     { code: "MY", name: "Malaysia" },
@@ -255,8 +252,12 @@ let countries =
     { code: "ZW", name: "Zimbabwe "}
   ]
 
+let options = countries.map(country => `<option value="${country.code}">${country.name}</option>`).join('\n');
+let lastDirectorSelect = 0;
+let directorCountrySelect, directorCountrySelectLast;
 function mapDirectorCountrySelect() {
-  let options = countries.map(country => `<option value="${country.code}">${country.name}</option>`).join('\n');
+  directorCountrySelect = document.querySelectorAll('select[data-select-type="director-country"]');
+  directorCountrySelectLast = directorCountrySelect[lastDirectorSelect];
   directorCountrySelectLast.innerHTML = options;
   lastDirectorSelect++;
 }
