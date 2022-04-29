@@ -2,7 +2,7 @@
 
 
 // selectRadio();
-calculateShares();
+// calculateShares();
 
 //add shareholder
 const addShareholderButton = document.getElementById("add-shareholder-button");
