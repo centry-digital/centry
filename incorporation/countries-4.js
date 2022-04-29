@@ -1,5 +1,5 @@
 let directorCountrySelect = document.querySelectorAll('select[data-select-type="director-country"]');
-let lastDirectorSelect = directorCountrySelect.length - 1;
+let lastDirectorSelect = 0;
 let directorCountrySelectLast = directorCountrySelect[lastDirectorSelect];
 let countries = 
   [
@@ -258,5 +258,6 @@ let countries =
 function mapDirectorCountrySelect() {
   let options = countries.map(country => `<option value="${country.code}">${country.name}</option>`).join('\n');
   directorCountrySelectLast.innerHTML = options;
+  lastDirectorSelect++;
 }
 mapDirectorCountrySelect();
