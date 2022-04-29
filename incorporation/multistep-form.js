@@ -50,7 +50,7 @@ function getNextTab() {
   nextSideNav.classList.add("active");
   currentSideIcon.classList.remove("active");
   nextSideIcon.classList.add("active");
-  hidePrevButton();
+  updateButtons();
 }
 
 function getPrevTab() {
