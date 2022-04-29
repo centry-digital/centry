@@ -104,6 +104,8 @@ function updateButtons() {
 	if (activeTabId == "w-tabs-0-data-w-tab-0") {
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.add("hide");
+  } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
+    incNextButton.addEventListener("click", getSummary);
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
@@ -115,3 +117,22 @@ function updateButtons() {
   }
 }
 updateButtons();
+
+function getSummary() {
+  let companyName = "";
+  let companyNameExplanation= "";
+  let natureOfBusiness = "";
+  let msicCodes = "";
+  let companyEmail = "";
+  let officeNumber = "";
+  let businessAddressLine1 = "";
+  let businessAddressLine2 = "";
+  let businessAddressCity = "";
+  let businessAddressPostcode = "";
+  let businessAddressState = "";
+  let businessAddressCountry = "Malaysia";
+  let directors = [];
+  directors = "";
+  let shareholders = [];
+  shareholders = "";
+}
