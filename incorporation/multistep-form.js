@@ -5,8 +5,6 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
 
-initiationTab = document.getElementById("w-tabs-0-data-w-tab-0");
-initiationTab.click();
 incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
