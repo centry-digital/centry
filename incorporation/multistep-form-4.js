@@ -4,6 +4,7 @@ let nextSideNav, nextSideIcon, nextTab;
 let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
+let reviewBackButton = document.getElementById("review-page-back");
 
 incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
@@ -99,13 +100,13 @@ function getPrevTab() {
 }
 
 function updateButtons() {
-	if (activeTabId == "w-tabs-0-data-w-tab-0") {
-  	incPrevButton.classList.add("hide");
-  } else {
-  	incPrevButton.classList.remove("hide");
-  }
-
-  if (activeTabId == "w-tabs-0-data-w-tab-5") {
+	if (activeTabId == "w-tabs-0-data-w-tab-0" || activeTabId == "w-tabs-0-data-w-tab-5") {
   	incNextButton.innerText = "Proceed to payment";
+    incPrevButton.classList.add("hide");
+    reviewBackButton.remove("hide");
+  } else {
+    incNextButton.innerText = "Next";
+  	incPrevButton.classList.remove("hide");
+    reviewBackButton.add("hide");
   }
 }
