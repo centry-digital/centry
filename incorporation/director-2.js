@@ -77,6 +77,7 @@ function addDirectorInputGroup() {
   directorCountryLabel.innerText = "Country of Residence";
   directorCountry.name = "Director-country-of-residence";
   directorCountry.setAttribute("data-name", "Director-country-of-residence");
+  directorCountry.setAttribute("data-select-type", "director-country");
   directorCountry.setAttribute("required", "");
   
   //Append elements to Director Input Groups
