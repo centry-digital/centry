@@ -101,8 +101,11 @@ function getPrevTab() {
 }
 
 function updateButtons() {
-	if (activeTabId == "w-tabs-0-data-w-tab-0" || activeTabId == "w-tabs-0-data-w-tab-5") {
-  	incNextButton.innerText = "Proceed to payment";
+	if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incPrevButton.classList.add("hide");
+    reviewBackButton.classList.add("hide");
+  } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
+    incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.remove("hide");
   } else {
