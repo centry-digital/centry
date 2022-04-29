@@ -112,6 +112,7 @@ function addDirectorInputGroup() {
   //Append element to DOM
   directorGroup.appendChild(directorInputGroup);
   removeDirectorButton.addEventListener("click", removeDirector);
+  mapDirectorCountrySelect();
 }
 
 function removeDirector(el) {
