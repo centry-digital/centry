@@ -10,8 +10,11 @@ function getMsicCodes() {
   		select: '#msic-codes',
    		limit: 3,
     	data: data,
-      onChange: (info) => {
-    		console.log(info)
+      onChange: (selections) => {
+				for (const selection of selections){
+					console.log(selection);
+					incorporationSummary.msicCodes.push(selection.getAttribute("value"));
+				}
 		  }
 		})
 	}
