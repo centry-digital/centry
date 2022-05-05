@@ -126,7 +126,7 @@ let incorporationSideNavIcon = document.querySelectorAll("[data-incorporation-si
 for (const tab of incorporationSideNavClickable) {
   tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
-    let sidenavTab = tab.getAttribute("data-incorporation-sidenav");
+    let sidenavTab = tab.getAttribute("data-incorporation-sidenav-clickable");
     let n;
     switch(sidenavTab) {
     	case "0":
