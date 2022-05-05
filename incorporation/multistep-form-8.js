@@ -106,6 +106,8 @@ function updateButtons() {
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     incNextButton.addEventListener("click", getSummary);
+    incPrevButton.classList.remove("hide");
+    reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
