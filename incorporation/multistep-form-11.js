@@ -120,18 +120,19 @@ function updateButtons() {
 }
 updateButtons();
 
-let incorporationSideNav = document.querySelectorAll("[data-incorporation-sidenav]");
+let incorporationSideNavClickable = document.querySelectorAll("[data-incorporation-sidenav-clickable]");
+let incorporationSideNavUnclickable = document.querySelectorAll("[data-incorporation-sidenav-unclickable]");
 let incorporationSideNavIcon = document.querySelectorAll("[data-incorporation-sidenav-icon]");
-for (const tab of incorporationSideNav) {
+for (const tab of incorporationSideNavClickable) {
+  tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
     let sidenavTab = tab.getAttribute("data-incorporation-sidenav");
     let n;
     switch(sidenavTab) {
     	case "0":
-      tab.style.cursor = "pointer";
       n = 0;
         document.getElementById("w-tabs-0-data-w-tab-0").click();
-        for (const t of incorporationSideNav) {
+        for (const t of incorporationSideNavClickable) {
         	t.classList.remove("active");
         }
         tab.classList.add("active");
@@ -143,10 +144,9 @@ for (const tab of incorporationSideNav) {
         updateButtons();
         break;
       case "1":
-        tab.style.cursor = "pointer";
         n = 1;
         document.getElementById("w-tabs-0-data-w-tab-1").click();
-        for (const t of incorporationSideNav) {
+        for (const t of incorporationSideNavClickable) {
         	t.classList.remove("active");
         }
         tab.classList.add("active");
@@ -158,10 +158,9 @@ for (const tab of incorporationSideNav) {
       	updateButtons();
         break;
       case "2":
-        tab.style.cursor = "pointer";
         n = 2;
         document.getElementById("w-tabs-0-data-w-tab-2").click();
-        for (const t of incorporationSideNav) {
+        for (const t of incorporationSideNavClickable) {
         	t.classList.remove("active");
         }
         tab.classList.add("active");
@@ -173,10 +172,9 @@ for (const tab of incorporationSideNav) {
         updateButtons();
         break;
       case "3":
-        tab.style.cursor = "pointer";
         n = 3;
         document.getElementById("w-tabs-0-data-w-tab-3").click();
-        for (const t of incorporationSideNav) {
+        for (const t of incorporationSideNavClickable) {
         	t.classList.remove("active");
         }
         tab.classList.add("active");
@@ -188,10 +186,9 @@ for (const tab of incorporationSideNav) {
         updateButtons();
         break;
       case "4":
-        tab.style.cursor = "pointer";
         n = 4;
         document.getElementById("w-tabs-0-data-w-tab-4").click();
-        for (const t of incorporationSideNav) {
+        for (const t of incorporationSideNavClickable) {
         	t.classList.remove("active");
         }
         tab.classList.add("active");
@@ -204,8 +201,7 @@ for (const tab of incorporationSideNav) {
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
-      case "5":
-        tab.style.cursor = "not-allowed";
+      // case "5":
         // n = 5;
         // document.getElementById("w-tabs-0-data-w-tab-5").click();
         // for (const t of incorporationSideNav) {
@@ -218,10 +214,11 @@ for (const tab of incorporationSideNav) {
         // incorporationSideNavIcon[n].classList.add("active");
         // activeTabId = "w-tabs-0-data-w-tab-5";
         // updateButtons();
-        break;
-      case "6":
-        tab.style.cursor = "not-allowed";
-        break;
+      //   break;
     };
   });
+}
+
+for (const tabUnclickable of incorporationSideNavUnclickable) {
+  tab.style.cursor = "not-allowed";
 }
