@@ -220,5 +220,5 @@ for (const tab of incorporationSideNavClickable) {
 }
 
 for (const tabUnclickable of incorporationSideNavUnclickable) {
-  tab.style.cursor = "not-allowed";
+  tabUnclickable.style.cursor = "not-allowed";
 }
