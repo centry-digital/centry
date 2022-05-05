@@ -181,7 +181,7 @@ function addShareholderInputGroup() {
   inputShareholderSharesPct.setAttribute("required", "");
   shareholderSharesNum1.innerText = "0";
   shareholderSharesNum1.setAttribute("data-shareholding", "number");
-  shareholderSharesNum2.innerText = " / 1000 shares";
+  shareholderSharesNum2.innerText = " / 1,000 shares";
   
   //Append elements to Shareholder Input Groups
   shareholderInputGroup.appendChild(inputSubGroup100Type);

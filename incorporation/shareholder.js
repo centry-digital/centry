@@ -98,7 +98,7 @@ function addShareholderInputGroup() {
       shareholderSharesLabel.classList.add("field-label");
       inputWrapperShares.classList.add("shareholding-wrapper");
         inputShareholderSharesPct.classList.add("centry-shareholding-field", "text-sm", "w-input");
-        shareholderSharesNumWrapper.classList.add("number-of-shares", "text-sm");
+        shareholderSharesNumWrapper.classList.add("number-of-shares", "text-xs");
   
   //Set input field - Shareholder Type
   shareholderTypeLabel.innerText = "Type of shareholder";
@@ -181,7 +181,7 @@ function addShareholderInputGroup() {
   inputShareholderSharesPct.setAttribute("required", "");
   shareholderSharesNum1.innerText = "0";
   shareholderSharesNum1.setAttribute("data-shareholding", "number");
-  shareholderSharesNum2.innerText = " / 1000 shares";
+  shareholderSharesNum2.innerText = " / 1,000 shares";
   
   //Append elements to Shareholder Input Groups
   shareholderInputGroup.appendChild(inputSubGroup100Type);
@@ -284,14 +284,29 @@ function selectRadio(el) {
 }
   
 //calculate number of shares
+let totalSharesArray = [];
+let totalShares;
+let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
+let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
+let totalUndistributedShares;
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
   for (let i = 0; i < sharesPercent.length; i++) {
     sharesPercent[i].addEventListener("keyup", function() {
-      percentage = sharesPercent[i].value;
-      percentToNumber = Math.round(percentage);
+      let percentage = sharesPercent[i].value;
+      let percentToNumber = Math.round(percentage);
       sharesNumber[i].innerText = percentToNumber;
+      
+      totalShares = 0;
+      totalSharesArray[i] = percentToNumber;
+      for (let s = 0; s < totalSharesArray.length; s++) {
+        totalShares += totalSharesArray[s]
+      }
+      console.log("Total shares: " + totalShares);
+      totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
+      totalUndistributedShares = 1000 - totalShares;
+      totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
     });
   }
 }
