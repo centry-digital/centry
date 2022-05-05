@@ -284,19 +284,24 @@ function selectRadio(el) {
 }
   
 //calculate number of shares
-let totalShares = 0;
+let totalSharesArray = [];
+let totalShares;
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
   for (let i = 0; i < sharesPercent.length; i++) {
     sharesPercent[i].addEventListener("keyup", function() {
-      percentage = sharesPercent[i].value;
-      percentToNumber = Math.round(percentage);
+      let percentage = sharesPercent[i].value;
+      let percentToNumber = Math.round(percentage);
       sharesNumber[i].innerText = percentToNumber;
-      totalShares += percentToNumber;
-      console.log("Inside: " + totalShares);
+      
+      totalShares = 0;
+      totalSharesArray[i] = percentToNumber;
+      for (let s = 0; s < totalSharesArray.length; s++) {
+        totalShares += totalSharesArray[s]
+      }
+      console.log("Total shares: " + totalShares);
     });
   }
-  console.log("Outside: " + totalShares);
 }
 calculateShares();
