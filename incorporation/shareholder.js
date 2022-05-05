@@ -252,6 +252,7 @@ function addShareholderInputGroup() {
 function removeShareholder(el) {
 	const shareholder = el.target.parentElement.parentElement.parentElement;
   shareholder.remove();
+  calculateShares();
 }
 
 // function selectRadio() {
