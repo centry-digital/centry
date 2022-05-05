@@ -304,9 +304,9 @@ function calculateShares() {
         totalShares += totalSharesArray[s]
       }
       console.log("Total shares: " + totalShares);
-      totalDistributedSharesElement.innerText = totalShares;
+      totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
       totalUndistributedShares = 1000 - totalShares;
-      totalUndistributedSharesElement.innerText = totalUndistributedShares;
+      totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
     });
   }
 }
