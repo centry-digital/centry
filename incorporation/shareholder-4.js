@@ -98,7 +98,7 @@ function addShareholderInputGroup() {
       shareholderSharesLabel.classList.add("field-label");
       inputWrapperShares.classList.add("shareholding-wrapper");
         inputShareholderSharesPct.classList.add("centry-shareholding-field", "text-sm", "w-input");
-        shareholderSharesNumWrapper.classList.add("number-of-shares", "text-sm");
+        shareholderSharesNumWrapper.classList.add("number-of-shares", "text-xs");
   
   //Set input field - Shareholder Type
   shareholderTypeLabel.innerText = "Type of shareholder";
@@ -286,6 +286,9 @@ function selectRadio(el) {
 //calculate number of shares
 let totalSharesArray = [];
 let totalShares;
+let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
+let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
+let totalUndistributedShares;
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
@@ -301,6 +304,9 @@ function calculateShares() {
         totalShares += totalSharesArray[s]
       }
       console.log("Total shares: " + totalShares);
+      totalDistributedSharesElement.innerText = totalShares;
+      totalUndistributedShares = 1000 - totalShares;
+      totalUndistributedSharesElement.innerText = totalUndistributedShares;
     });
   }
 }
