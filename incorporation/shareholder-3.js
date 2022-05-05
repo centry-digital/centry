@@ -287,12 +287,16 @@ function selectRadio(el) {
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+  let totalShares = 0;
   for (let i = 0; i < sharesPercent.length; i++) {
     sharesPercent[i].addEventListener("keyup", function() {
       percentage = sharesPercent[i].value;
       percentToNumber = Math.round(percentage);
       sharesNumber[i].innerText = percentToNumber;
+      totalShares += percentToNumber;
+      console.log("Inside: " + totalShares);
     });
   }
+  console.log("Outside: " + totalShares);
 }
 calculateShares();
