@@ -11,9 +11,10 @@ function getMsicCodes() {
    		limit: 3,
     	data: data,
       onChange: (selections) => {
-				for (const selection of selections){
+				incorporationSummary.msicCodes = [];
+        for (const selection of selections){
 					console.log(selection);
-					incorporationSummary.msicCodes.push(selection.getAttribute("value"));
+					incorporationSummary.msicCodes.push(selection.value);
 				}
 		  }
 		})
