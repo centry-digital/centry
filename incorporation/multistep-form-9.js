@@ -120,61 +120,100 @@ function updateButtons() {
 }
 updateButtons();
 
-// function getSummary() {
-//   let incorporationSummary = {};
-
-//   incorporationSummary.companyName = document.querySelector(
-//     'input[data-incorporation-data="company-name"]'
-//   ).value;
-//   incorporationSummary.companyNameExplanation = document.querySelector(
-//     'textarea[data-incorporation-data="company-name-explanation"]'
-//   ).value;
-//   incorporationSummary.natureOfBusiness = document.querySelector(
-//     'textarea[data-incorporation-data="nature-of-business"]'
-//   ).value;
-//   incorporationSummary.msicCodes = [];
-//   incorporationSummary.companyEmail = document.querySelector(
-//     'input[data-incorporation-data="company-email"]'
-//   ).value;
-//   let officeNumber = document.querySelector(
-//     'input[data-incorporation-data="office-number"]'
-//   ).value;
-//   let businessAddressLine1 = document.querySelector(
-//     'input[data-incorporation-data="business-address-1"]'
-//   ).value;
-//   let businessAddressLine2 = document.querySelector(
-//     'input[data-incorporation-data="business-address-1"]'
-//   ).value;
-//   let businessAddressCity = document.querySelector(
-//     'input[data-incorporation-data="business-address-city"]'
-//   ).value;
-//   let businessAddressPostcode = document.querySelector(
-//     'input[data-incorporation-data="business-address-postcode"]'
-//   ).value;
-//   incorporationSummary.businessAddressState = document.querySelector(
-//     'select[data-incorporation-data="business-address-state"]'
-//   ).value;
-//   incorporationSummary.businessAddressCountry = "Malaysia";
-//   incorporationSummary.directors = [];
-//   incorporationSummary.shareholders = [];
-
-//   // let incorporationSummary = {
-//   //   companyName: "",
-//   //   companyNameExplanation: "",
-//   //   natureOfBusiness: "",
-//   //   msicCodes: [],
-//   //   companyEmail: "",
-//   //   officeNumber: "",
-//   //   businessAddressLine1: "",
-//   //   businessAddressLine2: "",
-//   //   businessAddressCity: "",
-//   //   businessAddressPostcode: "",
-//   //   businessAddressState: "",
-//   //   businessAddressCountry: "",
-//   //   directors: [],
-//   //   shareholders: []
-//   // }
-
-//   let reviewCompanyName = document.getElementById("incorporate-review-name");
-//   reviewCompanyName.innerText = companyName.value;
-// }
+let incorporationSideNav = document.querySelectorAll("[data-incorporation-sidenav]");
+let incorporationSideNavIcon = document.querySelectorAll("[data-incorporation-sidenav-icon]");
+for (const tab of incorporationSideNav) {
+	tab.style.cursor = "pointer";
+  tab.addEventListener("click", () => {
+    let sidenavTab = tab.getAttribute("data-incorporation-sidenav");
+    let n;
+    switch(sidenavTab) {
+    	case "0":
+        n = 0;
+        document.getElementById("w-tabs-0-data-w-tab-0").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        activeTabId = "w-tabs-0-data-w-tab-0";
+        updateButtons();
+        break;
+      case "1":
+        n = 1;
+        document.getElementById("w-tabs-0-data-w-tab-1").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        activeTabId = "w-tabs-0-data-w-tab-1";
+      	updateButtons();
+        break;
+      case "2":
+        n = 2;
+        document.getElementById("w-tabs-0-data-w-tab-2").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        activeTabId = "w-tabs-0-data-w-tab-2";
+        updateButtons();
+        break;
+      case "3":
+        n = 3;
+        document.getElementById("w-tabs-0-data-w-tab-3").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        activeTabId = "w-tabs-0-data-w-tab-3";
+        updateButtons();
+        break;
+      case "4":
+        n = 4;
+        document.getElementById("w-tabs-0-data-w-tab-4").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        document.getElementById("inc-prev-button").classList.remove("hide");
+        document.getElementById("review-page-back").classList.add("hide");
+        activeTabId = "w-tabs-0-data-w-tab-4";
+        updateButtons();
+        break;
+      case "5":
+        n = 5;
+        document.getElementById("w-tabs-0-data-w-tab-5").click();
+        for (const t of incorporationSideNav) {
+        	t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+        	icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        activeTabId = "w-tabs-0-data-w-tab-5";
+        updateButtons();
+        break;
+    };
+  });
+}
