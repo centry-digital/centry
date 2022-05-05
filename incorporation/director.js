@@ -47,6 +47,9 @@ function addDirectorInputGroup() {
   directorPhone.classList.add("centry-text-field", "text-sm", "w-input");
   directorCountry.classList.add("select-field", "text-sm", "w-select");
   
+  //Set input group - Director
+  directorInputGroup.setAttribute("data-incorporation-data", "director");
+
   //Set input field - Director Name
   directorNameLabel.innerText = "Director name";
   removeDirectorButton.type = "button";
