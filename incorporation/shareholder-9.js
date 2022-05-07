@@ -318,6 +318,7 @@ function calculateShares() {
 calculateShares();
 
 function updateShares() {
+  console.log("Start updateShares()");
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
   for (let i = 0; i < sharesPercent.length; i++) {
@@ -329,6 +330,7 @@ function updateShares() {
     for (let s = 0; s < totalSharesArray.length; s++) {
       totalShares += totalSharesArray[s]
     }
+    console.log(`Total shares (${i}): ` + totalShares);
     totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
     totalUndistributedShares = 1000 - totalShares;
     totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
