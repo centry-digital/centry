@@ -201,20 +201,6 @@ for (const tab of incorporationSideNavClickable) {
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
-      // case "5":
-        // n = 5;
-        // document.getElementById("w-tabs-0-data-w-tab-5").click();
-        // for (const t of incorporationSideNav) {
-        // 	t.classList.remove("active");
-        // }
-        // tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        // 	icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
-        // activeTabId = "w-tabs-0-data-w-tab-5";
-        // updateButtons();
-      //   break;
     };
   });
 }

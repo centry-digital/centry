@@ -1,6 +1,6 @@
 function getMsicCodes() {
 	let request = new XMLHttpRequest();
-	let url = new URL('https://xb38-9clz-iqnc.s2.xano.io/api:8ppyfTOI/msic_code')
+	let url = new URL('https://api.centry.digital/api:8ppyfTOI/msic_code')
   request.open('GET', url, true);
 	request.onload = function() {
   	if (request.status >=200 && request.status < 400) {
