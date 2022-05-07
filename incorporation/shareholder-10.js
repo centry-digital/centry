@@ -304,7 +304,6 @@ function calculateShares() {
       sharesNumber[i].innerText = percentToNumber;
       
       totalShares = 0;
-      totalSharesArray = [];
       totalSharesArray[i] = percentToNumber;
       for (let s = 0; s < totalSharesArray.length; s++) {
         totalShares += totalSharesArray[s]
