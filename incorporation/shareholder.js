@@ -100,6 +100,9 @@ function addShareholderInputGroup() {
         inputShareholderSharesPct.classList.add("centry-shareholding-field", "text-sm", "w-input");
         shareholderSharesNumWrapper.classList.add("number-of-shares", "text-xs");
   
+  //Set input group - Shareholder
+  shareholderInputGroup.setAttribute("data-incorporation-data", "shareholder");
+  
   //Set input field - Shareholder Type
   shareholderTypeLabel.innerText = "Type of shareholder";
   removeShareholderButton.type = "button";
@@ -252,7 +255,7 @@ function addShareholderInputGroup() {
 function removeShareholder(el) {
 	const shareholder = el.target.parentElement.parentElement.parentElement;
   shareholder.remove();
-  calculateShares();
+  updateShares();
 }
 
 // function selectRadio() {
@@ -262,7 +265,13 @@ for (const radioDiv of radioDivs) {
   radioDiv.addEventListener("click", selectRadio);
 }
   
-let selectedRadio, selectedParent, sharesPercent, sharesNumber;
+let selectedRadio, selectedType, selectedParent, sharesPercent, sharesNumber;
+let totalSharesArray = [];
+let totalShares;
+let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
+let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
+let totalUndistributedShares;
+
 function selectRadio(el) {
   selectedRadio = el.target.parentElement;
   selectedType = el.target.parentElement.getAttribute("data-shareholder-type");
@@ -281,15 +290,10 @@ function selectRadio(el) {
     corporateRadio.classList.add("active");
     corporateDiv.classList.remove("hide");
     individualDiv.classList.add("hide");
-  }	
+  }
 }
-  
+
 //calculate number of shares
-let totalSharesArray = [];
-let totalShares;
-let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
-let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
-let totalUndistributedShares;
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
@@ -312,3 +316,24 @@ function calculateShares() {
   }
 }
 calculateShares();
+
+function updateShares() {
+  console.log("Start updateShares()");
+  sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
+  sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+  for (let i = 0; i < sharesPercent.length; i++) {
+    let percentage = sharesPercent[i].value;
+    let percentToNumber = Math.round(percentage);
+    
+    totalShares = 0;
+    totalSharesArray = [];
+    totalSharesArray[i] = percentToNumber;
+    for (let s = 0; s < totalSharesArray.length; s++) {
+      totalShares += totalSharesArray[s]
+    }
+    console.log(`Total shares (${i}): ` + totalShares);
+    totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
+    totalUndistributedShares = 1000 - totalShares;
+    totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
+  }
+}
