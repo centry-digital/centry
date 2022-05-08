@@ -102,18 +102,22 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    document.getElementById("inc-sidenav-5").classList.add("hide");
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
+    document.getElementById("inc-sidenav-5").classList.add("hide");
     incNextButton.addEventListener("click", getSummary);
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
+    document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.remove("hide");
   } else {
+    document.getElementById("inc-sidenav-5").classList.add("hide");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
