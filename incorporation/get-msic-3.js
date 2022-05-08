@@ -6,14 +6,13 @@ function getMsicCodes() {
   	if (request.status >=200 && request.status < 400) {
     	var data = JSON.parse(this.response);
     }
-    var select = new SlimSelect({
+		var select = new SlimSelect({
   		select: '#msic-codes',
    		limit: 3,
     	data: data,
       onChange: (selections) => {
 				incorporationSummary.msicCodes = [];
         for (const selection of selections){
-					console.log(selection);
 					incorporationSummary.msicCodes.push(selection.value);
 				}
 		  }

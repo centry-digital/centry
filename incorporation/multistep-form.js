@@ -106,6 +106,7 @@ function updateButtons() {
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     incNextButton.addEventListener("click", getSummary);
+    incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
@@ -205,6 +206,6 @@ for (const tab of incorporationSideNavClickable) {
   });
 }
 
-for (const tabUnclickable of incorporationSideNavUnclickable) {
-  tabUnclickable.style.cursor = "not-allowed";
-}
+// for (const tabUnclickable of incorporationSideNavUnclickable) {
+//   tabUnclickable.style.cursor = "not-allowed";
+// }

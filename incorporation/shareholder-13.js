@@ -19,6 +19,7 @@ function addShareholderInputGroup() {
         const shareholderTypeRadioLabel2 = document.createElement("div");
         const shareholderTypeRadioInput2 = document.createElement("input");
         const shareholderTypeRadioSpan2 = document.createElement("span");
+    const hiddenInput = document.createElement("input");
   const inputSubGroupInd = document.createElement("div");
   	const inputSubGroup100Ind = document.createElement("div");
     	const shareholderNameLabelInd = document.createElement("label");
@@ -71,7 +72,7 @@ function addShareholderInputGroup() {
           shareholderTypeRadioInput2.style.position = "absolute";
           shareholderTypeRadioInput2.style.zIndex = "-1";
           shareholderTypeRadioSpan2.classList.add("radio-button-label","w-form-label");
-  	inputSubGroupInd.classList.add("individual-shareholder-group");
+    inputSubGroupInd.classList.add("individual-shareholder-group");
       inputSubGroup100Ind.classList.add("input-subgroup-100");
         shareholderNameLabelInd.classList.add("field-label");
         inputWrapperInd.classList.add("input-wrapper");
@@ -125,13 +126,16 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput2.setAttribute("required", "");
   shareholderTypeRadioSpan2.innerText = "Corporate";
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
+  hiddenInput.setAttribute("type", "hidden");
+  hiddenInput.setAttribute("data-incorporation-data", "shareholder-type-hidden");
+  hiddenInput.setAttribute("value", "Individual");
   
   //Set input field - Individual shareholder Name
   inputSubGroupInd.setAttribute("data-shareholder-group", "individual");
   shareholderNameLabelInd.innerText = "Shareholder name";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
-  shareholderNameInd.setAttribute("data-incorporation-data", "individual-shareholder-name");
+  shareholderNameInd.setAttribute("data-incorporation-data", "shareholder-name");
   shareholderNameInd.setAttribute("data-name", "Individual-shareholder-name");
   shareholderNameInd.setAttribute("maxlength", "256");
   shareholderNameInd.setAttribute("required", "");
@@ -141,7 +145,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelCorp1.innerText = "Corporate shareholder name";
   shareholderNameCorp1.type = "text";
   shareholderNameCorp1.name = "Corporate-shareholder-name";
-  shareholderNameCorp1.setAttribute("data-incorporation-data", "corporate-shareholder-name");
+  shareholderNameCorp1.setAttribute("data-incorporation-data", "shareholder-name");
   shareholderNameCorp1.setAttribute("data-name", "Corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("maxlength", "256");
   shareholderNameCorp1.setAttribute("required", "");
@@ -196,6 +200,7 @@ function addShareholderInputGroup() {
   //Shareholder type
   inputSubGroup100Type.appendChild(shareholderTypeLabelWrapper);
   inputSubGroup100Type.appendChild(shareholderType);
+  inputSubGroup100Type.appendChild(hiddenInput);
   shareholderTypeLabelWrapper.appendChild(shareholderTypeLabel);
   shareholderTypeLabelWrapper.appendChild(removeShareholderButton);
   shareholderType.appendChild(shareholderTypeRadio1);
@@ -265,17 +270,13 @@ for (const radioDiv of radioDivs) {
   radioDiv.addEventListener("click", selectRadio);
 }
   
-let selectedRadio, selectedType, selectedParent, sharesPercent, sharesNumber;
-let totalSharesArray = [];
-let totalShares;
-let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
-let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
-let totalUndistributedShares;
-
+let selectedRadio, selectedType, selectedParent, shareholderType_hidden;
 function selectRadio(el) {
   selectedRadio = el.target.parentElement;
   selectedType = el.target.parentElement.getAttribute("data-shareholder-type");
   selectedParent = el.target.parentElement.parentElement.parentElement.parentElement;
+  shareholderType_hidden = selectedParent.querySelector('input[data-incorporation-data="shareholder-type-hidden"]');
+  console.log(shareholderType_hidden);
   individualRadio = selectedParent.querySelector('label[data-shareholder-type="individual"]');
   corporateRadio = selectedParent.querySelector('label[data-shareholder-type="corporate"]');;
   individualDiv = selectedParent.querySelector('div[data-shareholder-group="individual"]');
@@ -285,15 +286,23 @@ function selectRadio(el) {
     corporateRadio.classList.remove("active");
     corporateDiv.classList.add("hide");
     individualDiv.classList.remove("hide");
+    shareholderType_hidden.setAttribute("value", "Individual");
   } else if (selectedType == "corporate") {
     individualRadio.classList.remove("active");
     corporateRadio.classList.add("active");
     corporateDiv.classList.remove("hide");
     individualDiv.classList.add("hide");
+    shareholderType_hidden.setAttribute("value", "Corporate");
   }
 }
 
 //calculate number of shares
+let totalSharesArray = [];
+let totalShares, sharesPercent, sharesNumber;
+let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
+let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
+let totalUndistributedShares;
+
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
@@ -308,7 +317,6 @@ function calculateShares() {
       for (let s = 0; s < totalSharesArray.length; s++) {
         totalShares += totalSharesArray[s]
       }
-      console.log("Total shares: " + totalShares);
       totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
       totalUndistributedShares = 1000 - totalShares;
       totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
@@ -318,7 +326,6 @@ function calculateShares() {
 calculateShares();
 
 function updateShares() {
-  console.log("Start updateShares()");
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
   for (let i = 0; i < sharesPercent.length; i++) {
@@ -331,7 +338,6 @@ function updateShares() {
     for (let s = 0; s < totalSharesArray.length; s++) {
       totalShares += totalSharesArray[s]
     }
-    console.log(`Total shares (${i}): ` + totalShares);
     totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
     totalUndistributedShares = 1000 - totalShares;
     totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
