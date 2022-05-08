@@ -276,6 +276,7 @@ function selectRadio(el) {
   selectedType = el.target.parentElement.getAttribute("data-shareholder-type");
   selectedParent = el.target.parentElement.parentElement.parentElement.parentElement;
   shareholderType_hidden = selectedParent.querySelector('input[data-incorporation-data="shareholder-type-hidden"]');
+  console.log(shareholderType_hidden);
   individualRadio = selectedParent.querySelector('label[data-shareholder-type="individual"]');
   corporateRadio = selectedParent.querySelector('label[data-shareholder-type="corporate"]');;
   individualDiv = selectedParent.querySelector('div[data-shareholder-group="individual"]');

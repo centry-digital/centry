@@ -100,6 +100,7 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     incNextButton.addEventListener("click", getSummary);
