@@ -211,7 +211,7 @@ for (const tab of incorporationSideNavClickable) {
           icon.classList.remove("active");
         }
         incorporationSideNavIcon[n].classList.add("active");
-        activeTabId = "w-tabs-0-data-w-tab-4";
+        activeTabId = "w-tabs-0-data-w-tab-5";
         updateButtons();
         break;
     }
