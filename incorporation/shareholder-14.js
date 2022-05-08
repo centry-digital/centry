@@ -135,7 +135,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelInd.innerText = "Shareholder name";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
-  shareholderNameInd.setAttribute("data-incorporation-data", "shareholder-name");
+  shareholderNameInd.setAttribute("data-incorporation-data", "individual-shareholder-name");
   shareholderNameInd.setAttribute("data-name", "Individual-shareholder-name");
   shareholderNameInd.setAttribute("maxlength", "256");
   shareholderNameInd.setAttribute("required", "");
@@ -145,7 +145,7 @@ function addShareholderInputGroup() {
   shareholderNameLabelCorp1.innerText = "Corporate shareholder name";
   shareholderNameCorp1.type = "text";
   shareholderNameCorp1.name = "Corporate-shareholder-name";
-  shareholderNameCorp1.setAttribute("data-incorporation-data", "shareholder-name");
+  shareholderNameCorp1.setAttribute("data-incorporation-data", "corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("data-name", "Corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("maxlength", "256");
   shareholderNameCorp1.setAttribute("required", "");
