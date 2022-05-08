@@ -102,11 +102,9 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
-    document.getElementById("inc-sidenav-5").classList.add("hide");
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
-    document.getElementById("inc-sidenav-5").classList.add("hide");
     incNextButton.addEventListener("click", getSummary);
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
@@ -114,10 +112,9 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.innerText = "Proceed to payment";
-    incPrevButton.classList.add("hide");
-    reviewBackButton.classList.remove("hide");
+    incPrevButton.classList.remove("hide");
+    reviewBackButton.classList.add("hide");
   } else {
-    document.getElementById("inc-sidenav-5").classList.add("hide");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
@@ -125,6 +122,7 @@ function updateButtons() {
 }
 updateButtons();
 
+//Format sidenav
 let incorporationSideNavClickable = document.querySelectorAll(
   "[data-incorporation-sidenav-clickable]"
 );
@@ -199,6 +197,22 @@ for (const tab of incorporationSideNavClickable) {
       case "4":
         n = 4;
         document.getElementById("w-tabs-0-data-w-tab-4").click();
+        for (const t of incorporationSideNavClickable) {
+          t.classList.remove("active");
+        }
+        tab.classList.add("active");
+        for (const icon of incorporationSideNavIcon) {
+          icon.classList.remove("active");
+        }
+        incorporationSideNavIcon[n].classList.add("active");
+        document.getElementById("inc-prev-button").classList.remove("hide");
+        document.getElementById("review-page-back").classList.add("hide");
+        activeTabId = "w-tabs-0-data-w-tab-4";
+        updateButtons();
+        break;
+      case "5":
+        n = 5;
+        document.getElementById("w-tabs-0-data-w-tab-5").click();
         for (const t of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
