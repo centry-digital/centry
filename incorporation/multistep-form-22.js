@@ -399,18 +399,18 @@ function getSummary() {
   );
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     const shareholderGroup_shNo = document.createElement("div");
-    const shareholderGroupLabel_shNo = document.createElement("div");
     const shareholderGroupInner_shNo = document.createElement("div");
+    const shareholderGroupLabel_shNo = document.createElement("div");
+    const shareholderGroupBody_shNo = document.createElement("div");
     const shareholderName_shNo = document.createElement("div");
     const shareholderShares_shNo = document.createElement("div");
     const shareholderRep_shNo = document.createElement("div");
     const shareholderEmail_shNo = document.createElement("div");
     const shareholderPhone_shNo = document.createElement("div");
-    shareholderGroup_shNo.classList.add("incorporate-summary-director");
-    shareholderGroupLabel_shNo.classList.add(
-      "incorporate-summary-shareholder-label"
-    );
+    shareholderGroup_shNo.classList.add("incorporate-summary-shareholder");
     shareholderGroupInner_shNo.classList.add("input-subgroup-100");
+    shareholderGroupLabel_shNo.classList.add("incorporate-summary-shareholder-label");
+    shareholderGroupBody_shNo.classList.add("input-wrapper");
     shareholderName_shNo.classList.add("field-label");
     shareholderShares_shNo.classList.add("field-label");
     shareholderShares_shNo.innerText = incorporationSummary.shareholders[shNo].shares;
@@ -418,20 +418,22 @@ function getSummary() {
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesCorp[shNo].name;
-      shareholderGroupInner_shNo.appendChild(shareholderRep_shNo);
+      shareholderRep_shNo.classList.add("summary-text", "text-sm");
+      shareholderRep_shNo.innerText = incorporationSummary.shareholders[shNo].rep;
+      shareholderGroupBody_shNo.appendChild(shareholderRep_shNo);
     }
-    shareholderRep_shNo.classList.add("summary-text", "text-sm");
-    shareholderRep_shNo.innerText = incorporationSummary.shareholders[shNo].rep;
     shareholderEmail_shNo.classList.add("summary-text", "text-sm");
     shareholderEmail_shNo.innerText = incorporationSummary.shareholders[shNo].email;
     shareholderPhone_shNo.classList.add("summary-text", "text-sm");
     shareholderPhone_shNo.innerText = incorporationSummary.shareholders[shNo].phone;
+    
     summaryShareholdersWrapper.appendChild(shareholderGroup_shNo);
-    shareholderGroup_shNo.appendChild(shareholderGroupLabel_shNo);
     shareholderGroup_shNo.appendChild(shareholderGroupInner_shNo);
+    shareholderGroupInner_shNo.appendChild(shareholderGroupLabel_shNo);
+    shareholderGroupInner_shNo.appendChild(shareholderGroupBody_shNo);
     shareholderGroupLabel_shNo.appendChild(shareholderName_shNo);
     shareholderGroupLabel_shNo.appendChild(shareholderShares_shNo);
-    shareholderGroupInner_shNo.appendChild(shareholderEmail_shNo);
-    shareholderGroupInner_shNo.appendChild(shareholderPhone_shNo);
+    shareholderGroupBody_shNo.appendChild(shareholderEmail_shNo);
+    shareholderGroupBody_shNo.appendChild(shareholderPhone_shNo);
   }
 }
