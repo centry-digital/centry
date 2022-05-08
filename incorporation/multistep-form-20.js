@@ -417,7 +417,7 @@ function getSummary() {
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
-      shareholderName_shNo.innerText = incorporationSummary.shareholdersCorp[shNo].name;
+      shareholderName_shNo.innerText = incorporationSummary.shareholdersNamesCorp[shNo].name;
       shareholderGroupInner_shNo.appendChild(shareholderRep_shNo);
     }
     shareholderRep_shNo.classList.add("summary-text", "text-sm");
