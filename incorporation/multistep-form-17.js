@@ -215,9 +215,9 @@ for (const tab of incorporationSideNavClickable) {
 //Summary
 let incorporationSummary = {};
 incorporationSummary.msicCodes = ["-", "-", "-"];
-incorporationSummary.directors = [];
-incorporationSummary.shareholders = [];
 function getSummary() {
+  incorporationSummary.directors = [];
+  incorporationSummary.shareholders = [];
   incorporationSummary.companyName = document.querySelector(
     'input[data-incorporation-data="company-name"]'
   ).value;
