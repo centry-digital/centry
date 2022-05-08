@@ -203,6 +203,7 @@ for (const tab of incorporationSideNavClickable) {
       case "5":
         n = 5;
         document.getElementById("w-tabs-0-data-w-tab-5").click();
+        getSummary();
         for (const t of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
