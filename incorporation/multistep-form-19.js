@@ -215,9 +215,9 @@ for (const tab of incorporationSideNavClickable) {
 //Summary
 let incorporationSummary = {};
 incorporationSummary.msicCodes = ["-", "-", "-"];
-incorporationSummary.directors = [];
-incorporationSummary.shareholders = [];
 function getSummary() {
+  incorporationSummary.directors = [];
+  incorporationSummary.shareholders = [];
   document.getElementById("incorporate-summary-directors-wrapper").innerHTML = "";
   document.getElementById("incorporate-summary-shareholders-wrapper").innerHTML = "";
   incorporationSummary.companyName = document.querySelector(
@@ -414,9 +414,9 @@ function getSummary() {
     shareholderName_shNo.classList.add("field-label");
     shareholderShares_shNo.classList.add("field-label");
     shareholderShares_shNo.innerText = incorporationSummary.shareholders[shNo].shares;
-    if (incorporationSummary.shareholders[shNo].type = "Individual") {
+    if (incorporationSummary.shareholders[shNo].type == "Individual") {
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
-    } else if (incorporationSummary.shareholders[shNo].type = "Corporate") {
+    } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
       shareholderName_shNo.innerText = incorporationSummary.shareholdersCorp[shNo].name;
       shareholderGroupInner_shNo.appendChild(shareholderRep_shNo);
     }
