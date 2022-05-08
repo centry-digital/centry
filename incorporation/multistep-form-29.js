@@ -4,9 +4,7 @@ let nextSideNav, nextSideIcon, nextTab;
 let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
-let reviewBackButton = document.getElementById("review-page-back");
 
-reviewBackButton.addEventListener("click", getPrevTab);
 incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
@@ -103,21 +101,15 @@ function getPrevTab() {
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
     incPrevButton.classList.add("hide");
-    reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     incNextButton.addEventListener("click", getSummary);
     incNextButton.innerText = "Next";
-    incPrevButton.classList.remove("hide");
-    reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.innerText = "Proceed to payment";
-    incPrevButton.classList.remove("hide");
-    reviewBackButton.classList.add("hide");
   } else {
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
-    reviewBackButton.classList.add("hide");
   }
 }
 updateButtons();
@@ -205,8 +197,6 @@ for (const tab of incorporationSideNavClickable) {
           icon.classList.remove("active");
         }
         incorporationSideNavIcon[n].classList.add("active");
-        document.getElementById("inc-prev-button").classList.remove("hide");
-        document.getElementById("review-page-back").classList.add("hide");
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
@@ -221,8 +211,6 @@ for (const tab of incorporationSideNavClickable) {
           icon.classList.remove("active");
         }
         incorporationSideNavIcon[n].classList.add("active");
-        document.getElementById("inc-prev-button").classList.remove("hide");
-        document.getElementById("review-page-back").classList.add("hide");
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
