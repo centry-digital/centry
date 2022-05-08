@@ -311,7 +311,7 @@ function getSummary() {
     incorporationSummary.shareholderNamesCorp[shNo].name =
       incorporationSummary.shareholderNamesCorp[shNo].value;
     incorporationSummary.shareholders[shNo].rep =
-      incorporationSummary.shareholderShares[shNo].value;
+      incorporationSummary.shareholderReps[shNo].value;
     incorporationSummary.shareholders[shNo].email =
       incorporationSummary.shareholderEmails[shNo].value;
     incorporationSummary.shareholders[shNo].phone =
