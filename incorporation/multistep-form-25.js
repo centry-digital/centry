@@ -102,7 +102,6 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
-    incNextButton.removeEventListener("click", getSummary);
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
@@ -111,12 +110,10 @@ function updateButtons() {
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
-    incNextButton.removeEventListener("click", getSummary);
     incNextButton.innerText = "Proceed to payment";
     incPrevButton.classList.add("hide");
     reviewBackButton.classList.remove("hide");
   } else {
-    incNextButton.removeEventListener("click", getSummary);
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
     reviewBackButton.classList.add("hide");
