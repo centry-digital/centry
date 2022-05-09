@@ -107,6 +107,7 @@ function updateButtons() {
     incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
+    getSummary();
     validateInput();
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
