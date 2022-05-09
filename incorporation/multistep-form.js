@@ -372,6 +372,46 @@ function getSummary() {
       break;
     }
   }
+  if (incorporationSummary.shareholders[shNo].type == "Individual") {
+    let flag_15 = false;
+    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+      if (incorporationSummary.shareholderNamesInd[shNo].name != "") {
+        flag_15 = true;
+      } else {
+        flag_15 = false;
+        break;
+      }
+    }
+    let flag_16 = false;
+    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+      if (incorporationSummary.shareholderEmails[shNo].value != "") {
+        flag_16 = true;
+      } else {
+        flag_16 = false;
+        break;
+      }
+    }
+    let flag_17 = false;
+    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+      if (incorporationSummary.shareholderPhones[shNo].value != "") {
+        flag_17 = true;
+      } else {
+        flag_17 = false;
+        break;
+      }
+    }
+    let flag_18 = false;
+    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+      if (incorporationSummary.shareholderShares[shNo].value != "") {
+        flag_18 = true;
+      } else {
+        flag_18 = false;
+        break;
+      }
+    }
+  } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
+    
+  }
 
 
   // Fill in summary section
@@ -455,8 +495,10 @@ function getSummary() {
     shareholderShares_shNo.classList.add("field-label");
     shareholderShares_shNo.innerText = incorporationSummary.shareholders[shNo].shares;
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
+      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].name;
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
+      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].name;
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesCorp[shNo].name;
       shareholderRep_shNo.classList.add("summary-text", "text-sm");
       shareholderRep_shNo.innerText = incorporationSummary.shareholders[shNo].rep;
