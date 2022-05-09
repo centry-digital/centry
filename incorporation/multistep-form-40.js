@@ -100,7 +100,7 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
-    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.pointerEvents = "auto";
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
@@ -111,10 +111,10 @@ function updateButtons() {
     incNextButton.innerText = "Next";
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
-    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.pointerEvents = "auto";
     incNextButton.innerText = "Proceed to payment";
   } else {
-    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.pointerEvents = "auto";
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
