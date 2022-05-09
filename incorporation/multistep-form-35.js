@@ -325,93 +325,93 @@ function getSummary() {
       incorporationSummary.shareholderShares[shNo].value;
   }
 
-  // Validation
-  let flag_1 = incorporationSummary.companyName ? true : false;
-  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
-  let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
-  let flag_4 = !(incorporationSummary.msicCodes[0] === "-" || incorporationSummary.msicCodes[1] === "-" || incorporationSummary.msicCodes[2] === "-" );
-  let flag_5 = incorporationSummary.companyEmail ? true : false;
-  let flag_6 = incorporationSummary.officeNumber ? true : false;
-  let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
-  let flag_8 = incorporationSummary.businessAddressCity ? true : false;
-  let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
-  let flag_10 = incorporationSummary.businessAddressState ? true : false;
-  let flag_11 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].name != "") {
-      flag_11 = true;
-    } else {
-      flag_11 = false;
-      break;
-    }
-  }
-  let flag_12 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].email != "") {
-      flag_12 = true;
-    } else {
-      flag_12 = false;
-      break;
-    }
-  }
-  let flag_13 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].phone != "") {
-      flag_13 = true;
-    } else {
-      flag_13 = false;
-      break;
-    }
-  }
-  let flag_14 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].country != "") {
-      flag_14 = true;
-    } else {
-      flag_14 = false;
-      break;
-    }
-  }
-  if (incorporationSummary.shareholders[shNo].type == "Individual") {
-    let flag_15 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderNamesInd[shNo].name != "") {
-        flag_15 = true;
-      } else {
-        flag_15 = false;
-        break;
-      }
-    }
-    let flag_16 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderEmails[shNo].value != "") {
-        flag_16 = true;
-      } else {
-        flag_16 = false;
-        break;
-      }
-    }
-    let flag_17 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderPhones[shNo].value != "") {
-        flag_17 = true;
-      } else {
-        flag_17 = false;
-        break;
-      }
-    }
-    let flag_18 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderShares[shNo].value != "") {
-        flag_18 = true;
-      } else {
-        flag_18 = false;
-        break;
-      }
-    }
-  } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
+  // // Validation
+  // let flag_1 = incorporationSummary.companyName ? true : false;
+  // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  // let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
+  // let flag_4 = !(incorporationSummary.msicCodes[0] === "-" || incorporationSummary.msicCodes[1] === "-" || incorporationSummary.msicCodes[2] === "-" );
+  // let flag_5 = incorporationSummary.companyEmail ? true : false;
+  // let flag_6 = incorporationSummary.officeNumber ? true : false;
+  // let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
+  // let flag_8 = incorporationSummary.businessAddressCity ? true : false;
+  // let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
+  // let flag_10 = incorporationSummary.businessAddressState ? true : false;
+  // let flag_11 = false;
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   if (incorporationSummary.directors[dirNo].name != "") {
+  //     flag_11 = true;
+  //   } else {
+  //     flag_11 = false;
+  //     break;
+  //   }
+  // }
+  // let flag_12 = false;
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   if (incorporationSummary.directors[dirNo].email != "") {
+  //     flag_12 = true;
+  //   } else {
+  //     flag_12 = false;
+  //     break;
+  //   }
+  // }
+  // let flag_13 = false;
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   if (incorporationSummary.directors[dirNo].phone != "") {
+  //     flag_13 = true;
+  //   } else {
+  //     flag_13 = false;
+  //     break;
+  //   }
+  // }
+  // let flag_14 = false;
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   if (incorporationSummary.directors[dirNo].country != "") {
+  //     flag_14 = true;
+  //   } else {
+  //     flag_14 = false;
+  //     break;
+  //   }
+  // }
+  // if (incorporationSummary.shareholders[shNo].type == "Individual") {
+  //   let flag_15 = false;
+  //   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //     if (incorporationSummary.shareholderNamesInd[shNo].name != "") {
+  //       flag_15 = true;
+  //     } else {
+  //       flag_15 = false;
+  //       break;
+  //     }
+  //   }
+  //   let flag_16 = false;
+  //   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //     if (incorporationSummary.shareholderEmails[shNo].value != "") {
+  //       flag_16 = true;
+  //     } else {
+  //       flag_16 = false;
+  //       break;
+  //     }
+  //   }
+  //   let flag_17 = false;
+  //   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //     if (incorporationSummary.shareholderPhones[shNo].value != "") {
+  //       flag_17 = true;
+  //     } else {
+  //       flag_17 = false;
+  //       break;
+  //     }
+  //   }
+  //   let flag_18 = false;
+  //   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //     if (incorporationSummary.shareholderShares[shNo].value != "") {
+  //       flag_18 = true;
+  //     } else {
+  //       flag_18 = false;
+  //       break;
+  //     }
+  //   }
+  // } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
     
-  }
+  // }
 
 
   // Fill in summary section
