@@ -5,7 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
 
-incNextButton.addEventListener("click", getNextTab);
+// incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
@@ -100,7 +100,7 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
-    incNextButton.style.pointerEvents = "auto";
+    incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
@@ -112,10 +112,11 @@ function updateButtons() {
     incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
-    incNextButton.style.pointerEvents = "auto";
+    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
   } else {
-    incNextButton.style.pointerEvents = "auto";
+    incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
@@ -380,7 +381,7 @@ function validateInput() {
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
   } else {
-    incNextButton.style.pointerEvents = "none";
+    incNextButton.removeEventListener("click", getNextTab);
     incNextButton.style.cursor = "not-allowed";
     incNextButton.classList.remove("button-2");
     incNextButton.classList.add("button-2-disabled");
