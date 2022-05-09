@@ -100,6 +100,9 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incNextButton.style.cursor = "pointer";
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
@@ -109,6 +112,9 @@ function updateButtons() {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.innerText = "Proceed to payment";
   } else {
+    incNextButton.style.cursor = "pointer";
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
   }
@@ -375,8 +381,6 @@ function validateInput() {
     incNextButton.classList.remove("button-2");
     incNextButton.classList.add("button-2-disabled");
   }
-
-  return inputsValidity;
 }
 
 //Summary
