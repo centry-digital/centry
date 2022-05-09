@@ -224,7 +224,6 @@ for (const tab of incorporationSideNavClickable) {
 let incorporationSummary = {};
 incorporationSummary.msicCodes = ["-", "-", "-"];
 function getSummary() {
-  console.log("Summarising inputs...");
   incorporationSummary.directors = [];
   incorporationSummary.shareholders = [];
   document.getElementById("incorporate-summary-directors-wrapper").innerHTML = "";
@@ -246,9 +245,6 @@ function getSummary() {
   ).value;
   incorporationSummary.businessAddressLine1 = document.querySelector(
     'input[data-incorporation-data="business-address-1"]'
-  ).value;
-  incorporationSummary.businessAddressLine2 = document.querySelector(
-    'input[data-incorporation-data="business-address-2"]'
   ).value;
   incorporationSummary.businessAddressCity = document.querySelector(
     'input[data-incorporation-data="business-address-city"]'
@@ -329,36 +325,71 @@ function getSummary() {
       incorporationSummary.shareholderShares[shNo].value;
   }
 
+  // Validation
+  let flag_1 = incorporationSummary.companyName ? true : false;
+  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
+  let flag_4 = !(incorporationSummary.msicCodes[0] === "-" || incorporationSummary.msicCodes[1] === "-" || incorporationSummary.msicCodes[2] === "-" );
+  let flag_5 = incorporationSummary.companyEmail ? true : false;
+  let flag_6 = incorporationSummary.officeNumber ? true : false;
+  let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
+  let flag_8 = incorporationSummary.businessAddressCity ? true : false;
+  let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
+  let flag_10 = incorporationSummary.businessAddressState ? true : false;
+  let flag_11 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].name != "") {
+      flag_11 = true;
+    } else {
+      flag_11 = false;
+      break;
+    }
+  }
+  let flag_12 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].email != "") {
+      flag_12 = true;
+    } else {
+      flag_12 = false;
+      break;
+    }
+  }
+  let flag_13 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].phone != "") {
+      flag_13 = true;
+    } else {
+      flag_13 = false;
+      break;
+    }
+  }
+  let flag_14 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].country != "") {
+      flag_14 = true;
+    } else {
+      flag_14 = false;
+      break;
+    }
+  }
+
+
   // Fill in summary section
   document.getElementById("incorporate-review-name").innerText =
     incorporationSummary.companyName || "-";
   document.getElementById("incorporate-review-name-explanation").innerText =
     incorporationSummary.companyNameExplanation || "-";
-  if (incorporationSummary.businessAddressLine2 != "") {
-    document.getElementById("incorporate-review-business-address").innerText =
-      incorporationSummary.businessAddressLine1 +
-        ", " +
-        incorporationSummary.businessAddressLine2 +
-        ", " +
-        incorporationSummary.businessAddressPostcode +
-        " " +
-        incorporationSummary.businessAddressCity +
-        ", " +
-        incorporationSummary.businessAddressState +
-        ", " +
-        incorporationSummary.businessAddressCountry || "-";
-  } else {
-    document.getElementById("incorporate-review-business-address").innerText =
-      incorporationSummary.businessAddressLine1 +
-        ", " +
-        incorporationSummary.businessAddressPostcode +
-        " " +
-        incorporationSummary.businessAddressCity +
-        ", " +
-        incorporationSummary.businessAddressState +
-        ", " +
-        incorporationSummary.businessAddressCountry || "-";
-  }
+  document.getElementById("incorporate-review-business-address").innerText =
+    incorporationSummary.businessAddressLine1 +
+      ", " +
+      incorporationSummary.businessAddressPostcode +
+      " " +
+      incorporationSummary.businessAddressCity +
+      ", " +
+      incorporationSummary.businessAddressState +
+      ", " +
+      incorporationSummary.businessAddressCountry || "-";
+  
   document.getElementById("incorporate-review-company-email").innerText =
     incorporationSummary.companyEmail || "-";
   document.getElementById("incorporate-review-company-phone").innerText =
@@ -446,3 +477,4 @@ function getSummary() {
     shareholderGroupBody_shNo.appendChild(shareholderPhone_shNo);
   }
 }
+getSummary();
