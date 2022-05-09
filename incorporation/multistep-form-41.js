@@ -5,7 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
 
-// incNextButton.addEventListener("click", getNextTab);
+incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
@@ -109,6 +109,7 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
     incNextButton.innerText = "Next";
+    incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.style.pointerEvents = "auto";
