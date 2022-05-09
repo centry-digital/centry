@@ -104,17 +104,6 @@ function updateButtons() {
     incPrevButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
-    if (inputsValid) {
-      incNextButton.addEventListener("click", getSummary);
-      incNextButton.style.cursor = "pointer";
-      incNextButton.classList.remove("button-2-disabled");
-      incNextButton.classList.add("button-2");
-    } else {
-      incNextButton.style.pointerEvents = "none";
-      incNextButton.style.cursor = "not-allowed";
-      incNextButton.classList.remove("button-2");
-      incNextButton.classList.add("button-2-disabled");
-    }
     incNextButton.innerText = "Next";
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
