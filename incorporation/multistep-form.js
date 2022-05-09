@@ -5,7 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incPrevButton = document.getElementById("inc-prev-button");
 
-incNextButton.addEventListener("click", getNextTab);
+// incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
@@ -100,15 +100,27 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.cursor = "pointer";
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
-    incNextButton.addEventListener("click", getSummary);
+    getSummary();
+    validateInput();
     incNextButton.innerText = "Next";
+    incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
+    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
   } else {
+    incNextButton.addEventListener("click", getNextTab);
+    incNextButton.style.cursor = "pointer";
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
   }
@@ -220,14 +232,174 @@ for (const tab of incorporationSideNavClickable) {
   });
 }
 
+// Validation
+function validateInput() {
+  let flag_1 = incorporationSummary.companyName ? true : false;
+  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
+  let flag_4 = !(
+    incorporationSummary.msicCodes[0] === "-" ||
+    incorporationSummary.msicCodes[1] === "-" ||
+    incorporationSummary.msicCodes[2] === "-"
+  );
+  let flag_5 = incorporationSummary.companyEmail ? true : false;
+  let flag_6 = incorporationSummary.officeNumber ? true : false;
+  let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
+  let flag_8 = incorporationSummary.businessAddressCity ? true : false;
+  let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
+  let flag_10 = incorporationSummary.businessAddressState ? true : false;
+  let flag_11 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].name != "") {
+      flag_11 = true;
+    } else {
+      flag_11 = false;
+      break;
+    }
+  }
+  let flag_12 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].email != "") {
+      flag_12 = true;
+    } else {
+      flag_12 = false;
+      break;
+    }
+  }
+  let flag_13 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].phone != "") {
+      flag_13 = true;
+    } else {
+      flag_13 = false;
+      break;
+    }
+  }
+  let flag_14 = false;
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    if (incorporationSummary.directors[dirNo].country != "") {
+      flag_14 = true;
+    } else {
+      flag_14 = false;
+      break;
+    }
+  }
+  let flag_15, flag_16, flag_17, flag_18, flag_19;
+  for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+    if (incorporationSummary.shareholders[shNo].type == "Individual") {
+      flag_15 = false;
+      if (incorporationSummary.shareholders[shNo].name != "") {
+        flag_15 = true;
+      } else {
+        flag_15 = false;
+        break;
+      }
+      flag_16 = true;
+      flag_17 = false;
+      if (incorporationSummary.shareholders[shNo].email != "") {
+        flag_17 = true;
+      } else {
+        flag_17 = false;
+        break;
+      }
+      flag_18 = false;
+      if (incorporationSummary.shareholders[shNo].phone != "") {
+        flag_18 = true;
+      } else {
+        flag_18 = false;
+        break;
+      }
+      flag_19 = false;
+      if (incorporationSummary.shareholders[shNo].shares != "") {
+        flag_19 = true;
+      } else {
+        flag_19 = false;
+        break;
+      }
+    } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
+      flag_15 = false;
+      if (incorporationSummary.shareholders[shNo].name != "") {
+        flag_15 = true;
+      } else {
+        flag_15 = false;
+        break;
+      }
+      flag_16 = false;
+      if (incorporationSummary.shareholders[shNo].rep != "") {
+        flag_16 = true;
+      } else {
+        flag_16 = false;
+        break;
+      }
+      flag_17 = false;
+      if (incorporationSummary.shareholders[shNo].email != "") {
+        flag_17 = true;
+      } else {
+        flag_17 = false;
+        break;
+      }
+      flag_18 = false;
+      if (incorporationSummary.shareholders[shNo].phone != "") {
+        flag_18 = true;
+      } else {
+        flag_18 = false;
+        break;
+      }
+      flag_19 = false;
+      if (incorporationSummary.shareholders[shNo].shares != "") {
+        flag_19 = true;
+      } else {
+        flag_19 = false;
+        break;
+      }
+    }
+  }
+
+  let inputsValidity =
+    flag_1 &&
+    flag_2 &&
+    flag_3 &&
+    flag_4 &&
+    flag_5 &&
+    flag_6 &&
+    flag_7 &&
+    flag_8 &&
+    flag_9 &&
+    flag_10 &&
+    flag_11 &&
+    flag_12 &&
+    flag_13 &&
+    flag_14 &&
+    flag_15 &&
+    flag_16 &&
+    flag_17 &&
+    flag_18 &&
+    flag_19;
+
+  if (inputsValidity) {
+    incNextButton.addEventListener("click", getSummary);
+    incNextButton.style.cursor = "pointer";
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
+  } else {
+    incNextButton.removeEventListener("click", getNextTab);
+    incNextButton.style.cursor = "not-allowed";
+    incNextButton.classList.remove("button-2");
+    incNextButton.classList.add("button-2-disabled");
+  }
+}
+
 //Summary
 let incorporationSummary = {};
 incorporationSummary.msicCodes = ["-", "-", "-"];
 function getSummary() {
   incorporationSummary.directors = [];
   incorporationSummary.shareholders = [];
-  document.getElementById("incorporate-summary-directors-wrapper").innerHTML = "";
-  document.getElementById("incorporate-summary-shareholders-wrapper").innerHTML = "";
+  document.getElementById("incorporate-summary-directors-wrapper").innerHTML =
+    "";
+  document.getElementById(
+    "incorporate-summary-shareholders-wrapper"
+  ).innerHTML = "";
   incorporationSummary.companyName = document.querySelector(
     'input[data-incorporation-data="company-name"]'
   ).value;
@@ -325,95 +497,6 @@ function getSummary() {
       incorporationSummary.shareholderShares[shNo].value;
   }
 
-  // Validation
-  let flag_1 = incorporationSummary.companyName ? true : false;
-  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
-  let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
-  let flag_4 = !(incorporationSummary.msicCodes[0] === "-" || incorporationSummary.msicCodes[1] === "-" || incorporationSummary.msicCodes[2] === "-" );
-  let flag_5 = incorporationSummary.companyEmail ? true : false;
-  let flag_6 = incorporationSummary.officeNumber ? true : false;
-  let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
-  let flag_8 = incorporationSummary.businessAddressCity ? true : false;
-  let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
-  let flag_10 = incorporationSummary.businessAddressState ? true : false;
-  let flag_11 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].name != "") {
-      flag_11 = true;
-    } else {
-      flag_11 = false;
-      break;
-    }
-  }
-  let flag_12 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].email != "") {
-      flag_12 = true;
-    } else {
-      flag_12 = false;
-      break;
-    }
-  }
-  let flag_13 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].phone != "") {
-      flag_13 = true;
-    } else {
-      flag_13 = false;
-      break;
-    }
-  }
-  let flag_14 = false;
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].country != "") {
-      flag_14 = true;
-    } else {
-      flag_14 = false;
-      break;
-    }
-  }
-  if (incorporationSummary.shareholders[shNo].type == "Individual") {
-    let flag_15 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderNamesInd[shNo].name != "") {
-        flag_15 = true;
-      } else {
-        flag_15 = false;
-        break;
-      }
-    }
-    let flag_16 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderEmails[shNo].value != "") {
-        flag_16 = true;
-      } else {
-        flag_16 = false;
-        break;
-      }
-    }
-    let flag_17 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderPhones[shNo].value != "") {
-        flag_17 = true;
-      } else {
-        flag_17 = false;
-        break;
-      }
-    }
-    let flag_18 = false;
-    for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-      if (incorporationSummary.shareholderShares[shNo].value != "") {
-        flag_18 = true;
-      } else {
-        flag_18 = false;
-        break;
-      }
-    }
-  } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
-    
-  }
-
-
   // Fill in summary section
   document.getElementById("incorporate-review-name").innerText =
     incorporationSummary.companyName || "-";
@@ -429,7 +512,7 @@ function getSummary() {
       incorporationSummary.businessAddressState +
       ", " +
       incorporationSummary.businessAddressCountry || "-";
-  
+
   document.getElementById("incorporate-review-company-email").innerText =
     incorporationSummary.companyEmail || "-";
   document.getElementById("incorporate-review-company-phone").innerText =
@@ -489,26 +572,36 @@ function getSummary() {
     const shareholderPhone_shNo = document.createElement("div");
     shareholderGroup_shNo.classList.add("incorporate-summary-shareholder");
     shareholderGroupInner_shNo.classList.add("input-subgroup-100");
-    shareholderGroupLabel_shNo.classList.add("incorporate-summary-shareholder-label");
+    shareholderGroupLabel_shNo.classList.add(
+      "incorporate-summary-shareholder-label"
+    );
     shareholderGroupBody_shNo.classList.add("input-wrapper");
     shareholderName_shNo.classList.add("field-label");
     shareholderShares_shNo.classList.add("field-label");
-    shareholderShares_shNo.innerText = incorporationSummary.shareholders[shNo].shares;
+    shareholderShares_shNo.innerText =
+      incorporationSummary.shareholders[shNo].shares;
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
-      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].name;
-      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
+      incorporationSummary.shareholders[shNo].name =
+        incorporationSummary.shareholderNamesInd[shNo].name;
+      shareholderName_shNo.innerText =
+        incorporationSummary.shareholderNamesInd[shNo].name;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
-      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].name;
-      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesCorp[shNo].name;
+      incorporationSummary.shareholders[shNo].name =
+        incorporationSummary.shareholderNamesCorp[shNo].name;
+      shareholderName_shNo.innerText =
+        incorporationSummary.shareholderNamesCorp[shNo].name;
       shareholderRep_shNo.classList.add("summary-text", "text-sm");
-      shareholderRep_shNo.innerText = incorporationSummary.shareholders[shNo].rep;
+      shareholderRep_shNo.innerText =
+        incorporationSummary.shareholders[shNo].rep;
       shareholderGroupBody_shNo.appendChild(shareholderRep_shNo);
     }
     shareholderEmail_shNo.classList.add("summary-text", "text-sm");
-    shareholderEmail_shNo.innerText = incorporationSummary.shareholders[shNo].email;
+    shareholderEmail_shNo.innerText =
+      incorporationSummary.shareholders[shNo].email;
     shareholderPhone_shNo.classList.add("summary-text", "text-sm");
-    shareholderPhone_shNo.innerText = incorporationSummary.shareholders[shNo].phone;
-    
+    shareholderPhone_shNo.innerText =
+      incorporationSummary.shareholders[shNo].phone;
+
     summaryShareholdersWrapper.appendChild(shareholderGroup_shNo);
     shareholderGroup_shNo.appendChild(shareholderGroupInner_shNo);
     shareholderGroupInner_shNo.appendChild(shareholderGroupLabel_shNo);
