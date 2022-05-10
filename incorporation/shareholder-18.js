@@ -321,7 +321,7 @@ function calculateShares() {
     sharesPercent[i].addEventListener("keyup", function() {
       let percentage = sharesPercent[i].value;
       let percentToNumber = Math.round(percentage);
-      sharesNumber[i].innerText = percentToNumber;
+      sharesNumber[i].innerText = percentToNumber.toLocaleString('en');
       
       totalShares = 0;
       totalSharesArray[i] = percentToNumber;
