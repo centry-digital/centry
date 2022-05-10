@@ -382,6 +382,29 @@ function validateInput() {
     flag_18 &&
     flag_19;
 
+  console.log(
+    inputsValidity,
+    flag_1,
+    flag_2,
+    flag_3,
+    flag_4,
+    flag_5,
+    flag_6,
+    flag_7,
+    flag_8,
+    flag_9,
+    flag_10,
+    flag_11,
+    flag_12,
+    flag_13,
+    flag_14,
+    flag_15,
+    flag_16,
+    flag_17,
+    flag_18,
+    flag_19
+  );
+
   if (inputsValidity) {
     incNextButton.addEventListener("click", getSummary);
     incNextButton.style.cursor = "pointer";
@@ -397,19 +420,33 @@ function validateInput() {
     document.getElementById("inc-sidenav-5").classList.add("hide");
   }
 }
-document.querySelector('[data-incorporation-data="individual-shareholder-name"]').addEventListener("keyup", validateInput);
-document.querySelector('[data-incorporation-data="corporate-shareholder-name"]').addEventListener("keyup", validateInput);
-document.querySelector('[data-incorporation-data="corporate-representative-name"]').addEventListener("keyup", validateInput);
-document.querySelector('[data-incorporation-data="shareholder-email"]').addEventListener("keyup", validateInput);
-document.querySelector('[data-incorporation-data="shareholder-phone"]').addEventListener("keyup", validateInput);
-document.querySelector('[data-incorporation-data="number-of-shares"]').addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="corporate-shareholder-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="corporate-representative-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="shareholder-email"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="shareholder-phone"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="number-of-shares"]')
+  .addEventListener("keyup", validateInput);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
 for (let i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("change", validateField);
 }
-document.querySelector('[data-incorporation-data="company-name-explanation"]').removeEventListener("change", validateField);
+document
+  .querySelector('[data-incorporation-data="company-name-explanation"]')
+  .removeEventListener("change", validateField);
 
 function validateField(e) {
   if (e.target.value == "") {
