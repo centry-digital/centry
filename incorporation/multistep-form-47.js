@@ -403,9 +403,9 @@ for (let i = 0; i < inputFields.length; i++) {
 
 function validateField(e) {
   if (e.target.value == "") {
-    e.target.classList.add("invalid-field ");
+    e.target.classList.add("invalid-field");
   } else {
-    e.target.classList.remove("invalid-field ");
+    e.target.classList.remove("invalid-field");
   }
 }
 
