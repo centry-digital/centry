@@ -376,7 +376,7 @@ function validateInput() {
     }
   }
 
-  inputsValidity = 
+  inputsValidity =
     flag_1 &&
     flag_2 &&
     flag_3 &&
@@ -419,22 +419,13 @@ function validateInput() {
     flag_18,
     flag_19
   );
-
-  // if (inputsValidity) {
-  //   // incNextButton.addEventListener("click", getSummary);
-  //   incNextButton.style.cursor = "pointer";
-  //   incNextButton.classList.remove("button-2-disabled");
-  //   incNextButton.classList.add("button-2");
-  //   incNextButtonError.classList.add("hide");
-  // } else {
-  //   incNextButton.removeEventListener("click", getNextTab);
-  //   incNextButton.style.cursor = "not-allowed";
-  //   incNextButton.classList.remove("button-2");
-  //   incNextButton.classList.add("button-2-disabled");
-  //   incNextButtonError.classList.remove("hide");
-  //   document.getElementById("inc-sidenav-5").classList.add("hide");
-  // }
 }
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
   .addEventListener("keyup", updateButtons);
