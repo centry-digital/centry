@@ -239,7 +239,8 @@ for (const tab of incorporationSideNavClickable) {
 // Validation
 function validateInput() {
   let flag_1 = incorporationSummary.companyName ? true : false;
-  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  let flag_2 = true;
   let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
   let flag_4 = !(
     incorporationSummary.msicCodes[0] === "-" ||
@@ -395,6 +396,12 @@ function validateInput() {
     document.getElementById("inc-sidenav-5").classList.add("hide");
   }
 }
+document.querySelector('[data-incorporation-data="individual-shareholder-name"]').addEventListener("keyup", validateInput);
+document.querySelector('[data-incorporation-data="corporate-shareholder-name"]').addEventListener("keyup", validateInput);
+document.querySelector('[data-incorporation-data="corporate-representative-name"]').addEventListener("keyup", validateInput);
+document.querySelector('[data-incorporation-data="shareholder-email"]').addEventListener("keyup", validateInput);
+document.querySelector('[data-incorporation-data="shareholder-phone"]').addEventListener("keyup", validateInput);
+document.querySelector('[data-incorporation-data="number-of-shares"]').addEventListener("keyup", validateInput);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
