@@ -397,8 +397,8 @@ function validateInput() {
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
-for (let inputField in inputFields) {
-  inputField.addEventListener("change", validateField)
+for (let i = 0; i < inputFields.length; i++) {
+  inputFields[i].addEventListener("change", validateField);
 }
 
 function validateField(e) {
