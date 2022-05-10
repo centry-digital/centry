@@ -15,9 +15,11 @@ function getMsicCodes() {
         for (const selection of selections){
 					incorporationSummary.msicCodes.push(selection.value);
 					if (incorporationSummary.msicCodes == "") {
+						console.log("msic code is empty");
 						document.querySelector(".ss-multi-selected").classList.add("invalid-field");
 					} else {
 						document.querySelector(".ss-multi-selected").classList.remove("invalid-field");
+						console.log("msic code is not empty");
 					}
 				}
 		  }
