@@ -111,7 +111,7 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     getSummary();
     validateInput();
-    incNextButton.innerText = "Summary";
+    incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
@@ -401,6 +401,7 @@ let inputFields = document.querySelectorAll("[data-incorporation-data]");
 for (let i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("change", validateField);
 }
+document.querySelector('[data-incorporation-data="company-name-explanation"]').removeEventListener("change", validateField);
 
 function validateField(e) {
   if (e.target.value == "") {
