@@ -3,6 +3,7 @@ let currentSideNav, currentSideIcon;
 let nextSideNav, nextSideIcon, nextTab;
 let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
+let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
 
 // incNextButton.addEventListener("click", getNextTab);
@@ -106,16 +107,17 @@ function updateButtons() {
     incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
+    incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
-    getSummary();
     validateInput();
-    incNextButton.innerText = "Next";
+    incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
+    incNextButtonError.classList.add("hide");
   } else {
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
@@ -123,6 +125,7 @@ function updateButtons() {
     incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
+    incNextButtonError.classList.add("hide");
   }
 }
 updateButtons();
@@ -216,7 +219,7 @@ for (const tab of incorporationSideNavClickable) {
       case "5":
         n = 5;
         document.getElementById("w-tabs-0-data-w-tab-5").click();
-        getSummary();
+        // getSummary();
         for (const t of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
@@ -234,8 +237,11 @@ for (const tab of incorporationSideNavClickable) {
 
 // Validation
 function validateInput() {
+  console.log("validate input");
+  getSummary();
   let flag_1 = incorporationSummary.companyName ? true : false;
-  let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
+  let flag_2 = true;
   let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
   let flag_4 = !(
     incorporationSummary.msicCodes[0] === "-" ||
@@ -376,17 +382,80 @@ function validateInput() {
     flag_18 &&
     flag_19;
 
+  console.log(
+    inputsValidity,
+    flag_1,
+    flag_2,
+    flag_3,
+    flag_4,
+    flag_5,
+    flag_6,
+    flag_7,
+    flag_8,
+    flag_9,
+    flag_10,
+    flag_11,
+    flag_12,
+    flag_13,
+    flag_14,
+    flag_15,
+    flag_16,
+    flag_17,
+    flag_18,
+    flag_19
+  );
+
   if (inputsValidity) {
-    incNextButton.addEventListener("click", getSummary);
+    // incNextButton.addEventListener("click", getSummary);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
+    incNextButtonError.classList.add("hide");
   } else {
     incNextButton.removeEventListener("click", getNextTab);
     incNextButton.style.cursor = "not-allowed";
     incNextButton.classList.remove("button-2");
     incNextButton.classList.add("button-2-disabled");
+    incNextButtonError.classList.remove("hide");
+    document.getElementById("inc-sidenav-5").classList.add("hide");
   }
+}
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="corporate-shareholder-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="corporate-representative-name"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="shareholder-email"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="shareholder-phone"]')
+  .addEventListener("keyup", validateInput);
+document
+  .querySelector('[data-incorporation-data="number-of-shares"]')
+  .addEventListener("keyup", validateInput);
+
+//Validate fields
+let inputFields = document.querySelectorAll("[data-incorporation-data]");
+for (let i = 0; i < inputFields.length; i++) {
+  inputFields[i].addEventListener("change", validateField);
+}
+document
+  .querySelector('[data-incorporation-data="company-name-explanation"]')
+  .removeEventListener("change", validateField);
+
+function validateField(e) {
+  if (e.target.value == "") {
+    e.target.classList.add("invalid-field");
+    document.getElementById("inc-sidenav-5").classList.add("hide");
+  } else {
+    e.target.classList.remove("invalid-field");
+  }
+  validateInput();
 }
 
 //Summary

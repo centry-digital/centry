@@ -139,6 +139,8 @@ function addShareholderInputGroup() {
   shareholderNameInd.setAttribute("data-name", "Individual-shareholder-name");
   shareholderNameInd.setAttribute("maxlength", "256");
   shareholderNameInd.setAttribute("required", "");
+  shareholderNameInd.addEventListener("change", validateField);
+  shareholderNameInd.addEventListener("keyup", validateInput);
   
   //Set input field - Corporate shareholder name
   inputSubGroupCorp.setAttribute("data-shareholder-group", "corporate");
@@ -149,6 +151,8 @@ function addShareholderInputGroup() {
   shareholderNameCorp1.setAttribute("data-name", "Corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("maxlength", "256");
   shareholderNameCorp1.setAttribute("required", "");
+  shareholderNameCorp1.addEventListener("change", validateField);
+  shareholderNameCorp1.addEventListener("keyup", validateInput);
   
   //Set input field - Corporate shareholder representative
   shareholderNameLabelCorp2.innerText = "Corporate representative name";
@@ -158,6 +162,8 @@ function addShareholderInputGroup() {
   shareholderNameCorp2.setAttribute("data-name", "Corporate-representative-name");
   shareholderNameCorp2.setAttribute("maxlength", "256");
   shareholderNameCorp2.setAttribute("required", "");
+  shareholderNameCorp2.addEventListener("change", validateField);
+  shareholderNameCorp2.addEventListener("keyup", validateInput);
   
   //Set input field - Shareholder Email
   shareholderEmailLabel.innerText = "Email address";
@@ -167,6 +173,8 @@ function addShareholderInputGroup() {
   shareholderEmail.setAttribute("data-name", "Shareholder-email");
   shareholderEmail.setAttribute("maxlength", "256");
   shareholderEmail.setAttribute("required", "");
+  shareholderEmail.addEventListener("change", validateField);
+  shareholderEmail.addEventListener("keyup", validateInput);
   
   //Set input field - Shareholder Phone
   shareholderPhoneLabel.innerText = "Phone number";
@@ -176,6 +184,8 @@ function addShareholderInputGroup() {
   shareholderPhone.setAttribute("data-name", "Shareholder-phone");
   shareholderPhone.setAttribute("maxlength", "256");
   shareholderPhone.setAttribute("required", "");
+  shareholderPhone.addEventListener("change", validateField);
+  shareholderPhone.addEventListener("keyup", validateInput);
   
   //Set input field - Number of Shares
   shareholderSharesLabel.innerText = "Number of Shares";
@@ -186,6 +196,8 @@ function addShareholderInputGroup() {
   inputShareholderSharesPct.setAttribute("data-shareholding", "percent");
   inputShareholderSharesPct.setAttribute("maxlength", "256");
   inputShareholderSharesPct.setAttribute("required", "");
+  inputShareholderSharesPct.addEventListener("change", validateField);
+  inputShareholderSharesPct.addEventListener("keyup", validateInput);
   shareholderSharesNum1.innerText = "0";
   shareholderSharesNum1.setAttribute("data-shareholding", "number");
   shareholderSharesNum2.innerText = " / 1,000 shares";
@@ -309,7 +321,7 @@ function calculateShares() {
     sharesPercent[i].addEventListener("keyup", function() {
       let percentage = sharesPercent[i].value;
       let percentToNumber = Math.round(percentage);
-      sharesNumber[i].innerText = percentToNumber;
+      sharesNumber[i].innerText = percentToNumber.toLocaleString('en');
       
       totalShares = 0;
       totalSharesArray[i] = percentToNumber;
