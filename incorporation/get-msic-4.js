@@ -14,6 +14,11 @@ function getMsicCodes() {
 				incorporationSummary.msicCodes = [];
         for (const selection of selections){
 					incorporationSummary.msicCodes.push(selection.value);
+					if (incorporationSummary.msicCodes = []) {
+						document.querySelector(".ss-multi-selected").classList.add("invalid-field");
+					} else {
+						document.querySelector(".ss-multi-selected").classList.remove("invalid-field");
+					}
 				}
 		  }
 		})

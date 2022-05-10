@@ -1,5 +1,10 @@
 .ss-main .ss-multi-selected {
     min-height:48px;
+    border: 1px solid #d1d5db;
+}
+
+.invalid-field {
+    border: 1px solid #be123d !important;
 }
 
 .ss-main .ss-multi-selected .ss-add {
@@ -20,5 +25,5 @@
 
 .ss-content .ss-search input:focus {
 	border: 1px solid #4f46e5;
-  box-shadow: 0 0 0 1px #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
 }

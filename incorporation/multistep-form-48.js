@@ -111,7 +111,7 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     getSummary();
     validateInput();
-    incNextButton.innerText = "Next";
+    incNextButton.innerText = "Summary";
     incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
@@ -392,6 +392,7 @@ function validateInput() {
     incNextButton.classList.remove("button-2");
     incNextButton.classList.add("button-2-disabled");
     incNextButtonError.classList.remove("hide");
+    document.getElementById("inc-sidenav-5").classList.add("hide");
   }
 }
 
