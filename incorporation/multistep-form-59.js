@@ -5,6 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
+let inputsValidity = false;
 
 // incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
@@ -112,6 +113,20 @@ function updateButtons() {
     validateInput();
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
+    if (inputsValidity) {
+      // incNextButton.addEventListener("click", getSummary);
+      incNextButton.style.cursor = "pointer";
+      incNextButton.classList.remove("button-2-disabled");
+      incNextButton.classList.add("button-2");
+      incNextButtonError.classList.add("hide");
+    } else {
+      incNextButton.removeEventListener("click", getNextTab);
+      incNextButton.style.cursor = "not-allowed";
+      incNextButton.classList.remove("button-2");
+      incNextButton.classList.add("button-2-disabled");
+      incNextButtonError.classList.remove("hide");
+      document.getElementById("inc-sidenav-5").classList.add("hide");
+    }
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.addEventListener("click", getNextTab);
@@ -405,20 +420,20 @@ function validateInput() {
     flag_19
   );
 
-  if (inputsValidity) {
-    // incNextButton.addEventListener("click", getSummary);
-    incNextButton.style.cursor = "pointer";
-    incNextButton.classList.remove("button-2-disabled");
-    incNextButton.classList.add("button-2");
-    incNextButtonError.classList.add("hide");
-  } else {
-    incNextButton.removeEventListener("click", getNextTab);
-    incNextButton.style.cursor = "not-allowed";
-    incNextButton.classList.remove("button-2");
-    incNextButton.classList.add("button-2-disabled");
-    incNextButtonError.classList.remove("hide");
-    document.getElementById("inc-sidenav-5").classList.add("hide");
-  }
+  // if (inputsValidity) {
+  //   // incNextButton.addEventListener("click", getSummary);
+  //   incNextButton.style.cursor = "pointer";
+  //   incNextButton.classList.remove("button-2-disabled");
+  //   incNextButton.classList.add("button-2");
+  //   incNextButtonError.classList.add("hide");
+  // } else {
+  //   incNextButton.removeEventListener("click", getNextTab);
+  //   incNextButton.style.cursor = "not-allowed";
+  //   incNextButton.classList.remove("button-2");
+  //   incNextButton.classList.add("button-2-disabled");
+  //   incNextButtonError.classList.remove("hide");
+  //   document.getElementById("inc-sidenav-5").classList.add("hide");
+  // }
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
