@@ -114,7 +114,7 @@ function updateButtons() {
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
     if (inputsValidity) {
-      // incNextButton.addEventListener("click", getSummary);
+      incNextButton.addEventListener("click", getNextTab);
       incNextButton.style.cursor = "pointer";
       incNextButton.classList.remove("button-2-disabled");
       incNextButton.classList.add("button-2");
