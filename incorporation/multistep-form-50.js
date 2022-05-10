@@ -406,6 +406,7 @@ document.querySelector('[data-incorporation-data="company-name-explanation"]').r
 function validateField(e) {
   if (e.target.value == "") {
     e.target.classList.add("invalid-field");
+    document.getElementById("inc-sidenav-5").classList.add("hide");
   } else {
     e.target.classList.remove("invalid-field");
   }
