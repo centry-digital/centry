@@ -3,6 +3,7 @@ let currentSideNav, currentSideIcon;
 let nextSideNav, nextSideIcon, nextTab;
 let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
+let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
 
 // incNextButton.addEventListener("click", getNextTab);
@@ -106,6 +107,7 @@ function updateButtons() {
     incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.add("hide");
+    incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     getSummary();
     validateInput();
@@ -116,6 +118,7 @@ function updateButtons() {
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
+    incNextButtonError.classList.add("hide");
   } else {
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
@@ -123,6 +126,7 @@ function updateButtons() {
     incNextButton.classList.add("button-2");
     incNextButton.innerText = "Next";
     incPrevButton.classList.remove("hide");
+    incNextButtonError.classList.add("hide");
   }
 }
 updateButtons();
@@ -381,11 +385,27 @@ function validateInput() {
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
+    incNextButtonError.classList.add("hide");
   } else {
     incNextButton.removeEventListener("click", getNextTab);
     incNextButton.style.cursor = "not-allowed";
     incNextButton.classList.remove("button-2");
     incNextButton.classList.add("button-2-disabled");
+    incNextButtonError.classList.remove("hide");
+  }
+}
+
+//Validate fields
+let inputFields = document.querySelectorAll("[data-incorporation-data]");
+for (const inputField in inputFields) {
+  inputField.addEventListener("change", validateField)
+}
+
+function validateField(e) {
+  if (e.target.value == "") {
+    e.target.classList.add("invalid-field ");
+  } else {
+    e.target.classList.remove("invalid-field ");
   }
 }
 
