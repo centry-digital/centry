@@ -109,8 +109,8 @@ function updateButtons() {
     incPrevButton.classList.add("hide");
     incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
-    getSummary();
-    validateInput();
+    // getSummary();
+    // validateInput();
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
@@ -220,7 +220,7 @@ for (const tab of incorporationSideNavClickable) {
       case "5":
         n = 5;
         document.getElementById("w-tabs-0-data-w-tab-5").click();
-        getSummary();
+        // getSummary();
         for (const t of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
@@ -239,6 +239,7 @@ for (const tab of incorporationSideNavClickable) {
 // Validation
 function validateInput() {
   console.log("validate input");
+  getSummary();
   let flag_1 = incorporationSummary.companyName ? true : false;
   // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
   let flag_2 = true;
@@ -406,7 +407,7 @@ function validateInput() {
   );
 
   if (inputsValidity) {
-    incNextButton.addEventListener("click", getSummary);
+    // incNextButton.addEventListener("click", getSummary);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
     incNextButton.classList.add("button-2");
@@ -455,6 +456,7 @@ function validateField(e) {
   } else {
     e.target.classList.remove("invalid-field");
   }
+  validateInput();
 }
 
 //Summary
