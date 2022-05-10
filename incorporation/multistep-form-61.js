@@ -437,22 +437,22 @@ function validateInput() {
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-shareholder-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-representative-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="shareholder-email"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="shareholder-phone"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="number-of-shares"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
