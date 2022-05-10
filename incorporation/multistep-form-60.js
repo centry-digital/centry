@@ -376,7 +376,7 @@ function validateInput() {
     }
   }
 
-  let inputsValidity =
+  inputsValidity = 
     flag_1 &&
     flag_2 &&
     flag_3 &&
