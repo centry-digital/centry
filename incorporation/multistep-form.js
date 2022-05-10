@@ -5,6 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
+let inputsValidity = false;
 
 // incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
@@ -112,6 +113,20 @@ function updateButtons() {
     validateInput();
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
+    if (inputsValidity) {
+      incNextButton.addEventListener("click", getNextTab);
+      incNextButton.style.cursor = "pointer";
+      incNextButton.classList.remove("button-2-disabled");
+      incNextButton.classList.add("button-2");
+      incNextButtonError.classList.add("hide");
+    } else {
+      incNextButton.removeEventListener("click", getNextTab);
+      incNextButton.style.cursor = "not-allowed";
+      incNextButton.classList.remove("button-2");
+      incNextButton.classList.add("button-2-disabled");
+      incNextButtonError.classList.remove("hide");
+      document.getElementById("inc-sidenav-5").classList.add("hide");
+    }
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     incNextButton.addEventListener("click", getNextTab);
@@ -237,7 +252,6 @@ for (const tab of incorporationSideNavClickable) {
 
 // Validation
 function validateInput() {
-  console.log("validate input");
   getSummary();
   let flag_1 = incorporationSummary.companyName ? true : false;
   // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
@@ -361,7 +375,7 @@ function validateInput() {
     }
   }
 
-  let inputsValidity =
+  inputsValidity =
     flag_1 &&
     flag_2 &&
     flag_3 &&
@@ -381,63 +395,31 @@ function validateInput() {
     flag_17 &&
     flag_18 &&
     flag_19;
-
-  console.log(
-    inputsValidity,
-    flag_1,
-    flag_2,
-    flag_3,
-    flag_4,
-    flag_5,
-    flag_6,
-    flag_7,
-    flag_8,
-    flag_9,
-    flag_10,
-    flag_11,
-    flag_12,
-    flag_13,
-    flag_14,
-    flag_15,
-    flag_16,
-    flag_17,
-    flag_18,
-    flag_19
-  );
-
-  if (inputsValidity) {
-    // incNextButton.addEventListener("click", getSummary);
-    incNextButton.style.cursor = "pointer";
-    incNextButton.classList.remove("button-2-disabled");
-    incNextButton.classList.add("button-2");
-    incNextButtonError.classList.add("hide");
-  } else {
-    incNextButton.removeEventListener("click", getNextTab);
-    incNextButton.style.cursor = "not-allowed";
-    incNextButton.classList.remove("button-2");
-    incNextButton.classList.add("button-2-disabled");
-    incNextButtonError.classList.remove("hide");
-    document.getElementById("inc-sidenav-5").classList.add("hide");
-  }
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-name"]')
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-shareholder-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-representative-name"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="shareholder-email"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="shareholder-phone"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="number-of-shares"]')
-  .addEventListener("keyup", validateInput);
+  .addEventListener("keyup", updateButtons);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");

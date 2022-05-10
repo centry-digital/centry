@@ -252,7 +252,6 @@ for (const tab of incorporationSideNavClickable) {
 
 // Validation
 function validateInput() {
-  console.log("validate input");
   getSummary();
   let flag_1 = incorporationSummary.companyName ? true : false;
   // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
@@ -396,29 +395,6 @@ function validateInput() {
     flag_17 &&
     flag_18 &&
     flag_19;
-
-  console.log(
-    inputsValidity,
-    flag_1,
-    flag_2,
-    flag_3,
-    flag_4,
-    flag_5,
-    flag_6,
-    flag_7,
-    flag_8,
-    flag_9,
-    flag_10,
-    flag_11,
-    flag_12,
-    flag_13,
-    flag_14,
-    flag_15,
-    flag_16,
-    flag_17,
-    flag_18,
-    flag_19
-  );
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
