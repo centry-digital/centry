@@ -238,6 +238,7 @@ for (const tab of incorporationSideNavClickable) {
 
 // Validation
 function validateInput() {
+  console.log("validate input");
   let flag_1 = incorporationSummary.companyName ? true : false;
   // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
   let flag_2 = true;
