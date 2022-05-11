@@ -251,7 +251,9 @@ for (const tab of incorporationSideNavClickable) {
 }
 
 // Validation
-let regexPhone = /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]+)[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
+let regexPhone =
+  /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]+)[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
+let regexShares = /[^-]?([0-9]+)\,?([0-9]+)?/;
 function validateInput() {
   getSummary();
 
@@ -438,10 +440,23 @@ document
   .removeEventListener("keyup", validateField);
 
 function validateField(e) {
-  if (e.target.getAttribute("data-incorporation-data") =="office-number" && !regexPhone.test(e.target.value)) {
+  if (
+    (e.target.getAttribute("data-incorporation-data") == "office-number" ||
+      e.target.getAttribute("data-incorporation-data") == "director-phone" ||
+      e.target.getAttribute("data-incorporation-data") == "shareholder-phone") &&
+    !regexPhone.test(e.target.value)
+  ) {
     e.target.classList.add("invalid-field");
     document.getElementById("inc-sidenav-5").classList.add("hide");
-  } else if (e.target.getAttribute("data-incorporation-data") !="office-number" && e.target.value == "") {
+  } else if (
+    e.target.getAttribute("data-incorporation-data") == "number-of-shares" && !regexShares.test(e.target.value)
+  ) {
+    e.target.classList.add("invalid-field");
+    document.getElementById("inc-sidenav-5").classList.add("hide");
+  } else if (
+    e.target.getAttribute("data-incorporation-data") != "office-number" &&
+    e.target.value == ""
+  ) {
     e.target.classList.add("invalid-field");
     document.getElementById("inc-sidenav-5").classList.add("hide");
   } else {
