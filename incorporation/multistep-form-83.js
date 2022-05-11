@@ -468,9 +468,9 @@ document
 document
   .querySelector('[data-incorporation-data="shareholder-phone"]')
   .addEventListener("keyup", updateButtons);
-document
-  .querySelector('[data-incorporation-data="number-of-shares"]')
-  .addEventListener("keyup", updateButtons);
+// document
+//   .querySelector('[data-incorporation-data="number-of-shares"]')
+//   .addEventListener("keyup", updateButtons);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
