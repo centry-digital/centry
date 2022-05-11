@@ -15,6 +15,7 @@ function getMsicCodes() {
         for (const selection of selections){
 					incorporationSummary.msicCodes.push(selection.value);
 				}
+				updateButtons();
 				if (incorporationSummary.msicCodes != "") {
 					document.querySelector(".ss-multi-selected").classList.remove("invalid-field");
 				} else {
