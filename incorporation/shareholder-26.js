@@ -346,6 +346,8 @@ function calculateShares() {
         totalDistributedSharesElement.classList.remove("error");
         totalUndistributedSharesElement.classList.remove("error");
       }
+
+      validateInput();
     });
   }
 }
@@ -378,4 +380,5 @@ function updateShares() {
       totalUndistributedSharesElement.classList.remove("error");
     }
   }
+  validateInput();
 }
