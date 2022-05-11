@@ -253,6 +253,8 @@ for (const tab of incorporationSideNavClickable) {
 // Validation
 function validateInput() {
   getSummary();
+  let regexPhone = /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]+)[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
+
   let flag_1 = incorporationSummary.companyName ? true : false;
   // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
   let flag_2 = true;
@@ -263,7 +265,12 @@ function validateInput() {
     incorporationSummary.msicCodes[2] === "-"
   );
   let flag_5 = incorporationSummary.companyEmail ? true : false;
-  let flag_6 = incorporationSummary.officeNumber ? true : false;
+  let flag_6 = false;
+  if (regexPhone.test(incorporationSummary.officeNumber)) {
+    flag_6 = true;
+  } else {
+    flag_6 = false;
+  }
   let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
   let flag_8 = incorporationSummary.businessAddressCity ? true : false;
   let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
@@ -288,7 +295,7 @@ function validateInput() {
   }
   let flag_13 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].phone != "") {
+    if (regexPhone.test(incorporationSummary.directors[dirNo].phone)) {
       flag_13 = true;
     } else {
       flag_13 = false;
@@ -323,7 +330,7 @@ function validateInput() {
         break;
       }
       flag_18 = false;
-      if (incorporationSummary.shareholders[shNo].phone != "") {
+      if (regexPhone.test(incorporationSummary.shareholders[shNo].phone)) {
         flag_18 = true;
       } else {
         flag_18 = false;
@@ -359,7 +366,7 @@ function validateInput() {
         break;
       }
       flag_18 = false;
-      if (incorporationSummary.shareholders[shNo].phone != "") {
+      if (regexPhone.test(incorporationSummary.shareholders[shNo].phone)) {
         flag_18 = true;
       } else {
         flag_18 = false;

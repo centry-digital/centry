@@ -111,7 +111,6 @@ function addShareholderInputGroup() {
   shareholderType.setAttribute("data-incorporation-data", "shareholder-type");
   shareholderTypeRadio1.setAttribute("data-shareholder-type", "individual");
   shareholderTypeRadio1.addEventListener("click", selectRadio);
-  shareholderTypeRadio1.addEventListener("click", updateButtons);
   shareholderTypeRadioInput1.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput1.setAttribute("value", "individual-shareholder");
   shareholderTypeRadioInput1.setAttribute("data-name", "Shareholder Type");
@@ -121,7 +120,6 @@ function addShareholderInputGroup() {
   shareholderTypeRadioSpan1.setAttribute("for", "individual-shareholder");
   shareholderTypeRadio2.setAttribute("data-shareholder-type", "corporate");
   shareholderTypeRadio2.addEventListener("click", selectRadio);
-  shareholderTypeRadio2.addEventListener("click", updateButtons);
   shareholderTypeRadioInput2.setAttribute("name", "Shareholder-Type");
   shareholderTypeRadioInput2.setAttribute("value", "corporate-shareholder");
   shareholderTypeRadioInput2.setAttribute("data-name", "Shareholder Type");
@@ -268,6 +266,7 @@ function addShareholderInputGroup() {
 
   //rerun function to calculate shares
   calculateShares();
+  updateButtons();
 }
 
 //remove shareholder input group
@@ -275,6 +274,7 @@ function removeShareholder(el) {
 	const shareholder = el.target.parentElement.parentElement.parentElement;
   shareholder.remove();
   updateShares();
+  updateButtons();
 }
 
 // Shareholder radio buttons
@@ -308,6 +308,7 @@ function selectRadio(el) {
     individualDiv.classList.add("hide");
     shareholderType_hidden.setAttribute("value", "Corporate");
   }
+  updateButtons();
 }
 
 //calculate number of shares
