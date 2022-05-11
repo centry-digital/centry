@@ -317,6 +317,7 @@ let totalShares, sharesPercent, sharesNumber;
 let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
 let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
 let totalUndistributedShares = 1000;
+let sharesErrorMessage = document.getElementById("shares-error");
 
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
@@ -335,12 +336,17 @@ function calculateShares() {
       totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
       totalUndistributedShares = 1000 - totalShares;
       totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
+      
+      if (totalShares > 1000) {
+        sharesErrorMessage.classList.remove("hide");
+        totalDistributedSharesElement.classList.add("error");
+        totalUndistributedSharesElement.classList.add("error");
+      } else {
+        sharesErrorMessage.classList.add("hide");
+        totalDistributedSharesElement.classList.remove("error");
+        totalUndistributedSharesElement.classList.remove("error");
+      }
     });
-  }
-  if (totalUndistributedShares > 1000) {
-    console.log("Shares allocation >1000");
-  } else {
-    console.log("Shares allocation <=1000");
   }
 }
 calculateShares();
@@ -361,10 +367,15 @@ function updateShares() {
     totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
     totalUndistributedShares = 1000 - totalShares;
     totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
-  }
-  if (totalUndistributedShares > 1000) {
-    console.log("Shares allocation >1000");
-  } else {
-    console.log("Shares allocation <=1000");
+    
+    if (totalShares > 1000) {
+      sharesErrorMessage.classList.remove("hide");
+      totalDistributedSharesElement.classList.add("error");
+      totalUndistributedSharesElement.classList.add("error");
+    } else {
+      sharesErrorMessage.classList.add("hide");
+      totalDistributedSharesElement.classList.remove("error");
+      totalUndistributedSharesElement.classList.remove("error");
+    }
   }
 }
