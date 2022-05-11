@@ -451,8 +451,8 @@ function validateField(e) {
     document.getElementById("inc-sidenav-5").classList.add("hide");
   } else if (
     e.target.getAttribute("data-incorporation-data") == "number-of-shares" &&
-    !regexShares.test(e.target.value) &&
-    !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000)
+    (!regexShares.test(e.target.value) ||
+    !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
   ) {
     e.target.classList.add("invalid-field");
     document.getElementById("inc-sidenav-5").classList.add("hide");
