@@ -112,6 +112,7 @@ function updateButtons() {
     incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
+    console.log("Running updateButtons")
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
     if (inputsValidity) {
