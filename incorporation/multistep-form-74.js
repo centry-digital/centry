@@ -407,6 +407,27 @@ function validateInput() {
     flag_17 &&
     flag_18 &&
     flag_19;
+
+  console.log(
+    flag_1,
+    flag_2,
+    flag_3,
+    flag_4,
+    flag_5,
+    flag_6,
+    flag_7,
+    flag_8,
+    flag_9,
+    flag_10,
+    flag_11,
+    flag_12,
+    flag_13,
+    flag_14,
+    flag_15,
+    flag_16,
+    flag_17,
+    flag_18,
+    flag_19);
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
