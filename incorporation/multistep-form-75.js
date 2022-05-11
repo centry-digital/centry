@@ -340,7 +340,7 @@ function validateInput() {
         break;
       }
       flag_19 = false;
-      if (!regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
+      if (regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
       // if (incorporationSummary.shareholders[shNo].shares != "") {
         flag_19 = true;
       } else {
@@ -377,7 +377,7 @@ function validateInput() {
         break;
       }
       flag_19 = false;
-      if (!regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
+      if (regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
       // if (incorporationSummary.shareholders[shNo].shares != "") {
         flag_19 = true;
       } else {
