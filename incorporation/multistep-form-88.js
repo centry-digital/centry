@@ -51,8 +51,8 @@ function getNextTab() {
   nextTab.click();
   currentSideNav.classList.remove("active");
   nextSideNav.classList.add("active");
-  currentSideIcon.classList.remove("active");
-  nextSideIcon.classList.add("active");
+  // currentSideIcon.classList.remove("active");
+  // nextSideIcon.classList.add("active");
   updateButtons();
 }
 
@@ -96,8 +96,8 @@ function getPrevTab() {
   prevTab.click();
   currentSideNav.classList.remove("active");
   prevSideNav.classList.add("active");
-  currentSideIcon.classList.remove("active");
-  prevSideIcon.classList.add("active");
+  // currentSideIcon.classList.remove("active");
+  // prevSideIcon.classList.add("active");
   updateButtons();
 }
 

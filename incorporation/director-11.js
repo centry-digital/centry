@@ -119,10 +119,11 @@ function addDirectorInputGroup() {
   inputSubGroup100_2.appendChild(directorCountryLabel);
   inputSubGroup100_2.appendChild(inputWrapperCountry);
   inputWrapperCountry.appendChild(directorCountry);
-  mapDirectorCountrySelect();
-
+  
   //Append element to DOM
   directorGroup.appendChild(directorInputGroup);
+  mapDirectorCountrySelect();
+  validateInput();
   updateButtons();
   removeDirectorButton.addEventListener("click", removeDirector);
 }
@@ -130,5 +131,6 @@ function addDirectorInputGroup() {
 function removeDirector(el) {
 	const director = el.target.parentElement.parentElement.parentElement;
   director.remove();
+  validateInput();
   updateButtons();
 }
