@@ -60,7 +60,7 @@ function addDirectorInputGroup() {
   directorName.setAttribute("data-incorporation-data", "director-name");
   directorName.setAttribute("maxlength", "256");
   directorName.setAttribute("required", "");
-  directorName.addEventListener("change", validateField);
+  directorName.addEventListener("keyup", validateField);
   
   //Set input field - Director Email
 	directorEmailLabel.innerText = "Email address";
@@ -70,7 +70,7 @@ function addDirectorInputGroup() {
   directorEmail.setAttribute("data-incorporation-data", "director-email");
   directorEmail.setAttribute("maxlength", "256");
   directorEmail.setAttribute("required", "");
-  directorEmail.addEventListener("change", validateField);
+  directorEmail.addEventListener("keyup", validateField);
   
   //Set input field - Director Phone
   directorPhoneLabel.innerText = "Phone number";
@@ -80,7 +80,7 @@ function addDirectorInputGroup() {
   directorPhone.setAttribute("data-incorporation-data", "director-phone");
   directorPhone.setAttribute("maxlength", "256");
   directorPhone.setAttribute("required", "");
-  directorPhone.addEventListener("change", validateField);
+  directorPhone.addEventListener("keyup", validateField);
 
   //Set input field - Director Country
   directorCountryLabel.innerText = "Country of Residence";
@@ -89,7 +89,7 @@ function addDirectorInputGroup() {
   directorCountry.setAttribute("data-incorporation-data", "director-country");
   directorCountry.setAttribute("data-select-type", "director-country");
   directorCountry.setAttribute("required", "");
-  directorCountry.addEventListener("change", validateField);
+  directorCountry.addEventListener("keyup", validateField);
   
   //Append elements to Director Input Groups
   directorInputGroup.appendChild(inputSubGroup100_1);
