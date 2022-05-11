@@ -252,6 +252,7 @@ for (const tab of incorporationSideNavClickable) {
 }
 
 // Validation
+let regexEmail = /\w+(\.?[^ ]\w+)+@\w+(.\w+)+/;
 let regexPhone =
   /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]{9,})[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
 let regexShares = /^[0-9]{1,4}$/;
@@ -268,7 +269,13 @@ function validateInput() {
   //   incorporationSummary.msicCodes[2] === "-"
   // );
   let flag_4 = incorporationSummary.msicCodes != "";
-  let flag_5 = incorporationSummary.companyEmail ? true : false;
+  // let flag_5 = incorporationSummary.companyEmail ? true : false;
+  let flag_5 = false;
+  if (regexEmail.test(incorporationSummary.companyEmail)) {
+    flag_5 = true;
+  } else {
+    flag_5 = false;
+  }
   let flag_6 = false;
   if (regexPhone.test(incorporationSummary.officeNumber)) {
     flag_6 = true;
@@ -290,7 +297,8 @@ function validateInput() {
   }
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].email != "") {
+    if (regexEmail.test(incorporationSummary.directors[dirNo].email)) {
+      // if (incorporationSummary.directors[dirNo].email != "") {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -327,7 +335,8 @@ function validateInput() {
       }
       flag_16 = true;
       flag_17 = false;
-      if (incorporationSummary.shareholders[shNo].email != "") {
+      if (regexEmail.test(incorporationSummary.shareholders[shNo].email)) {
+        // if (incorporationSummary.shareholders[shNo].email != "") {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -341,8 +350,12 @@ function validateInput() {
         break;
       }
       flag_19 = false;
-      if (regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
-      // if (incorporationSummary.shareholders[shNo].shares != "") {
+      if (
+        regexShares.test(incorporationSummary.shareholders[shNo].shares) &&
+        Math.round(incorporationSummary.shareholders[shNo].shares) > 0 &&
+        Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000
+      ) {
+        // if (incorporationSummary.shareholders[shNo].shares != "") {
         flag_19 = true;
       } else {
         flag_19 = false;
@@ -378,8 +391,12 @@ function validateInput() {
         break;
       }
       flag_19 = false;
-      if (regexShares.test(incorporationSummary.shareholders[shNo].shares) && (Math.round(incorporationSummary.shareholders[shNo].shares) > 0 && Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000)) {
-      // if (incorporationSummary.shareholders[shNo].shares != "") {
+      if (
+        regexShares.test(incorporationSummary.shareholders[shNo].shares) &&
+        Math.round(incorporationSummary.shareholders[shNo].shares) > 0 &&
+        Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000
+      ) {
+        // if (incorporationSummary.shareholders[shNo].shares != "") {
         flag_19 = true;
       } else {
         flag_19 = false;
@@ -409,26 +426,26 @@ function validateInput() {
     flag_18 &&
     flag_19;
 
-  console.log(
-    flag_1,
-    flag_2,
-    flag_3,
-    flag_4,
-    flag_5,
-    flag_6,
-    flag_7,
-    flag_8,
-    flag_9,
-    flag_10,
-    flag_11,
-    flag_12,
-    flag_13,
-    flag_14,
-    flag_15,
-    flag_16,
-    flag_17,
-    flag_18,
-    flag_19);
+  // console.log(
+  //   flag_1,
+  //   flag_2,
+  //   flag_3,
+  //   flag_4,
+  //   flag_5,
+  //   flag_6,
+  //   flag_7,
+  //   flag_8,
+  //   flag_9,
+  //   flag_10,
+  //   flag_11,
+  //   flag_12,
+  //   flag_13,
+  //   flag_14,
+  //   flag_15,
+  //   flag_16,
+  //   flag_17,
+  //   flag_18,
+  //   flag_19);
 }
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
@@ -476,18 +493,26 @@ function validateField(e) {
     e.target.classList.add("invalid-field");
     // document.getElementById("inc-sidenav-5").classList.add("hide");
   } else if (
+    (e.target.getAttribute("data-incorporation-data") == "company-email" ||
+      e.target.getAttribute("data-incorporation-data") == "director-email" ||
+      e.target.getAttribute("data-incorporation-data") ==
+        "shareholder-email") &&
+    !regexEmail.test(e.target.value)
+  ) {
+    e.target.classList.add("invalid-field");
+  } else if (
     e.target.getAttribute("data-incorporation-data") == "number-of-shares" &&
     (!regexShares.test(e.target.value) ||
-    !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
+      !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
   ) {
     e.target.classList.add("invalid-field");
     // document.getElementById("inc-sidenav-5").classList.add("hide");
-  // } else if (
-  //   e.target.getAttribute("data-incorporation-data") != "office-number" &&
-  //   e.target.value == ""
-  // ) {
-  //   e.target.classList.add("invalid-field");
-  //   document.getElementById("inc-sidenav-5").classList.add("hide");
+    // } else if (
+    //   e.target.getAttribute("data-incorporation-data") != "office-number" &&
+    //   e.target.value == ""
+    // ) {
+    //   e.target.classList.add("invalid-field");
+    //   document.getElementById("inc-sidenav-5").classList.add("hide");
   } else {
     e.target.classList.remove("invalid-field");
   }
