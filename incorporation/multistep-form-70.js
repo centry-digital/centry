@@ -253,7 +253,7 @@ for (const tab of incorporationSideNavClickable) {
 // Validation
 let regexPhone =
   /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]+)[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
-let regexShares = /^[0-9]+$/;
+let regexShares = /^[0-9]{1,4}$/;
 function validateInput() {
   getSummary();
 
