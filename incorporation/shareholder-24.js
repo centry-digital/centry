@@ -316,7 +316,7 @@ let totalSharesArray = [];
 let totalShares, sharesPercent, sharesNumber;
 let totalDistributedSharesElement = document.querySelector('[data-shareholding="distributed-shares"]')
 let totalUndistributedSharesElement = document.querySelector('[data-shareholding="undistributed-shares"]')
-let totalUndistributedShares;
+let totalUndistributedShares = 1000;
 
 function calculateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
@@ -337,6 +337,11 @@ function calculateShares() {
       totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
     });
   }
+  if (totalUndistributedShares > 1000) {
+    console.log("Shares allocation >1000");
+  } else {
+    console.log("Shares allocation <=1000");
+  }
 }
 calculateShares();
 
@@ -356,5 +361,10 @@ function updateShares() {
     totalDistributedSharesElement.innerText = totalShares.toLocaleString('en');
     totalUndistributedShares = 1000 - totalShares;
     totalUndistributedSharesElement.innerText = totalUndistributedShares.toLocaleString('en');;
+  }
+  if (totalUndistributedShares > 1000) {
+    console.log("Shares allocation >1000");
+  } else {
+    console.log("Shares allocation <=1000");
   }
 }
