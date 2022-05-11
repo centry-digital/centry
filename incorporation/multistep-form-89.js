@@ -270,7 +270,6 @@ function validateInput() {
   getSummary();
 
   let flag_1 = incorporationSummary.companyName ? true : false;
-  // let flag_2 = incorporationSummary.companyNameExplanation ? true : false;
   let flag_2 = true;
   let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
   let flag_4 = !(
@@ -279,8 +278,6 @@ function validateInput() {
     incorporationSummary.msicCodes[2] == "-" ||
     incorporationSummary.msicCodes == ""
   );
-  // let flag_4 = incorporationSummary.msicCodes != "";
-  // let flag_5 = incorporationSummary.companyEmail ? true : false;
   let flag_5 = false;
   if (regexEmail.test(incorporationSummary.companyEmail)) {
     flag_5 = true;
@@ -437,6 +434,12 @@ function validateInput() {
     flag_18 &&
     flag_19;
 
+  if (inputsValidity) {
+    document.getElementById("inc-sidenav-5").classList.remove("hide");
+  } else {
+    document.getElementById("inc-sidenav-5").classList.add("hide");
+  }
+
   tab0_validation = flag_1 && flag_2;
   if (tab0_validation) {
     icon0.classList.add("complete");
@@ -514,9 +517,6 @@ document
 document
   .querySelector('[data-incorporation-data="shareholder-phone"]')
   .addEventListener("keyup", updateButtons);
-// document
-//   .querySelector('[data-incorporation-data="number-of-shares"]')
-//   .addEventListener("keyup", updateButtons);
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
