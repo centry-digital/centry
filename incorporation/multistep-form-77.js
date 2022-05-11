@@ -267,7 +267,7 @@ function validateInput() {
   //   incorporationSummary.msicCodes[1] === "-" ||
   //   incorporationSummary.msicCodes[2] === "-"
   // );
-  let flag_4 = incorporationSummary != "";
+  let flag_4 = incorporationSummary.msicCodes != "";
   let flag_5 = incorporationSummary.companyEmail ? true : false;
   let flag_6 = false;
   if (regexPhone.test(incorporationSummary.officeNumber)) {
