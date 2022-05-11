@@ -274,9 +274,10 @@ function validateInput() {
   let flag_2 = true;
   let flag_3 = incorporationSummary.natureOfBusiness ? true : false;
   let flag_4 = !(
-    incorporationSummary.msicCodes[0] === "-" ||
-    incorporationSummary.msicCodes[1] === "-" ||
-    incorporationSummary.msicCodes[2] === "-"
+    incorporationSummary.msicCodes[0] == "-" ||
+    incorporationSummary.msicCodes[1] == "-" ||
+    incorporationSummary.msicCodes[2] == "-" ||
+    incorporationSummary.msicCodes == ""
   );
   // let flag_4 = incorporationSummary.msicCodes != "";
   // let flag_5 = incorporationSummary.companyEmail ? true : false;
