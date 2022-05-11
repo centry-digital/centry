@@ -16,36 +16,36 @@ function getNextTab() {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-0");
     nextSideNav = document.getElementById("inc-sidenav-1");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-0");
-    nextSideIcon = document.getElementById("inc-sidenav-icon-1");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-0");
+    // nextSideIcon = document.getElementById("inc-sidenav-icon-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-1");
     nextSideNav = document.getElementById("inc-sidenav-2");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-1");
-    nextSideIcon = document.getElementById("inc-sidenav-icon-2");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-1");
+    // nextSideIcon = document.getElementById("inc-sidenav-icon-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-2");
     nextSideNav = document.getElementById("inc-sidenav-3");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-2");
-    nextSideIcon = document.getElementById("inc-sidenav-icon-3");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-2");
+    // nextSideIcon = document.getElementById("inc-sidenav-icon-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-3");
     nextSideNav = document.getElementById("inc-sidenav-4");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-3");
-    nextSideIcon = document.getElementById("inc-sidenav-icon-4");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-3");
+    // nextSideIcon = document.getElementById("inc-sidenav-icon-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-5");
     currentSideNav = document.getElementById("inc-sidenav-4");
     nextSideNav = document.getElementById("inc-sidenav-5");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-4");
-    nextSideIcon = document.getElementById("inc-sidenav-icon-5");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-4");
+    // nextSideIcon = document.getElementById("inc-sidenav-icon-5");
     activeTabId = "w-tabs-0-data-w-tab-5";
   }
   nextTab.click();
@@ -61,36 +61,36 @@ function getPrevTab() {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-5");
     prevSideNav = document.getElementById("inc-sidenav-4");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-5");
-    prevSideIcon = document.getElementById("inc-sidenav-icon-4");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-5");
+    // prevSideIcon = document.getElementById("inc-sidenav-icon-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-4");
     prevSideNav = document.getElementById("inc-sidenav-3");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-4");
-    prevSideIcon = document.getElementById("inc-sidenav-icon-3");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-4");
+    // prevSideIcon = document.getElementById("inc-sidenav-icon-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-3");
     prevSideNav = document.getElementById("inc-sidenav-2");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-3");
-    prevSideIcon = document.getElementById("inc-sidenav-icon-2");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-3");
+    // prevSideIcon = document.getElementById("inc-sidenav-icon-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-2");
     prevSideNav = document.getElementById("inc-sidenav-1");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-2");
-    prevSideIcon = document.getElementById("inc-sidenav-icon-1");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-2");
+    // prevSideIcon = document.getElementById("inc-sidenav-icon-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-0");
     currentSideNav = document.getElementById("inc-sidenav-1");
     prevSideNav = document.getElementById("inc-sidenav-0");
-    currentSideIcon = document.getElementById("inc-sidenav-icon-1");
-    prevSideIcon = document.getElementById("inc-sidenav-icon-0");
+    // currentSideIcon = document.getElementById("inc-sidenav-icon-1");
+    // prevSideIcon = document.getElementById("inc-sidenav-icon-0");
     activeTabId = "w-tabs-0-data-w-tab-0";
   }
   prevTab.click();
@@ -112,7 +112,6 @@ function updateButtons() {
     incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
-    console.log("Running updateButtons")
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
     if (inputsValidity) {
@@ -257,6 +256,16 @@ let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let regexPhone =
   /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]{9,})[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
 let regexShares = /^[0-9]{1,4}$/;
+let tab0_validation = false;
+let tab1_validation = false;
+let tab2_validation = false;
+let tab3_validation = false;
+let tab4_validation = false;
+let icon0 = document.getElementById("sidenav-icon-0");
+let icon1 = document.getElementById("sidenav-icon-1");
+let icon2 = document.getElementById("sidenav-icon-2");
+let icon3 = document.getElementById("sidenav-icon-3");
+let icon4 = document.getElementById("sidenav-icon-4");
 function validateInput() {
   getSummary();
 
@@ -427,6 +436,41 @@ function validateInput() {
     flag_18 &&
     flag_19;
 
+  tab0_validation = flag_1 && flag_2;
+  if (tab0_validation) {
+    icon0.classList.add("complete");
+  } else {
+    icon0.classList.remove("complete");
+  }
+
+  tab1_validation = flag_3 && flag_4;
+  if (tab1_validation) {
+    icon1.classList.add("complete");
+  } else {
+    icon1.classList.remove("complete");
+  }
+
+  tab2_validation = flag_5 && flag_6 && flag_7 && flag_8 && flag_9 && flag_10;
+  if (tab2_validation) {
+    icon2.classList.add("complete");
+  } else {
+    icon2.classList.remove("complete");
+  }
+
+  tab3_validation = flag_11 && flag_12 && flag_13 && flag_14;
+  if (tab3_validation) {
+    icon3.classList.add("complete");
+  } else {
+    icon3.classList.remove("complete");
+  }
+
+  tab4_validation = flag_15 && flag_16 && flag_17 && flag_18 && flag_19;
+  if (tab4_validation) {
+    icon4.classList.add("complete");
+  } else {
+    icon4.classList.remove("complete");
+  }
+
   // console.log(
   //   flag_1,
   //   flag_2,
@@ -504,9 +548,9 @@ function validateField(e) {
   } else if (
     e.target.getAttribute("data-incorporation-data") == "number-of-shares" &&
     (!regexShares.test(e.target.value) ||
-    !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
-    ) {
-      e.target.classList.add("invalid-field");
+      !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
+  ) {
+    e.target.classList.add("invalid-field");
   } else if (e.target.value == "") {
     e.target.classList.add("invalid-field");
   } else {
