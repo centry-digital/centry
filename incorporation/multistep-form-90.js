@@ -362,7 +362,7 @@ function validateInput() {
         regexShares.test(incorporationSummary.shareholders[shNo].shares) &&
         Math.round(incorporationSummary.shareholders[shNo].shares) > 0 &&
         Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000 &&
-        totalShares <= 1000
+        totalShares == 1000
       ) {
         flag_19 = true;
       } else {
@@ -403,7 +403,7 @@ function validateInput() {
         regexShares.test(incorporationSummary.shareholders[shNo].shares) &&
         Math.round(incorporationSummary.shareholders[shNo].shares) > 0 &&
         Math.round(incorporationSummary.shareholders[shNo].shares) <= 1000 &&
-        totalShares <= 1000
+        totalShares == 1000
       ) {
         flag_19 = true;
       } else {
