@@ -126,6 +126,7 @@ function addShareholderInputGroup() {
   shareholderTypeRadioInput2.setAttribute("required", "");
   shareholderTypeRadioSpan2.innerText = "Corporate";
   shareholderTypeRadioSpan2.setAttribute("for", "corporate-shareholder");
+  hiddenInput.name = "Shareholder-type";
   hiddenInput.setAttribute("type", "hidden");
   hiddenInput.setAttribute("data-incorporation-data", "shareholder-type-hidden");
   hiddenInput.setAttribute("value", "Individual");
