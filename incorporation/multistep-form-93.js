@@ -135,11 +135,11 @@ function updateButtons() {
     }
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
-    // incNextButton.addEventListener("click", getNextTab);
-    // incNextButton.style.cursor = "pointer";
-    // incNextButton.innerText = "Proceed to payment";
+    incNextButton.addEventListener("click", submitIncorporation);
+    incNextButton.style.cursor = "pointer";
+    incNextButton.innerText = "Proceed to payment";
     incNextButton.classList.add("hide");
-    incSubmitButton.classList.remove("hide");
+    // incSubmitButton.classList.remove("hide");
     incNextButtonError.classList.add("hide");
   } else {
     incNextButton.classList.remove("hide");
@@ -790,5 +790,60 @@ function getSummary() {
     shareholderGroupBody_shNo.appendChild(shareholderEmail_shNo);
     shareholderGroupBody_shNo.appendChild(shareholderPhone_shNo);
   }
+
 }
 getSummary();
+
+function submitIncorporation() {
+  // Prepare submission object
+  let incorporationObject = {};
+  incorporationObject.data = {};
+  incorporationObject.data.company_name = incorporationSummary.companyName;
+  incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
+  incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
+  incorporationObject.data.msic_codes = [];
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0]);
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1]);
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2]);
+  incorporationObject.data.company_email = incorporationSummary.companyEmail;
+  incorporationObject.data.company_phone = incorporationSummary.officeNumber;
+  incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
+  incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
+  incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
+  incorporationObject.data.company_state = incorporationSummary.businessAddressState;
+  incorporationObject.data.company_country = "Malaysia";
+  incorporationObject.data.company_directors = [];
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    let director = {};
+    director.name = incorporationSummary.directors[dirNo].name;
+    director.email = incorporationSummary.directors[dirNo].email;
+    director.phone = incorporationSummary.directors[dirNo].phone;
+    director.country = incorporationSummary.directors[dirNo].country;
+    incorporationObject.data.company_directors.push(director);
+  };
+  incorporationObject.data.company_shareholders = [];
+  for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+    let shareholder = {};
+    shareholder.type = incorporationSummary.shareholders[shNo].type;
+    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
+    shareholder.email = incorporationSummary.shareholders[shNo].email;
+    shareholder.phone = incorporationSummary.shareholders[shNo].phone;
+    shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+    incorporationObject.data.company_shareholders.push(shareholder);
+  };
+  
+  fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(incorporationObject),
+  })
+  .then(response => response.json())
+  .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
+  .catch((error) => {
+    console.error('Error: ', error);
+  });
+}
