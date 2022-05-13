@@ -1175,17 +1175,7 @@ let msic =
   { text: "99000 - Activities of extraterritorial organization and bodies" }
 ]
 
-let optionsMsic = msic.map(code => `<option value="${code.value}">${code.value}</option>`).join('\n');
-let lastMsicSelect, directorCountrySelect, directorCountrySelectLast;
-function mapDirectorCountrySelect() {
-  directorCountrySelect = document.querySelectorAll('select[data-select-type="director-country"]');
-  lastDirectorSelect = directorCountrySelect.length - 1;
-  directorCountrySelectLast = directorCountrySelect[lastDirectorSelect];
-  directorCountrySelectLast.innerHTML = options;
-}
-mapDirectorCountrySelect();
-
-function getMsicCodes() {
+// function getMsicCodes() {
 	// let request = new XMLHttpRequest();
 	// let url = new URL('https://api.centry.digital/api:8ppyfTOI/msic_code')
   // request.open('GET', url, true);
@@ -1210,9 +1200,9 @@ function getMsicCodes() {
 				}
 		  }
 		})
-	}
-	request.send();
+	// }
+	// request.send();
   
-(function() {
-	getMsicCodes();
-})();
+// (function() {
+// 	getMsicCodes();
+// })();
