@@ -5,6 +5,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
+let incSubmitButton = document.getElementById("inc-submit-button");
 let inputsValidity = false;
 let fieldsValidity = false;
 
@@ -103,6 +104,8 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incNextButton.classList.remove("hide");
+    incSubmitButton.classList.add("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
@@ -112,6 +115,8 @@ function updateButtons() {
     incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
+    incNextButton.classList.remove("hide");
+    incSubmitButton.classList.add("hide");
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
     if (inputsValidity) {
@@ -130,11 +135,15 @@ function updateButtons() {
     }
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
-    incNextButton.addEventListener("click", getNextTab);
-    incNextButton.style.cursor = "pointer";
-    incNextButton.innerText = "Proceed to payment";
+    // incNextButton.addEventListener("click", getNextTab);
+    // incNextButton.style.cursor = "pointer";
+    // incNextButton.innerText = "Proceed to payment";
+    incNextButton.classList.add("hide");
+    incSubmitButton.classList.remove("hide");
     incNextButtonError.classList.add("hide");
   } else {
+    incNextButton.classList.remove("hide");
+    incSubmitButton.classList.add("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
