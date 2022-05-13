@@ -8,6 +8,21 @@
     box-shadow: 0 0 0 1px #be123d;
 }
 
+.centry-shareholding-field:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.centry-text-field:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.centry-text-area:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
 .ss-main .ss-multi-selected .ss-add {
     margin-top: 0 !important;
     align-items: center;

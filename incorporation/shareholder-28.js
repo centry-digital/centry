@@ -138,7 +138,6 @@ function addShareholderInputGroup() {
   shareholderNameInd.setAttribute("data-incorporation-data", "individual-shareholder-name");
   shareholderNameInd.setAttribute("data-name", "Individual-shareholder-name");
   shareholderNameInd.setAttribute("maxlength", "256");
-  shareholderNameInd.setAttribute("required", "");
   shareholderNameInd.addEventListener("keyup", validateField);
   shareholderNameInd.addEventListener("keyup", updateButtons);
   
@@ -150,7 +149,6 @@ function addShareholderInputGroup() {
   shareholderNameCorp1.setAttribute("data-incorporation-data", "corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("data-name", "Corporate-shareholder-name");
   shareholderNameCorp1.setAttribute("maxlength", "256");
-  shareholderNameCorp1.setAttribute("required", "");
   shareholderNameCorp1.addEventListener("keyup", validateField);
   shareholderNameCorp1.addEventListener("keyup", updateButtons);
   
@@ -161,7 +159,6 @@ function addShareholderInputGroup() {
   shareholderNameCorp2.setAttribute("data-incorporation-data", "corporate-representative-name");
   shareholderNameCorp2.setAttribute("data-name", "Corporate-representative-name");
   shareholderNameCorp2.setAttribute("maxlength", "256");
-  shareholderNameCorp2.setAttribute("required", "");
   shareholderNameCorp2.addEventListener("keyup", validateField);
   shareholderNameCorp2.addEventListener("keyup", updateButtons);
   
