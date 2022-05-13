@@ -845,9 +845,12 @@ function submitIncorporation() {
     },
     body: JSON.stringify(incorporationObject),
   })
-  .then(response => response.json())
+  .then(response => {
+    response.json();
+    console.log(response);
+  })
   // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  .catch((error) => {
-    console.error('Error: ', error);
-  });
+  // .catch((error) => {
+  //   console.error('Error: ', error);
+  // });
 }
