@@ -138,7 +138,7 @@ function updateButtons() {
     incNextButton.addEventListener("click", submitIncorporation);
     incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
-    incNextButton.classList.add("hide");
+    // incNextButton.classList.add("hide");
     // incSubmitButton.classList.remove("hide");
     incNextButtonError.classList.add("hide");
   } else {
@@ -842,7 +842,7 @@ function submitIncorporation() {
     body: JSON.stringify(incorporationObject),
   })
   .then(response => response.json())
-  .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
+  // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
   .catch((error) => {
     console.error('Error: ', error);
   });
