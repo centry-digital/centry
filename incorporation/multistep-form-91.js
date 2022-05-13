@@ -153,9 +153,9 @@ let incorporationSideNavClickable = document.querySelectorAll(
 let incorporationSideNavUnclickable = document.querySelectorAll(
   "[data-incorporation-sidenav-unclickable]"
 );
-let incorporationSideNavIcon = document.querySelectorAll(
-  "[data-incorporation-sidenav-icon]"
-);
+// let incorporationSideNavIcon = document.querySelectorAll(
+//   "[data-incorporation-sidenav-icon]"
+// );
 for (const tab of incorporationSideNavClickable) {
   tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
@@ -169,10 +169,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-0";
         updateButtons();
         break;
@@ -183,10 +183,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-1";
         updateButtons();
         break;
@@ -197,10 +197,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-2";
         updateButtons();
         break;
@@ -211,10 +211,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-3";
         updateButtons();
         break;
@@ -225,10 +225,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
@@ -240,10 +240,10 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        for (const icon of incorporationSideNavIcon) {
-          icon.classList.remove("active");
-        }
-        incorporationSideNavIcon[n].classList.add("active");
+        // for (const icon of incorporationSideNavIcon) {
+        //   icon.classList.remove("active");
+        // }
+        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-5";
         updateButtons();
         break;
