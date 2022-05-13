@@ -838,6 +838,10 @@ function submitIncorporation() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Expose-Headers':'Content-Length,Content-Range',
     },
     body: JSON.stringify(incorporationObject),
   })
