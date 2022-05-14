@@ -795,6 +795,7 @@ function getSummary() {
 getSummary();
 
 function submitIncorporation() {
+  incNextButton.innerText = "Preparing payment page...";
   // Prepare submission object
   let incorporationObject = {};
   incorporationObject.data = {};
