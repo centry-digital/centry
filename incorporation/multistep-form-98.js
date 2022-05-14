@@ -836,36 +836,32 @@ function submitIncorporation() {
     incorporationObject.data.company_shareholders.push(shareholder);
   };
   
-  fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': '*',
-      'Access-Control-Allow-Headers': '*',
-      'Access-Control-Expose-Headers':'Content-Length,Content-Range',
-    },
-    body: JSON.stringify(incorporationObject),
-  })
-  .then(response => {
-    response.json();
-    console.log(response);
-  })
-  // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  .catch((error) => {
-    console.error('Error: ', error);
-  });
+  // fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //     'Access-Control-Allow-Methods': '*',
+  //     'Access-Control-Allow-Headers': '*',
+  //     'Access-Control-Expose-Headers':'Content-Length,Content-Range',
+  //   },
+  //   body: JSON.stringify(incorporationObject),
+  // })
+  // .then(response => {
+  //   response.json();
+  //   console.log(response);
+  // })
+  // // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
+  // .catch((error) => {
+  //   console.error('Error: ', error);
+  // });
 
-  fetch('https://api.centry.digital/api:o1cxyrSu/incorporation', {
+  fetch('https://api.centry.digital/api:incorporation/new_incorporation', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(incorporationObject),
-  })
-  .then(response => {
-    response.json();
-    console.log(response);
   })
   // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
   .catch((error) => {
