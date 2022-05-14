@@ -864,8 +864,7 @@ function submitIncorporation() {
     body: JSON.stringify(incorporationObject),
   })
   .then(response => response.json())
-  .then(data => console.log(data))
-  .then(data => console.log(data.payment.url))
+  .then(data => console.log(data, data.payment.url))
   // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
   .catch((error) => {
     console.error('Error: ', error);
