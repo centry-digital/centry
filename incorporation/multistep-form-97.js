@@ -798,13 +798,15 @@ function submitIncorporation() {
   // Prepare submission object
   let incorporationObject = {};
   incorporationObject.data = {};
+  incorporationObject.unique_id = document.getElementById("incorporation-id").value;
+  incorporationObject.status = "Submitted";
   incorporationObject.data.company_name = incorporationSummary.companyName;
   incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
   incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
   incorporationObject.data.msic_codes = [];
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0]);
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1]);
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2]);
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
   incorporationObject.data.company_email = incorporationSummary.companyEmail;
   incorporationObject.data.company_phone = incorporationSummary.officeNumber;
   incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
@@ -850,7 +852,23 @@ function submitIncorporation() {
     console.log(response);
   })
   // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  // .catch((error) => {
-  //   console.error('Error: ', error);
-  // });
+  .catch((error) => {
+    console.error('Error: ', error);
+  });
+
+  fetch('https://api.centry.digital/api:o1cxyrSu/incorporation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(incorporationObject),
+  })
+  .then(response => {
+    response.json();
+    console.log(response);
+  })
+  // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
+  .catch((error) => {
+    console.error('Error: ', error);
+  });
 }
