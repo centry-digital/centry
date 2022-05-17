@@ -8,6 +8,7 @@ let incPrevButton = document.getElementById("inc-prev-button");
 let incSubmitButton = document.getElementById("inc-submit-button");
 let inputsValidity = false;
 let fieldsValidity = false;
+let saveState = 0;
 
 // incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
@@ -883,6 +884,19 @@ function submitIncorporation() {
     .catch((error) => {
       console.error("Error: ", error);
     });
+}
+
+let saveSliderBtn = document.getElementById("save-slider-button");
+saveSliderBtn.addEventListener("click", openSaveSlider);
+
+function openSaveSlider() {
+  document.getElementById("inc-save-button-0").innerText = "Save";
+  document.getElementById("inc-save-button-1").innerText = "Save";
+  if (saveState == 0) {
+    document.getElementById("w-tabs-1-data-w-tab-0").click();
+  } else if (saveState == 1) {
+    document.getElementById("w-tabs-1-data-w-tab-2").click();
+  }
 }
 
 let emailSaveField = document.getElementById("new_save_email");
