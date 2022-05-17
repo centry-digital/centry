@@ -886,12 +886,23 @@ function submitIncorporation() {
     });
 }
 
+// Slider to save draft
 let saveSliderBtn = document.getElementById("save-slider-button");
 saveSliderBtn.addEventListener("click", openSaveSlider);
+
+let emailSaveField = document.getElementById("new_save_email");
+emailSaveField.addEventListener("keyup", validateSaveEmail);
 
 function openSaveSlider() {
   document.getElementById("inc-save-button-0").innerText = "Save";
   document.getElementById("inc-save-button-1").innerText = "Save";
+  
+  emailSaveField.value = "";
+  saveSliderBtn.removeEventListener("click", openSaveSlider);
+  saveSliderBtn.style.cursor = "not-allowed";
+  saveSliderBtn.classList.remove("button-2");
+  saveSliderBtn.classList.add("button-2-disabled");
+  
   if (saveState == 0) {
     document.getElementById("w-tabs-1-data-w-tab-0").click();
   } else if (saveState == 1) {
@@ -899,14 +910,19 @@ function openSaveSlider() {
   }
 }
 
-let emailSaveField = document.getElementById("new_save_email");
-emailSaveField.addEventListener("keyup", validateSaveEmail);
-
 function validateSaveEmail(e) {
   if (!regexEmail.test(e.target.value)) {
     e.target.classList.add("invalid-field");
+    saveSliderBtn.removeEventListener("click", openSaveSlider);
+    saveSliderBtn.style.cursor = "not-allowed";
+    saveSliderBtn.classList.remove("button-2");
+    saveSliderBtn.classList.add("button-2-disabled");
   } else {
     e.target.classList.remove("invalid-field");
+    saveSliderBtn.addEventListener("click", openSaveSlider);
+    saveSliderBtn.style.cursor = "pointer";
+    saveSliderBtn.classList.add("button-2");
+    saveSliderBtn.classList.remove("button-2-disabled");
   }
 }
 
