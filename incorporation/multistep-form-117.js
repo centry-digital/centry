@@ -898,6 +898,7 @@ function openSaveSlider() {
   document.getElementById("inc-save-button-1").innerText = "Save";
   
   emailSaveField.value = "";
+  emailSaveField.classList.remove("invalid-field");
   saveBtn0.removeEventListener("click", openSaveSlider);
   saveBtn0.style.cursor = "not-allowed";
   saveBtn0.classList.remove("button-2");
