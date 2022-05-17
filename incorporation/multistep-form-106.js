@@ -885,8 +885,9 @@ function submitIncorporation() {
     });
 }
 
-let email_save = document.getElementById("new_save_email").value;
-email_save.addEventListener("keyup", validateSaveEmail);
+let emailSaveField = document.getElementById("new_save_email");
+let emailSave = emailSaveField.value;
+emailSaveField.addEventListener("keyup", validateSaveEmail);
 function validateSaveEmail(e) {
   if (!regexEmail.test(e.target.value)) {
     e.target.classList.add("invalid-field");
@@ -903,7 +904,7 @@ function saveDraft_new() {
   incorporationObject.status = "Draft";
   incorporationObject.unique_id =
     document.getElementById("incorporation-id").value;
-  incorporationObject.email_save = email_save;
+  incorporationObject.email_save = emailSave;
   incorporationObject.first_save = true;
   incorporationObject.data.company_name = incorporationSummary.companyName;
   incorporationObject.data.name_explanation =
