@@ -899,7 +899,7 @@ function openSaveSlider() {
   
   emailSaveField.value = "";
   emailSaveField.classList.remove("invalid-field");
-  saveBtn0.removeEventListener("click", openSaveSlider);
+  saveBtn0.removeEventListener("click", saveDraft_new);
   saveBtn0.style.cursor = "not-allowed";
   saveBtn0.classList.remove("button-2");
   saveBtn0.classList.add("button-2-disabled");
