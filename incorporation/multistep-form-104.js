@@ -865,7 +865,87 @@ function submitIncorporation() {
     body: JSON.stringify(incorporationObject),
   })
   .then(response => response.json())
-  .then(data => window.location.href = data.payment.url)
+  .then(data => window.location.replace = data.payment.url)
+  .catch((error) => {
+    console.error('Error: ', error);
+  });
+}
+
+function saveDraft_new() {
+  saveBtn0.innerText = "Saving...";
+  // Prepare submission object
+  let email_save = document.getElementById("new_save_email");
+  let incorporationObject = {};
+  incorporationObject.data = {};
+  incorporationObject.status = "Draft";
+  incorporationObject.unique_id = document.getElementById("incorporation-id").value;
+  incorporationObject.email_save = email_save;
+  incorporationObject.first_save = true;
+  incorporationObject.data.company_name = incorporationSummary.companyName;
+  incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
+  incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
+  incorporationObject.data.msic_codes = [];
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
+  incorporationObject.data.company_email = incorporationSummary.companyEmail;
+  incorporationObject.data.company_phone = incorporationSummary.officeNumber;
+  incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
+  incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
+  incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
+  incorporationObject.data.company_state = incorporationSummary.businessAddressState;
+  incorporationObject.data.company_country = "Malaysia";
+  incorporationObject.data.company_directors = [];
+  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+    let director = {};
+    director.name = incorporationSummary.directors[dirNo].name;
+    director.email = incorporationSummary.directors[dirNo].email;
+    director.phone = incorporationSummary.directors[dirNo].phone;
+    director.country = incorporationSummary.directors[dirNo].country;
+    incorporationObject.data.company_directors.push(director);
+  };
+  incorporationObject.data.company_shareholders = [];
+  for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+    let shareholder = {};
+    shareholder.type = incorporationSummary.shareholders[shNo].type;
+    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
+    shareholder.email = incorporationSummary.shareholders[shNo].email;
+    shareholder.phone = incorporationSummary.shareholders[shNo].phone;
+    shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+    incorporationObject.data.company_shareholders.push(shareholder);
+  };
+  
+  // fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //     'Access-Control-Allow-Methods': '*',
+  //     'Access-Control-Allow-Headers': '*',
+  //     'Access-Control-Expose-Headers':'Content-Length,Content-Range',
+  //   },
+  //   body: JSON.stringify(incorporationObject),
+  // })
+  // .then(response => {
+  //   response.json();
+  //   console.log(response);
+  // })
+  // // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
+  // .catch((error) => {
+  //   console.error('Error: ', error);
+  // });
+
+  // fetch('https://api.centry.digital/api:incorporation/save_draft', {
+  fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(incorporationObject),
+  })
+  // .then(response => response.json())
   .catch((error) => {
     console.error('Error: ', error);
   });
