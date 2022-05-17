@@ -898,10 +898,10 @@ function openSaveSlider() {
   document.getElementById("inc-save-button-1").innerText = "Save";
   
   emailSaveField.value = "";
-  saveSliderBtn.removeEventListener("click", openSaveSlider);
-  saveSliderBtn.style.cursor = "not-allowed";
-  saveSliderBtn.classList.remove("button-2");
-  saveSliderBtn.classList.add("button-2-disabled");
+  saveBtn0.removeEventListener("click", openSaveSlider);
+  saveBtn0.style.cursor = "not-allowed";
+  saveBtn0.classList.remove("button-2");
+  saveBtn0.classList.add("button-2-disabled");
   
   if (saveState == 0) {
     document.getElementById("w-tabs-1-data-w-tab-0").click();
