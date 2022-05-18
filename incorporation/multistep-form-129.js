@@ -8,6 +8,13 @@ let incPrevButton = document.getElementById("inc-prev-button");
 let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
+let incorporationForm = document.querySelector('[name="wf-form-Incorporation-Form"]');
+
+incorporationForm.addEventListener("keypress", function(event) {
+  if (event.key == "Enter") {
+    event.preventDefault();
+	}
+})
 
 incPrevButton.addEventListener("click", getPrevTab);
 
@@ -820,6 +827,11 @@ let saveForm = document.getElementById("wf-form-Save-Email");
 let saveBtn0 = document.getElementById("inc-save-button-0");
 let uniqueCodeValue = document.getElementById("incorporation-id").value;
 let uniqueCodeBoxes;
+let saveBtn1 = document.getElementById("inc-save-button-1");
+saveBtn1.addEventListener("click", function() {
+	saveDraft_existing();
+  document.getElementById("w-tabs-1-data-w-tab-3").click()
+});
 
 saveSliderBtn.addEventListener("click", openSaveSlider);
 saveSliderClose.style.cursor = "pointer";
