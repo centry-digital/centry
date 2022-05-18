@@ -82,6 +82,7 @@ function getPrevTab() {
 
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    incNextButton.removeEventListener("click", submitIncorporation);
     incNextButton.classList.remove("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
@@ -91,6 +92,7 @@ function updateButtons() {
     incPrevButton.classList.add("hide");
     incNextButtonError.classList.add("hide");
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
+    incNextButton.removeEventListener("click", submitIncorporation);
     validateInput();
     incNextButton.classList.remove("hide");
     incNextButton.innerText = "Proceed to summary";
@@ -114,8 +116,10 @@ function updateButtons() {
     incNextButton.addEventListener("click", submitIncorporation);
     incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
+    incPrevButton.classList.remove("hide");
     incNextButtonError.classList.add("hide");
   } else {
+    incNextButton.removeEventListener("click", submitIncorporation);
     incNextButton.classList.remove("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
