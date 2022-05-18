@@ -9,7 +9,6 @@ let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
 
-// incNextButton.addEventListener("click", getNextTab);
 incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
@@ -75,8 +74,6 @@ function getPrevTab() {
   prevTab.click();
   currentSideNav.classList.remove("active");
   prevSideNav.classList.add("active");
-  // currentSideIcon.classList.remove("active");
-  // prevSideIcon.classList.add("active");
   updateButtons();
 }
 
@@ -198,7 +195,6 @@ for (const tab of incorporationSideNavClickable) {
       case "5":
         n = 5;
         document.getElementById("w-tabs-0-data-w-tab-5").click();
-        // getSummary();
         for (const t of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
@@ -265,7 +261,6 @@ function validateInput() {
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
     if (regexEmail.test(incorporationSummary.directors[dirNo].email)) {
-      // if (incorporationSummary.directors[dirNo].email != "") {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -303,7 +298,6 @@ function validateInput() {
       flag_16 = true;
       flag_17 = false;
       if (regexEmail.test(incorporationSummary.shareholders[shNo].email)) {
-        // if (incorporationSummary.shareholders[shNo].email != "") {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -810,8 +804,7 @@ function submitIncorporation() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      (window.location.replace = data.payment.url)
+      window.location.href = data.payment.url;
     })
     .catch((error) => {
       console.error("Error: ", error);
