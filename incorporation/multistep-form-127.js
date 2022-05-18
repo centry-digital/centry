@@ -815,7 +815,31 @@ function submitIncorporation() {
 
 // Slider to save draft
 let saveSliderBtn = document.getElementById("save-slider-button");
+let saveSliderClose = document.getElementById("save-slider-close");
+let saveForm = document.getElementById("wf-form-Save-Email");
+let saveBtn0 = document.getElementById("inc-save-button-0");
+let uniqueCodeValue = document.getElementById("incorporation-id").value;
+let uniqueCodeBoxes;
+
 saveSliderBtn.addEventListener("click", openSaveSlider);
+saveSliderClose.style.cursor = "pointer";
+saveForm.addEventListener("keypress", function(event) {
+  if (event.key == "Enter") {
+    event.preventDefault();
+		saveBtn0.click();
+	}
+})
+
+function saveDraft() {
+//	event.preventDefault();
+  uniqueCodeBoxes = document.querySelectorAll('[data-incorporation-data="unique-code-box"]');
+  for (const box of uniqueCodeBoxes) {
+    box.innerHTML = uniqueCodeValue;
+  };
+  saveDraft_new();
+  document.getElementById("w-tabs-1-data-w-tab-1").click();
+  saveState = 1;
+}
 
 let emailSaveField = document.getElementById("new_save_email");
 emailSaveField.addEventListener("keyup", validateSaveEmail);
