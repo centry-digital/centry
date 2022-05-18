@@ -353,12 +353,13 @@ calculateShares();
 function updateShares() {
   sharesPercent = document.querySelectorAll('input[data-shareholding="percent"]');
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
+  totalShares = 0;
+  totalSharesArray = [];
+  
   for (let i = 0; i < sharesPercent.length; i++) {
     let percentage = sharesPercent[i].value;
     let percentToNumber = Math.round(percentage);
     
-    totalShares = 0;
-    totalSharesArray = [];
     totalSharesArray[i] = percentToNumber;
     for (let s = 0; s < totalSharesArray.length; s++) {
       totalShares += totalSharesArray[s]
