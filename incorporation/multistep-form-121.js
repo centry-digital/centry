@@ -17,43 +17,31 @@ function getNextTab() {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-0");
     nextSideNav = document.getElementById("inc-sidenav-1");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-0");
-    // nextSideIcon = document.getElementById("inc-sidenav-icon-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-1");
     nextSideNav = document.getElementById("inc-sidenav-2");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-1");
-    // nextSideIcon = document.getElementById("inc-sidenav-icon-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-2");
     nextSideNav = document.getElementById("inc-sidenav-3");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-2");
-    // nextSideIcon = document.getElementById("inc-sidenav-icon-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-3");
     nextSideNav = document.getElementById("inc-sidenav-4");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-3");
-    // nextSideIcon = document.getElementById("inc-sidenav-icon-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-5");
     currentSideNav = document.getElementById("inc-sidenav-4");
     nextSideNav = document.getElementById("inc-sidenav-5");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-4");
-    // nextSideIcon = document.getElementById("inc-sidenav-icon-5");
     activeTabId = "w-tabs-0-data-w-tab-5";
   }
   nextTab.click();
   currentSideNav.classList.remove("active");
   nextSideNav.classList.add("active");
-  // currentSideIcon.classList.remove("active");
-  // nextSideIcon.classList.add("active");
   updateButtons();
 }
 
@@ -62,36 +50,26 @@ function getPrevTab() {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-5");
     prevSideNav = document.getElementById("inc-sidenav-4");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-5");
-    // prevSideIcon = document.getElementById("inc-sidenav-icon-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-4");
     prevSideNav = document.getElementById("inc-sidenav-3");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-4");
-    // prevSideIcon = document.getElementById("inc-sidenav-icon-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-3");
     prevSideNav = document.getElementById("inc-sidenav-2");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-3");
-    // prevSideIcon = document.getElementById("inc-sidenav-icon-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-2");
     prevSideNav = document.getElementById("inc-sidenav-1");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-2");
-    // prevSideIcon = document.getElementById("inc-sidenav-icon-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-0");
     currentSideNav = document.getElementById("inc-sidenav-1");
     prevSideNav = document.getElementById("inc-sidenav-0");
-    // currentSideIcon = document.getElementById("inc-sidenav-icon-1");
-    // prevSideIcon = document.getElementById("inc-sidenav-icon-0");
     activeTabId = "w-tabs-0-data-w-tab-0";
   }
   prevTab.click();
@@ -105,7 +83,6 @@ function getPrevTab() {
 function updateButtons() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
     incNextButton.classList.remove("hide");
-    incSubmitButton.classList.add("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
@@ -116,7 +93,6 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     validateInput();
     incNextButton.classList.remove("hide");
-    incSubmitButton.classList.add("hide");
     incNextButton.innerText = "Proceed to summary";
     incPrevButton.classList.remove("hide");
     if (inputsValidity) {
@@ -138,12 +114,9 @@ function updateButtons() {
     incNextButton.addEventListener("click", submitIncorporation);
     incNextButton.style.cursor = "pointer";
     incNextButton.innerText = "Proceed to payment";
-    // incNextButton.classList.add("hide");
-    // incSubmitButton.classList.remove("hide");
     incNextButtonError.classList.add("hide");
   } else {
     incNextButton.classList.remove("hide");
-    incSubmitButton.classList.add("hide");
     incNextButton.addEventListener("click", getNextTab);
     incNextButton.style.cursor = "pointer";
     incNextButton.classList.remove("button-2-disabled");
@@ -162,9 +135,6 @@ let incorporationSideNavClickable = document.querySelectorAll(
 let incorporationSideNavUnclickable = document.querySelectorAll(
   "[data-incorporation-sidenav-unclickable]"
 );
-// let incorporationSideNavIcon = document.querySelectorAll(
-//   "[data-incorporation-sidenav-icon]"
-// );
 for (const tab of incorporationSideNavClickable) {
   tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
@@ -178,10 +148,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-0";
         updateButtons();
         break;
@@ -192,10 +158,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-1";
         updateButtons();
         break;
@@ -206,10 +168,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-2";
         updateButtons();
         break;
@@ -220,10 +178,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-3";
         updateButtons();
         break;
@@ -234,10 +188,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-4";
         updateButtons();
         break;
@@ -249,10 +199,6 @@ for (const tab of incorporationSideNavClickable) {
           t.classList.remove("active");
         }
         tab.classList.add("active");
-        // for (const icon of incorporationSideNavIcon) {
-        //   icon.classList.remove("active");
-        // }
-        // incorporationSideNavIcon[n].classList.add("active");
         activeTabId = "w-tabs-0-data-w-tab-5";
         updateButtons();
         break;
@@ -546,7 +492,6 @@ function validateField(e) {
     !regexPhone.test(e.target.value)
   ) {
     e.target.classList.add("invalid-field");
-    // document.getElementById("inc-sidenav-5").classList.add("hide");
   } else if (
     (e.target.getAttribute("data-incorporation-data") == "company-email" ||
       e.target.getAttribute("data-incorporation-data") == "director-email" ||
@@ -794,6 +739,7 @@ getSummary();
 
 function submitIncorporation() {
   incNextButton.innerText = "Preparing payment page...";
+
   // Prepare submission object
   let incorporationObject = {};
   incorporationObject.data = {};
@@ -850,26 +796,6 @@ function submitIncorporation() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
-
-  // fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Methods': '*',
-  //     'Access-Control-Allow-Headers': '*',
-  //     'Access-Control-Expose-Headers':'Content-Length,Content-Range',
-  //   },
-  //   body: JSON.stringify(incorporationObject),
-  // })
-  // .then(response => {
-  //   response.json();
-  //   console.log(response);
-  // })
-  // // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  // .catch((error) => {
-  //   console.error('Error: ', error);
-  // });
 
   fetch("https://api.centry.digital/api:incorporation/new_incorporation", {
     method: "POST",
@@ -987,35 +913,13 @@ function saveDraft_new() {
     incorporationObject.data.company_shareholders.push(shareholder);
   }
 
-  // fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Methods': '*',
-  //     'Access-Control-Allow-Headers': '*',
-  //     'Access-Control-Expose-Headers':'Content-Length,Content-Range',
-  //   },
-  //   body: JSON.stringify(incorporationObject),
-  // })
-  // .then(response => {
-  //   response.json();
-  //   console.log(response);
-  // })
-  // // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  // .catch((error) => {
-  //   console.error('Error: ', error);
-  // });
-
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
-  // fetch("https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(incorporationObject),
   })
-    // .then(response => response.json())
     .catch((error) => {
       console.error("Error: ", error);
     });
@@ -1023,6 +927,7 @@ function saveDraft_new() {
 
 function saveDraft_existing() {
   saveBtn1.innerText = "Saving...";
+  
   // Prepare submission object
   let incorporationObject = {};
   incorporationObject.data = {};
@@ -1081,35 +986,13 @@ function saveDraft_existing() {
     incorporationObject.data.company_shareholders.push(shareholder);
   }
 
-  // fetch('https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Methods': '*',
-  //     'Access-Control-Allow-Headers': '*',
-  //     'Access-Control-Expose-Headers':'Content-Length,Content-Range',
-  //   },
-  //   body: JSON.stringify(incorporationObject),
-  // })
-  // .then(response => {
-  //   response.json();
-  //   console.log(response);
-  // })
-  // // .then(window.location.href = "https://buy.stripe.com/test_00g3d54IO8Bl3PW3cd")
-  // .catch((error) => {
-  //   console.error('Error: ', error);
-  // });
-
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
-  // fetch("https://webhook.site/c8c0c7d1-2d39-4bb0-9f2f-3ef291eda0c1", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(incorporationObject),
   })
-    // .then(response => response.json())
     .catch((error) => {
       console.error("Error: ", error);
     });
