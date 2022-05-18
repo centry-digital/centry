@@ -5,7 +5,6 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
-let incSubmitButton = document.getElementById("inc-submit-button");
 let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
