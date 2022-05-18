@@ -805,7 +805,10 @@ function submitIncorporation() {
     body: JSON.stringify(incorporationObject),
   })
     .then((response) => response.json())
-    .then((data) => (window.location.replace = data.payment.url))
+    .then((data) => {
+      console.log(data);
+      (window.location.replace = data.payment.url)
+    })
     .catch((error) => {
       console.error("Error: ", error);
     });
