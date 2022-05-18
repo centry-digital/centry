@@ -38,7 +38,9 @@ function getNextTab() {
     nextSideNav = document.getElementById("inc-sidenav-5");
     activeTabId = "w-tabs-0-data-w-tab-5";
   }
-  nextTab.click();
+  if (activeTabId != "w-tabs-0-data-w-tab-5") {
+    nextTab.click();
+  }
   currentSideNav.classList.remove("active");
   nextSideNav.classList.add("active");
   updateButtons();
