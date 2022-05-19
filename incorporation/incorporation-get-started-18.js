@@ -7,6 +7,7 @@ let retrieveBtn = document.getElementById("inc-retrieve-data");
 let retrieveLoadingBtn = document.getElementById("inc-retrieve-data-loading");
 let continueIncorporatingBtn = document.getElementById("inc-continue-incorporating");
 let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-code-box"]');
+let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
 let retrievedData;
 
@@ -93,36 +94,36 @@ function getNextTab() {
   }
 }
 
-function validateCapitaliseCode() {
-  let uniqueCode = uniqueCodeInput.value;
-  uniqueCodeInput.value = uniqueCode.toUpperCase();
+// function validateCapitaliseCode() {
+//   let uniqueCode = uniqueCodeInput.value;
+//   uniqueCodeInput.value = uniqueCode.toUpperCase();
 
-  if (regexUniqueCode.test(uniqueCode)) {
-    uniqueCodeInput.classList.remove("invalid-field");
-    uniqueCodeFlag = true;
-  } else {
-    uniqueCodeInput.classList.add("invalid-field");
-    uniqueCodeFlag = false;
-  }
-}
+//   if (regexUniqueCode.test(uniqueCode)) {
+//     uniqueCodeInput.classList.remove("invalid-field");
+//     uniqueCodeFlag = true;
+//   } else {
+//     uniqueCodeInput.classList.add("invalid-field");
+//     uniqueCodeFlag = false;
+//   }
+// }
 
-function validateEmail() {
-  let email = retrieveEmail.value;
+// function validateEmail() {
+//   let email = retrieveEmail.value;
   
-  if (regexEmail.text(email)) {
-    retrieveEmail.classList.remove("invalid-field");
-    retrieveEmailFlag = true;
-  } else {
-    retrieveEmail.classList.add("invalid-field");
-    retrieveEmailFlag = false;
-  }
-}
+//   if (regexEmail.test(email)) {
+//     retrieveEmail.classList.remove("invalid-field");
+//     retrieveEmailFlag = true;
+//   } else {
+//     retrieveEmail.classList.add("invalid-field");
+//     retrieveEmailFlag = false;
+//   }
+// }
 
 function validateInputs() {
   // Validate email
   let email = retrieveEmail.value;
   
-  if (regexEmail.text(email)) {
+  if (regexEmail.test(email)) {
     retrieveEmail.classList.remove("invalid-field");
     retrieveEmailFlag = true;
   } else {
