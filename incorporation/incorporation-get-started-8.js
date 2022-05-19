@@ -38,6 +38,7 @@ function getNextTab() {
     continueIncorporatingBtn.classList.remove("hide");
   } else if (retrievedData.status == "Paid") {
     continueIncorporatingBtn.classList.add("hide");
+    icon0.classList.remove("in-progress");
     icon0.classList.add("complete");
     icon1.classList.add("in-progress");
     indicator0.classList.add("complete");
@@ -46,7 +47,9 @@ function getNextTab() {
     status1.classList.add("in-progress");
   } else if (retrievedData.status == "KYC Complete") {
     continueIncorporatingBtn.classList.add("hide");
+    icon0.classList.remove("in-progress");
     icon0.classList.add("complete");
+    icon1.classList.remove("in-progress");
     icon1.classList.add("complete");
     icon2.classList.add("in-progress");
     indicator0.classList.add("complete");
