@@ -60,21 +60,22 @@ function getNextTab() {
     status2.classList.add("in-progress");
   }
 
-  function validateCapitalise() {
-    let uniqueCode = uniqueCodeInput.value;
-    uniqueCodeInput.value = uniqueCode.toUpperCase();
+}
 
-    if (regexUniqueCode.test(uniqueCode)) {
-      uniqueCodeInput.classList.remove("invalid-field");
-      retrieveBtn.addEventListener("click", getNextTab);
-      retrieveBtn.classList.remove("disabled");
-      retrieveBtn.style.cursor = "pointer";
-    } else {
-      uniqueCodeInput.classList.add("invalid-field");
-      retrieveBtn.removeEventListener("click", getNextTab);
-      retrieveBtn.classList.add("disabled");
-      retrieveBtn.style.cursor = "not-allowed";
-    }
+function validateCapitalise() {
+  let uniqueCode = uniqueCodeInput.value;
+  uniqueCodeInput.value = uniqueCode.toUpperCase();
+
+  if (regexUniqueCode.test(uniqueCode)) {
+    uniqueCodeInput.classList.remove("invalid-field");
+    retrieveBtn.addEventListener("click", getNextTab);
+    retrieveBtn.classList.remove("disabled");
+    retrieveBtn.style.cursor = "pointer";
+  } else {
+    uniqueCodeInput.classList.add("invalid-field");
+    retrieveBtn.removeEventListener("click", getNextTab);
+    retrieveBtn.classList.add("disabled");
+    retrieveBtn.style.cursor = "not-allowed";
   }
 }
 
