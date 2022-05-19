@@ -19,6 +19,7 @@ retrieveForm.addEventListener("keypress", function (event) {
 });
 
 function getNextTab() {
+  retrievedData = JSON.parse(sessionStorage.getItem("incorporation-data"));
   document.getElementById("w-tabs-0-data-w-tab-1").click();
   uniqueCodeBox.innerText = uniqueCodeInput.value;
 
@@ -33,9 +34,9 @@ function getNextTab() {
   let status1 = document.getElementById("get-started-status-1");
   let status2 = document.getElementById("get-started-status-2");
 
-  if (data.status == "Draft") {
+  if (retrievedData.status == "Draft") {
     continueIncorporatingBtn.remove("hide");
-  } else if (data.status == "Paid") {
+  } else if (retrievedData.status == "Paid") {
     continueIncorporatingBtn.add("hide");
     icon0.classList.add("complete");
     icon1.classList.add("in-progress");
@@ -43,7 +44,7 @@ function getNextTab() {
     indicator1.classList.add("in-progress");
     status0.classList.add("complete");
     status1.classList.add("in-progress");
-  } else if (data.status == "KYC Complete") {
+  } else if (retrievedData.status == "KYC Complete") {
     continueIncorporatingBtn.add("hide");
     icon0.classList.add("complete");
     icon1.classList.add("complete");
