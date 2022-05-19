@@ -1,13 +1,17 @@
 let retrieveForm = document.getElementById("wf-form-Incorporation-Retrieval");
+let retrieveEmail = document.getElementById("retrieve-email");
+let retrieveEmailFlag = false;
+let uniqueCodeInput = document.getElementById("unique-code-input");
+let uniqueCodeFlag = false;
 let retrieveBtn = document.getElementById("inc-retrieve-data");
 let retrieveLoadingBtn = document.getElementById("inc-retrieve-data-loading");
 let continueIncorporatingBtn = document.getElementById("inc-continue-incorporating");
-let uniqueCodeInput = document.getElementById("unique-code-input");
 let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-code-box"]');
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
 let retrievedData;
 
-uniqueCodeInput.addEventListener("keyup", validateCapitalise);
+retrieveEmail.addEventListener("keyup", validateInputs);
+uniqueCodeInput.addEventListener("keyup", validateInputs);
 continueIncorporatingBtn.addEventListener("click", continueIncorporating);
 
 retrieveBtn.innerHTML =
@@ -89,17 +93,61 @@ function getNextTab() {
   }
 }
 
-function validateCapitalise() {
+function validateCapitaliseCode() {
   let uniqueCode = uniqueCodeInput.value;
   uniqueCodeInput.value = uniqueCode.toUpperCase();
 
   if (regexUniqueCode.test(uniqueCode)) {
     uniqueCodeInput.classList.remove("invalid-field");
+    uniqueCodeFlag = true;
+  } else {
+    uniqueCodeInput.classList.add("invalid-field");
+    uniqueCodeFlag = false;
+  }
+}
+
+function validateEmail() {
+  let email = retrieveEmail.value;
+  
+  if (regexEmail.text(email)) {
+    retrieveEmail.classList.remove("invalid-field");
+    retrieveEmailFlag = true;
+  } else {
+    retrieveEmail.classList.add("invalid-field");
+    retrieveEmailFlag = false;
+  }
+}
+
+function validateInputs() {
+  // Validate email
+  let email = retrieveEmail.value;
+  
+  if (regexEmail.text(email)) {
+    retrieveEmail.classList.remove("invalid-field");
+    retrieveEmailFlag = true;
+  } else {
+    retrieveEmail.classList.add("invalid-field");
+    retrieveEmailFlag = false;
+  }
+  
+  // Validate unique code
+  let uniqueCode = uniqueCodeInput.value;
+  uniqueCodeInput.value = uniqueCode.toUpperCase();
+
+  if (regexUniqueCode.test(uniqueCode)) {
+    uniqueCodeInput.classList.remove("invalid-field");
+    uniqueCodeFlag = true;
+  } else {
+    uniqueCodeInput.classList.add("invalid-field");
+    uniqueCodeFlag = false;
+  }
+  
+  
+  if (retrieveEmailFlag && uniqueCodeFlag) {
     retrieveBtn.addEventListener("click", getIncorporationData);
     retrieveBtn.classList.remove("disabled");
     retrieveBtn.style.cursor = "pointer";
   } else {
-    uniqueCodeInput.classList.add("invalid-field");
     retrieveBtn.removeEventListener("click", getIncorporationData);
     retrieveBtn.classList.add("disabled");
     retrieveBtn.style.cursor = "not-allowed";
@@ -113,14 +161,16 @@ function continueIncorporating() {
 async function getIncorporationData() {
   retrieveBtn.classList.add("hide");
   retrieveLoadingBtn.classList.remove("hide");
+  let retrieveEmailValue = retrieveEmail.value;
   let uniqueCode = uniqueCodeInput.value;
+  let retrievalObject = { email: retrieveEmailValue }
   try {
-    let response = await fetch(
-      `https://api.centry.digital/api:incorporation/incorporation/${uniqueCode}`,
+    let response = await fetch(`https://api.centry.digital/api:incorporation/incorporation/${uniqueCode}`,
       {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(retrievalObject),
       }
     );
     let data = await response.json();
