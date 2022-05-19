@@ -230,6 +230,7 @@ let icon1 = document.getElementById("sidenav-icon-1");
 let icon2 = document.getElementById("sidenav-icon-2");
 let icon3 = document.getElementById("sidenav-icon-3");
 let icon4 = document.getElementById("sidenav-icon-4");
+let director_country_error = document.getElementById("director_country_error");
 function validateInput() {
   getSummary();
 
@@ -427,6 +428,8 @@ function validateInput() {
     icon3.classList.remove("complete");
   }
 
+  (!flag_14) ? director_country_error.classList.remove("hide") : director_country_error.classList.add("hide") ;
+
   tab4_validation = flag_15 && flag_16 && flag_17 && flag_18 && flag_19;
   if (tab4_validation) {
     icon4.classList.add("complete");
@@ -485,6 +488,9 @@ for (let i = 0; i < inputFields.length; i++) {
 document
   .querySelector('[data-incorporation-data="company-name-explanation"]')
   .removeEventListener("keyup", validateField);
+document
+  .querySelectorAll('[data-incorporation-data="director-country"]')
+  .addEventListener("change", validateField);
 
 function validateField(e) {
   validateInput();
