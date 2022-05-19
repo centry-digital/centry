@@ -146,6 +146,7 @@ async function getIncorporationData() {
   try {
     let response = await fetch(`https://api.centry.digital/api:incorporation/incorporation/${uniqueCode}`,
       {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
