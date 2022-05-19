@@ -753,6 +753,7 @@ function submitIncorporation() {
   incorporationObject.unique_id =
     document.getElementById("incorporation-id").value;
   incorporationObject.status = "Submitted";
+  incorporationObject.first_save = false;
   incorporationObject.data.company_name = incorporationSummary.companyName;
   incorporationObject.data.name_explanation =
     incorporationSummary.companyNameExplanation;

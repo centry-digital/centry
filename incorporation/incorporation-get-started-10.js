@@ -33,10 +33,15 @@ function getNextTab() {
   let status0 = document.getElementById("get-started-status-0");
   let status1 = document.getElementById("get-started-status-1");
   let status2 = document.getElementById("get-started-status-2");
+  let header0 = document.getElementById("get-started-header-0");
 
   if (retrievedData.status == "Draft") {
     continueIncorporatingBtn.classList.remove("hide");
     status0.innerText = "In progress";
+  } else if (retrievedData.status == "Submitted") {
+    continueIncorporatingBtn.classList.remove("hide");
+    status0.innerText = "Pending payment";
+    header0.innerText = "Pending payment"
   } else if (retrievedData.status == "Paid") {
     continueIncorporatingBtn.classList.add("hide");
     icon0.classList.remove("in-progress");
