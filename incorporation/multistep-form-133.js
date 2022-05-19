@@ -485,12 +485,10 @@ let inputFields = document.querySelectorAll("[data-incorporation-data]");
 for (let i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("keyup", validateField);
 }
-document
-  .querySelector('[data-incorporation-data="company-name-explanation"]')
-  .removeEventListener("keyup", validateField);
-document
-  .querySelectorAll('[data-incorporation-data="director-country"]')
-  .addEventListener("change", validateField);
+document.querySelector('[data-incorporation-data="company-name-explanation"]').removeEventListener("keyup", validateField);
+for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
+  countrySelect.addEventListener("change", validateField);
+}
 
 function validateField(e) {
   validateInput();
@@ -525,6 +523,7 @@ function validateField(e) {
 //Summary
 let incorporationSummary = {};
 incorporationSummary.msicCodes = ["-", "-", "-"];
+
 function getSummary() {
   incorporationSummary.directors = [];
   incorporationSummary.shareholders = [];
