@@ -29,6 +29,7 @@ let status1 = document.getElementById("get-started-status-1");
 let status2 = document.getElementById("get-started-status-2");
 
 if (data.status == "Paid") {
+ continueIncorporatingBtn.add("hide");
  icon0.classList.add("complete");
  icon1.classList.add("in-progress");
  indicator0.classList.add("complete");
