@@ -158,10 +158,11 @@ async function getIncorporationData() {
       document.getElementById("inc-invalid-code").classList.add("hide");
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       console.log(sessionStorage);
-      // window.location.href = "https://centry-digital.webflow.io/incorporation/edit";
       getNextTab();
     } else {
       document.getElementById("inc-invalid-code").classList.remove("hide");
+      retrieveBtn.classList.remove("hide");
+      retrieveLoadingBtn.classList.add("hide");
     }
   } catch (error) {
     console.error("Unique code not found", error);
