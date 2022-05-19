@@ -157,7 +157,6 @@ async function getIncorporationData() {
     if (response.ok) {
       document.getElementById("inc-invalid-code").classList.add("hide");
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
-      console.log(sessionStorage);
       getNextTab();
     } else {
       document.getElementById("inc-invalid-code").classList.remove("hide");
