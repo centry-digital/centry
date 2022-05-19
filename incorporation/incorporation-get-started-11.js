@@ -40,6 +40,7 @@ function getNextTab() {
     status0.innerText = "In progress";
   } else if (retrievedData.status == "Submitted") {
     continueIncorporatingBtn.classList.remove("hide");
+    continueIncorporatingBtn.innerText = "Review & pay";
     status0.innerText = "Pending payment";
     header0.innerText = "Pending payment"
   } else if (retrievedData.status == "Paid") {
