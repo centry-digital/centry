@@ -164,6 +164,9 @@ async function getIncorporationData() {
       retrieveLoadingBtn.classList.add("hide");
     }
   } catch (error) {
+    document.getElementById("inc-invalid-code").classList.remove("hide");
+    retrieveBtn.classList.remove("hide");
+    retrieveLoadingBtn.classList.add("hide");
     console.error("Unique code not found", error);
   }
 }
