@@ -11,8 +11,8 @@ let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
 let retrievedData;
 
-retrieveEmail.addEventListener("keyup", validateInputs);
-uniqueCodeInput.addEventListener("keyup", validateInputs);
+retrieveEmail.addEventListener("keyup", validateEmail);
+uniqueCodeInput.addEventListener("keyup", validateCapitaliseCode);
 continueIncorporatingBtn.addEventListener("click", continueIncorporating);
 
 retrieveBtn.innerHTML =
@@ -94,44 +94,7 @@ function getNextTab() {
   }
 }
 
-// function validateCapitaliseCode() {
-//   let uniqueCode = uniqueCodeInput.value;
-//   uniqueCodeInput.value = uniqueCode.toUpperCase();
-
-//   if (regexUniqueCode.test(uniqueCode)) {
-//     uniqueCodeInput.classList.remove("invalid-field");
-//     uniqueCodeFlag = true;
-//   } else {
-//     uniqueCodeInput.classList.add("invalid-field");
-//     uniqueCodeFlag = false;
-//   }
-// }
-
-// function validateEmail() {
-//   let email = retrieveEmail.value;
-  
-//   if (regexEmail.test(email)) {
-//     retrieveEmail.classList.remove("invalid-field");
-//     retrieveEmailFlag = true;
-//   } else {
-//     retrieveEmail.classList.add("invalid-field");
-//     retrieveEmailFlag = false;
-//   }
-// }
-
-function validateInputs() {
-  // Validate email
-  let email = retrieveEmail.value;
-  
-  if (regexEmail.test(email)) {
-    retrieveEmail.classList.remove("invalid-field");
-    retrieveEmailFlag = true;
-  } else {
-    retrieveEmail.classList.add("invalid-field");
-    retrieveEmailFlag = false;
-  }
-  
-  // Validate unique code
+function validateCapitaliseCode() {
   let uniqueCode = uniqueCodeInput.value;
   uniqueCodeInput.value = uniqueCode.toUpperCase();
 
@@ -142,8 +105,23 @@ function validateInputs() {
     uniqueCodeInput.classList.add("invalid-field");
     uniqueCodeFlag = false;
   }
+  validateInputs();
+}
+
+function validateEmail() {
+  let email = retrieveEmail.value;
   
-  
+  if (regexEmail.test(email)) {
+    retrieveEmail.classList.remove("invalid-field");
+    retrieveEmailFlag = true;
+  } else {
+    retrieveEmail.classList.add("invalid-field");
+    retrieveEmailFlag = false;
+  }
+  validateInputs();
+}
+
+function validateInputs() {
   if (retrieveEmailFlag && uniqueCodeFlag) {
     retrieveBtn.addEventListener("click", getIncorporationData);
     retrieveBtn.classList.remove("disabled");
