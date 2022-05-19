@@ -1,14 +1,10 @@
 let retrieveForm = document.getElementById("wf-form-Incorporation-Retrieval");
 let retrieveBtn = document.getElementById("inc-retrieve-data");
-let continueIncorporatingBtn = document.getElementById(
-  "inc-continue-incorporating"
-);
+let continueIncorporatingBtn = document.getElementById("inc-continue-incorporating");
 let uniqueCodeInput = document.getElementById("unique-code-input");
-let uniqueCodeBox = document.querySelector(
-  '[data-incorporation-data="unique-code-box"]'
-);
+let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-code-box"]');
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
-let data;
+let retrievedData;
 
 uniqueCodeInput.addEventListener("keyup", validateCapitalise);
 continueIncorporatingBtn.addEventListener("click", continueIncorporating);
@@ -59,7 +55,6 @@ function getNextTab() {
     status1.classList.add("complete");
     status2.classList.add("in-progress");
   }
-
 }
 
 function validateCapitalise() {
@@ -68,12 +63,12 @@ function validateCapitalise() {
 
   if (regexUniqueCode.test(uniqueCode)) {
     uniqueCodeInput.classList.remove("invalid-field");
-    retrieveBtn.addEventListener("click", getNextTab);
+    retrieveBtn.addEventListener("click", getIncorporationData);
     retrieveBtn.classList.remove("disabled");
     retrieveBtn.style.cursor = "pointer";
   } else {
     uniqueCodeInput.classList.add("invalid-field");
-    retrieveBtn.removeEventListener("click", getNextTab);
+    retrieveBtn.removeEventListener("click", getIncorporationData);
     retrieveBtn.classList.add("disabled");
     retrieveBtn.style.cursor = "not-allowed";
   }
@@ -94,10 +89,11 @@ async function getIncorporationData() {
         },
       }
     );
-    data = await response.json();
+    let data = await response.json();
     if (response.ok) {
       document.getElementById("inc-invalid-code").classList.add("hide");
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
+      console.log(sessionStorage);
       // window.location.href = "https://centry-digital.webflow.io/incorporation/edit";
       getNextTab();
     } else {
