@@ -100,6 +100,6 @@ async function getIncorporationData() {
       document.getElementById("inc-invalid-code").classList.remove("hide");
     }
   } catch (error) {
-    console.error("Unique code not found");
+    console.error("Unique code not found", error);
   }
 }
