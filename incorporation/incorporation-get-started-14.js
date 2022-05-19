@@ -1,5 +1,6 @@
 let retrieveForm = document.getElementById("wf-form-Incorporation-Retrieval");
 let retrieveBtn = document.getElementById("inc-retrieve-data");
+let retrieveLoadingBtn = document.getElementById("inc-retrieve-data-loading");
 let continueIncorporatingBtn = document.getElementById("inc-continue-incorporating");
 let uniqueCodeInput = document.getElementById("unique-code-input");
 let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-code-box"]');
@@ -10,7 +11,7 @@ uniqueCodeInput.addEventListener("keyup", validateCapitalise);
 continueIncorporatingBtn.addEventListener("click", continueIncorporating);
 
 retrieveBtn.innerHTML =
-  '<svg xmlns="http://www.w3.org/2000/svg" class="retrieve-button-text" width="28px" height="28px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>';
+  '<svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>';
 retrieveBtn.style.cursor = "not-allowed";
 retrieveForm.addEventListener("keypress", function (event) {
   if (event.key == "Enter") {
@@ -20,7 +21,7 @@ retrieveForm.addEventListener("keypress", function (event) {
 });
 
 function getNextTab() {
-  retrieveBtn.classList.add("button--loading");
+  retrieveLoadingBtn.classList.remove("hide");
   retrievedData = JSON.parse(sessionStorage.getItem("incorporation-data"));
   document.getElementById("w-tabs-0-data-w-tab-1").click();
   uniqueCodeBox.innerText = uniqueCodeInput.value;
