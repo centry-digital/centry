@@ -1,8 +1,12 @@
 let retrieveForm = document.getElementById("wf-form-Incorporation-Retrieval");
 let retrieveBtn = document.getElementById("inc-retrieve-data");
-let continueIncorporatingBtn = document.getElementById("inc-continue-incorporating");
+let continueIncorporatingBtn = document.getElementById(
+  "inc-continue-incorporating"
+);
 let uniqueCodeInput = document.getElementById("unique-code-input");
-let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-code-box"]');
+let uniqueCodeBox = document.querySelector(
+  '[data-incorporation-data="unique-code-box"]'
+);
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
 let retrievedData;
 
@@ -27,12 +31,15 @@ function getNextTab() {
   let icon0 = document.getElementById("get-started-icon-0");
   let icon1 = document.getElementById("get-started-icon-1");
   let icon2 = document.getElementById("get-started-icon-2");
+  let icon3 = document.getElementById("get-started-icon-3");
   let indicator0 = document.getElementById("get-started-status-indicator-0");
   let indicator1 = document.getElementById("get-started-status-indicator-1");
   let indicator2 = document.getElementById("get-started-status-indicator-2");
+  let indicator3 = document.getElementById("get-started-status-indicator-3");
   let status0 = document.getElementById("get-started-status-0");
   let status1 = document.getElementById("get-started-status-1");
   let status2 = document.getElementById("get-started-status-2");
+  let status3 = document.getElementById("get-started-status-3");
   let header0 = document.getElementById("get-started-header-0");
 
   if (retrievedData.status == "Draft") {
@@ -42,7 +49,7 @@ function getNextTab() {
     continueIncorporatingBtn.classList.remove("hide");
     continueIncorporatingBtn.innerText = "Review & pay";
     status0.innerText = "Pending payment";
-    header0.innerText = "Pending payment"
+    header0.innerText = "Pending payment";
   } else if (retrievedData.status == "Paid") {
     continueIncorporatingBtn.classList.add("hide");
     icon0.classList.remove("in-progress");
@@ -58,7 +65,6 @@ function getNextTab() {
     continueIncorporatingBtn.classList.add("hide");
     icon0.classList.remove("in-progress");
     icon0.classList.add("complete");
-    icon1.classList.remove("in-progress");
     icon1.classList.add("complete");
     icon2.classList.add("in-progress");
     indicator0.classList.add("complete");
@@ -67,6 +73,21 @@ function getNextTab() {
     status0.classList.add("complete");
     status1.classList.add("complete");
     status2.classList.add("in-progress");
+  } else if (retrievedData.status == "Submitted for Incorporation") {
+    continueIncorporatingBtn.classList.add("hide");
+    icon0.classList.remove("in-progress");
+    icon0.classList.add("complete");
+    icon1.classList.add("complete");
+    icon2.classList.add("complete");
+    icon3.classList.add("in-progress");
+    indicator0.classList.add("complete");
+    indicator1.classList.add("complete");
+    indicator2.classList.add("complete");
+    indicator3.classList.add("in-progress");
+    status0.classList.add("complete");
+    status1.classList.add("complete");
+    status2.classList.add("complete");
+    status3.classList.add("in-progress");
   }
 }
 
