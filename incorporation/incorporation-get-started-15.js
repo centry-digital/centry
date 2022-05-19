@@ -21,7 +21,6 @@ retrieveForm.addEventListener("keypress", function (event) {
 });
 
 function getNextTab() {
-  retrieveLoadingBtn.classList.remove("hide");
   retrievedData = JSON.parse(sessionStorage.getItem("incorporation-data"));
   document.getElementById("w-tabs-0-data-w-tab-1").click();
   uniqueCodeBox.innerText = uniqueCodeInput.value;
@@ -112,6 +111,7 @@ function continueIncorporating() {
 }
 
 async function getIncorporationData() {
+  retrieveLoadingBtn.classList.remove("hide");
   let uniqueCode = uniqueCodeInput.value;
   try {
     let response = await fetch(
