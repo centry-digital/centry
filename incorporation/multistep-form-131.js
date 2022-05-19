@@ -286,14 +286,11 @@ function validateInput() {
     }
   }
   let flag_14 = false;
+  let directorCountryArray = [];
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (incorporationSummary.directors[dirNo].country != "") {
-      flag_14 = true;
-    } else {
-      flag_14 = false;
-      break;
-    }
+    directorCountryArray.push(incorporationSummary.directors[dirNo].country)
   }
+  (directorCountryArray.includes("Malaysia")) ? flag_14 = true : flag_14 = false;
   let flag_15, flag_16, flag_17, flag_18, flag_19;
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
