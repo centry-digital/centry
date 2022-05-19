@@ -111,6 +111,7 @@ function continueIncorporating() {
 }
 
 async function getIncorporationData() {
+  retrieveBtn.classList.add("hide");
   retrieveLoadingBtn.classList.remove("hide");
   let uniqueCode = uniqueCodeInput.value;
   try {
