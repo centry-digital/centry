@@ -28,15 +28,18 @@ let status0 = document.getElementById("get-started-status-0");
 let status1 = document.getElementById("get-started-status-1");
 let status2 = document.getElementById("get-started-status-2");
 
-if (data.status == "Paid") {
- continueIncorporatingBtn.add("hide");
- icon0.classList.add("complete");
- icon1.classList.add("in-progress");
- indicator0.classList.add("complete");
- indicator1.classList.add("in-progress");
- status0.classList.add("complete");
- status1.classList.add("in-progress");
+if (data.status == "Draft") {
+  continueIncorporatingBtn.remove("hide");
+} else if (data.status == "Paid") {
+  continueIncorporatingBtn.add("hide");
+  icon0.classList.add("complete");
+  icon1.classList.add("in-progress");
+  indicator0.classList.add("complete");
+  indicator1.classList.add("in-progress");
+  status0.classList.add("complete");
+  status1.classList.add("in-progress");
 } else if (data.status == "KYC Complete") {
+  continueIncorporatingBtn.add("hide");
   icon0.classList.add("complete");
   icon1.classList.add("complete");
   icon2.classList.add("in-progress");
