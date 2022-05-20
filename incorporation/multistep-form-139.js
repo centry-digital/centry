@@ -130,6 +130,7 @@ function updateButtons() {
       incNextButton.classList.add("button-2");
     } else {
       incNextButton.style.cursor = "not-allowed"
+      incNextButton.innerText = "Please accept T&C";
       incNextButton.removeEventListener("click", submitIncorporation);
       incNextButton.classList.add("button-2-disabled");
       incNextButton.classList.remove("button-2");
