@@ -849,7 +849,7 @@ function submitIncorporation() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
-  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
+  incorporationObject.data.accept_tc = tc_accepted;
 
   fetch("https://api.centry.digital/api:incorporation/new_incorporation", {
     method: "POST",
@@ -997,7 +997,7 @@ function saveDraft_new() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
-  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
+  incorporationObject.data.accept_tc = tc_accepted;
 
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
     method: "POST",
@@ -1071,7 +1071,7 @@ function saveDraft_existing() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
-  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
+  incorporationObject.data.accept_tc = tc_accepted;
 
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
     method: "POST",

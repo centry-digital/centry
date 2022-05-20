@@ -93,5 +93,11 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
   shareholder_phones[i].value = data.company_shareholders[i].phone;
   shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
 }
+tc_accepted = data.tc_accepted;
+if (tc_accepted) {
+  document.getElementById("tc-acceptance").classList.add("checked");
+} else {
+  document.getElementById("tc-acceptance").classList.remove("checked");
+}
 updateShares();
 validateInput();
