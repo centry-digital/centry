@@ -233,6 +233,7 @@ let icon2 = document.getElementById("sidenav-icon-2");
 let icon3 = document.getElementById("sidenav-icon-3");
 let icon4 = document.getElementById("sidenav-icon-4");
 let director_country_error = document.getElementById("director_country_error");
+
 function validateInput() {
   getSummary();
 
@@ -374,6 +375,7 @@ function validateInput() {
       }
     }
   }
+  let flag_20 = incorporationSummary.accept_tc;
 
   inputsValidity =
     flag_1 &&
@@ -395,6 +397,8 @@ function validateInput() {
     flag_17 &&
     flag_18 &&
     flag_19;
+  
+  paymentValidity = flag_20;
 
   if (inputsValidity) {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
@@ -437,6 +441,18 @@ function validateInput() {
     icon4.classList.add("complete");
   } else {
     icon4.classList.remove("complete");
+  }
+
+  if (activeTabId =="w-tabs-0-data-w-tab-5" && paymentValidity) {
+    incNextButton.style.cursor = "pointer"
+    incNextButton.addEventListener("click", submitIncorporation);
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
+  } else if (activeTabId =="w-tabs-0-data-w-tab-5" && paymentValidity == false) {
+    incNextButton.style.cursor = "not-allowed"
+    incNextButton.removeEventListener("click", submitIncorporation);
+    incNextButton.classList.add("button-2-disabled");
+    incNextButton.classList.remove("button-2");
   }
 
   // console.log(
@@ -630,6 +646,7 @@ function getSummary() {
     incorporationSummary.shareholders[shNo].shares =
       incorporationSummary.shareholderShares[shNo].value;
   }
+  incorporationSummary.accept_tc = document.getElementById("tc_acceptance").classList.contains("checked");
 
   // Fill in summary section
   document.getElementById("incorporate-review-name").innerText =
@@ -808,6 +825,7 @@ function submitIncorporation() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
+  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
 
   fetch("https://api.centry.digital/api:incorporation/new_incorporation", {
     method: "POST",
@@ -955,6 +973,7 @@ function saveDraft_new() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
+  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
 
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
     method: "POST",
@@ -1028,6 +1047,7 @@ function saveDraft_existing() {
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
+  incorporationObject.data.accept_tc = incorporationSummary.accept_tc;
 
   fetch('https://api.centry.digital/api:incorporation/save_draft', {
     method: "POST",
