@@ -121,11 +121,12 @@ function updateButtons() {
     }
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
-    incNextButton.addEventListener("click", submitIncorporation);
-    incNextButton.style.cursor = "pointer";
-    incNextButton.innerText = "Proceed to payment";
-    incPrevButton.classList.remove("hide");
-    incNextButtonError.classList.add("hide");
+    validateInput();
+    // incNextButton.addEventListener("click", submitIncorporation);
+    // incNextButton.style.cursor = "pointer";
+    // incNextButton.innerText = "Proceed to payment";
+    // incPrevButton.classList.remove("hide");
+    // incNextButtonError.classList.add("hide");
   } else {
     incNextButton.removeEventListener("click", submitIncorporation);
     incNextButton.classList.remove("hide");
