@@ -235,12 +235,24 @@ let icon3 = document.getElementById("sidenav-icon-3");
 let icon4 = document.getElementById("sidenav-icon-4");
 let director_country_error = document.getElementById("director_country_error");
 
+// Validate T&C Toggle
 let tcAcceptanceToggle = document.getElementById("tc-acceptance");
 tcAcceptanceToggle.addEventListener("click", toggleTcCheckbox)
 
 function toggleTcCheckbox() {
   tcAcceptanceToggle.classList.toggle("checked");
-  validateInput();
+  let tc_accepted = document.getElementById("tc_acceptance").classList.contains("checked");
+  if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted) {
+    incNextButton.style.cursor = "pointer"
+    incNextButton.addEventListener("click", submitIncorporation);
+    incNextButton.classList.remove("button-2-disabled");
+    incNextButton.classList.add("button-2");
+  } else if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted == false) {
+    incNextButton.style.cursor = "not-allowed"
+    incNextButton.removeEventListener("click", submitIncorporation);
+    incNextButton.classList.add("button-2-disabled");
+    incNextButton.classList.remove("button-2");
+  }
 }
 
 function validateInput() {
@@ -384,7 +396,6 @@ function validateInput() {
       }
     }
   }
-  let flag_20 = document.getElementById("tc_acceptance").classList.contains("checked");
 
   inputsValidity =
     flag_1 &&
@@ -406,8 +417,6 @@ function validateInput() {
     flag_17 &&
     flag_18 &&
     flag_19;
-  
-  paymentValidity = flag_20;
 
   if (inputsValidity) {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
@@ -450,18 +459,6 @@ function validateInput() {
     icon4.classList.add("complete");
   } else {
     icon4.classList.remove("complete");
-  }
-
-  if (activeTabId =="w-tabs-0-data-w-tab-5" && paymentValidity) {
-    incNextButton.style.cursor = "pointer"
-    incNextButton.addEventListener("click", submitIncorporation);
-    incNextButton.classList.remove("button-2-disabled");
-    incNextButton.classList.add("button-2");
-  } else if (activeTabId =="w-tabs-0-data-w-tab-5" && paymentValidity == false) {
-    incNextButton.style.cursor = "not-allowed"
-    incNextButton.removeEventListener("click", submitIncorporation);
-    incNextButton.classList.add("button-2-disabled");
-    incNextButton.classList.remove("button-2");
   }
 
   // console.log(
