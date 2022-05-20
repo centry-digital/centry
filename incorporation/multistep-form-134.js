@@ -24,32 +24,34 @@ function getNextTab() {
     currentSideNav = document.getElementById("inc-sidenav-0");
     nextSideNav = document.getElementById("inc-sidenav-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
+    nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-1");
     nextSideNav = document.getElementById("inc-sidenav-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
+    nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-2");
     nextSideNav = document.getElementById("inc-sidenav-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
+    nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-3");
     nextSideNav = document.getElementById("inc-sidenav-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
+    nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-5");
     currentSideNav = document.getElementById("inc-sidenav-4");
     nextSideNav = document.getElementById("inc-sidenav-5");
     activeTabId = "w-tabs-0-data-w-tab-5";
-  }
-  if (activeTabId != "w-tabs-0-data-w-tab-5") {
     nextTab.click();
-    currentSideNav.classList.remove("active");
-    nextSideNav.classList.add("active");
   }
+  currentSideNav.classList.remove("active");
+  nextSideNav.classList.add("active");
   updateButtons();
 }
 
