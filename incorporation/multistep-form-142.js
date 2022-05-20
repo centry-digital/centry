@@ -846,6 +846,7 @@ function submitIncorporation() {
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+    shareholder.is_individual = (shareholder.type == "Individual");
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.tc_accepted = tc_accepted;
@@ -994,6 +995,7 @@ function saveDraft_new() {
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+    shareholder.is_individual = (shareholder.type == "Individual");
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.tc_accepted = tc_accepted;
@@ -1059,15 +1061,13 @@ function saveDraft_existing() {
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     let shareholder = {};
     shareholder.type = incorporationSummary.shareholders[shNo].type;
-    shareholder.name_individual =
-      incorporationSummary.shareholderNamesInd[shNo].name;
-    shareholder.name_corporate =
-      incorporationSummary.shareholderNamesCorp[shNo].name;
-    shareholder.name_representative =
-      incorporationSummary.shareholders[shNo].rep;
+    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+    shareholder.is_individual = (shareholder.type == "Individual");
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.tc_accepted = tc_accepted;
