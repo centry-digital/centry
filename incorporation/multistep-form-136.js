@@ -384,7 +384,7 @@ function validateInput() {
       }
     }
   }
-  let flag_20 = incorporationSummary.accept_tc;
+  let flag_20 = document.getElementById("tc_acceptance").classList.contains("checked");
 
   inputsValidity =
     flag_1 &&
@@ -655,7 +655,7 @@ function getSummary() {
     incorporationSummary.shareholders[shNo].shares =
       incorporationSummary.shareholderShares[shNo].value;
   }
-  incorporationSummary.accept_tc = document.getElementById("tc_acceptance").classList.contains("checked");
+  // incorporationSummary.accept_tc = document.getElementById("tc_acceptance").classList.contains("checked");
 
   // Fill in summary section
   document.getElementById("incorporate-review-name").innerText =
