@@ -122,11 +122,23 @@ function updateButtons() {
   } else if (activeTabId == "w-tabs-0-data-w-tab-5") {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
     validateInput();
+    if (tc_accepted) {
+      incNextButton.style.cursor = "pointer"
+      incNextButton.addEventListener("click", submitIncorporation);
+      incNextButton.innerText = "Proceed to payment";
+      incNextButton.classList.remove("button-2-disabled");
+      incNextButton.classList.add("button-2");
+    } else {
+      incNextButton.style.cursor = "not-allowed"
+      incNextButton.removeEventListener("click", submitIncorporation);
+      incNextButton.classList.add("button-2-disabled");
+      incNextButton.classList.remove("button-2");
+    }
     // incNextButton.addEventListener("click", submitIncorporation);
     // incNextButton.style.cursor = "pointer";
     // incNextButton.innerText = "Proceed to payment";
-    // incPrevButton.classList.remove("hide");
-    // incNextButtonError.classList.add("hide");
+    incPrevButton.classList.remove("hide");
+    incNextButtonError.classList.add("hide");
   } else {
     incNextButton.removeEventListener("click", submitIncorporation);
     incNextButton.classList.remove("hide");
@@ -237,22 +249,27 @@ let director_country_error = document.getElementById("director_country_error");
 
 // Validate T&C Toggle
 let tcAcceptanceToggle = document.getElementById("tc-acceptance");
-tcAcceptanceToggle.addEventListener("click", toggleTcCheckbox)
+tcAcceptanceToggle.style.cursor = "pointer";
+tcAcceptanceToggle.addEventListener("click", toggleTcCheckbox);
 
+let tc_accepted = false;
 function toggleTcCheckbox() {
   tcAcceptanceToggle.classList.toggle("checked");
-  let tc_accepted = document.getElementById("tc_acceptance").classList.contains("checked");
-  if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted) {
-    incNextButton.style.cursor = "pointer"
-    incNextButton.addEventListener("click", submitIncorporation);
-    incNextButton.classList.remove("button-2-disabled");
-    incNextButton.classList.add("button-2");
-  } else if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted == false) {
-    incNextButton.style.cursor = "not-allowed"
-    incNextButton.removeEventListener("click", submitIncorporation);
-    incNextButton.classList.add("button-2-disabled");
-    incNextButton.classList.remove("button-2");
-  }
+  tc_accepted = !tc_accepted;
+  console.log(tc_accepted);
+  updateButtons();
+  // if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted) {
+  //   incNextButton.style.cursor = "pointer"
+  //   incNextButton.addEventListener("click", submitIncorporation);
+  //   incNextButton.innerText = "Proceed to payment";
+  //   incNextButton.classList.remove("button-2-disabled");
+  //   incNextButton.classList.add("button-2");
+  // } else if (activeTabId =="w-tabs-0-data-w-tab-5" && tc_accepted == false) {
+  //   incNextButton.style.cursor = "not-allowed"
+  //   incNextButton.removeEventListener("click", submitIncorporation);
+  //   incNextButton.classList.add("button-2-disabled");
+  //   incNextButton.classList.remove("button-2");
+  // }
 }
 
 function validateInput() {
