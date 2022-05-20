@@ -234,6 +234,14 @@ let icon3 = document.getElementById("sidenav-icon-3");
 let icon4 = document.getElementById("sidenav-icon-4");
 let director_country_error = document.getElementById("director_country_error");
 
+let tcAcceptanceToggle = document.getElementById("tc-acceptance");
+tcAcceptanceToggle.addEventListener("click", toggleTcCheckbox)
+
+function toggleTcCheckbox() {
+  tcAcceptanceToggle.classList.toggle("checked");
+  validateInput();
+}
+
 function validateInput() {
   getSummary();
 
