@@ -10,11 +10,11 @@ let uniqueCodeBox = document.querySelector('[data-incorporation-data="unique-cod
 let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let regexUniqueCode = /^[a-zA-Z0-9]{6}$/;
 let retrievedData;
+let backToGetStartedBtn = document.getElementById("back-get-started");
 
 retrieveEmail.addEventListener("keyup", validateEmail);
 uniqueCodeInput.addEventListener("keyup", validateCapitaliseCode);
 continueIncorporatingBtn.addEventListener("click", continueIncorporating);
-
 retrieveBtn.style.cursor = "not-allowed";
 retrieveForm.addEventListener("keypress", function (event) {
   if (event.key == "Enter") {
@@ -22,6 +22,8 @@ retrieveForm.addEventListener("keypress", function (event) {
     retrieveBtn.click();
   }
 });
+backToGetStartedBtn.style.cursor = "pointer";
+backToGetStartedBtn.addEventListener("click", backToGetStarted);
 
 const query = new URLSearchParams(window.location.search);
 if (query.has("unid") && query.has("email")) {
@@ -33,6 +35,13 @@ if (query.has("unid") && query.has("email")) {
   validateEmail();
   retrieveBtn.click();
 };
+
+
+function backToGetStarted() {
+  retrieveLoadingBtn.classList.add("hide");
+  retrieveBtn.classList.remove("hide");
+  document.getElementById("w-tabs-0-data-w-tab-0").click();
+}
 
 function getNextTab() {
   retrievedData = JSON.parse(sessionStorage.getItem("incorporation-data"));
