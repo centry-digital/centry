@@ -1,43 +1,8 @@
 {
-  "data": {
-    "status": "Submitted",
-    "unique_id": "1RM3JO",
-    "created_at": 1652628573122,
-    "msic_codes": ["01231 - Growing of pomelo", "-", "-"],
-    "tc_accepted": true,
-    "company_city": "A",
-    "company_name": "A",
-    "company_email": "yl@centry.digital",
-    "company_phone": "123456789",
-    "company_state": "WP Kuala Lumpur",
-    "company_address": "A",
-    "company_country": "Malaysia",
-    "company_postcode": "Also",
-    "name_explanation": "",
-    "company_directors": [
-      {
-        "name": "A",
-        "email": "yongling26@gmail.com",
-        "phone": "015454664584816",
-        "country": "Malaysia"
-      }
-    ],
-    "nature_of_business": "N",
-    "company_shareholders": [
-      {
-        "type": "Individual",
-        "email": "yongling26@gmail.com",
-        "phone": "2574884916158",
-        "shares": "1000",
-        "name_corporate": "",
-        "name_individual": "YL Chow",
-        "name_representative": ""
-      }
-    ]
-  },
+  "status": "Submitted",
   "payment": {
-    "id": "cs_test_b1gi2gM1DcKJIYBsCPHmZDX9LOJdXNBm7G0f8862C63Fye3zkI4Xid9GPo",
-    "url": "https://checkout.stripe.com/pay/cs_test_b1gi2gM1DcKJIYBsCPHmZDX9LOJdXNBm7G0f8862C63Fye3zkI4Xid9GPo#fidkdWxOYHwnPyd1blpxYHZxWmFWQEs0QTI1cm9qUWtLN05tPG1MY2hpVScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgKSd1d2BpamRhQ2prcSc%2FJ0xrcWB3J3gl",
+    "id": "cs_test_b1YFVTrGxUqLtmApodu8YXGnLIxXN25m8g6fEcy7r2nOXvBAPLRpuj9x1i",
+    "url": "https://checkout.stripe.com/pay/cs_test_b1YFVTrGxUqLtmApodu8YXGnLIxXN25m8g6fEcy7r2nOXvBAPLRpuj9x1i#fidkdWxOYHwnPyd1blpxYHZxWmFWQEs0QTI1cm9qUWtLN05tPG1MY2hpVScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgKSd1d2BpamRhQ2prcSc%2FJ0xrcWB3J3gl",
     "mode": "subscription",
     "locale": null,
     "object": "checkout.session",
@@ -49,7 +14,7 @@
     "metadata": { "unique_id": "1RM3JO" },
     "shipping": null,
     "cancel_url": "https://centry-digital.webflow.io/incorporation/edit",
-    "expires_at": 1653121018,
+    "expires_at": 1653135509,
     "submit_type": null,
     "success_url": "https://www.centry.digital/success",
     "amount_total": 174900,
@@ -81,5 +46,48 @@
     "billing_address_collection": null,
     "shipping_address_collection": null
   },
-  "email_recipients": [{ "email": "yl@centry.digital" }]
+  "unique_id": "1RM3JO",
+  "created_at": 1652628573122,
+  "msic_codes": ["01231 - Growing of pomelo", "-", "-"],
+  "tc_accepted": true,
+  "company_city": "A",
+  "company_name": "Donkey Kong",
+  "company_email": "yl@centry.digital",
+  "company_phone": "123456789",
+  "company_state": "WP Kuala Lumpur",
+  "company_address": "A",
+  "company_country": "Malaysia",
+  "company_postcode": "Also",
+  "name_explanation": "Buy and sell bananas",
+  "company_directors": [
+    {
+      "name": "A",
+      "email": "yongling26@gmail.com",
+      "phone": "015454664584816",
+      "country": "Malaysia"
+    }
+  ],
+  "nature_of_business": "N",
+  "company_shareholders": [
+    {
+      "type": "Individual",
+      "email": "yongling26@gmail.com",
+      "phone": "2574884916158",
+      "shares": "999",
+      "is_individual": true,
+      "name_corporate": "",
+      "name_individual": "YL Chow",
+      "name_representative": ""
+    },
+    {
+      "type": "Corporate",
+      "email": "corpse@email.com",
+      "phone": "23716237187739",
+      "shares": "1",
+      "is_individual": false,
+      "name_corporate": "Corpso",
+      "name_individual": "",
+      "name_representative": "Corpse"
+    }
+  ]
 }
