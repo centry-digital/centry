@@ -29,6 +29,8 @@ if (query.has("unid") && query.has("email")) {
   let unidValue = query.get("unid");
   retrieveEmail.value = emailValue;
   uniqueCodeInput.value = unidValue;
+  validateCapitaliseCode();
+  validateEmail();
   retrieveBtn.click();
 };
 
