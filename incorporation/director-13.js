@@ -3,7 +3,7 @@ addDirectorButton.setAttribute("onClick", "addDirectorInputGroup()");
 const directorGroup = document.getElementById("director-group");
 
 let dirFirstName = document.querySelector('input[data-incorporation-data="director-fname"]');
-let dirLastName = document.querySelectorAll('input[data-incorporation-data="director-lname"]');
+let dirLastName = document.querySelector('input[data-incorporation-data="director-lname"]');
 dirFirstName.addEventListener("keyup", updateDirectorLegalName);
 dirLastName.addEventListener("keyup", updateDirectorLegalName);
 
