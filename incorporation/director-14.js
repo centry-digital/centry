@@ -157,6 +157,7 @@ function addDirectorInputGroup() {
   directorCountry.addEventListener("keyup", validateField);
 
   //Append elements to Director Input Groups
+  directorInputGroup.appendChild(inputSubGroup50_1);
   directorInputGroup.appendChild(inputSubGroup100_1);
   directorInputGroup.appendChild(inputSubGroup50_2);
   directorInputGroup.appendChild(inputSubGroup100_2);
@@ -168,9 +169,9 @@ function addDirectorInputGroup() {
   inputWrapperFName.appendChild(directorFName);
 
   // Director LName
-  inputSubGroup50_2.appendChild(inputFieldBlock50_2);
-  inputFieldBlock50_2.appendChild(directorLNameLabel);
-  inputFieldBlock50_2.appendChild(inputWrapperLName);
+  inputSubGroup50_1.appendChild(inputFieldBlock50_1);
+  inputFieldBlock50_1.appendChild(directorLNameLabel);
+  inputFieldBlock50_1.appendChild(inputWrapperLName);
   inputWrapperLName.appendChild(directorLName);
   
   //Director Name
