@@ -120,7 +120,7 @@ function addDirectorInputGroup() {
   removeDirectorButton.innerText = "remove";
   directorLegalNameDescription.innerText = "Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   directorName.type = "text";
-  directorName.name = "Director-name";
+  directorName.name = "Legal name displayed per NRIC / ID / Passport";
   directorName.setAttribute("data-name", "Director-name");
   directorName.setAttribute("data-incorporation-data", "director-name");
   directorName.setAttribute("maxlength", "256");
@@ -157,6 +157,7 @@ function addDirectorInputGroup() {
   directorCountry.addEventListener("keyup", validateField);
 
   //Append elements to Director Input Groups
+  directorInputGroup.appendChild(removeDirectorButton);
   directorInputGroup.appendChild(inputSubGroup50_1);
   directorInputGroup.appendChild(inputSubGroup100_1);
   directorInputGroup.appendChild(inputSubGroup50_2);
@@ -178,7 +179,6 @@ function addDirectorInputGroup() {
   inputSubGroup100_1.appendChild(directorLabelWrapper);
   inputSubGroup100_1.appendChild(directorLegalNameDescription);
   directorLabelWrapper.appendChild(directorNameLabel);
-  directorLabelWrapper.appendChild(removeDirectorButton);
   inputSubGroup100_1.appendChild(inputWrapperDirector);
   inputWrapperDirector.appendChild(directorName);
 
