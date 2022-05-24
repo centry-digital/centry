@@ -169,9 +169,9 @@ function addDirectorInputGroup() {
   inputWrapperFName.appendChild(directorFName);
 
   // Director LName
-  inputSubGroup50_1.appendChild(inputFieldBlock50_1);
-  inputFieldBlock50_1.appendChild(directorLNameLabel);
-  inputFieldBlock50_1.appendChild(inputWrapperLName);
+  inputSubGroup50_1.appendChild(inputFieldBlock50_2);
+  inputFieldBlock50_2.appendChild(directorLNameLabel);
+  inputFieldBlock50_2.appendChild(inputWrapperLName);
   inputWrapperLName.appendChild(directorLName);
   
   //Director Name
