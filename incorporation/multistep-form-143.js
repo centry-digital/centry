@@ -9,6 +9,8 @@ let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
 let incorporationForm = document.querySelector('[name="wf-form-Incorporation-Form"]');
+let incorporationObject;
+let apiUrl = "https://api.centry.digital/api:";
 
 incorporationForm.addEventListener("keypress", function(event) {
   if (event.key == "Enter") {
@@ -337,9 +339,23 @@ function validateInput() {
     directorCountryArray.push(incorporationSummary.directors[dirNo].country)
   }
   (directorCountryArray.includes("Malaysia")) ? flag_14 = true : flag_14 = false;
-  let flag_15, flag_16, flag_17, flag_18, flag_19;
+  let flag_15, flag_16, flag_17, flag_18, flag_19, flag_22, flag_23;
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
+      flag_22 = false;
+      if (incorporationSummary.shareholders[shNo].fname != "") {
+        flag_22 = true;
+      } else {
+        flag_22 = false;
+        break;
+      }
+      flag_23 = false;
+      if (incorporationSummary.shareholders[shNo].lname != "") {
+        flag_23 = true;
+      } else {
+        flag_23 = false;
+        break;
+      }
       flag_15 = false;
       if (incorporationSummary.shareholders[shNo].name != "") {
         flag_15 = true;
@@ -380,6 +396,20 @@ function validateInput() {
         flag_15 = true;
       } else {
         flag_15 = false;
+        break;
+      }
+      flag_22 = false;
+      if (incorporationSummary.shareholderNamesRep[shNo].fname != "") {
+        flag_22 = true;
+      } else {
+        flag_22 = false;
+        break;
+      }
+      flag_23 = false;
+      if (incorporationSummary.shareholderNamesRep[shNo].lname != "") {
+        flag_23 = true;
+      } else {
+        flag_23 = false;
         break;
       }
       flag_16 = false;
@@ -439,7 +469,9 @@ function validateInput() {
     flag_18 &&
     flag_19 &&
     flag_20 &&
-    flag_21;
+    flag_21 &&
+    flag_22 &&
+    flag_23;
 
   if (inputsValidity) {
     document.getElementById("inc-sidenav-5").classList.remove("hide");
@@ -477,7 +509,7 @@ function validateInput() {
 
   (!flag_14) ? director_country_error.classList.remove("hide") : director_country_error.classList.add("hide") ;
 
-  tab4_validation = flag_15 && flag_16 && flag_17 && flag_18 && flag_19;
+  tab4_validation = flag_22 && flag_23 && flag_15 && flag_16 && flag_17 && flag_18 && flag_19;
   if (tab4_validation) {
     icon4.classList.add("complete");
   } else {
@@ -503,8 +535,18 @@ function validateInput() {
   //   flag_16,
   //   flag_17,
   //   flag_18,
-  //   flag_19);
+  //   flag_19,
+  //   flag_20,
+  //   flag_21,
+  //   flag_22,
+  //   flag_23);
 }
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-fname"]')
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="individual-shareholder-lname"]')
+  .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="individual-shareholder-name"]')
   .addEventListener("keyup", updateButtons);
@@ -516,6 +558,12 @@ document
   .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-shareholder-name"]')
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="corporate-representative-fname"]')
+  .addEventListener("keyup", updateButtons);
+document
+  .querySelector('[data-incorporation-data="corporate-representative-lname"]')
   .addEventListener("keyup", updateButtons);
 document
   .querySelector('[data-incorporation-data="corporate-representative-name"]')
@@ -574,8 +622,7 @@ incorporationSummary.msicCodes = ["-", "-", "-"];
 function getSummary() {
   incorporationSummary.directors = [];
   incorporationSummary.shareholders = [];
-  document.getElementById("incorporate-summary-directors-wrapper").innerHTML =
-    "";
+  document.getElementById("incorporate-summary-directors-wrapper").innerHTML = "";
   document.getElementById("incorporate-summary-shareholders-wrapper").innerHTML = "";
   incorporationSummary.companyName = document.querySelector('input[data-incorporation-data="company-name"]').value;
   incorporationSummary.companyNameExplanation = document.querySelector('textarea[data-incorporation-data="company-name-explanation"]').value;
@@ -605,8 +652,12 @@ function getSummary() {
   }
   incorporationSummary.numberOfShareholders = document.querySelectorAll('[data-incorporation-data="shareholder"]').length;
   incorporationSummary.shareholderType = document.querySelectorAll('input[data-incorporation-data="shareholder-type-hidden"]');
+  incorporationSummary.shareholderFNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-fname"]');
+  incorporationSummary.shareholderLNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-lname"]');
   incorporationSummary.shareholderNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-name"]');
   incorporationSummary.shareholderNamesCorp = document.querySelectorAll('input[data-incorporation-data="corporate-shareholder-name"]');
+  incorporationSummary.shareholderFNamesRep = document.querySelectorAll('input[data-incorporation-data="corporate-representative-fname"]');
+  incorporationSummary.shareholderLNamesRep = document.querySelectorAll('input[data-incorporation-data="corporate-representative-lname"]');
   incorporationSummary.shareholderReps = document.querySelectorAll('input[data-incorporation-data="corporate-representative-name"]');
   incorporationSummary.shareholderEmails = document.querySelectorAll('input[data-incorporation-data="shareholder-email"]');
   incorporationSummary.shareholderPhones = document.querySelectorAll('input[data-incorporation-data="shareholder-phone"]');
@@ -614,8 +665,12 @@ function getSummary() {
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     incorporationSummary.shareholders.push({});
     incorporationSummary.shareholders[shNo].type = incorporationSummary.shareholderType[shNo].value;
+    incorporationSummary.shareholderNamesInd[shNo].fname = incorporationSummary.shareholderFNamesInd[shNo].value;
+    incorporationSummary.shareholderNamesInd[shNo].lname = incorporationSummary.shareholderLNamesInd[shNo].value;
     incorporationSummary.shareholderNamesInd[shNo].name = incorporationSummary.shareholderNamesInd[shNo].value;
     incorporationSummary.shareholderNamesCorp[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].value;
+    incorporationSummary.shareholderNamesRep[shNo].fname = incorporationSummary.shareholderFNamesRep[shNo].value;
+    incorporationSummary.shareholderNamesRep[shNo].lname = incorporationSummary.shareholderLNamesRep[shNo].value;
     incorporationSummary.shareholders[shNo].rep = incorporationSummary.shareholderReps[shNo].value;
     incorporationSummary.shareholders[shNo].email = incorporationSummary.shareholderEmails[shNo].value;
     incorporationSummary.shareholders[shNo].phone = incorporationSummary.shareholderPhones[shNo].value;
@@ -646,72 +701,84 @@ function getSummary() {
     const directorGroup_dirNo = document.createElement("div");
     const directorGroupInner_dirNo = document.createElement("div");
     const directorName_dirNo = document.createElement("div");
+    const directorFName_dirNo = document.createElement("div");
+    const directorLName_dirNo = document.createElement("div");
     const directorEmail_dirNo = document.createElement("div");
     const directorPhone_dirNo = document.createElement("div");
     const directorCountry_dirNo = document.createElement("div");
     directorGroup_dirNo.classList.add("incorporate-summary-director");
     directorGroupInner_dirNo.classList.add("input-subgroup-100");
     directorName_dirNo.classList.add("field-label");
-    directorName_dirNo.innerText = incorporationSummary.directors[dirNo].name;
+    directorName_dirNo.innerText = "Legal name: " + incorporationSummary.directors[dirNo].name;
+    directorFName_dirNo.classList.add("summary-text", "text-sm");
+    directorFName_dirNo.innerText = "First name: " + incorporationSummary.directors[dirNo].name;
+    directorLName_dirNo.classList.add("summary-text", "text-sm");
+    directorLName_dirNo.innerText = "Last name: " + incorporationSummary.directors[dirNo].name;
     directorEmail_dirNo.classList.add("summary-text", "text-sm");
-    directorEmail_dirNo.innerText = incorporationSummary.directors[dirNo].email;
+    directorEmail_dirNo.innerText = "Email: " + incorporationSummary.directors[dirNo].email;
     directorPhone_dirNo.classList.add("summary-text", "text-sm");
-    directorPhone_dirNo.innerText = incorporationSummary.directors[dirNo].phone;
+    directorPhone_dirNo.innerText = "Phone: " + incorporationSummary.directors[dirNo].phone;
     directorCountry_dirNo.classList.add("summary-text", "text-sm");
-    directorCountry_dirNo.innerText = incorporationSummary.directors[dirNo].country;
+    directorCountry_dirNo.innerText = "Country of residence: " + incorporationSummary.directors[dirNo].country;
     summaryDirectorsWrapper.appendChild(directorGroup_dirNo);
     directorGroup_dirNo.appendChild(directorGroupInner_dirNo);
     directorGroupInner_dirNo.appendChild(directorName_dirNo);
+    directorGroupInner_dirNo.appendChild(directorFName_dirNo);
+    directorGroupInner_dirNo.appendChild(directorLName_dirNo);
     directorGroupInner_dirNo.appendChild(directorEmail_dirNo);
     directorGroupInner_dirNo.appendChild(directorPhone_dirNo);
     directorGroupInner_dirNo.appendChild(directorCountry_dirNo);
   }
 
   //Fill in shareholder section
-  const summaryShareholdersWrapper = document.getElementById(
-    "incorporate-summary-shareholders-wrapper"
-  );
+  const summaryShareholdersWrapper = document.getElementById("incorporate-summary-shareholders-wrapper");
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     const shareholderGroup_shNo = document.createElement("div");
     const shareholderGroupInner_shNo = document.createElement("div");
     const shareholderGroupLabel_shNo = document.createElement("div");
     const shareholderGroupBody_shNo = document.createElement("div");
     const shareholderName_shNo = document.createElement("div");
+    const shareholderFName_shNo = document.createElement("div");
+    const shareholderLName_shNo = document.createElement("div");
     const shareholderShares_shNo = document.createElement("div");
     const shareholderRep_shNo = document.createElement("div");
+    const shareholderRepFName_shNo = document.createElement("div");
+    const shareholderRepLName_shNo = document.createElement("div");
     const shareholderEmail_shNo = document.createElement("div");
     const shareholderPhone_shNo = document.createElement("div");
     shareholderGroup_shNo.classList.add("incorporate-summary-shareholder");
     shareholderGroupInner_shNo.classList.add("input-subgroup-100");
-    shareholderGroupLabel_shNo.classList.add(
-      "incorporate-summary-shareholder-label"
-    );
+    shareholderGroupLabel_shNo.classList.add("incorporate-summary-shareholder-label");
     shareholderGroupBody_shNo.classList.add("input-wrapper");
     shareholderName_shNo.classList.add("field-label");
     shareholderShares_shNo.classList.add("field-label");
-    shareholderShares_shNo.innerText =
-      incorporationSummary.shareholders[shNo].shares;
+    shareholderShares_shNo.innerText = "Number of shares: " + incorporationSummary.shareholders[shNo].shares;
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
-      incorporationSummary.shareholders[shNo].name =
-        incorporationSummary.shareholderNamesInd[shNo].name;
-      shareholderName_shNo.innerText =
-        incorporationSummary.shareholderNamesInd[shNo].name;
+      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].name;
+      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
+      incorporationSummary.shareholders[shNo].fname = incorporationSummary.shareholderNamesInd[shNo].fname;
+      shareholderFName_shNo.classList.add("summary-text", "text-sm");
+      shareholderFName_shNo.innerText = "First name: " + incorporationSummary.shareholderNamesInd[shNo].fname;
+      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].lname;
+      shareholderLName_shNo.classList.add("summary-text", "text-sm");
+      shareholderLName_shNo.innerText = "Last name: " + incorporationSummary.shareholderNamesInd[shNo].lname;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
-      incorporationSummary.shareholders[shNo].name =
-        incorporationSummary.shareholderNamesCorp[shNo].name;
-      shareholderName_shNo.innerText =
-        incorporationSummary.shareholderNamesCorp[shNo].name;
+      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].name;
+      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesCorp[shNo].name;
       shareholderRep_shNo.classList.add("summary-text", "text-sm");
-      shareholderRep_shNo.innerText =
-        incorporationSummary.shareholders[shNo].rep;
+      shareholderRep_shNo.innerText = "Representative legal name: " + incorporationSummary.shareholders[shNo].rep;
+      shareholderRepFName_shNo.classList.add("summary-text", "text-sm");
+      shareholderRepFName_shNo.innerText = "Representative first name: " + incorporationSummary.shareholdersNamesRep[shNo].fname;
+      shareholderRepLName_shNo.classList.add("summary-text", "text-sm");
+      shareholderRepLName_shNo.innerText = "Representative last name: " + incorporationSummary.shareholdersNamesRep[shNo].lname;
       shareholderGroupBody_shNo.appendChild(shareholderRep_shNo);
+      shareholderGroupBody_shNo.appendChild(shareholderRepFName_shNo);
+      shareholderGroupBody_shNo.appendChild(shareholderRepLName_shNo);
     }
     shareholderEmail_shNo.classList.add("summary-text", "text-sm");
-    shareholderEmail_shNo.innerText =
-      incorporationSummary.shareholders[shNo].email;
+    shareholderEmail_shNo.innerText = "Email: " + incorporationSummary.shareholders[shNo].email;
     shareholderPhone_shNo.classList.add("summary-text", "text-sm");
-    shareholderPhone_shNo.innerText =
-      incorporationSummary.shareholders[shNo].phone;
+    shareholderPhone_shNo.innerText = "Phone: " + incorporationSummary.shareholders[shNo].phone;
 
     summaryShareholdersWrapper.appendChild(shareholderGroup_shNo);
     shareholderGroup_shNo.appendChild(shareholderGroupInner_shNo);
@@ -725,46 +792,32 @@ function getSummary() {
 }
 getSummary();
 
-function submitIncorporation() {
-  incNextButton.innerText = "Preparing payment page...";
-
+function prepareSubmissionObject() {
   // Prepare submission object
-  let incorporationObject = {};
+  incorporationObject = {};
   incorporationObject.data = {};
-  incorporationObject.unique_id =
-    document.getElementById("incorporation-id").value;
-  incorporationObject.status = "Submitted";
-  incorporationObject.first_save = false;
+  saveState ? incorporationObject.first_save = false : incorporationObject.first_save = true;
+  incorporationObject.unique_id = document.getElementById("incorporation-id").value;
   incorporationObject.data.company_name = incorporationSummary.companyName;
-  incorporationObject.data.name_explanation =
-    incorporationSummary.companyNameExplanation;
-  incorporationObject.data.nature_of_business =
-    incorporationSummary.natureOfBusiness;
+  incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
+  incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
   incorporationObject.data.msic_codes = [];
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[0] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[1] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[2] || "-"
-  );
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
+  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
   incorporationObject.data.company_email = incorporationSummary.companyEmail;
   incorporationObject.data.company_phone = incorporationSummary.officeNumber;
-  incorporationObject.data.company_address =
-    incorporationSummary.businessAddressLine1;
-  incorporationObject.data.company_city =
-    incorporationSummary.businessAddressCity;
-  incorporationObject.data.company_postcode =
-    incorporationSummary.businessAddressPostcode;
-  incorporationObject.data.company_state =
-    incorporationSummary.businessAddressState;
+  incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
+  incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
+  incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
+  incorporationObject.data.company_state = incorporationSummary.businessAddressState;
   incorporationObject.data.company_country = "Malaysia";
   incorporationObject.data.company_directors = [];
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
     let director = {};
     director.name = incorporationSummary.directors[dirNo].name;
+    director.fname = incorporationSummary.directors[dirNo].fname;
+    director.lname = incorporationSummary.directors[dirNo].lname;
     director.email = incorporationSummary.directors[dirNo].email;
     director.phone = incorporationSummary.directors[dirNo].phone;
     director.country = incorporationSummary.directors[dirNo].country;
@@ -774,12 +827,13 @@ function submitIncorporation() {
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     let shareholder = {};
     shareholder.type = incorporationSummary.shareholders[shNo].type;
-    shareholder.name_individual =
-      incorporationSummary.shareholderNamesInd[shNo].name;
-    shareholder.name_corporate =
-      incorporationSummary.shareholderNamesCorp[shNo].name;
-    shareholder.name_representative =
-      incorporationSummary.shareholders[shNo].rep;
+    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+    shareholder.fname_individual = incorporationSummary.shareholderNamesInd[shNo].fname;
+    shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
+    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
+    shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
+    shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
@@ -787,8 +841,15 @@ function submitIncorporation() {
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.tc_accepted = tc_accepted;
+}
 
-  fetch("https://api.centry.digital/api:incorporation/new_incorporation", {
+function submitIncorporation() {
+  incNextButton.innerText = "Preparing payment page...";
+
+  prepareSubmissionObject();
+  incorporationObject.status = "Submitted";
+
+  fetch(apiUrl + "incorporation/new_incorporation", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -876,68 +937,59 @@ function validateSaveEmail(e) {
 
 function saveDraft_new() {
   saveBtn0.innerText = "Saving...";
-  // Prepare submission object
-  let incorporationObject = {};
-  incorporationObject.data = {};
+  
+  prepareSubmissionObject();
   incorporationObject.status = "Draft";
-  incorporationObject.unique_id =
-    document.getElementById("incorporation-id").value;
   incorporationObject.email_save = emailSaveField.value;
-  incorporationObject.first_save = true;
-  incorporationObject.data.company_name = incorporationSummary.companyName;
-  incorporationObject.data.name_explanation =
-    incorporationSummary.companyNameExplanation;
-  incorporationObject.data.nature_of_business =
-    incorporationSummary.natureOfBusiness;
-  incorporationObject.data.msic_codes = [];
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[0] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[1] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[2] || "-"
-  );
-  incorporationObject.data.company_email = incorporationSummary.companyEmail;
-  incorporationObject.data.company_phone = incorporationSummary.officeNumber;
-  incorporationObject.data.company_address =
-    incorporationSummary.businessAddressLine1;
-  incorporationObject.data.company_city =
-    incorporationSummary.businessAddressCity;
-  incorporationObject.data.company_postcode =
-    incorporationSummary.businessAddressPostcode;
-  incorporationObject.data.company_state =
-    incorporationSummary.businessAddressState;
-  incorporationObject.data.company_country = "Malaysia";
-  incorporationObject.data.company_directors = [];
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    let director = {};
-    director.name = incorporationSummary.directors[dirNo].name;
-    director.email = incorporationSummary.directors[dirNo].email;
-    director.phone = incorporationSummary.directors[dirNo].phone;
-    director.country = incorporationSummary.directors[dirNo].country;
-    incorporationObject.data.company_directors.push(director);
-  }
-  incorporationObject.data.company_shareholders = [];
-  for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-    let shareholder = {};
-    shareholder.type = incorporationSummary.shareholders[shNo].type;
-    shareholder.name_individual =
-      incorporationSummary.shareholderNamesInd[shNo].name;
-    shareholder.name_corporate =
-      incorporationSummary.shareholderNamesCorp[shNo].name;
-    shareholder.name_representative =
-      incorporationSummary.shareholders[shNo].rep;
-    shareholder.email = incorporationSummary.shareholders[shNo].email;
-    shareholder.phone = incorporationSummary.shareholders[shNo].phone;
-    shareholder.shares = incorporationSummary.shareholders[shNo].shares;
-    shareholder.is_individual = (shareholder.type == "Individual");
-    incorporationObject.data.company_shareholders.push(shareholder);
-  }
-  incorporationObject.data.tc_accepted = tc_accepted;
+  
+  // incorporationObject = {};
+  // incorporationObject.data = {};
+  // incorporationObject.unique_id = document.getElementById("incorporation-id").value;
+  // incorporationObject.data.company_name = incorporationSummary.companyName;
+  // incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
+  // incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
+  // incorporationObject.data.msic_codes = [];
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
+  // incorporationObject.data.company_email = incorporationSummary.companyEmail;
+  // incorporationObject.data.company_phone = incorporationSummary.officeNumber;
+  // incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
+  // incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
+  // incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
+  // incorporationObject.data.company_state = incorporationSummary.businessAddressState;
+  // incorporationObject.data.company_country = "Malaysia";
+  // incorporationObject.data.company_directors = [];
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   let director = {};
+  //   director.name = incorporationSummary.directors[dirNo].name;
+  //   director.fname = incorporationSummary.directors[dirNo].fname;
+  //   director.lname = incorporationSummary.directors[dirNo].lname;
+  //   director.email = incorporationSummary.directors[dirNo].email;
+  //   director.phone = incorporationSummary.directors[dirNo].phone;
+  //   director.country = incorporationSummary.directors[dirNo].country;
+  //   incorporationObject.data.company_directors.push(director);
+  // }
+  // incorporationObject.data.company_shareholders = [];
+  // for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //   let shareholder = {};
+  //   shareholder.type = incorporationSummary.shareholders[shNo].type;
+  //   shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+  //   shareholder.fname_individual = incorporationSummary.shareholderNamesInd[shNo].fname;
+  //   shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
+  //   shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+  //   shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
+  //   shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
+  //   shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
+  //   shareholder.email = incorporationSummary.shareholders[shNo].email;
+  //   shareholder.phone = incorporationSummary.shareholders[shNo].phone;
+  //   shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+  //   shareholder.is_individual = (shareholder.type == "Individual");
+  //   incorporationObject.data.company_shareholders.push(shareholder);
+  // }
+  // incorporationObject.data.tc_accepted = tc_accepted;
 
-  fetch('https://api.centry.digital/api:incorporation/save_draft', {
+  fetch(apiUrl + 'incorporation/save_draft', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -952,64 +1004,57 @@ function saveDraft_new() {
 function saveDraft_existing() {
   saveBtn1.innerText = "Saving...";
   
-  // Prepare submission object
-  let incorporationObject = {};
-  incorporationObject.data = {};
+  prepareSubmissionObject();
   incorporationObject.status = "Draft";
-  incorporationObject.unique_id =
-    document.getElementById("incorporation-id").value;
-  incorporationObject.first_save = false;
-  incorporationObject.data.company_name = incorporationSummary.companyName;
-  incorporationObject.data.name_explanation =
-    incorporationSummary.companyNameExplanation;
-  incorporationObject.data.nature_of_business =
-    incorporationSummary.natureOfBusiness;
-  incorporationObject.data.msic_codes = [];
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[0] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[1] || "-"
-  );
-  incorporationObject.data.msic_codes.push(
-    incorporationSummary.msicCodes[2] || "-"
-  );
-  incorporationObject.data.company_email = incorporationSummary.companyEmail;
-  incorporationObject.data.company_phone = incorporationSummary.officeNumber;
-  incorporationObject.data.company_address =
-    incorporationSummary.businessAddressLine1;
-  incorporationObject.data.company_city =
-    incorporationSummary.businessAddressCity;
-  incorporationObject.data.company_postcode =
-    incorporationSummary.businessAddressPostcode;
-  incorporationObject.data.company_state =
-    incorporationSummary.businessAddressState;
-  incorporationObject.data.company_country = "Malaysia";
-  incorporationObject.data.company_directors = [];
-  for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    let director = {};
-    director.name = incorporationSummary.directors[dirNo].name;
-    director.email = incorporationSummary.directors[dirNo].email;
-    director.phone = incorporationSummary.directors[dirNo].phone;
-    director.country = incorporationSummary.directors[dirNo].country;
-    incorporationObject.data.company_directors.push(director);
-  }
-  incorporationObject.data.company_shareholders = [];
-  for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
-    let shareholder = {};
-    shareholder.type = incorporationSummary.shareholders[shNo].type;
-    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
-    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
-    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
-    shareholder.email = incorporationSummary.shareholders[shNo].email;
-    shareholder.phone = incorporationSummary.shareholders[shNo].phone;
-    shareholder.shares = incorporationSummary.shareholders[shNo].shares;
-    shareholder.is_individual = (shareholder.type == "Individual");
-    incorporationObject.data.company_shareholders.push(shareholder);
-  }
-  incorporationObject.data.tc_accepted = tc_accepted;
+  
+  // incorporationObject = {};
+  // incorporationObject.data = {};
+  // incorporationObject.unique_id = document.getElementById("incorporation-id").value;
+  // incorporationObject.data.company_name = incorporationSummary.companyName;
+  // incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
+  // incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
+  // incorporationObject.data.msic_codes = [];
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
+  // incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
+  // incorporationObject.data.company_email = incorporationSummary.companyEmail;
+  // incorporationObject.data.company_phone = incorporationSummary.officeNumber;
+  // incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
+  // incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
+  // incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
+  // incorporationObject.data.company_state = incorporationSummary.businessAddressState;
+  // incorporationObject.data.company_country = "Malaysia";
+  // incorporationObject.data.company_directors = [];
+  // for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
+  //   let director = {};
+  //   director.name = incorporationSummary.directors[dirNo].name;
+  //   director.fname = incorporationSummary.directors[dirNo].fname;
+  //   director.lname = incorporationSummary.directors[dirNo].lname;
+  //   director.email = incorporationSummary.directors[dirNo].email;
+  //   director.phone = incorporationSummary.directors[dirNo].phone;
+  //   director.country = incorporationSummary.directors[dirNo].country;
+  //   incorporationObject.data.company_directors.push(director);
+  // }
+  // incorporationObject.data.company_shareholders = [];
+  // for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
+  //   let shareholder = {};
+  //   shareholder.type = incorporationSummary.shareholders[shNo].type;
+  //   shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
+  //   shareholder.fname_individual = incorporationSummary.shareholderNamesInd[shNo].fname;
+  //   shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
+  //   shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
+  //   shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
+  //   shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
+  //   shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
+  //   shareholder.email = incorporationSummary.shareholders[shNo].email;
+  //   shareholder.phone = incorporationSummary.shareholders[shNo].phone;
+  //   shareholder.shares = incorporationSummary.shareholders[shNo].shares;
+  //   shareholder.is_individual = (shareholder.type == "Individual");
+  //   incorporationObject.data.company_shareholders.push(shareholder);
+  // }
+  // incorporationObject.data.tc_accepted = tc_accepted;
 
-  fetch('https://api.centry.digital/api:incorporation/save_draft', {
+  fetch(apiUrl + 'incorporation/save_draft', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
