@@ -399,14 +399,14 @@ function validateInput() {
         break;
       }
       flag_22 = false;
-      if (incorporationSummary.shareholderNamesRep[shNo].fname != "") {
+      if (incorporationSummary.shareholderReps[shNo].fname != "") {
         flag_22 = true;
       } else {
         flag_22 = false;
         break;
       }
       flag_23 = false;
-      if (incorporationSummary.shareholderNamesRep[shNo].lname != "") {
+      if (incorporationSummary.shareholderReps[shNo].lname != "") {
         flag_23 = true;
       } else {
         flag_23 = false;
@@ -669,8 +669,8 @@ function getSummary() {
     incorporationSummary.shareholderNamesInd[shNo].lname = incorporationSummary.shareholderLNamesInd[shNo].value;
     incorporationSummary.shareholderNamesInd[shNo].name = incorporationSummary.shareholderNamesInd[shNo].value;
     incorporationSummary.shareholderNamesCorp[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].value;
-    incorporationSummary.shareholderNamesRep[shNo].fname = incorporationSummary.shareholderFNamesRep[shNo].value;
-    incorporationSummary.shareholderNamesRep[shNo].lname = incorporationSummary.shareholderLNamesRep[shNo].value;
+    incorporationSummary.shareholderReps[shNo].fname = incorporationSummary.shareholderFNamesRep[shNo].value;
+    incorporationSummary.shareholderReps[shNo].lname = incorporationSummary.shareholderLNamesRep[shNo].value;
     incorporationSummary.shareholders[shNo].rep = incorporationSummary.shareholderReps[shNo].value;
     incorporationSummary.shareholders[shNo].email = incorporationSummary.shareholderEmails[shNo].value;
     incorporationSummary.shareholders[shNo].phone = incorporationSummary.shareholderPhones[shNo].value;
@@ -768,9 +768,9 @@ function getSummary() {
       shareholderRep_shNo.classList.add("summary-text", "text-sm");
       shareholderRep_shNo.innerText = "Representative legal name: " + incorporationSummary.shareholders[shNo].rep;
       shareholderRepFName_shNo.classList.add("summary-text", "text-sm");
-      shareholderRepFName_shNo.innerText = "Representative first name: " + incorporationSummary.shareholdersNamesRep[shNo].fname;
+      shareholderRepFName_shNo.innerText = "Representative first name: " + incorporationSummary.shareholderReps[shNo].fname;
       shareholderRepLName_shNo.classList.add("summary-text", "text-sm");
-      shareholderRepLName_shNo.innerText = "Representative last name: " + incorporationSummary.shareholdersNamesRep[shNo].lname;
+      shareholderRepLName_shNo.innerText = "Representative last name: " + incorporationSummary.shareholderReps[shNo].lname;
       shareholderGroupBody_shNo.appendChild(shareholderRep_shNo);
       shareholderGroupBody_shNo.appendChild(shareholderRepFName_shNo);
       shareholderGroupBody_shNo.appendChild(shareholderRepLName_shNo);
@@ -832,8 +832,8 @@ function prepareSubmissionObject() {
     shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
     shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
     shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
-    shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
-    shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
+    shareholder.fname_representative = incorporationSummary.shareholderReps[shNo].fname;
+    shareholder.lname_representative = incorporationSummary.shareholderReps[shNo].lname;
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
@@ -979,8 +979,8 @@ function saveDraft_new() {
   //   shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
   //   shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
   //   shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
-  //   shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
-  //   shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
+  //   shareholder.fname_representative = incorporationSummary.shareholderReps[shNo].fname;
+  //   shareholder.lname_representative = incorporationSummary.shareholderReps[shNo].lname;
   //   shareholder.email = incorporationSummary.shareholders[shNo].email;
   //   shareholder.phone = incorporationSummary.shareholders[shNo].phone;
   //   shareholder.shares = incorporationSummary.shareholders[shNo].shares;
@@ -1044,8 +1044,8 @@ function saveDraft_existing() {
   //   shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
   //   shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
   //   shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
-  //   shareholder.fname_representative = incorporationSummary.shareholdersNamesRep[shNo].fname;
-  //   shareholder.lname_representative = incorporationSummary.shareholdersNamesRep[shNo].lname;
+  //   shareholder.fname_representative = incorporationSummary.shareholderReps[shNo].fname;
+  //   shareholder.lname_representative = incorporationSummary.shareholderReps[shNo].lname;
   //   shareholder.email = incorporationSummary.shareholders[shNo].email;
   //   shareholder.phone = incorporationSummary.shareholders[shNo].phone;
   //   shareholder.shares = incorporationSummary.shareholders[shNo].shares;
