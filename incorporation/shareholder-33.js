@@ -9,13 +9,13 @@ let repFirstName_Corp = document.querySelector('input[data-incorporation-data="c
 let repLastName_Corp = document.querySelector('input[data-incorporation-data="corporate-representative-lname"]');
 let repLegalName_Corp = document.querySelector('input[data-incorporation-data="corporate-representative-name"]');
 
-let shFirstNameInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-fname"]');
-let shLastNameInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-lname"]');
+let shFirstNameInd = document.querySelector('input[data-incorporation-data="individual-shareholder-fname"]');
+let shLastNameInd = document.querySelector('input[data-incorporation-data="individual-shareholder-lname"]');
 shFirstNameInd.addEventListener("keyup", updateIndShareholderLegalName);
 shLastNameInd.addEventListener("keyup", updateIndShareholderLegalName);
 
-let repFirstName = document.querySelectorAll('input[data-incorporation-data="corporate-representative-fname"]');
-let repLastName = document.querySelectorAll('input[data-incorporation-data="corporate-representative-lname"]');
+let repFirstName = document.querySelector('input[data-incorporation-data="corporate-representative-fname"]');
+let repLastName = document.querySelector('input[data-incorporation-data="corporate-representative-lname"]');
 repFirstName.addEventListener("keyup", updateRepLegalName);
 repLastName.addEventListener("keyup", updateRepLegalName);
 
