@@ -1,6 +1,7 @@
 //add shareholder
 const addShareholderButton = document.getElementById("add-shareholder-button");
 addShareholderButton.setAttribute("onClick", "addShareholderInputGroup()");
+const shareholderGroup = document.getElementById("shareholder-group");
 
 let shareholderFirstName_Ind = document.querySelector('input[data-incorporation-data="individual-shareholder-fname"]');
 let shareholderLastName_Ind = document.querySelector('input[data-incorporation-data="individual-shareholder-lname"]');
@@ -36,7 +37,6 @@ function updateRepLegalName(el) {
 }
 
 function addShareholderInputGroup() {
-  const shareholderGroup = document.getElementById("shareholder-group");
   //Create elements
   const shareholderInputGroup = document.createElement("div");
   const inputSubGroup100Type = document.createElement("div");
@@ -205,7 +205,7 @@ function addShareholderInputGroup() {
   hiddenInput.setAttribute("value", "Individual");
   
   //Set input field - Individual shareholder First Name
-  shareholderFNameLabelInd.innerText = "First Name";
+  shareholderFNameLabelInd.innerText = "First Name / given name";
   shareholderFNameInd.type = "text";
   shareholderFNameInd.name = "Individual-shareholder-first-name";
   shareholderFNameInd.setAttribute("data-incorporation-data", "individual-shareholder-fname");
@@ -217,7 +217,7 @@ function addShareholderInputGroup() {
   shareholderFNameInd.addEventListener("keyup", updateIndShareholderLegalName);
   
   //Set input field - Individual shareholder Last Name
-  shareholderLNameLabelInd.innerText = "Last Name";
+  shareholderLNameLabelInd.innerText = "Last Name / family name";
   shareholderLNameInd.type = "text";
   shareholderLNameInd.name = "Individual-shareholder-last-name";
   shareholderLNameInd.setAttribute("data-incorporation-data", "individual-shareholder-lname");
@@ -230,7 +230,7 @@ function addShareholderInputGroup() {
 
   //Set input field - Individual shareholder Name
   inputSubGroupInd.setAttribute("data-shareholder-group", "individual");
-  shareholderNameLabelInd.innerText = "Shareholder name";
+  shareholderNameLabelInd.innerText = "Legal name displayed per NRIC / ID / Passport";
   shareholderNameIndDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
@@ -252,7 +252,7 @@ function addShareholderInputGroup() {
   shareholderNameCorp1.addEventListener("keyup", updateButtons);
   
   //Set input field - Corporate shareholder representative
-  shareholderNameLabelCorp2.innerText = "Corporate representative name";
+  shareholderNameLabelCorp2.innerText = "Corporate representative legal name displayed per NRIC / ID / Passport";
   shareholderNameCorp2Description.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   shareholderNameCorp2.type = "text";
   shareholderNameCorp2.name = "Corporate-representative-name";
@@ -263,7 +263,7 @@ function addShareholderInputGroup() {
   shareholderNameCorp2.addEventListener("keyup", updateButtons);
 
   //Set input field - Corporate shareholder representative First Name
-  shareholderFNameLabelCorpRep.innerText = "Corporate representative first Name";
+  shareholderFNameLabelCorpRep.innerText = "Corporate representative first name / given name";
   shareholderFNameCorpRep.type = "text";
   shareholderFNameCorpRep.name = "Corporate-representative-first-name";
   shareholderFNameCorpRep.setAttribute("data-incorporation-data", "corporate-representative-fname");
@@ -275,7 +275,7 @@ function addShareholderInputGroup() {
   shareholderFNameCorpRep.addEventListener("keyup", updateRepLegalName);
   
   //Set input field - Corporate shareholder representative Last Name
-  shareholderLNameLabelCorpRep.innerText = "Corporate representativeast Name";
+  shareholderLNameLabelCorpRep.innerText = "Corporate representativeast last name / family name";
   shareholderLNameCorpRep.type = "text";
   shareholderLNameCorpRep.name = "Corporate-representative-last-name";
   shareholderLNameCorpRep.setAttribute("data-incorporation-data", "corporate-representative-lname");
@@ -412,7 +412,7 @@ function addShareholderInputGroup() {
 
 //remove shareholder input group
 function removeShareholder(el) {
-	const shareholder = el.target.parentElement.parentElement.parentElement;
+	const shareholder = el.target.parentElement;
   shareholder.remove();
   updateShares();
   updateButtons();

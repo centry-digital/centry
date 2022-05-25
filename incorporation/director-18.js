@@ -115,7 +115,7 @@ function addDirectorInputGroup() {
   directorLName.addEventListener("keyup", updateDirectorLegalName);
   
   //Set input field - Director Name
-  directorNameLabel.innerText = "Director name";
+  directorNameLabel.innerText = "Legal name displayed per NRIC / ID / Passport";
   removeDirectorButton.type = "button";
   removeDirectorButton.innerText = "remove";
   directorLegalNameDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
@@ -208,7 +208,7 @@ function addDirectorInputGroup() {
 }
 
 function removeDirector(el) {
-  const director = el.target.parentElement.parentElement.parentElement;
+  const director = el.target.parentElement;
   director.remove();
   validateInput();
   updateButtons();
