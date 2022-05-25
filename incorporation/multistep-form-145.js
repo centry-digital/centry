@@ -838,6 +838,7 @@ function prepareSubmissionObject() {
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
     shareholder.is_individual = (shareholder.type == "Individual");
+    shareholder.need_kyc = (parseInt(shareholder.shares) >= 250);
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.tc_accepted = tc_accepted;
