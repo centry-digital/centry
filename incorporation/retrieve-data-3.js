@@ -29,8 +29,8 @@ let director_phones = document.querySelectorAll('[data-incorporation-data="direc
 let director_countries = document.querySelectorAll('[data-incorporation-data="director-country"]');
 for (let i = 0; i < data.company_directors.length; i++) {
   director_names[i].value = data.company_directors[i].name;
-  director_names[i].value = data.company_directors[i].fname;
-  director_names[i].value = data.company_directors[i].lname;
+  director_fnames[i].value = data.company_directors[i].fname;
+  director_lnames[i].value = data.company_directors[i].lname;
   director_emails[i].value = data.company_directors[i].email;
   director_phones[i].value = data.company_directors[i].phone;
   director_countries[i].value = data.company_directors[i].country;
@@ -57,6 +57,8 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
     shareholder_types_corp[i].click();
   }
   shareholder_names_ind[i].value = data.company_shareholders[i].name_individual;
+  shareholder_fnames_ind[i].value = data.company_shareholders[i].fname_individual;
+  shareholder_lnames_ind[i].value = data.company_shareholders[i].lname_individual;
   shareholder_names_corp[i].value = data.company_shareholders[i].name_corporate;
   shareholder_names_rep[i].value = data.company_shareholders[i].name_representative;
   shareholder_fnames_rep[i].value = data.company_shareholders[i].fname_representative;
