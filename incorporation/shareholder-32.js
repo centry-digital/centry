@@ -2,6 +2,39 @@
 const addShareholderButton = document.getElementById("add-shareholder-button");
 addShareholderButton.setAttribute("onClick", "addShareholderInputGroup()");
 
+let shareholderFirstName_Ind = document.querySelector('input[data-incorporation-data="individual-shareholder-fname"]');
+let shareholderLastName_Ind = document.querySelector('input[data-incorporation-data="individual-shareholder-lname"]');
+let shareholderLegalName_Ind = document.querySelector('input[data-incorporation-data="individual-shareholder-name"]');
+let repFirstName_Corp = document.querySelector('input[data-incorporation-data="corporate-representative-fname"]');
+let repLastName_Corp = document.querySelector('input[data-incorporation-data="corporate-representative-lname"]');
+let repLegalName_Corp = document.querySelector('input[data-incorporation-data="corporate-representative-name"]');
+
+let shFirstNameInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-fname"]');
+let shLastNameInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-lname"]');
+shFirstNameInd.addEventListener("keyup", updateIndShareholderLegalName);
+shLastNameInd.addEventListener("keyup", updateIndShareholderLegalName);
+
+let repFirstName = document.querySelectorAll('input[data-incorporation-data="corporate-representative-fname"]');
+let repLastName = document.querySelectorAll('input[data-incorporation-data="corporate-representative-lname"]');
+repFirstName.addEventListener("keyup", updateRepLegalName);
+repLastName.addEventListener("keyup", updateRepLegalName);
+
+function updateIndShareholderLegalName(el) {
+	let parentGroup = el.target.parentElement.parentElement.parentElement.parentElement;
+  let firstName = parentGroup.querySelector('input[data-incorporation-data="individual-shareholder-fname"]');
+	let lastName = parentGroup.querySelector('input[data-incorporation-data="individual-shareholder-lname"]');
+  let legalName = parentGroup.querySelector('input[data-incorporation-data="individual-shareholder-name"]');
+  legalName.value = firstName.value + " " + lastName.value;
+}
+
+function updateRepLegalName(el) {
+	let parentGroup = el.target.parentElement.parentElement.parentElement.parentElement;
+  let firstName = parentGroup.querySelector('input[data-incorporation-data="corporate-representative-fname"]');
+	let lastName = parentGroup.querySelector('input[data-incorporation-data="corporate-representative-lname"]');
+  let legalName = parentGroup.querySelector('input[data-incorporation-data="corporate-representative-name"]');
+  legalName.value = firstName.value + " " + lastName.value;
+}
+
 function addShareholderInputGroup() {
   const shareholderGroup = document.getElementById("shareholder-group");
   //Create elements
@@ -21,25 +54,45 @@ function addShareholderInputGroup() {
         const shareholderTypeRadioSpan2 = document.createElement("span");
     const hiddenInput = document.createElement("input");
   const inputSubGroupInd = document.createElement("div");
+    const inputSubGroup50_1 = document.createElement("div");
+      const inputFieldBlock50_1 = document.createElement("div");
+        const shareholderFNameLabelInd = document.createElement("label");
+        const inputWrapperFNameInd = document.createElement("div");
+          const shareholderFNameInd = document.createElement("input");
+      const inputFieldBlock50_2 = document.createElement("div");
+        const shareholderLNameLabelInd = document.createElement("label");
+        const inputWrapperLNameInd = document.createElement("div");
+          const shareholderLNameInd = document.createElement("input");
   	const inputSubGroup100Ind = document.createElement("div");
     	const shareholderNameLabelInd = document.createElement("label");
+    	const shareholderNameIndDescription = document.createElement("div");
       const inputWrapperInd = document.createElement("div");
       	const shareholderNameInd = document.createElement("input");
   const inputSubGroupCorp = document.createElement("div");
-  	const inputSubGroup100Corp1 = document.createElement("div");
+    const inputSubGroup100Corp1 = document.createElement("div");
     	const shareholderNameLabelCorp1 = document.createElement("label");
       const inputWrapperCorp1 = document.createElement("div");
       	const shareholderNameCorp1 = document.createElement("input");
-  	const inputSubGroup100Corp2 = document.createElement("div");
-    	const shareholderNameLabelCorp2 = document.createElement("label");
+    const inputSubGroup50_2 = document.createElement("div");
+      const inputFieldBlock50_3 = document.createElement("div");
+        const shareholderFNameLabelCorpRep = document.createElement("label");
+        const inputWrapperFNameCorpRep = document.createElement("div");
+          const shareholderFNameCorpRep = document.createElement("input");
+      const inputFieldBlock50_4 = document.createElement("div");
+        const shareholderLNameLabelCorpRep = document.createElement("label");
+        const inputWrapperLNameCorpRep = document.createElement("div");
+    const shareholderLNameCorpRep = document.createElement("input");
+    const inputSubGroup100Corp2 = document.createElement("div");
+      const shareholderNameLabelCorp2 = document.createElement("label");
+      const shareholderNameCorp2Description = document.createElement("div");
       const inputWrapperCorp2 = document.createElement("div");
-      	const shareholderNameCorp2 = document.createElement("input");
-  const inputSubGroup50 = document.createElement("div");
-  	const inputFieldBlock50_1 = document.createElement("div");
+        const shareholderNameCorp2 = document.createElement("input");
+  const inputSubGroup50_3 = document.createElement("div");
+  	const inputFieldBlock50_5 = document.createElement("div");
     	const shareholderEmailLabel = document.createElement("label");
       const inputWrapperEmail = document.createElement("div");
       	const shareholderEmail = document.createElement("input");
-	  const inputFieldBlock50_2 = document.createElement("div");
+	  const inputFieldBlock50_6 = document.createElement("div");
     	const shareholderPhoneLabel = document.createElement("label");
       const inputWrapperPhone = document.createElement("div");
 	      const shareholderPhone = document.createElement("input");
@@ -73,8 +126,18 @@ function addShareholderInputGroup() {
           shareholderTypeRadioInput2.style.zIndex = "-1";
           shareholderTypeRadioSpan2.classList.add("radio-button-label","w-form-label");
     inputSubGroupInd.classList.add("individual-shareholder-group");
+      inputSubGroup50_1.classList.add("input-subgroup-50");
+        inputFieldBlock50_1.classList.add("input-field-block-50");
+          shareholderFNameLabelInd.classList.add("field-label");
+          inputWrapperFNameInd.classList.add("input-wrapper");
+            shareholderFNameInd.classList.add("centry-text-field", "text-sm", "w-input");
+        inputFieldBlock50_2.classList.add("input-field-block-50");
+          shareholderLNameLabelInd.classList.add("field-label");
+          inputWrapperLNameInd.classList.add("input-wrapper");
+            shareholderLNameInd.classList.add("centry-text-field", "text-sm", "w-input");
       inputSubGroup100Ind.classList.add("input-subgroup-100");
         shareholderNameLabelInd.classList.add("field-label");
+        shareholderNameIndDescription.classList.add("text-block-37", "text-xs");
         inputWrapperInd.classList.add("input-wrapper");
           shareholderNameInd.classList.add("centry-text-field", "text-sm", "w-input");
     inputSubGroupCorp.classList.add("corporate-shareholder-group", "hide");
@@ -82,16 +145,26 @@ function addShareholderInputGroup() {
         shareholderNameLabelCorp1.classList.add("field-label");
         inputWrapperCorp1.classList.add("input-wrapper");
           shareholderNameCorp1.classList.add("centry-text-field", "text-sm", "w-input");
+      inputSubGroup50_2.classList.add("input-subgroup-50");
+        inputFieldBlock50_3.classList.add("input-field-block-50");
+          shareholderFNameLabelCorpRep.classList.add("field-label");
+          inputWrapperFNameCorpRep.classList.add("input-wrapper");
+            shareholderFNameCorpRep.classList.add("centry-text-field", "text-sm", "w-input");
+        inputFieldBlock50_4.classList.add("input-field-block-50");
+          shareholderLNameLabelCorpRep.classList.add("field-label");
+          inputWrapperLNameCorpRep.classList.add("input-wrapper");
+            shareholderLNameCorpRep.classList.add("centry-text-field", "text-sm", "w-input");
       inputSubGroup100Corp2.classList.add("input-subgroup-100");
         shareholderNameLabelCorp2.classList.add("field-label");
+        shareholderNameCorp2Description.classList.add("text-block-37", "text-xs");
         inputWrapperCorp2.classList.add("input-wrapper");
           shareholderNameCorp2.classList.add("centry-text-field", "text-sm", "w-input");
-    inputSubGroup50.classList.add("input-subgroup-50");
-      inputFieldBlock50_1.classList.add("input-field-block-50");
+    inputSubGroup50_3.classList.add("input-subgroup-50");
+      inputFieldBlock50_5.classList.add("input-field-block-50");
         shareholderEmailLabel.classList.add("field-label");
         inputWrapperEmail.classList.add("input-wrapper");
           shareholderEmail.classList.add("centry-text-field", "text-sm", "w-input");
-      inputFieldBlock50_2.classList.add("input-field-block-50");
+      inputFieldBlock50_6.classList.add("input-field-block-50");
         shareholderPhoneLabel.classList.add("field-label");
         inputWrapperPhone.classList.add("input-wrapper");
           shareholderPhone.classList.add("centry-text-field", "text-sm", "w-input");
@@ -131,9 +204,34 @@ function addShareholderInputGroup() {
   hiddenInput.setAttribute("data-incorporation-data", "shareholder-type-hidden");
   hiddenInput.setAttribute("value", "Individual");
   
+  //Set input field - Individual shareholder First Name
+  shareholderFNameLabelInd.innerText = "First Name";
+  shareholderFNameInd.type = "text";
+  shareholderFNameInd.name = "Individual-shareholder-first-name";
+  shareholderFNameInd.setAttribute("data-incorporation-data", "individual-shareholder-fname");
+  shareholderFNameInd.setAttribute("data-name", "Individual-shareholder-first-name");
+  shareholderFNameInd.setAttribute("maxlength", "256");
+  shareholderFNameInd.setAttribute("required", "");
+  shareholderFNameInd.addEventListener("keyup", validateField);
+  shareholderFNameInd.addEventListener("keyup", updateButtons);
+  shareholderFNameInd.addEventListener("keyup", updateIndShareholderLegalName);
+  
+  //Set input field - Individual shareholder Last Name
+  shareholderLNameLabelInd.innerText = "Last Name";
+  shareholderLNameInd.type = "text";
+  shareholderLNameInd.name = "Individual-shareholder-last-name";
+  shareholderLNameInd.setAttribute("data-incorporation-data", "individual-shareholder-lname");
+  shareholderLNameInd.setAttribute("data-name", "Individual-shareholder-last-name");
+  shareholderLNameInd.setAttribute("maxlength", "256");
+  shareholderLNameInd.setAttribute("required", "");
+  shareholderLNameInd.addEventListener("keyup", validateField);
+  shareholderLNameInd.addEventListener("keyup", updateButtons);
+  shareholderLNameInd.addEventListener("keyup", updateIndShareholderLegalName);
+
   //Set input field - Individual shareholder Name
   inputSubGroupInd.setAttribute("data-shareholder-group", "individual");
   shareholderNameLabelInd.innerText = "Shareholder name";
+  shareholderNameIndDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   shareholderNameInd.type = "text";
   shareholderNameInd.name = "Individual-shareholder-name";
   shareholderNameInd.setAttribute("data-incorporation-data", "individual-shareholder-name");
@@ -155,6 +253,7 @@ function addShareholderInputGroup() {
   
   //Set input field - Corporate shareholder representative
   shareholderNameLabelCorp2.innerText = "Corporate representative name";
+  shareholderNameCorp2Description.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   shareholderNameCorp2.type = "text";
   shareholderNameCorp2.name = "Corporate-representative-name";
   shareholderNameCorp2.setAttribute("data-incorporation-data", "corporate-representative-name");
@@ -162,6 +261,30 @@ function addShareholderInputGroup() {
   shareholderNameCorp2.setAttribute("maxlength", "256");
   shareholderNameCorp2.addEventListener("keyup", validateField);
   shareholderNameCorp2.addEventListener("keyup", updateButtons);
+
+  //Set input field - Corporate shareholder representative First Name
+  shareholderFNameLabelCorpRep.innerText = "Corporate representative first Name";
+  shareholderFNameCorpRep.type = "text";
+  shareholderFNameCorpRep.name = "Corporate-representative-first-name";
+  shareholderFNameCorpRep.setAttribute("data-incorporation-data", "corporate-representative-fname");
+  shareholderFNameCorpRep.setAttribute("data-name", "Corporate-representative-first-name");
+  shareholderFNameCorpRep.setAttribute("maxlength", "256");
+  shareholderFNameCorpRep.setAttribute("required", "");
+  shareholderFNameCorpRep.addEventListener("keyup", validateField);
+  shareholderFNameCorpRep.addEventListener("keyup", updateButtons);
+  shareholderFNameCorpRep.addEventListener("keyup", updateRepLegalName);
+  
+  //Set input field - Corporate shareholder representative Last Name
+  shareholderLNameLabelCorpRep.innerText = "Corporate representativeast Name";
+  shareholderLNameCorpRep.type = "text";
+  shareholderLNameCorpRep.name = "Corporate-representative-last-name";
+  shareholderLNameCorpRep.setAttribute("data-incorporation-data", "corporate-representative-lname");
+  shareholderLNameCorpRep.setAttribute("data-name", "Corporate-representative-last-name");
+  shareholderLNameCorpRep.setAttribute("maxlength", "256");
+  shareholderLNameCorpRep.setAttribute("required", "");
+  shareholderLNameCorpRep.addEventListener("keyup", validateField);
+  shareholderLNameCorpRep.addEventListener("keyup", updateButtons);
+  shareholderLNameCorpRep.addEventListener("keyup", updateRepLegalName);
   
   //Set input field - Shareholder Email
   shareholderEmailLabel.innerText = "Email address";
@@ -201,10 +324,11 @@ function addShareholderInputGroup() {
   shareholderSharesNum2.innerText = " / 1,000 shares";
   
   //Append elements to Shareholder Input Groups
+  shareholderInputGroup.appendChild(removeShareholderButton);
   shareholderInputGroup.appendChild(inputSubGroup100Type);
   shareholderInputGroup.appendChild(inputSubGroupInd);
   shareholderInputGroup.appendChild(inputSubGroupCorp);
-  shareholderInputGroup.appendChild(inputSubGroup50);
+  shareholderInputGroup.appendChild(inputSubGroup50_3);
   shareholderInputGroup.appendChild(inputSubGroup100Shares);
   
   //Shareholder type
@@ -212,7 +336,6 @@ function addShareholderInputGroup() {
   inputSubGroup100Type.appendChild(shareholderType);
   inputSubGroup100Type.appendChild(hiddenInput);
   shareholderTypeLabelWrapper.appendChild(shareholderTypeLabel);
-  shareholderTypeLabelWrapper.appendChild(removeShareholderButton);
   shareholderType.appendChild(shareholderTypeRadio1);
   shareholderType.appendChild(shareholderTypeRadio2);
   shareholderTypeRadio1.appendChild(shareholderTypeRadioLabel1);
@@ -223,31 +346,51 @@ function addShareholderInputGroup() {
   shareholderTypeRadio2.appendChild(shareholderTypeRadioSpan2);
 
   //Individual Shareholder
+  inputSubGroupInd.appendChild(inputSubGroup50_1);
   inputSubGroupInd.appendChild(inputSubGroup100Ind);
+  inputSubGroup50_1.appendChild(inputFieldBlock50_1);
+  inputSubGroup50_1.appendChild(inputFieldBlock50_2);
+  inputFieldBlock50_1.appendChild(shareholderFNameLabelInd);
+  inputFieldBlock50_1.appendChild(inputWrapperFNameInd);
+  inputWrapperFNameInd.appendChild(shareholderFNameInd);
+  inputFieldBlock50_2.appendChild(shareholderLNameLabelInd);
+  inputFieldBlock50_2.appendChild(inputWrapperLNameInd);
+  inputWrapperLNameInd.appendChild(shareholderLNameInd);
   inputSubGroup100Ind.appendChild(shareholderNameLabelInd);
+  inputSubGroup100Ind.appendChild(shareholderNameIndDescription);
   inputSubGroup100Ind.appendChild(inputWrapperInd);
   inputWrapperInd.appendChild(shareholderNameInd);
   
   //Corporate Shareholder
   inputSubGroupCorp.appendChild(inputSubGroup100Corp1);
+  inputSubGroupCorp.appendChild(inputSubGroup50_2);
   inputSubGroupCorp.appendChild(inputSubGroup100Corp2);
   inputSubGroup100Corp1.appendChild(shareholderNameLabelCorp1);
   inputSubGroup100Corp1.appendChild(inputWrapperCorp1);
   inputWrapperCorp1.appendChild(shareholderNameCorp1);
+  inputSubGroup50_2.appendChild(inputFieldBlock50_3);
+  inputSubGroup50_2.appendChild(inputFieldBlock50_4);
+  inputFieldBlock50_3.appendChild(shareholderFNameLabelCorpRep);
+  inputFieldBlock50_3.appendChild(inputWrapperFNameCorpRep);
+  inputWrapperFNameCorpRep.appendChild(shareholderFNameCorpRep);
+  inputFieldBlock50_4.appendChild(shareholderLNameLabelCorpRep);
+  inputFieldBlock50_4.appendChild(inputWrapperLNameCorpRep);
+  inputWrapperLNameCorpRep.appendChild(shareholderLNameCorpRep);
   inputSubGroup100Corp2.appendChild(shareholderNameLabelCorp2);
+  inputSubGroup100Corp2.appendChild(shareholderNameCorp2Description);
   inputSubGroup100Corp2.appendChild(inputWrapperCorp2);
   inputWrapperCorp2.appendChild(shareholderNameCorp2);
   
   //Shareholder Email
-  inputSubGroup50.appendChild(inputFieldBlock50_1);
-  inputFieldBlock50_1.appendChild(shareholderEmailLabel);
-  inputFieldBlock50_1.appendChild(inputWrapperEmail);
+  inputSubGroup50_3.appendChild(inputFieldBlock50_5);
+  inputFieldBlock50_5.appendChild(shareholderEmailLabel);
+  inputFieldBlock50_5.appendChild(inputWrapperEmail);
   inputWrapperEmail.appendChild(shareholderEmail);
   
   //Director Phone
-  inputSubGroup50.appendChild(inputFieldBlock50_2);
-  inputFieldBlock50_2.appendChild(shareholderPhoneLabel);
-  inputFieldBlock50_2.appendChild(inputWrapperPhone);
+  inputSubGroup50_3.appendChild(inputFieldBlock50_6);
+  inputFieldBlock50_6.appendChild(shareholderPhoneLabel);
+  inputFieldBlock50_6.appendChild(inputWrapperPhone);
   inputWrapperPhone.appendChild(shareholderPhone);
   
   //Number of Shares

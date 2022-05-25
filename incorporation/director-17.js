@@ -118,7 +118,7 @@ function addDirectorInputGroup() {
   directorNameLabel.innerText = "Director name";
   removeDirectorButton.type = "button";
   removeDirectorButton.innerText = "remove";
-  directorLegalNameDescription.innerText = "Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
+  directorLegalNameDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   directorName.type = "text";
   directorName.name = "Legal name displayed per NRIC / ID / Passport";
   directorName.setAttribute("data-name", "Director-name");
