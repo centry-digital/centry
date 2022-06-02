@@ -1,0 +1,58 @@
+{
+  "request": {
+    "url": "https://stationapi.veriff.com/v1/sessions/",
+    "method": "POST",
+    "headers": [
+      "POST /v1/sessions/ HTTP/1.1",
+      "Host: stationapi.veriff.com",
+      "Accept-Encoding: gzip, deflate",
+      "Content-Type: application/json",
+      "X-AUTH-CLIENT: 9720c70a-28aa-4ea8-8813-e60a8eaca481",
+      "Accept: application/json",
+      "Content-Length: 312"
+    ],
+    "params": {
+      "verification": {
+        "callback": "https://centry-digital.webflow.io/incorporation/get-started",
+        "person": {
+          "firstName": "Yong Ling",
+          "lastName": "Chow",
+          "dateOfBirth": "1988-05-26"
+        },
+        "document": { "type": "ID_CARD", "country": "MY" },
+        "vendorData": "b13086c7-ec4b-4018-91c2-16d9fb5a58df",
+        "timestamp": "2022-05-31T17:56:19+08:00"
+      }
+    }
+  },
+  "response": {
+    "headers": [
+      "HTTP/1.1 201 Created",
+      "Date: Tue, 31 May 2022 09:56:20 GMT",
+      "Content-Type: application/json; charset=utf-8",
+      "Content-Length: 594",
+      "Connection: keep-alive",
+      "Strict-Transport-Security: max-age=15552000; includeSubDomains",
+      "Surrogate-Control: no-store",
+      "Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Pragma: no-cache",
+      "Expires: 0",
+      "Access-Control-Allow-Origin: *",
+      "X-AUTH-CLIENT: 9720c70a-28aa-4ea8-8813-e60a8eaca481",
+      "X-SIGNATURE: f46eb92712d137f6ab6d934758f06e8f5f882cd09351ea7078a732bf35aa6025",
+      "ETag: W/\"252-5D+MK6dpQmmYWCeFL1Zyo3lm2Yo\""
+    ],
+    "result": {
+      "status": "success",
+      "verification": {
+        "id": "48be2a4a-a946-497e-a7c1-070427e47dc1",
+        "url": "https://alchemy.veriff.com/v/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uX2lkIjoiNDhiZTJhNGEtYTk0Ni00OTdlLWE3YzEtMDcwNDI3ZTQ3ZGMxIiwiaWF0IjoxNjUzOTkwOTgwfQ.XGkOmdrv9XnT-n25MFvbHrwiozrVpCpGVtmnhArDfII",
+        "vendorData": "b13086c7-ec4b-4018-91c2-16d9fb5a58df",
+        "host": "https://alchemy.veriff.com",
+        "status": "created",
+        "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uX2lkIjoiNDhiZTJhNGEtYTk0Ni00OTdlLWE3YzEtMDcwNDI3ZTQ3ZGMxIiwiaWF0IjoxNjUzOTkwOTgwfQ.XGkOmdrv9XnT-n25MFvbHrwiozrVpCpGVtmnhArDfII"
+      }
+    },
+    "status": 201
+  }
+}

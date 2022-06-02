@@ -94,7 +94,7 @@ function getNextTab() {
     status0.classList.add("complete");
     status1.classList.add("complete");
     status2.classList.add("in-progress");
-  } else if (retrievedData.status == "Submitted for Incorporation") {
+  } else if (retrievedData.status == "Incorporation") {
     continueIncorporatingBtn.classList.add("hide");
     icon0.classList.remove("in-progress");
     icon0.classList.add("complete");

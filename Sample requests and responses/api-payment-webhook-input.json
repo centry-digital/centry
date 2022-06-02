@@ -1,0 +1,72 @@
+{
+  "id": "evt_1L5LA4D1IRbWtes1xW4a42D4",
+  "data": {
+    "object": {
+      "id": "cs_test_b1N2O4OriaQ7bQKwEWSIOxLRviL3GWkNiUxWsLOIysY4g8pga79CHdG6HM",
+      "url": null,
+      "mode": "subscription",
+      "locale": null,
+      "object": "checkout.session",
+      "status": "complete",
+      "consent": null,
+      "currency": "myr",
+      "customer": "cus_Lmv0YX7x5yUkej",
+      "livemode": false,
+      "metadata": { "email": "yl@centry.digital", "unique_id": "1RM3JO" },
+      "shipping": null,
+      "cancel_url": "https://centry-digital.webflow.io/incorporation/get-started?unid=1RM3JO&email=yl@centry.digital",
+      "expires_at": 1654051791,
+      "submit_type": null,
+      "success_url": "https://centry-digital.webflow.io/incorporation/get-started?unid=1RM3JO&email=yl@centry.digital",
+      "amount_total": 174900,
+      "payment_link": null,
+      "setup_intent": null,
+      "subscription": "sub_1L5LA0D1IRbWtes1DNIfdEqw",
+      "automatic_tax": { "status": null, "enabled": false },
+      "shipping_rate": null,
+      "total_details": {
+        "amount_tax": 0,
+        "amount_discount": 0,
+        "amount_shipping": 0
+      },
+      "customer_email": null,
+      "payment_intent": null,
+      "payment_status": "paid",
+      "recovered_from": null,
+      "amount_subtotal": 174900,
+      "after_expiration": null,
+      "customer_details": {
+        "name": "Ding Dong",
+        "email": "abc@abc.com",
+        "phone": null,
+        "address": {
+          "city": null,
+          "line1": null,
+          "line2": null,
+          "state": null,
+          "country": "MY",
+          "postal_code": null
+        },
+        "tax_ids": [],
+        "tax_exempt": "none"
+      },
+      "shipping_options": [],
+      "customer_creation": "always",
+      "consent_collection": null,
+      "client_reference_id": null,
+      "payment_method_types": ["card"],
+      "allow_promotion_codes": null,
+      "payment_method_options": null,
+      "phone_number_collection": { "enabled": false },
+      "billing_address_collection": null,
+      "shipping_address_collection": null
+    }
+  },
+  "type": "checkout.session.completed",
+  "object": "event",
+  "created": 1653965423,
+  "request": { "id": null, "idempotency_key": null },
+  "livemode": false,
+  "api_version": "2020-08-27",
+  "pending_webhooks": 1
+}

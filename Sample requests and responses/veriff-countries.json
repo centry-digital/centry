@@ -1,0 +1,2072 @@
+[
+  {
+    "country": "Afghanistan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Åland Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Albania",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Algeria",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "American Samoa",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Andorra",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Angola",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Anguilla",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Antigua and Barbuda",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Argentina",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Armenia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Aruba",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Australia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Austria",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Azerbaijan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bahamas",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bahrain",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bangladesh",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Barbados",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Belarus",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Belgium",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Belize",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Benin",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bermuda",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bhutan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bolivia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bonaire, Saint Eustatius and Saba",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Botswana",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Brazil",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "British Virgin Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Brunei",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Bulgaria",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Burkina Faso",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Burundi",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cambodia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cameroon",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Canada",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cape Verde",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cayman Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Central African Republic",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Chad",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Chile",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "China",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Christmas Island",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cocos Islands",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Colombia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Comoros",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cook Islands",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Costa Rica",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Croatia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cuba",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Curaçao",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Cyprus",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Czech Republic",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Democratic Republic of the Congo",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Denmark",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Djibouti",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Dominica",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Dominican Republic",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "East Timor",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ecuador",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Egypt",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "El Salvador",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Equatorial Guinea",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Eritrea",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Estonia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ethiopia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Faroe Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Fiji",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Finland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "France",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "French Polynesia",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Gabon",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Gambia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Georgia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Germany",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ghana",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Gibraltar",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Greece",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Greenland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Grenada",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guam",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guatemala",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guernsey",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guinea",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guinea-Bissau",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Guyana",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Haiti",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Honduras",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Hong Kong",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Hungary",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Iceland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "India",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Indonesia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Iran",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Iraq",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ireland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Isle of Man",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Israel",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Italy",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ivory Coast",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Jamaica",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Japan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Jersey",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Jordan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kazakhstan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kenya",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kiribati",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kosovo",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kuwait",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Kyrgyzstan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Laos",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Latvia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Lebanon",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Lesotho",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Liberia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Libya",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Liechtenstein",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Lithuania",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Luxembourg",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Macao",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Macedonia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Madagascar",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Malawi",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Malaysia",
+    "document": {
+      "passport": false,
+      "id_card": true,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Maldives",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mali",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Malta",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Marshall Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mauritania",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mauritius",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mexico",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Micronesia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Moldova",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Monaco",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mongolia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Montenegro",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Montserrat",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Morocco",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Mozambique",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Myanmar",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Namibia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Nauru",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Nepal",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Netherlands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "New Caledonia",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "New Zealand",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Nicaragua",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Niger",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Nigeria",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Norfolk Island",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Northern Mariana Islands",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Norway",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Oman",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Pakistan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Palau",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Palestinian Territory",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Panama",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Papua New Guinea",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Paraguay",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Peru",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Philippines",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Poland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Portugal",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Puerto Rico",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Qatar",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Republic of the Congo",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Romania",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Russia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Rwanda",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Barthélemy",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Helena",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Kitts and Nevis",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Lucia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Martin",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Pierre and Miquelon",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Vincent and the Grenadines",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Samoa",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "San Marino",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Sao Tome and Principe",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saudi Arabia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Senegal",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Serbia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Seychelles",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Sierra Leone",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Singapore",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Saint Maarten",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Slovakia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Slovenia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Solomon Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Somalia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "South Africa",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "South Korea",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "South Sudan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Spain",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Sri Lanka",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Sudan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Suriname",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Swaziland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Sweden",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Switzerland",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Syria",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Taiwan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Tajikistan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Tanzania",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Thailand",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Togo",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Tonga",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Trinidad and Tobago",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Tunisia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Turkey",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Turkmenistan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Turks and Caicos Islands",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Tuvalu",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "U.S. Virgin Islands",
+    "document": {
+      "passport": false,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Uganda",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Ukraine",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "United Arab Emirates",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "United Kingdom",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "United States",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Uruguay",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Uzbekistan",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Vanuatu",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Vatican",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Venezuela",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Vietnam",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Yemen",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Zambia",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  },
+  {
+    "country": "Zimbabwe",
+    "document": {
+      "passport": true,
+      "id_card": false,
+      "drivers_licence": false,
+      "residence_permit": false
+    }
+  }
+]
