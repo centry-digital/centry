@@ -2,8 +2,14 @@ let inputData = {};
 let user_to_verify = {};
 user_to_verify.passport = {};
 user_to_verify.proof_of_address = {};
+let inputsValidity = false;
+let manualVerification = false;
+
+let uuid;
 let inputFname = document.querySelector('[data-kyc="fname"]');
+inputFname.addEventListener("keyup", captureLegalName);
 let inputLname = document.querySelector('[data-kyc="lname"]');
+inputLname.addEventListener("keyup", captureLegalName);
 let inputName = document.querySelector('[data-kyc="name"]');
 let inputDob = document.querySelector('[data-kyc="dob"]');
 let inputEmail = document.querySelector('[data-kyc="email"]');
@@ -23,13 +29,17 @@ let proofOfAddressGroup = document.querySelector(
   '[data-kyc="proof-of-address-group"]'
 );
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
+let verifyBtn = document.querySelector('[data-kyc="button"]');
 
 countryOfResidenceCountrySelect.addEventListener("change", checkCountries);
 nationalityCountrySelect.addEventListener("change", checkCountries);
+
 let inputFields = document.querySelectorAll("[data-kyc]");
 for (let i = 0; i < inputFields.length; i++) {
+  inputFields[i].addEventListener("keyup", updateButton);
   inputFields[i].addEventListener("keyup", validateField);
 }
+updateButton();
 
 // load data
 const query = new URLSearchParams(window.location.search);
@@ -53,6 +63,7 @@ async function retrieveUser(token) {
     let data = await response.json();
     if (response.ok) {
       inputData = data;
+      uuid = inputData.uuid;
       inputFname.value = inputData.first_name;
       inputLname.value = inputData.last_name;
       inputName.value = inputData.legal_name;
@@ -91,6 +102,7 @@ widget_passport.onUploadComplete((fileInfo) => {
     .classList.add("hide");
   passport_file_url = fileInfo.cdnUrl;
   passport_file_name = fileInfo.name;
+  updateButton();
 });
 
 widget_proof_of_address.onUploadComplete((fileInfo) => {
@@ -100,6 +112,7 @@ widget_proof_of_address.onUploadComplete((fileInfo) => {
     .classList.add("hide");
   proof_of_address_file_url = fileInfo.cdnUrl;
   proof_of_address_file_name = fileInfo.name;
+  updateButton();
 });
 
 function checkCountries() {
@@ -132,9 +145,13 @@ async function checkVerifiable() {
     ) {
       passportGroup.classList.remove("hide");
       verifyBtn.innerText = "Submit for manual verification";
+      manualVerification = true;
+      updateButton();
     } else {
       passportGroup.classList.add("hide");
       verifyBtn.innerText = "Begin verification";
+      manualVerification = false;
+      updateButton();
     }
     proofOfAddressGroup.classList.remove("hide");
   } catch (error) {
@@ -142,8 +159,15 @@ async function checkVerifiable() {
   }
 }
 
+// parse legal name from first name and last name
+function captureLegalName() {
+  inputName.value = inputFname.value + " " + inputLname.value;
+}
+
 // construct payload
 function getSummary() {
+  user_to_verify.uuid = uuid;
+  user_to_verify.manual_verification = manualVerification;
   user_to_verify.first_name = inputFname.value;
   user_to_verify.last_name = inputLname.value;
   user_to_verify.legal_name = inputName.value;
@@ -166,6 +190,7 @@ let regexPhone =
   /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]{9,})[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
 
 function validateField(e) {
+  validateInputs();
   if (
     e.target.getAttribute("data-kyc") == "email" &&
     !regexEmail.test(e.target.value)
@@ -195,39 +220,31 @@ function validateInputs() {
   let flag_7 = false;
   if (
     nationality == "Malaysia" ||
-    (nationality != "Malaysia" && user_to_verify.passport.file_url != "")
+    (nationality != "Malaysia" && manualVerification == true && user_to_verify.passport.file_url != "" && user_to_verify.proof_of_address.file_url != "") ||
+    (nationality != "Malaysia" && manualVerification == false && user_to_verify.proof_of_address.file_url != "")
   ) {
     flag_7 = true;
-  } else if (
-    nationality != "Malaysia" &&
-    user_to_verify.passport.file_url == ""
-  ) {
-    flag_7 = false;
-  }
-  let flag_8 = false;
-  if (
-    nationality == "Malaysia" ||
-    (nationality != "Malaysia" &&
-      user_to_verify.proof_of_address.file_url != "")
-  ) {
-    flag_8 = true;
-  } else if (
-    nationality != "Malaysia" &&
-    user_to_verify.proof_of_address.file_url == ""
-  ) {
-    flag_8 = false;
-  }
+  } 
 
-  let inputsValidity =
+  inputsValidity =
     flag_1 &&
     flag_2 &&
     flag_3 &&
     flag_4 &&
     flag_5 &&
     flag_6 &&
-    flag_7 &&
-    flag_8;
+    flag_7;
+}
 
+function updateButton() {
+	validateInputs();
   if (inputsValidity) {
+  	verifyBtn.classList.remove("button-2-disabled");
+    verifyBtn.classList.add("button-2");
+    verifyBtn.style.cursor = "pointer";
+  } else {
+  	verifyBtn.classList.remove("button-2");
+    verifyBtn.classList.add("button-2-disabled");
+    verifyBtn.style.cursor = "not-allowed";
   }
 }
