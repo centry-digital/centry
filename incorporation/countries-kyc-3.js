@@ -254,8 +254,6 @@ let options = countries
   .map((country) => `<option value="${country.name}" code="${country.code}">${country.name}</option>`)
   .join("\n");
 
-let verifyBtn = document.querySelector('[data-kyc="button"]');
-
 let countryOfResidenceCountrySelect = document.querySelector('select[data-kyc="country-of-residence"]');
 countryOfResidenceCountrySelect.innerHTML = options;
 
