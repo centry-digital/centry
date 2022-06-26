@@ -232,8 +232,7 @@ for (const tab of incorporationSideNavClickable) {
 
 // Validation
 let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
-let regexPhone =
-  /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]{9,})[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
+let regexPhone = /\+?([0-9]+)?[ ]?\(?\+?([0-9]+)?\)?[ ]?([0-9]{9,})[ ]?([0-9]+)?[ ]?([0-9]+)?[ ]?([0-9]+)?/;
 let regexShares = /^[0-9]{1,4}$/;
 let tab0_validation = false;
 let tab1_validation = false;

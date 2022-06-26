@@ -1,0 +1,11 @@
+{
+  "proof_of_address": {
+    "path": "/vault/SlTBbPGM/EBjzrSttyjv1wYKBXHO7ovz6xi4/wwWuhg../a924d398-79bd-4686-8adb-61918b3cfb05.pdf",
+    "name": "a924d398-79bd-4686-8adb-61918b3cfb05.pdf",
+    "type": "pdf",
+    "size": 108604,
+    "mime": "application/pdf",
+    "meta": { "pages": [{ "res": "612x792" }] },
+    "url": "https://api.centry.digital/vault/SlTBbPGM/EBjzrSttyjv1wYKBXHO7ovz6xi4/wwWuhg../a924d398-79bd-4686-8adb-61918b3cfb05.pdf"
+  }
+}

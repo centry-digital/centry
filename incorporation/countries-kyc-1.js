@@ -259,5 +259,5 @@ let verifyBtn = document.querySelector('[data-kyc="button"]');
 let countryOfResidenceCountrySelect = document.querySelector('select[data-kyc="country-of-residence"]');
 countryOfResidenceCountrySelect.innerHTML = options;
 
-let NationalityCountrySelect = document.querySelector('select[data-kyc="nationality"]');
-NationalityCountrySelect.innerHTML = options;
+let nationalityCountrySelect = document.querySelector('select[data-kyc="nationality"]');
+nationalityCountrySelect.innerHTML = options;
