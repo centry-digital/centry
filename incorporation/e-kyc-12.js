@@ -68,7 +68,7 @@ async function retrieveUser(token) {
       inputData = data;
       if (inputData.response.verified == "false") {
         document.getElementById("w-tabs-0-data-w-tab-0").click();
-        tabs.classList.remove("hide");
+        setTimeout(() => tabs.classList.remove("hide"), 500);
         uuid = inputData.response.uuid;
         inputFname.value = inputData.response.first_name;
         inputLname.value = inputData.response.last_name;
@@ -82,14 +82,19 @@ async function retrieveUser(token) {
         ind_shareholder_uuid = inputData.ind_shareholder_uuid;
       } else if (inputData.response.verified == "pending") {
         document.getElementById("w-tabs-0-data-w-tab-2").click();
-        tabs.classList.remove("hide");
-        let resumeBtn = document.querySelector('[data-kyc="button-resume-verification"]');
-        resumeBtn.addEventListener("click", function() {
-        	retrieveVerificationSession(inputData.response.uuid, inputData.business_uuid)
+        setTimeout(() => tabs.classList.remove("hide"), 500);
+        let resumeBtn = document.querySelector(
+          '[data-kyc="button-resume-verification"]'
+        );
+        resumeBtn.addEventListener("click", function () {
+          retrieveVerificationSession(
+            inputData.response.uuid,
+            inputData.business_uuid
+          );
         });
       } else if (inputData.response.verified == "true") {
-      	document.getElementById("w-tabs-0-data-w-tab-3").click();
-        tabs.classList.remove("hide");
+        document.getElementById("w-tabs-0-data-w-tab-3").click();
+        setTimeout(() => tabs.classList.remove("hide"), 500);
       }
     } else {
       console.error("There is an error retrieving the user to verify");
@@ -117,12 +122,14 @@ async function retrieveVerificationSession(user_uuid, business_uuid) {
       }
     );
     let data = await response.json();
-		verificationData = data;
+    verificationData = data;
     if (response.ok) {
       let verificationUrl = verificationData[0].veriff.session_url;
       window.location.replace(verificationUrl);
     } else {
-      console.error("There is an error retrieving the user's verification session'");
+      console.error(
+        "There is an error retrieving the user's verification session'"
+      );
     }
   } catch (error) {
     console.error(error);
