@@ -1,0 +1,19 @@
+{
+  "dob": "1988-05-26",
+  "uuid": "b13086c7-ec4b-4018-91c2-16d9fb5a58df",
+  "email": "yl@centry.digital",
+  "phone": "0192652451",
+  "doc_type": "id_card",
+  "passport": { "file_url": "", "file_name": "" },
+  "last_name": "Chow",
+  "first_name": "Yong Ling",
+  "legal_name": "Chow Yong Ling",
+  "nationality": "Malaysia",
+  "business_uuid": "08699774-fd7b-4d0c-9be2-78f2a854ed35",
+  "director_uuid": "35933a7f-57a3-4391-9dd3-3a8eb529b064",
+  "nationality_code": "MY",
+  "proof_of_address": { "file_url": "", "file_name": "" },
+  "manual_verification": false,
+  "country_of_residence": "Malaysia",
+  "ind_shareholder_uuid": ""
+}
