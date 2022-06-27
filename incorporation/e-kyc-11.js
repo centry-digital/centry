@@ -30,6 +30,7 @@ let proofOfAddressGroup = document.querySelector(
 );
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
 let verifyBtn = document.querySelector('[data-kyc="button"]');
+let tabs = document.getElementById("kyc-tabs");
 
 countryOfResidenceCountrySelect.addEventListener("change", checkCountries);
 nationalityCountrySelect.addEventListener("change", checkCountries);
@@ -47,6 +48,8 @@ let tokenValue;
 if (query.has("token")) {
   tokenValue = query.get("token");
   retrieveUser(tokenValue);
+} else {
+  tabs.classList.remove("hide");
 }
 
 async function retrieveUser(token) {
@@ -65,6 +68,7 @@ async function retrieveUser(token) {
       inputData = data;
       if (inputData.response.verified == "false") {
         document.getElementById("w-tabs-0-data-w-tab-0").click();
+        tabs.classList.remove("hide");
         uuid = inputData.response.uuid;
         inputFname.value = inputData.response.first_name;
         inputLname.value = inputData.response.last_name;
@@ -78,12 +82,14 @@ async function retrieveUser(token) {
         ind_shareholder_uuid = inputData.ind_shareholder_uuid;
       } else if (inputData.response.verified == "pending") {
         document.getElementById("w-tabs-0-data-w-tab-2").click();
+        tabs.classList.remove("hide");
         let resumeBtn = document.querySelector('[data-kyc="button-resume-verification"]');
         resumeBtn.addEventListener("click", function() {
         	retrieveVerificationSession(inputData.response.uuid, inputData.business_uuid)
         });
       } else if (inputData.response.verified == "true") {
       	document.getElementById("w-tabs-0-data-w-tab-3").click();
+        tabs.classList.remove("hide");
       }
     } else {
       console.error("There is an error retrieving the user to verify");
