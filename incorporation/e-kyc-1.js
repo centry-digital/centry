@@ -74,7 +74,7 @@ async function retrieveUser(token) {
         business_uuid = inputData.business_uuid;
         director_uuid = inputData.director_uuid;
         ind_shareholder_uuid = inputData.ind_shareholder_uuid;
-      } else if (inputData.verified == pending) {
+      } else if (inputData.verified == "pending") {
         retrieveVerificationSession(
           inputData.response.uuid,
           inputData.business_uuid
