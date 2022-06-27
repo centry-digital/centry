@@ -41,13 +41,18 @@ for (let i = 0; i < inputFields.length; i++) {
 }
 updateButton();
 
-let invalidBtn = document.getElementById("w-tabs-0-data-w-tab-0");
 // load data
 const query = new URLSearchParams(window.location.search);
 let tokenValue;
 if (query.has("token")) {
   tokenValue = query.get("token");
   retrieveUser(tokenValue);
+} else {
+  invalidLink();
+}
+
+function invalidLink() {
+  document.getElementById("w-tabs-0-data-w-tab-1").click();
 }
 
 async function retrieveUser(token) {
