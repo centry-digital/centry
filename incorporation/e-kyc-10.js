@@ -47,12 +47,6 @@ let tokenValue;
 if (query.has("token")) {
   tokenValue = query.get("token");
   retrieveUser(tokenValue);
-} else {
-  invalidLink();
-}
-
-function invalidLink() {
-  document.getElementById("w-tabs-0-data-w-tab-1").click();
 }
 
 async function retrieveUser(token) {
