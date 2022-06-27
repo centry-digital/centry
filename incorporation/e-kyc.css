@@ -1,0 +1,37 @@
+.centry-text-field:focus {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.uploadcare--widget__button.uploadcare--widget__button_type_open {
+  border: 1px solid #04121f;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #04121f;
+  line-height: 20px;
+  padding: 9px 15px;
+  cursor: pointer;
+}
+
+.uploadcare--widget__button.uploadcare--widget__button_type_cancel,
+.uploadcare--widget__button.uploadcare--widget__button_type_remove {
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  background-color: #b3b3b3;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 20px;
+  padding: 9px 15px;
+  cursor: pointer;
+}
+
+.uploadcare--widget__file-name,
+.uploadcare--widget__file-size,
+.uploadcare--widget__text {
+  font-size: 14px;
+}
+
+.uploadcare--progress_type_canvas {
+  color: #4f46e5;
+}

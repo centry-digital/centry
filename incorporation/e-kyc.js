@@ -4,8 +4,7 @@ user_to_verify.passport = {};
 user_to_verify.proof_of_address = {};
 let inputsValidity = false;
 let manualVerification = false;
-
-let uuid;
+let uuid, business_uuid, director_uuid, ind_shareholder_uuid;
 let inputFname = document.querySelector('[data-kyc="fname"]');
 inputFname.addEventListener("keyup", captureLegalName);
 let inputLname = document.querySelector('[data-kyc="lname"]');
@@ -63,13 +62,17 @@ async function retrieveUser(token) {
     let data = await response.json();
     if (response.ok) {
       inputData = data;
-      uuid = inputData.uuid;
-      inputFname.value = inputData.first_name;
-      inputLname.value = inputData.last_name;
-      inputName.value = inputData.legal_name;
-      inputEmail.value = inputData.email;
-      inputPhone.value = inputData.phone;
-      countryOfResidenceCountrySelect.value = inputData.country_of_residence;
+      uuid = inputData.response.uuid;
+      inputFname.value = inputData.response.first_name;
+      inputLname.value = inputData.response.last_name;
+      inputName.value = inputData.response.legal_name;
+      inputEmail.value = inputData.response.email;
+      inputPhone.value = inputData.response.phone;
+      countryOfResidenceCountrySelect.value =
+        inputData.response.country_of_residence;
+      business_uuid = inputData.business_uuid;
+      director_uuid = inputData.director_uuid;
+      ind_shareholder_uuid = inputData.ind_shareholder_uuid;
     } else {
       console.error("There is an error retrieving the user to verify");
     }
@@ -167,6 +170,9 @@ function captureLegalName() {
 // construct payload
 function getSummary() {
   user_to_verify.uuid = uuid;
+  user_to_verify.business_uuid = business_uuid;
+  user_to_verify.director_uuid = director_uuid;
+  user_to_verify.ind_shareholder_uuid = ind_shareholder_uuid;
   user_to_verify.manual_verification = manualVerification;
   user_to_verify.first_name = inputFname.value;
   user_to_verify.last_name = inputLname.value;
@@ -220,30 +226,29 @@ function validateInputs() {
   let flag_7 = false;
   if (
     nationality == "Malaysia" ||
-    (nationality != "Malaysia" && manualVerification == true && user_to_verify.passport.file_url != "" && user_to_verify.proof_of_address.file_url != "") ||
-    (nationality != "Malaysia" && manualVerification == false && user_to_verify.proof_of_address.file_url != "")
+    (nationality != "Malaysia" &&
+      manualVerification == true &&
+      user_to_verify.passport.file_url != "" &&
+      user_to_verify.proof_of_address.file_url != "") ||
+    (nationality != "Malaysia" &&
+      manualVerification == false &&
+      user_to_verify.proof_of_address.file_url != "")
   ) {
     flag_7 = true;
-  } 
+  }
 
   inputsValidity =
-    flag_1 &&
-    flag_2 &&
-    flag_3 &&
-    flag_4 &&
-    flag_5 &&
-    flag_6 &&
-    flag_7;
+    flag_1 && flag_2 && flag_3 && flag_4 && flag_5 && flag_6 && flag_7;
 }
 
 function updateButton() {
-	validateInputs();
+  validateInputs();
   if (inputsValidity) {
-  	verifyBtn.classList.remove("button-2-disabled");
+    verifyBtn.classList.remove("button-2-disabled");
     verifyBtn.classList.add("button-2");
     verifyBtn.style.cursor = "pointer";
   } else {
-  	verifyBtn.classList.remove("button-2");
+    verifyBtn.classList.remove("button-2");
     verifyBtn.classList.add("button-2-disabled");
     verifyBtn.style.cursor = "not-allowed";
   }
