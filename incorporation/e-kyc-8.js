@@ -41,7 +41,7 @@ for (let i = 0; i < inputFields.length; i++) {
 }
 updateButton();
 
-let invalidBtn = document.getElementById("w-tabs-0-data-w-tab-1");
+let invalidBtn = document.getElementById("w-tabs-0-data-w-tab-0");
 // load data
 const query = new URLSearchParams(window.location.search);
 let tokenValue;
