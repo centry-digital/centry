@@ -2,6 +2,7 @@ let inputData = {};
 let user_to_verify = {};
 user_to_verify.passport = {};
 user_to_verify.proof_of_address = {};
+let verificationData = {};
 let inputsValidity = false;
 let manualVerification = false;
 let uuid, business_uuid, director_uuid, ind_shareholder_uuid;
@@ -50,75 +51,79 @@ if (query.has("token")) {
   document.getElementById("w-tabs-0-data-w-tab-1").click();
 }
 
-// async function retrieveUser(token) {
-//   try {
-//     let response = await fetch(
-//       "https://api.centry.digital/api:ekyc/retrieve-user",
-//       {
-//         headers: {
-//           accept: "application/json",
-//           Authorization: "Bearer " + token,
-//         },
-//       }
-//     );
-//     let data = await response.json();
-//     if (response.ok) {
-//       inputData = data;
-//       if (inputData.verified == false) {
-//         uuid = inputData.response.uuid;
-//         inputFname.value = inputData.response.first_name;
-//         inputLname.value = inputData.response.last_name;
-//         inputName.value = inputData.response.legal_name;
-//         inputEmail.value = inputData.response.email;
-//         inputPhone.value = inputData.response.phone;
-//         countryOfResidenceCountrySelect.value =
-//           inputData.response.country_of_residence;
-//         business_uuid = inputData.business_uuid;
-//         director_uuid = inputData.director_uuid;
-//         ind_shareholder_uuid = inputData.ind_shareholder_uuid;
-//       } else if (inputData.verified == "pending") {
-//         retrieveVerificationSession(
-//           inputData.response.uuid,
-//           inputData.business_uuid
-//         );
-//       }
-//     } else {
-//       console.error("There is an error retrieving the user to verify");
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+async function retrieveUser(token) {
+  try {
+    let response = await fetch(
+      "https://api.centry.digital/api:ekyc/retrieve-user",
+      {
+        headers: {
+          accept: "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    let data = await response.json();
+    if (response.ok) {
+      inputData = data;
+      if (inputData.response.verified == "false") {
+        document.getElementById("w-tabs-0-data-w-tab-0").click();
+        uuid = inputData.response.uuid;
+        inputFname.value = inputData.response.first_name;
+        inputLname.value = inputData.response.last_name;
+        inputName.value = inputData.response.legal_name;
+        inputEmail.value = inputData.response.email;
+        inputPhone.value = inputData.response.phone;
+        countryOfResidenceCountrySelect.value =
+          inputData.response.country_of_residence;
+        business_uuid = inputData.business_uuid;
+        director_uuid = inputData.director_uuid;
+        ind_shareholder_uuid = inputData.ind_shareholder_uuid;
+      } else if (inputData.response.verified == "pending") {
+        document.getElementById("w-tabs-0-data-w-tab-2").click();
+        let resumeBtn = document.querySelector('[data-kyc="button-resume-verification"]');
+        resumeBtn.addEventListener("click", function() {
+        	retrieveVerificationSession(inputData.response.uuid, inputData.business_uuid)
+        });
+      } else if (inputData.response.verified == "true") {
+      	document.getElementById("w-tabs-0-data-w-tab-3").click();
+      }
+    } else {
+      console.error("There is an error retrieving the user to verify");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-// // retrieve Verification session for 'pending' users
-// async function retrieveVerificationSession(user_uuid, business_uuid) {
-//   let bodyObject = {
-//     user_uuid: user_uuid,
-//     business_uuid: business_uuid,
-//   };
-//   try {
-//     let response = await fetch(
-//       "https://api.centry.digital/api:ekyc/retrieve-verification-session",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(bodyObject),
-//       }
-//     );
-//     let data = await response.json();
-//     let verificationData = data;
-//     if (response.ok) {
-//       let verificationUrl = verificationData.veriff.session_url;
-//       windows.location.replace(verificationUrl);
-//     } else {
-//       console.error("There is an error retrieving the user's verification session'");
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+// retrieve Verification session for 'pending' users
+async function retrieveVerificationSession(user_uuid, business_uuid) {
+  let bodyObject = {
+    user_uuid: user_uuid,
+    business_uuid: business_uuid,
+  };
+  try {
+    let response = await fetch(
+      "https://api.centry.digital/api:ekyc/retrieve-verification-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyObject),
+      }
+    );
+    let data = await response.json();
+		verificationData = data;
+    if (response.ok) {
+      let verificationUrl = verificationData[0].veriff.session_url;
+      window.location.replace(verificationUrl);
+    } else {
+      console.error("There is an error retrieving the user's verification session'");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // get an array of widget references
 const widgets = uploadcare.initialize();
