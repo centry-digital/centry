@@ -127,7 +127,7 @@ async function retrieveVerificationSession(user_uuid, business_uuid) {
     verificationData = data;
     if (response.ok) {
       let verificationUrl = verificationData[0].veriff.session_url;
-      window.location.replace(verificationUrl);
+      window.location.href = verificationUrl;
     } else {
       console.error(
         "There is an error retrieving the user's verification session'"
