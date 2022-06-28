@@ -330,7 +330,7 @@ async function submitVerification() {
       if (manualVerification) {
       } else {
         let verification_url = data.veriff.session_url;
-        window.location.replace(verification_url);
+        window.location.href = verification_url;
       }
     } else {
       console.log(response);
