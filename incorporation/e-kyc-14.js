@@ -97,7 +97,7 @@ async function retrieveUser(token) {
         setTimeout(() => tabs.classList.remove("hide"), 100);
       }
     } else {
-      console.error("There is an error retrieving the user to verify");
+      setTimeout(() => tabs.classList.remove("hide"), 100);
     }
   } catch (error) {
     console.error(error);
