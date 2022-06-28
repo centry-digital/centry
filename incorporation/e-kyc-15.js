@@ -31,6 +31,7 @@ let proofOfAddressGroup = document.querySelector(
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
 let verifyBtn = document.querySelector('[data-kyc="button"]');
 let tabs = document.getElementById("kyc-tabs");
+let url;
 
 countryOfResidenceCountrySelect.addEventListener("change", checkCountries);
 nationalityCountrySelect.addEventListener("change", checkCountries);
@@ -55,7 +56,7 @@ if (query.has("token")) {
 async function retrieveUser(token) {
   try {
     let response = await fetch(
-      "https://api.centry.digital/api:ekyc/retrieve-user",
+      "https://api.centry.digital/api:ekyc/retrieve/user",
       {
         headers: {
           accept: "application/json",
@@ -69,6 +70,7 @@ async function retrieveUser(token) {
       if (inputData.response.verified == "false") {
         document.getElementById("w-tabs-0-data-w-tab-0").click();
         setTimeout(() => tabs.classList.remove("hide"), 100);
+        url = window.location.href;
         uuid = inputData.response.uuid;
         inputFname.value = inputData.response.first_name;
         inputLname.value = inputData.response.last_name;
@@ -112,7 +114,7 @@ async function retrieveVerificationSession(user_uuid, business_uuid) {
   };
   try {
     let response = await fetch(
-      "https://api.centry.digital/api:ekyc/retrieve-verification-session",
+      "https://api.centry.digital/api:ekyc/retrieve/verification-session",
       {
         method: "POST",
         headers: {
@@ -194,7 +196,7 @@ function checkCountries() {
 async function checkVerifiable() {
   try {
     let response = await fetch(
-      `https://api.centry.digital/api:ekyc/verification-methods/${nationality}`
+      `https://api.centry.digital/api:ekyc/retrieve/verification-methods/${nationality}`
     );
     let data = await response.json();
     if (
@@ -224,6 +226,7 @@ function captureLegalName() {
 
 // construct payload
 function getSummary() {
+  user_to_verify.callback_url = url;
   user_to_verify.uuid = uuid;
   user_to_verify.business_uuid = business_uuid;
   user_to_verify.director_uuid = director_uuid;
@@ -315,7 +318,7 @@ async function submitVerification() {
   // retrieveBtn.classList.add("hide");
   // retrieveLoadingBtn.classList.remove("hide");
   try {
-    let response = await fetch("https://api.centry.digital/api:ekyc/verify", {
+    let response = await fetch("https://api.centry.digital/api:ekyc/verify/sessions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
