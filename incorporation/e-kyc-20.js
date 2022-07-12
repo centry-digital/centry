@@ -31,6 +31,9 @@ let proofOfAddressGroup = document.querySelector(
 );
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
 let verifyBtn = document.querySelector('[data-kyc="button"]');
+let resumeBtn = document.querySelector(
+  '[data-kyc="button-resume-verification"]'
+);
 let verifyLoader = document.getElementById("verify-loader");
 let resumeLoader = document.getElementById("resume-loader");
 let tabs = document.getElementById("kyc-tabs");
@@ -90,9 +93,9 @@ async function retrieveUser(token) {
       } else if (inputData.response.verified == "pending") {
         document.getElementById("w-tabs-0-data-w-tab-2").click();
         setTimeout(() => tabs.classList.remove("hide"), 100);
-        let resumeBtn = document.querySelector(
-          '[data-kyc="button-resume-verification"]'
-        );
+        // let resumeBtn = document.querySelector(
+        //   '[data-kyc="button-resume-verification"]'
+        // );
         resumeBtn.addEventListener("click", function () {
           retrieveVerificationSession(
             inputData.response.uuid,
