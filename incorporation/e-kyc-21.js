@@ -97,10 +97,7 @@ async function retrieveUser(token) {
         //   '[data-kyc="button-resume-verification"]'
         // );
         resumeBtn.addEventListener("click", function () {
-          retrieveVerificationSession(
-            inputData.response.uuid,
-            inputData.business_uuid
-          );
+          retrieveVerificationSession(inputData.response.uuid,inputData.extras.business_uuid);
         });
       } else if (inputData.response.verified == "true") {
         document.getElementById("w-tabs-0-data-w-tab-3").click();
