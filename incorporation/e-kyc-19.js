@@ -31,7 +31,8 @@ let proofOfAddressGroup = document.querySelector(
 );
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
 let verifyBtn = document.querySelector('[data-kyc="button"]');
-let verifyLoader = document.getElementById('verify-loader');
+let verifyLoader = document.getElementById("verify-loader");
+let resumeLoader = document.getElementById("resume-loader");
 let tabs = document.getElementById("kyc-tabs");
 let url;
 
@@ -112,6 +113,9 @@ async function retrieveUser(token) {
 
 // retrieve Verification session for 'pending' users
 async function retrieveVerificationSession(user_uuid, business_uuid) {
+  resumeBtn.innerHTML =
+    '<span style="color:white;opacity:0;">Resume verification</span>';
+  resumeLoader.classList.remove("hide");
   let bodyObject = {
     user_uuid: user_uuid,
     business_uuid: business_uuid,
@@ -133,11 +137,17 @@ async function retrieveVerificationSession(user_uuid, business_uuid) {
       let verificationUrl = verificationData[0].veriff.session_url;
       window.location.href = verificationUrl;
     } else {
+      resumeBtn.innerHTML =
+        '<span style="color:white;opacity:0;">Resume verification</span>';
+      resumeLoader.classList.remove("hide");
       console.error(
         "There is an error retrieving the user's verification session'"
       );
     }
   } catch (error) {
+    resumeBtn.innerHTML =
+      '<span style="color:white;opacity:0;">Resume verification</span>';
+    resumeLoader.classList.remove("hide");
     console.error(error);
   }
 }
@@ -321,16 +331,20 @@ function updateButton() {
 async function submitVerification() {
   // retrieveBtn.classList.add("hide");
   // retrieveLoadingBtn.classList.remove("hide");
-  verifyBtn.innerHTML = '<span style="color:white;opacity:0;">Begin verification</span>';
-  verifyLoader.classList.remove('hide');
+  verifyBtn.innerHTML =
+    '<span style="color:white;opacity:0;">Begin verification</span>';
+  verifyLoader.classList.remove("hide");
   try {
-    let response = await fetch("https://api.centry.digital/api:ekyc/verify/sessions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user_to_verify),
-    });
+    let response = await fetch(
+      "https://api.centry.digital/api:ekyc/verify/sessions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user_to_verify),
+      }
+    );
     let data = await response.json();
     if (response.ok) {
       if (manualVerification) {
@@ -339,13 +353,15 @@ async function submitVerification() {
         window.location.href = verification_url;
       }
     } else {
-      verifyBtn.innerHTML = '<span style="color:white;opacity:1;">Begin verification</span>';
-      verifyLoader.classList.add('hide');
+      verifyBtn.innerHTML =
+        '<span style="color:white;opacity:1;">Begin verification</span>';
+      verifyLoader.classList.add("hide");
       console.log(response);
     }
   } catch (error) {
     console.error(error);
-    verifyBtn.innerHTML = '<span style="color:white;opacity:1;">Begin verification</span>';
-    verifyLoader.classList.add('hide');
+    verifyBtn.innerHTML =
+      '<span style="color:white;opacity:1;">Begin verification</span>';
+    verifyLoader.classList.add("hide");
   }
 }
