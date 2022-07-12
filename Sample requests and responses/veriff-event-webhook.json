@@ -1,0 +1,8 @@
+{
+  "id": "90b17c72-50de-4a9a-b335-2ecc5d4989dd",
+  "code": 7001,
+  "action": "started",
+  "feature": "selfid",
+  "attemptId": "da141422-1153-40af-96f8-9bc6ebf91f8c",
+  "vendorData": "{\"business_uuid\":\"08699774-fd7b-4d0c-9be2-78f2a854ed35\",\"director_uuid\":\"35933a7f-57a3-4391-9dd3-3a8eb529b064\",\"ind_shareholder_uuid\":\"\"}"
+}

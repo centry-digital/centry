@@ -5,7 +5,8 @@ user_to_verify.proof_of_address = {};
 let verificationData = {};
 let inputsValidity = false;
 let manualVerification = false;
-let uuid, business_uuid, director_uuid, ind_shareholder_uuid;
+let uuid, account_uuid, business_uuid;
+let is_incorporation = false;
 let inputFname = document.querySelector('[data-kyc="fname"]');
 inputFname.addEventListener("keyup", captureLegalName);
 let inputLname = document.querySelector('[data-kyc="lname"]');
@@ -30,6 +31,7 @@ let proofOfAddressGroup = document.querySelector(
 );
 let passportGroup = document.querySelector('[data-kyc="passport-group"]');
 let verifyBtn = document.querySelector('[data-kyc="button"]');
+let verifyLoader = document.getElementById('verify-loader');
 let tabs = document.getElementById("kyc-tabs");
 let url;
 
@@ -79,9 +81,11 @@ async function retrieveUser(token) {
         inputPhone.value = inputData.response.phone;
         countryOfResidenceCountrySelect.value =
           inputData.response.country_of_residence;
-        business_uuid = inputData.business_uuid;
-        director_uuid = inputData.director_uuid;
-        ind_shareholder_uuid = inputData.ind_shareholder_uuid;
+        account_uuid = inputData.extras.account_uuid;
+        business_uuid = inputData.extras.business_uuid;
+        if (inputData.extras.is_incorporation) {
+          is_incorporation = inputData.extras.is_incorporation;
+        }
       } else if (inputData.response.verified == "pending") {
         document.getElementById("w-tabs-0-data-w-tab-2").click();
         setTimeout(() => tabs.classList.remove("hide"), 100);
@@ -228,9 +232,9 @@ function captureLegalName() {
 function getSummary() {
   user_to_verify.callback_url = url;
   user_to_verify.uuid = uuid;
+  user_to_verify.account_uuid = account_uuid;
   user_to_verify.business_uuid = business_uuid;
-  user_to_verify.director_uuid = director_uuid;
-  user_to_verify.ind_shareholder_uuid = ind_shareholder_uuid;
+  user_to_verify.is_incorporation = is_incorporation;
   user_to_verify.manual_verification = manualVerification;
   user_to_verify.first_name = inputFname.value;
   user_to_verify.last_name = inputLname.value;
@@ -317,6 +321,8 @@ function updateButton() {
 async function submitVerification() {
   // retrieveBtn.classList.add("hide");
   // retrieveLoadingBtn.classList.remove("hide");
+  verifyBtn.innerHTML = '<span style="color:white;opacity:0;">Begin verification</span>';
+  verifyLoader.classList.remove('hide');
   try {
     let response = await fetch("https://api.centry.digital/api:ekyc/verify/sessions", {
       method: "POST",
@@ -333,9 +339,13 @@ async function submitVerification() {
         window.location.href = verification_url;
       }
     } else {
+      verifyBtn.innerHTML = '<span style="color:white;opacity:1;">Begin verification</span>';
+      verifyLoader.classList.add('hide');
       console.log(response);
     }
   } catch (error) {
-    console.error("Unique code not found", error);
+    console.error(error);
+    verifyBtn.innerHTML = '<span style="color:white;opacity:1;">Begin verification</span>';
+    verifyLoader.classList.add('hide');
   }
 }
