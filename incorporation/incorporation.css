@@ -1,0 +1,50 @@
+.ss-main .ss-multi-selected {
+    min-height:48px;
+    border: 1px solid #d1d5db;
+}
+
+.invalid-field {
+    border: 1px solid #be123d;
+    box-shadow: 0 0 0 1px #be123d;
+}
+
+.centry-shareholding-field:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.centry-text-field:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.centry-text-field-2:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.centry-text-area:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
+
+.ss-main .ss-multi-selected .ss-add {
+    margin-top: 0 !important;
+    align-items: center;
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-value {
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 5px 10px;
+    background-color: #4f46e5;
+}
+
+.ss-content .ss-search input {
+	border: 1px solid #d1d5db;
+}
+
+.ss-content .ss-search input:focus {
+	border: 1px solid #4f46e5;
+    box-shadow: 0 0 0 1px #4f46e5 !important;
+}
