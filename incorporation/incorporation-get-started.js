@@ -152,7 +152,8 @@ function validateInputs() {
 }
 
 function continueIncorporating() {
-  window.location.href = "https://centry-digital.webflow.io/incorporation/edit";
+  window.location.href = "http://" + window.location.hostname + "/incorporation/edit";
+  // window.location.href = "https://centry-digital.webflow.io/incorporation/edit";
 }
 
 async function getIncorporationData() {
