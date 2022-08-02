@@ -814,10 +814,10 @@ function getSummary() {
       "Legal name: " + incorporationSummary.directors[dirNo].name;
     directorFName_dirNo.classList.add("summary-text", "text-sm");
     directorFName_dirNo.innerText =
-      "First name: " + incorporationSummary.directors[dirNo].name;
+      "First name: " + incorporationSummary.directors[dirNo].fname;
     directorLName_dirNo.classList.add("summary-text", "text-sm");
     directorLName_dirNo.innerText =
-      "Last name: " + incorporationSummary.directors[dirNo].name;
+      "Last name: " + incorporationSummary.directors[dirNo].lname;
     directorEmail_dirNo.classList.add("summary-text", "text-sm");
     directorEmail_dirNo.innerText =
       "Email: " + incorporationSummary.directors[dirNo].email;
