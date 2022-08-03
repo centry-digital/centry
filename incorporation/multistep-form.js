@@ -1009,7 +1009,8 @@ function submitIncorporation() {
   })
     .then((response) => response.json())
     .then((data) => {
-      window.location.href = data._session.payment_link;
+      console.log(data)
+      // window.location.href = data._session.payment_link;
     })
     .catch((error) => {
       console.error("Error: ", error);
