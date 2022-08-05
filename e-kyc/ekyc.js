@@ -55,9 +55,9 @@ async function retrieveVerificationSubject() {
 }
 
 function populateData(retrieved_data) {
-  sessionStorage.setItem("token", retrieved_data.token);
+  // sessionStorage.setItem("token", retrieved_data.token);
   let verificationData = retrieved_data.verification_data;
-  let url = `https://tally.so/r/nrjdQX?transparentBackground=1&h_first_name=${verificationData._user.first_name}&h_last_name=${verificationData._user.last_name}&h_legal_name=${verificationData._user.legal_name}&h_email=${verificationData._user.email}&h_phone=${verificationData._user.phone}&h_role=${verificationData.role}&h_country_of_residence=${verificationData._user.country_of_residence}&h_verification_uuid=${verificationData.uuid}`;
+  let url = `https://tally.so/r/nrjdQX?transparentBackground=1&h_first_name=${verificationData._user.first_name}&h_last_name=${verificationData._user.last_name}&h_legal_name=${verificationData._user.legal_name}&h_email=${verificationData._user.email}&h_phone=${verificationData._user.phone}&h_role=${verificationData.role}&h_country_of_residence=${verificationData._user.country_of_residence}&h_verification_uuid=${verificationData.uuid}&h_token=${retrieved_data.token}`;
   let encodedUrl = encodeURI(url);
   formContainer.innerHTML = `<iframe
     src="${encodedUrl}"
