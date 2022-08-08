@@ -19,10 +19,10 @@ if (
     verification_object.nationality = query.get("nationality");
     submitVerification(sessionToken);
 
-    document.getElementById("e-kyc-container").classList.add("hide");
+    document.getElementById("ekyc-container").classList.add("hide");
     document.getElementById("manual-container").classList.remove("hide");
   } else {
-    document.getElementById("e-kyc-container").classList.remove("hide");
+    document.getElementById("ekyc-container").classList.remove("hide");
     document.getElementById("manual-container").classList.add("hide");
   }
 }
@@ -34,15 +34,13 @@ async function submitVerification(token) {
       {
         method: "POST",
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-          "Access-Control-Allow-Headers": "Authorization",
           "Authorization": "Bearer " + token,
         },
         body: JSON.stringify(verification_object),
       }
     );
     let data = await response.json();
+    console.log(data);
     window.location.href = data.response.result.verification.url;
   } catch (error) {
     console.error(error);
