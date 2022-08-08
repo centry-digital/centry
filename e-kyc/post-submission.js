@@ -37,11 +37,13 @@ async function submitVerification(token) {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
           "Access-Control-Allow-Headers": "Authorization",
-          Auth: "Bearer " + token,
+          "Authorization": "Bearer " + token,
         },
         body: JSON.stringify(verification_object),
       }
     );
+    let data = await response.json();
+    window.location.href = data.response.result.verification.url;
   } catch (error) {
     console.error(error);
   }
