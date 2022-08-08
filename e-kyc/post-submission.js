@@ -10,7 +10,7 @@ if (
   query.has("dob") &&
   query.has("nationality")
 ) {
-  if (query.get("manual")) {
+  if (query.get("manual") == "false") {
     verification_object.verification_uuid = query.get("verification");
     verification_object.manual_verification = query.get("manual");
     verification_object.first_name = query.get("fname");
@@ -19,11 +19,11 @@ if (
     verification_object.nationality = query.get("nationality");
     submitVerification(sessionToken);
 
-    document.getElementById("ekyc-container").classList.add("hide");
-    document.getElementById("manual-container").classList.remove("hide");
-  } else {
     document.getElementById("ekyc-container").classList.remove("hide");
     document.getElementById("manual-container").classList.add("hide");
+  } else {
+    document.getElementById("ekyc-container").classList.add("hide");
+    document.getElementById("manual-container").classList.remove("hide");
   }
 }
 
