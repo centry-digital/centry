@@ -12,7 +12,7 @@ const query = new URLSearchParams(window.location.search);
 
 if (query.has("verification")) {
   verification_uuid = query.get("verification");
-	retrieveVerificationSubject();
+  retrieveVerificationSubject();
 }
 
 async function retrieveVerificationSubject() {
@@ -23,32 +23,35 @@ async function retrieveVerificationSubject() {
     let data = await response.json();
     if (response.ok) {
       if (data.verification_data._user.verified == "false") {
-      	populateData(data);
+        populateData(data);
       } else if (data.verification_data._user.verified == "true") {
-      	verifyStatus.innerText = "Your profile has been verified";
-        verifyStatusText.innerText = "Our Client Success Team will reach out to you on the next steps.";
+        verifyStatus.innerText = "Your profile has been verified";
+        verifyStatusText.innerText =
+          "Our Client Success Team will reach out to you on the next steps.";
         iconVerified.classList.remove("hide");
         loadingScreen.classList.add("hide");
         verifiedContainer.classList.remove("hide");
       } else if (data.verification_data._user.verified == "submitted") {
-      	verifyStatus.innerText = "Your verification has been submitted";
-        verifyStatusText.innerText = "Your profile is currently under review. You will be notified once the review is complete.";
+        verifyStatus.innerText = "Your verification has been submitted";
+        verifyStatusText.innerText =
+          "Your profile is currently under review. You will be notified once the review is complete.";
         iconVerified.classList.remove("hide");
         loadingScreen.classList.add("hide");
         verifiedContainer.classList.remove("hide");
       } else if (data.verification_data._user.verified == "pending") {
-      	verifyStatus.innerText = "Please complete your verification";
-        verifyStatusText.innerText = "Click on the button below to resume your verification session.";
+        verifyStatus.innerText = "Please complete your verification";
+        verifyStatusText.innerText =
+          "Click on the button below to resume your verification session.";
         let resumeUrl = data.session_url;
-        verifyButton.addEventListener("click", function() {
-        	window.location.href = resumeUrl;
+        verifyButton.addEventListener("click", function () {
+          window.location.href = resumeUrl;
         });
         verifyButtonContainer.classList.remove("hide");
         iconResume.classList.remove("hide");
         loadingScreen.classList.add("hide");
         verifiedContainer.classList.remove("hide");
-      };
-    };
+      }
+    }
   } catch (error) {
     console.error(error);
   }
@@ -57,11 +60,25 @@ async function retrieveVerificationSubject() {
 function populateData(retrieved_data) {
   sessionStorage.setItem("token", retrieved_data.token);
   let verificationData = retrieved_data.verification_data;
-  let emailEncode = encodeURI(verificationData._user.email);
-  let url = `https://tally.so/r/nrjdQX?transparentBackground=1&h_first_name=${verificationData._user.first_name}&h_last_name=${verificationData._user.last_name}&h_legal_name=${verificationData._user.legal_name}&h_email=${emailEncode}&h_phone=${verificationData._user.phone}&h_role=${verificationData.role}&h_country_of_residence=${verificationData._user.country_of_residence}&h_verification_uuid=${verificationData.uuid}&h_token=${retrieved_data.token}`;
-  let encodedUrl = encodeURI(url);
+  let url = `https://tally.so/r/nrjdQX?transparentBackground=1&h_first_name=${encodeURIComponent(
+    verificationData._user.first_name
+  )}&h_last_name=${encodeURIComponent(
+    verificationData._user.last_name
+  )}&h_legal_name=${encodeURIComponent(
+    verificationData._user.legal_name
+  )}&h_email=${encodeURIComponent(
+    verificationData._user.email
+  )}&h_phone=${encodeURIComponent(
+    verificationData._user.phone
+  )}&h_role=${encodeURIComponent(
+    verificationData._user.role
+  )}&h_country_of_residence=${encodeURIComponent(
+    verificationData._user.country_of_residence
+  )}&h_verification_uuid=${encodeURIComponent(
+    verificationData.uuid
+  )}&h_token=${encodeURIComponent(retrieved_data.token)}`;
   formContainer.innerHTML = `<iframe
-    src="${encodedUrl}"
+    src="${url}"
     width="100%"
     height="100%"
     frameborder="0"
