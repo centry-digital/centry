@@ -1,5 +1,5 @@
 let verification_object = {};
-let sessionToken = sessionStorage.getItem("token");
+let sessionToken;
 const query = new URLSearchParams(window.location.search);
 if (
   query.has("verification") &&
@@ -17,6 +17,7 @@ if (
     verification_object.last_name = query.get("lname");
     verification_object.dob = query.get("dob");
     verification_object.nationality = query.get("nationality");
+    sessionToken = query.get("token");
     submitVerification(sessionToken);
 
     document.getElementById("ekyc-container").classList.remove("hide");
