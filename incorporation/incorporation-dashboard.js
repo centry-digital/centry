@@ -28,8 +28,9 @@ let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
 // Payment
-let paymentReady = document.getElementById("payment-ready");
-let paymentNotReady = document.getElementById("payment-not-ready");
+let paymentBanner = document.getElementById('payment-banner');
+let paymentReady = document.getElementById('payment-ready');
+let paymentNotReady = document.getElementById('payment-not-ready');
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -81,8 +82,9 @@ function populateData(status, unique_id) {
     // Company Details
     coEditBtn.classList.remove("hide");
     // Payment
-    paymentNotReady.classList.remove("hide");
-  } else if (currentStatus == "Submitted") {
+    paymentBanner.classList.remove('hide');
+    paymentNotReady.classList.remove('hide');
+  } else if (currentStatus == 'Submitted') {
     // Overview
     p1.classList.add("complete");
     p2.classList.add("in-progress");
@@ -284,6 +286,7 @@ async function retrievePaymentSession(event, unique_id) {
     let response = await fetch(
       "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
       {
+        method: 'POST',
         headers: {
           "Content-Type": "application/json",
         },
