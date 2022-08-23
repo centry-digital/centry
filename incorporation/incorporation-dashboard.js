@@ -1,6 +1,6 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
-let data;
+let data, data2;
 // Overview
 let coName = document.getElementById("company-name-container");
 let p1 = document.getElementById("progress-1");
@@ -293,10 +293,10 @@ async function retrievePaymentSession(event, unique_id) {
         body: JSON.stringify({ unique_id: unique_id }),
       }
     );
-    let data = response.json();
+    data2 = response.json();
     if (response.ok) {
       console.log(data)
-      window.location.href = data._session.payment_link;
+      window.location.href = data.result._session.payment_link;
     }
   } catch (error) {
     console.error(error)
