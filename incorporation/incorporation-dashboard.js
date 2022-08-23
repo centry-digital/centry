@@ -295,8 +295,8 @@ async function retrievePaymentSession(event, unique_id) {
     );
     data2 = response.json();
     if (response.ok) {
-      console.log(data)
-      window.location.href = data.result._session.payment_link;
+      console.log(data2)
+      window.location.href = data2.result._session.payment_link;
     }
   } catch (error) {
     console.error(error)
