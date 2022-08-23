@@ -58,11 +58,11 @@ async function retrieveIncorporationData(emailSave, uuid) {
     );
     data = await response.json();
     if (response.ok) {
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data)); 
+      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       if (data.status == "Draft") {
-        populateData(data.status);
+        populateData(data.status, data.unique_id);
       } else if (data.status == "Submitted") {
-        populateData(data.status);
+        populateData(data.status, data.unique_id);
       }
     }
   } catch (err) {
@@ -70,31 +70,33 @@ async function retrieveIncorporationData(emailSave, uuid) {
   }
 }
 
-function populateData(status) {
+function populateData(status, unique_id) {
   // Adjust aesthetics based on status
   let currentStatus = status;
   if (currentStatus == "Draft") {
     // Overview
-    p1.classList.add('in-progress');
+    p1.classList.add("in-progress");
     card1BtnDraft.addEventListener("click", () => tab2.click());
-    card1BtnDraft.classList.remove('hide');
+    card1BtnDraft.classList.remove("hide");
     // Company Details
-    coEditBtn.classList.remove('hide');
+    coEditBtn.classList.remove("hide");
     // Payment
     paymentNotReady.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
-    p1.classList.add('complete');
-    p2.classList.add('in-progress');
+    p1.classList.add("complete");
+    p2.classList.add("in-progress");
     card1BtnComplete.addEventListener("click", () => tab2.click());
-    card1BtnComplete.classList.remove('hide');
+    card1BtnComplete.classList.remove("hide");
     // Company Details
-    coCompleteBtn.classList.remove('hide');
+    coCompleteBtn.classList.remove("hide");
     // Payment
+    paymentReady.addEventListener("click", function (event) {
+      retrievePaymentSession(event, unique_id);
+    });
     paymentReady.classList.remove("hide");
   }
-  
-  
+
   // Populate Data
   if (data.company_name != "") {
     coName.innerText = data.company_name + " Sdn. Bhd.";
@@ -104,9 +106,7 @@ function populateData(status) {
     ? data.company_name + " Sdn. Bhd."
     : "-";
   coNameExp.innerText = data.name_explanation ? data.name_explanation : "-";
-  coNature.innerText = data.nature_of_business
-    ? data.nature_of_business
-    : "-";
+  coNature.innerText = data.nature_of_business ? data.nature_of_business : "-";
   coMsic1.innerText = data.msic_codes[0];
   coMsic2.innerText = data.msic_codes[1];
   coMsic3.innerText = data.msic_codes[2];
@@ -132,37 +132,27 @@ function populateData(status) {
     coDir[i].elName.classList.add("text-block-72", "text-sm");
     coDir[i].elName.innerText =
       "Legal name: " +
-      (data.company_directors[i].name
-        ? data.company_directors[i].name
-        : "-");
+      (data.company_directors[i].name ? data.company_directors[i].name : "-");
     coDir[i].elFName = document.createElement("div");
     coDir[i].elFName.classList.add("text-block-73", "text-sm");
     coDir[i].elFName.innerText =
       "First name: " +
-      (data.company_directors[i].fname
-        ? data.company_directors[i].fname
-        : "-");
+      (data.company_directors[i].fname ? data.company_directors[i].fname : "-");
     coDir[i].elLName = document.createElement("div");
     coDir[i].elLName.classList.add("text-block-73", "text-sm");
     coDir[i].elLName.innerText =
       "Last name: " +
-      (data.company_directors[i].lname
-        ? data.company_directors[i].lname
-        : "-");
+      (data.company_directors[i].lname ? data.company_directors[i].lname : "-");
     coDir[i].elEmail = document.createElement("div");
     coDir[i].elEmail.classList.add("text-block-73", "text-sm");
     coDir[i].elEmail.innerText =
       "Email: " +
-      (data.company_directors[i].email
-        ? data.company_directors[i].email
-        : "-");
+      (data.company_directors[i].email ? data.company_directors[i].email : "-");
     coDir[i].elPhone = document.createElement("div");
     coDir[i].elPhone.classList.add("text-block-73", "text-sm");
     coDir[i].elPhone.innerText =
       "Phone: " +
-      (data.company_directors[i].phone
-        ? data.company_directors[i].phone
-        : "-");
+      (data.company_directors[i].phone ? data.company_directors[i].phone : "-");
     coDir[i].elCountry = document.createElement("div");
     coDir[i].elCountry.classList.add("text-block-73", "text-sm");
     coDir[i].elCountry.innerText =
@@ -186,60 +176,92 @@ function populateData(status) {
     if (data.company_shareholders[i].type == "Individual") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText =
-        data.company_shareholders[i].name_individual ? data.company_shareholders[i].name_individual : "-";
+      coSh[i].elName.innerText = data.company_shareholders[i].name_individual
+        ? data.company_shareholders[i].name_individual
+        : "-";
       coSh[i].elShares = document.createElement("div");
       coSh[i].elShares.classList.add("text-block-72", "text-sm");
       coSh[i].elShares.innerText =
-        "Shares: " + (data.company_shareholders[i].shares ? data.company_shareholders[i].shares : "-");
+        "Shares: " +
+        (data.company_shareholders[i].shares
+          ? data.company_shareholders[i].shares
+          : "-");
       coSh[i].elFName = document.createElement("div");
       coSh[i].elFName.classList.add("text-block-73", "text-sm");
       coSh[i].elFName.innerText =
-        "First name: " + (data.company_shareholders[i].fname_individual ? data.company_shareholders[i].fname_individual : "-");
+        "First name: " +
+        (data.company_shareholders[i].fname_individual
+          ? data.company_shareholders[i].fname_individual
+          : "-");
       coSh[i].elLName = document.createElement("div");
       coSh[i].elLName.classList.add("text-block-73", "text-sm");
       coSh[i].elLName.innerText =
-        "Last name: " + (data.company_shareholders[i].lname_individual ? data.company_shareholders[i].lname_individual : "-");
+        "Last name: " +
+        (data.company_shareholders[i].lname_individual
+          ? data.company_shareholders[i].lname_individual
+          : "-");
       coSh[i].elEmail = document.createElement("div");
       coSh[i].elEmail.classList.add("text-block-73", "text-sm");
       coSh[i].elEmail.innerText =
-        "Email: " + (data.company_shareholders[i].email ? data.company_shareholders[i].email : "-");
+        "Email: " +
+        (data.company_shareholders[i].email
+          ? data.company_shareholders[i].email
+          : "-");
       coSh[i].elPhone = document.createElement("div");
       coSh[i].elPhone.classList.add("text-block-73", "text-sm");
       coSh[i].elPhone.innerText =
-        "Phone: " + (data.company_shareholders[i].phone ? data.company_shareholders[i].phone : "-");
+        "Phone: " +
+        (data.company_shareholders[i].phone
+          ? data.company_shareholders[i].phone
+          : "-");
     } else if (data.company_shareholders[i].type == "Corporate") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText =
-        (data.company_shareholders[i].name_corporate ? data.company_shareholders[i].name_corporate : "-");
+      coSh[i].elName.innerText = data.company_shareholders[i].name_corporate
+        ? data.company_shareholders[i].name_corporate
+        : "-";
       coSh[i].elShares = document.createElement("div");
       coSh[i].elShares.classList.add("text-block-72", "text-sm");
       coSh[i].elShares.innerText =
-        "Shares: " + (data.company_shareholders[i].shares ? data.company_shareholders[i].shares : "-");
+        "Shares: " +
+        (data.company_shareholders[i].shares
+          ? data.company_shareholders[i].shares
+          : "-");
       coSh[i].elNameRep = document.createElement("div");
       coSh[i].elNameRep.classList.add("text-block-73", "text-sm");
       coSh[i].elNameRep.innerText =
         "Representative legal name: " +
-        (data.company_shareholders[i].name_representative ? data.company_shareholders[i].name_representative : "-");
+        (data.company_shareholders[i].name_representative
+          ? data.company_shareholders[i].name_representative
+          : "-");
       coSh[i].elFName = document.createElement("div");
       coSh[i].elFName.classList.add("text-block-73", "text-sm");
       coSh[i].elFName.innerText =
         "Representative first name: " +
-        (data.company_shareholders[i].fname_representative ? data.company_shareholders[i].fname_representative : "-");
+        (data.company_shareholders[i].fname_representative
+          ? data.company_shareholders[i].fname_representative
+          : "-");
       coSh[i].elLName = document.createElement("div");
       coSh[i].elLName.classList.add("text-block-73", "text-sm");
       coSh[i].elLName.innerText =
         "Representative last name: " +
-        (data.company_shareholders[i].lname_representative ? data.company_shareholders[i].lname_representative : "-");
+        (data.company_shareholders[i].lname_representative
+          ? data.company_shareholders[i].lname_representative
+          : "-");
       coSh[i].elEmail = document.createElement("div");
       coSh[i].elEmail.classList.add("text-block-73", "text-sm");
       coSh[i].elEmail.innerText =
-        "Email: " + (data.company_shareholders[i].email ? data.company_shareholders[i].email : "-");
+        "Email: " +
+        (data.company_shareholders[i].email
+          ? data.company_shareholders[i].email
+          : "-");
       coSh[i].elPhone = document.createElement("div");
       coSh[i].elPhone.classList.add("text-block-73", "text-sm");
       coSh[i].elPhone.innerText =
-        "Phone: " + (data.company_shareholders[i].phone ? data.company_shareholders[i].phone : "-");
+        "Phone: " +
+        (data.company_shareholders[i].phone
+          ? data.company_shareholders[i].phone
+          : "-");
     }
     coSh[i].elContainer.appendChild(coSh[i].elContainer2);
     coSh[i].elContainer2.appendChild(coSh[i].elName);
@@ -256,3 +278,24 @@ function populateData(status) {
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);
+async function retrievePaymentSession(event, unique_id) {
+  console.log(event);
+  try {
+    let response = await fetch(
+      "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ unique_id: unique_id }),
+      }
+    );
+    let data = response.json();
+    if (response.ok) {
+      console.log(data)
+      window.location.href = data._session.payment_link;
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
