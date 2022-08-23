@@ -293,10 +293,9 @@ async function retrievePaymentSession(event, unique_id) {
         body: JSON.stringify({ unique_id: unique_id }),
       }
     );
-    data2 = await response.json();
+    let data = await response.json();
     if (response.ok) {
-      console.log(data2)
-      window.location.href = data2.result._session.payment_link;
+      window.location.href = data._session.payment_link;
     }
   } catch (error) {
     console.error(error)
