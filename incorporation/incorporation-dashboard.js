@@ -7,8 +7,21 @@ let p1 = document.getElementById("progress-1");
 let p2 = document.getElementById("progress-2");
 let p3 = document.getElementById("progress-3");
 let p4 = document.getElementById("progress-4");
+let card1 = document.getElementById("card-1");
+let card2 = document.getElementById("card-2");
+let card3 = document.getElementById("card-3");
+let card4 = document.getElementById("card-4");
 let card1BtnDraft = document.getElementById("overview-btn-1-draft");
 let card1BtnComplete = document.getElementById("overview-btn-1-complete");
+let card2BtnComplete = document.getElementById("overview-btn-2-complete");
+let card2BtnLock = document.getElementById("overview-lock-2");
+let card2BtnDraft = document.getElementById("overview-btn-2-draft");
+let card3BtnComplete = document.getElementById("overview-btn-3-complete");
+let card3BtnLock = document.getElementById("overview-lock-3");
+let card3BtnDraft = document.getElementById("overview-btn-3-draft");
+let card4BtnComplete = document.getElementById("overview-btn-4-complete");
+let card4BtnLock = document.getElementById("overview-lock-4");
+let card4BtnDraft = document.getElementById("overview-btn-4-draft");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
 let coDetails = document.getElementById("inc-details-not-empty");
@@ -38,7 +51,9 @@ let tab3 = document.getElementById("tab-3");
 let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
 
-if (type == "resume") {
+if (query == "") {
+  window.location.href = 'https://' + window.location.hostname + '/incorporation/get-started'
+} if (type == "resume") {
   let emailSave = query.get("email");
   let uuid = query.get("unid");
   retrieveIncorporationData(emailSave, uuid);
@@ -74,29 +89,34 @@ async function retrieveIncorporationData(emailSave, uuid) {
 function populateData(status, unique_id) {
   // Adjust aesthetics based on status
   let currentStatus = status;
-  if (currentStatus == "Draft") {
+  if (currentStatus == 'Draft') {
     // Overview
-    p1.classList.add("in-progress");
-    card1BtnDraft.addEventListener("click", () => tab2.click());
-    card1BtnDraft.classList.remove("hide");
+    p1.classList.add('in-progress');
+    card1.classList.add('current');
+    card1BtnDraft.addEventListener('click', () => tab2.click());
+    card1BtnDraft.classList.remove('hide');
     // Company Details
-    coEditBtn.classList.remove("hide");
+    coEditBtn.classList.remove('hide');
     // Payment
     paymentBanner.classList.remove('hide');
     paymentNotReady.classList.remove('hide');
   } else if (currentStatus == 'Submitted') {
     // Overview
-    p1.classList.add("complete");
-    p2.classList.add("in-progress");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
-    card1BtnComplete.classList.remove("hide");
+    p1.classList.add('complete');
+    p2.classList.add('in-progress');
+    card2.classList.add('current');
+    card1BtnComplete.addEventListener('click', () => tab2.click());
+    card1BtnComplete.classList.remove('hide');
+    card2BtnLock.classList.add('hide');
+    card2BtnDraft.addEventListener('click', () => tab3.click());
+    card2BtnDraft.classList.remove('hide');
     // Company Details
     coCompleteBtn.classList.remove("hide");
     // Payment
-    paymentReady.addEventListener("click", function (event) {
+    paymentReady.addEventListener('click', (event) => {
       retrievePaymentSession(event, unique_id);
     });
-    paymentReady.classList.remove("hide");
+    paymentReady.classList.remove('hide');
   }
 
   // Populate Data
