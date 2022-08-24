@@ -281,7 +281,6 @@ function populateData(status, unique_id) {
 }
 // window.history.pushState({}, document.title, window.location.pathname);
 async function retrievePaymentSession(event, unique_id) {
-  console.log(event);
   try {
     let response = await fetch(
       "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",

@@ -1,3 +1,10 @@
+window.addEventListener('beforeunload', quitPrompt);
+
+function quitPrompt(event) {
+  event.preventDefault();
+  return '';
+}
+
 let activeTabId = "w-tabs-0-data-w-tab-0";
 let currentSideNav, currentSideIcon;
 let nextSideNav, nextSideIcon, nextTab;
@@ -5,6 +12,7 @@ let prevSideNav, prevSideIcon, prevTab;
 let incNextButton = document.getElementById("inc-next-button");
 let incNextButtonError = document.getElementById("inc-next-button-error");
 let incPrevButton = document.getElementById("inc-prev-button");
+let incorporationLoading = document.getElementById("inc-loading");
 let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
@@ -995,7 +1003,9 @@ function prepareSubmissionObject() {
 }
 
 function submitIncorporation() {
+  window.addEventListener('beforeunload', quitPrompt);
   incNextButton.innerText = "Preparing payment page...";
+  incorporationLoading.classList.remove('hide');
 
   prepareSubmissionObject();
   incorporationObject.status = "Submitted";
