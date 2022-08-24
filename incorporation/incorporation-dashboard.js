@@ -44,6 +44,7 @@ let coShContainer = document.getElementById("company-shareholders-container");
 let paymentBanner = document.getElementById('payment-banner');
 let paymentReady = document.getElementById('payment-ready');
 let paymentNotReady = document.getElementById('payment-not-ready');
+let paymentLoading = document.getElementById('payment-loading');
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -114,6 +115,7 @@ function populateData(status, unique_id) {
     coCompleteBtn.classList.remove("hide");
     // Payment
     paymentReady.addEventListener('click', (event) => {
+      paymentLoading.classList.remove('hide');
       retrievePaymentSession(event, unique_id);
     });
     paymentReady.classList.remove('hide');
