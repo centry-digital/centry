@@ -115,6 +115,7 @@ function populateData(status, unique_id) {
     coCompleteBtn.classList.remove("hide");
     // Payment
     paymentReady.addEventListener('click', (event) => {
+      paymentReady.classList.add('hide');
       paymentLoading.classList.remove('hide');
       retrievePaymentSession(event, unique_id);
     });
