@@ -80,7 +80,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
     let usersToVerify = data.users_to_verify;
     if (response.ok) {
       sessionStorage.setItem('incorporation-data', JSON.stringify(data));
-      populateData(incorporationData.status, uniqueId, usersToVerify);
+      populateData(incorporationData, uniqueId, usersToVerify);
       // if (data.incorporation_data.status == "Draft") {
       //   populateData(incorporationData.status, uniqueId, usersToVerify);
       // } else if (data.incorporation_data.status == "Submitted") {
@@ -92,9 +92,9 @@ async function retrieveIncorporationData(emailSave, uuid) {
   }
 }
 
-function populateData(status, unique_id, users_to_verify) {
+function populateData(data, unique_id, users_to_verify) {
   // Adjust aesthetics based on status
-  let currentStatus = status;
+  let currentStatus = data.status;
   if (currentStatus == 'Draft') {
     // Overview
     p1.classList.add('in-progress');
