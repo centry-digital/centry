@@ -45,6 +45,7 @@ let paymentBanner = document.getElementById('payment-banner');
 let paymentReady = document.getElementById('payment-ready');
 let paymentNotReady = document.getElementById('payment-not-ready');
 let paymentLoading = document.getElementById('payment-loading');
+let paymentCompleteBtn = document.getElementById("payment-complete");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -74,20 +75,24 @@ async function retrieveIncorporationData(emailSave, uuid) {
       }
     );
     data = await response.json();
+    let uniqueId = data.unique_id
+    let incorporationData = data.incorporation_data;
+    let usersToVerify = data.users_to_verify;
     if (response.ok) {
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
-      if (data.status == "Draft") {
-        populateData(data.status, data.unique_id);
-      } else if (data.status == "Submitted") {
-        populateData(data.status, data.unique_id);
-      }
+      sessionStorage.setItem('incorporation-data', JSON.stringify(data));
+      populateData(incorporationData.status, uniqueId, usersToVerify);
+      // if (data.incorporation_data.status == "Draft") {
+      //   populateData(incorporationData.status, uniqueId, usersToVerify);
+      // } else if (data.incorporation_data.status == "Submitted") {
+      //   populateData(incorporationData.status, uniqueId, usersToVerify);
+      // }
     }
   } catch (err) {
     console.error(err);
   }
 }
 
-function populateData(status, unique_id) {
+function populateData(status, unique_id, users_to_verify) {
   // Adjust aesthetics based on status
   let currentStatus = status;
   if (currentStatus == 'Draft') {
@@ -120,6 +125,24 @@ function populateData(status, unique_id) {
       retrievePaymentSession(event, unique_id);
     });
     paymentReady.classList.remove('hide');
+  } else if (currentStatus == 'Paid') {
+    // Overview
+    p1.classList.add('complete');
+    p2.classList.add('complete');
+    p3.classList.add('in-progress');
+    card3.classList.add('current');
+    card1BtnComplete.addEventListener('click', () => tab2.click());
+    card1BtnComplete.classList.remove('hide');
+    card2BtnLock.classList.add('hide');
+    card2BtnDraft.addEventListener('click', () => tab3.click());
+    card2BtnComplete.classList.remove('hide');
+    card3BtnLock.classList.add('hide');
+    card3BtnDraft.addEventListener('click', () => tab4.click());
+    card3BtnDraft.classList.remove('hide');
+    // Company Details
+    coCompleteBtn.classList.remove('hide');
+    // Payment
+    paymentCompleteBtn.classList.remove('hide')
   }
 
   // Populate Data
