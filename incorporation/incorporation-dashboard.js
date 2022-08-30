@@ -241,6 +241,7 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Incorporating") {
     // Overview
+    statusBanner.classList.remove("notice");
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
