@@ -360,16 +360,17 @@ async function retrievePaymentSession(event, unique_id) {
 }
 
 function fillTable(item) {
-  let verificationLink;
+  let verificationLink, roles;
   if (item.verified == "false") {
-    //   verificationLink = `<a href=${
-    //     "https://" +
-    //     window.location.hostname +
-    //     "/e-kyc/start?verification=" +
-    //     item.verification_uuid
-    //   } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-    //   keyboard_arrow_right
-    // </span></div></a>`;
+    verificationLink = `<a href=${
+      "https://" +
+      window.location.hostname +
+      "/e-kyc/start?verification=" +
+      item.verification_uuid
+    } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+      keyboard_arrow_right
+    </span></div></a>`;
+  } else {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span>
         <div
           class="dashboard-nav common-symbol-filled complete"
@@ -383,20 +384,13 @@ function fillTable(item) {
         </div>
       </div>
     `;
-  } else {
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span><div class="div-block-270">
-        <div
-          class="dashboard-nav common-symbol-filled complete"
-        >
-          <span
-            class="material-symbols-rounded"
-            style="font-size:20px;line-height:1.25rem;"
-          >
-            check_circle
-          </span>
-        </div>
-      </div></div>
-    `;
   }
-  ekycTable.innerHTML += `<tr><td class="text-block-74" style="padding-top:4px">${item.legal_name}</td><td class="text-block-74" style="padding-top:4px">${item.email}</td><td class="text-block-74" style="padding-top:4px">${item.role}</td><td class="text-block-74" style="text-align:right;padding-top:4px">${verificationLink}</td></tr>`;
+
+  if (item.role.length > 1) {
+    roles = item.role.join(', ');
+  } else {
+    roles = item.role
+  }
+
+  ekycTable.innerHTML += `<tr><td class="text-block-74" style="padding-top:4px">${item.legal_name}</td><td class="text-block-74" style="padding-top:4px">${item.email}</td><td class="text-block-74" style="padding-top:4px">${roles}</td><td class="text-block-74" style="text-align:right;padding-top:4px">${verificationLink}</td></tr>`;
 }
