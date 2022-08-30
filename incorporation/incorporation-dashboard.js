@@ -155,7 +155,7 @@ function populateData(data, unique_id, users_to_verify) {
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnDraft.addEventListener("click", () => tab3.click());
+    card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
     card3BtnDraft.addEventListener("click", () => tab4.click());
@@ -184,10 +184,10 @@ function populateData(data, unique_id, users_to_verify) {
     card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnComplete.addEventListener("click", () => tab3.click());
+    card3BtnComplete.addEventListener("click", () => tab4.click());
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    card4BtnDraft.addEventListener("click", () => tab4.click());
+    card4BtnDraft.addEventListener("click", () => tab5.click());
     card4BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
@@ -213,10 +213,10 @@ function populateData(data, unique_id, users_to_verify) {
     card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnComplete.addEventListener("click", () => tab3.click());
+    card3BtnComplete.addEventListener("click", () => tab4.click());
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    card4BtnComplete.addEventListener("click", () => tab3.click());
+    card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
