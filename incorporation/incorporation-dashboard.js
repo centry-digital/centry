@@ -52,6 +52,12 @@ let ekycEmpty = document.getElementById("ekyc-empty");
 let ekycNotEmpty = document.getElementById("ekyc-not-empty");
 let ekycTable = document.getElementById("ekyc-table-body");
 let ekycCompleteBtn = document.getElementById("ekyc-complete");
+// Declarations
+let declarationsBanner = document.getElementById("declarations-banner");
+let declarationsEmpty = document.getElementById("declarations-empty");
+let declarationsNotEmpty = document.getElementById("declarations-not-empty");
+let declarationsTable = document.getElementById("declarations-table-body");
+let declarationsCompleteBtn = document.getElementById("declarations-complete");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -112,6 +118,9 @@ function populateData(data, unique_id, users_to_verify) {
     // e-KYC
     ekycBanner.classList.remove("hide");
     ekycEmpty.classList.remove("hide");
+    // Declarations
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
     p1.classList.add("complete");
@@ -134,6 +143,9 @@ function populateData(data, unique_id, users_to_verify) {
     // e-KYC
     ekycBanner.classList.remove("hide");
     ekycEmpty.classList.remove("hide");
+    // Declarations
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Paid") {
     // Overview
     p1.classList.add("complete");
@@ -154,9 +166,41 @@ function populateData(data, unique_id, users_to_verify) {
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
     let usersToVerify = users_to_verify;
-    checkVerificationStatus(usersToVerify);
-    usersToVerify.forEach(fillTable);
+    usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
+    // Declarations
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
+  } else if (currentStatus == "KYC Complete") {
+    // Overview
+    p1.classList.add("complete");
+    p2.classList.add("complete");
+    p3.classList.add("complete");
+    p4.classList.add("in-progress");
+    card4.classList.add("current");
+    card1BtnComplete.addEventListener("click", () => tab2.click());
+    card1BtnComplete.classList.remove("hide");
+    card2BtnLock.classList.add("hide");
+    card2BtnDraft.addEventListener("click", () => tab3.click());
+    card2BtnComplete.classList.remove("hide");
+    card3BtnLock.classList.add("hide");
+    card3BtnDraft.addEventListener("click", () => tab3.click());
+    card3BtnComplete.classList.remove("hide");
+    card4BtnLock.classList.add("hide");
+    card4BtnDraft.addEventListener("click", () => tab4.click());
+    card4BtnDraft.classList.remove("hide");
+    // Company Details
+    coCompleteBtn.classList.remove("hide");
+    // Payment
+    paymentCompleteBtn.classList.remove("hide");
+    // e-KYC
+    ekycCompleteBtn.classList.remove("hide");
+    let usersToVerify = users_to_verify;
+    usersToVerify.forEach(fillEkycTable);
+    ekycNotEmpty.classList.remove("hide");
+    // Declarations
+    usersToVerify.forEach(fillDeclarationsTable);
+    declarationsNotEmpty.classList.remove("hide");
   }
 
   // Populate Data
@@ -361,30 +405,26 @@ async function retrievePaymentSession(event, unique_id) {
   }
 }
 
-function fillTable(item) {
+function fillEkycTable(item) {
   let verificationLink, roles;
   if (item.verified == "false" || item.verified == "pending") {
-    verificationLink = `<a href=${
-      "https://" +
-      window.location.hostname +
-      "/e-kyc/start?verification=" +
-      item.verification_uuid
-    } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-      keyboard_arrow_right
-    </span></div></a>`;
+    verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid} style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
+                          <span style="text-decoration:underline;">Start verifying</span>
+                          <div class="html-embed-51 common-symbol">
+                            <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+                              keyboard_arrow_right
+                            </span>
+                          </div>
+                        </a>`;
   } else if (item.verified == "true") {
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span>
-        <div
-          class="dashboard-nav common-symbol-filled complete"
-        >
-          <span
-            class="material-symbols-rounded"
-            style="font-size:20px;line-height:1.25rem;"
-          >
-            check_circle
-          </span>
-        </div>
-      </div>
+    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+                          <span style="color:#111827">Verified</span>
+                          <div class="dashboard-nav common-symbol-filled complete">
+                            <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+                              check_circle
+                            </span>
+                          </div>
+                        </div>
     `;
   } else if (item.verified == "submitted") {
     verificationLink = `<div style="color:#4f46e5">Verification in progress</div>`;
@@ -398,13 +438,21 @@ function fillTable(item) {
     roles = item.role;
   }
 
-  ekycTable.innerHTML += `<tr style="vertical-align:top;"><td class="text-block-74" style="padding:4px 6px 0 0">${item.legal_name}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${item.email}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${roles}</td><td class="text-block-74" style="text-align:right;padding:4px 0 0 6px">${verificationLink}</td></tr>`;
+  ekycTable.innerHTML += `<tr style="vertical-align:top;">
+                            <td class="text-block-74" style="padding:4px 6px 0 0">${item.legal_name}</td>
+                            <td class="text-block-74" style="padding:4px 6px 0 6px">${item.email}</td>
+                            <td class="text-block-74" style="padding:4px 6px 0 6px">${roles}</td>
+                            <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px">${verificationLink}</td>
+                          </tr>`;
 }
 
-function checkVerificationStatus(users) {
-  let verificationStatuses = users.map(u => u.verified);
-  let checkStatuses = verificationStatuses.includes('false') || verificationStatuses.includes('pending') || verificationStatuses.includes('submitted') || verificationStatuses.includes('declined') || verificationStatuses.includes('resubmission')
-  if (!checkStatuses) {
-    ekycCompleteBtn.classList.remove('hide');
-  }
+function fillDeclarationsTable(item) {
+  declarationsTable.innerHTML = `<tr style="vertical-align:top;">
+                                  <td class="text-block-74" style="padding:4px 6px 0 0">Letter & Declaration for Application for Registration of a Company</td>
+                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">Pending</td>
+                                </tr>`;
+  declarationsTable.innerHTML += `<tr style="vertical-align:top;">
+                                    <td class="text-block-74" style="padding:4px 6px 0 0">Section 201 & Consent to Act - ${item.legal_name}</td>
+                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">Pending</td>
+                                  </tr>`;
 }
