@@ -64,6 +64,13 @@ let tab2 = document.getElementById("tab-2");
 let tab3 = document.getElementById("tab-3");
 let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
+// Back to Overview Button
+let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
+for (i = 0; i < backToOverview.length; i++) {
+  backToOverview[i].addEventListener('click', () => {
+    tab1.click();
+  });
+}
 
 if (query == "") {
   window.location.href =
