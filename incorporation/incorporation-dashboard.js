@@ -48,6 +48,8 @@ let paymentLoading = document.getElementById("payment-loading");
 let paymentCompleteBtn = document.getElementById("payment-complete");
 // e-KYC
 let ekycBanner = document.getElementById("ekyc-banner");
+let ekycEmpty = document.getElementById("ekyc-empty");
+let ekycNotEmpty = document.getElementById("ekyc-not-empty");
 let ekycTable = document.getElementById("ekyc-table-body");
 // Tabs
 let tab1 = document.getElementById("tab-1");
@@ -113,6 +115,7 @@ function populateData(data, unique_id, users_to_verify) {
     paymentNotReady.classList.remove("hide");
     // e-KYC
     ekycBanner.classList.remove("hide");
+    ekycEmpty.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
     p1.classList.add("complete");
@@ -134,6 +137,7 @@ function populateData(data, unique_id, users_to_verify) {
     paymentReady.classList.remove("hide");
     // e-KYC
     ekycBanner.classList.remove("hide");
+    ekycEmpty.classList.remove("hide");
   } else if (currentStatus == "Paid") {
     // Overview
     p1.classList.add("complete");
@@ -155,6 +159,7 @@ function populateData(data, unique_id, users_to_verify) {
     // e-KYC
     let usersToVerify = users_to_verify;
     usersToVerify.forEach(fillTable);
+    ekycNotEmpty.classList.remove("hide");
   }
 
   // Populate Data
@@ -361,7 +366,7 @@ async function retrievePaymentSession(event, unique_id) {
 
 function fillTable(item) {
   let verificationLink, roles;
-  if (item.verified == "false") {
+  if (item.verified == "false" || item.verified == "pending") {
     verificationLink = `<a href=${
       "https://" +
       window.location.hostname +
@@ -370,7 +375,7 @@ function fillTable(item) {
     } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
       keyboard_arrow_right
     </span></div></a>`;
-  } else {
+  } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span>
         <div
           class="dashboard-nav common-symbol-filled complete"
@@ -384,13 +389,17 @@ function fillTable(item) {
         </div>
       </div>
     `;
+  } else if (item.verified == "submitted") {
+    verificationLink = `<div style="color:#111827">Verification in progress</div>`;
+  } else {
+    verificationLink = `<div style="color:#111827">Pending</div>`;
   }
 
   if (item.role.length > 1) {
-    roles = item.role.join(', ');
+    roles = item.role.join(", ");
   } else {
-    roles = item.role
+    roles = item.role;
   }
 
-  ekycTable.innerHTML += `<tr><td class="text-block-74" style="padding-top:4px">${item.legal_name}</td><td class="text-block-74" style="padding-top:4px">${item.email}</td><td class="text-block-74" style="padding-top:4px">${roles}</td><td class="text-block-74" style="text-align:right;padding-top:4px">${verificationLink}</td></tr>`;
+  ekycTable.innerHTML += `<tr style="vertical-align:top;"><td class="text-block-74" style="padding:4px 6px 0 0">${item.legal_name}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${item.email}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${roles}</td><td class="text-block-74" style="text-align:right;padding:4px 0 0 6px">${verificationLink}</td></tr>`;
 }
