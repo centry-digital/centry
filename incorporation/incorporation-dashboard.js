@@ -151,7 +151,7 @@ function populateData(data, unique_id, users_to_verify) {
     // Payment
     paymentCompleteBtn.classList.remove('hide')
     // e-KYC
-    let usersToVerify = data.users_to_verify;
+    let usersToVerify = users_to_verify;
     usersToVerify.forEach(fillTable);
   }
 
