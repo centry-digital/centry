@@ -41,14 +41,14 @@ let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
 // Payment
-let paymentBanner = document.getElementById('payment-banner');
-let paymentReady = document.getElementById('payment-ready');
-let paymentNotReady = document.getElementById('payment-not-ready');
-let paymentLoading = document.getElementById('payment-loading');
+let paymentBanner = document.getElementById("payment-banner");
+let paymentReady = document.getElementById("payment-ready");
+let paymentNotReady = document.getElementById("payment-not-ready");
+let paymentLoading = document.getElementById("payment-loading");
 let paymentCompleteBtn = document.getElementById("payment-complete");
 // e-KYC
-let ekycBanner = document.getElementById('ekyc-banner');
-let ekycTable = document.getElementById('ekyc-table-body');
+let ekycBanner = document.getElementById("ekyc-banner");
+let ekycTable = document.getElementById("ekyc-table-body");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -57,8 +57,10 @@ let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
 
 if (query == "") {
-  window.location.href = 'https://' + window.location.hostname + '/incorporation/get-started'
-} if (type == "resume") {
+  window.location.href =
+    "https://" + window.location.hostname + "/incorporation/get-started";
+}
+if (type == "resume") {
   let emailSave = query.get("email");
   let uuid = query.get("unid");
   retrieveIncorporationData(emailSave, uuid);
@@ -78,11 +80,11 @@ async function retrieveIncorporationData(emailSave, uuid) {
       }
     );
     data = await response.json();
-    let uniqueId = data.unique_id
+    let uniqueId = data.unique_id;
     let incorporationData = data.incorporation_data;
     let usersToVerify = data.users_to_verify;
     if (response.ok) {
-      sessionStorage.setItem('incorporation-data', JSON.stringify(data));
+      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       populateData(incorporationData, uniqueId, usersToVerify);
       // if (data.incorporation_data.status == "Draft") {
       //   populateData(incorporationData.status, uniqueId, usersToVerify);
@@ -98,58 +100,58 @@ async function retrieveIncorporationData(emailSave, uuid) {
 function populateData(data, unique_id, users_to_verify) {
   // Adjust aesthetics based on status
   let currentStatus = data.status;
-  if (currentStatus == 'Draft') {
+  if (currentStatus == "Draft") {
     // Overview
-    p1.classList.add('in-progress');
-    card1.classList.add('current');
-    card1BtnDraft.addEventListener('click', () => tab2.click());
-    card1BtnDraft.classList.remove('hide');
+    p1.classList.add("in-progress");
+    card1.classList.add("current");
+    card1BtnDraft.addEventListener("click", () => tab2.click());
+    card1BtnDraft.classList.remove("hide");
     // Company Details
-    coEditBtn.classList.remove('hide');
+    coEditBtn.classList.remove("hide");
     // Payment
-    paymentBanner.classList.remove('hide');
-    paymentNotReady.classList.remove('hide');
+    paymentBanner.classList.remove("hide");
+    paymentNotReady.classList.remove("hide");
     // e-KYC
-    ekycBanner.classList.remove('hide');
-  } else if (currentStatus == 'Submitted') {
+    ekycBanner.classList.remove("hide");
+  } else if (currentStatus == "Submitted") {
     // Overview
-    p1.classList.add('complete');
-    p2.classList.add('in-progress');
-    card2.classList.add('current');
-    card1BtnComplete.addEventListener('click', () => tab2.click());
-    card1BtnComplete.classList.remove('hide');
-    card2BtnLock.classList.add('hide');
-    card2BtnDraft.addEventListener('click', () => tab3.click());
-    card2BtnDraft.classList.remove('hide');
+    p1.classList.add("complete");
+    p2.classList.add("in-progress");
+    card2.classList.add("current");
+    card1BtnComplete.addEventListener("click", () => tab2.click());
+    card1BtnComplete.classList.remove("hide");
+    card2BtnLock.classList.add("hide");
+    card2BtnDraft.addEventListener("click", () => tab3.click());
+    card2BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
     // Payment
-    paymentReady.addEventListener('click', (event) => {
-      paymentReady.classList.add('hide');
-      paymentLoading.classList.remove('hide');
+    paymentReady.addEventListener("click", (event) => {
+      paymentReady.classList.add("hide");
+      paymentLoading.classList.remove("hide");
       retrievePaymentSession(event, unique_id);
     });
-    paymentReady.classList.remove('hide');
+    paymentReady.classList.remove("hide");
     // e-KYC
-    ekycBanner.classList.remove('hide');
-  } else if (currentStatus == 'Paid') {
+    ekycBanner.classList.remove("hide");
+  } else if (currentStatus == "Paid") {
     // Overview
-    p1.classList.add('complete');
-    p2.classList.add('complete');
-    p3.classList.add('in-progress');
-    card3.classList.add('current');
-    card1BtnComplete.addEventListener('click', () => tab2.click());
-    card1BtnComplete.classList.remove('hide');
-    card2BtnLock.classList.add('hide');
-    card2BtnDraft.addEventListener('click', () => tab3.click());
-    card2BtnComplete.classList.remove('hide');
-    card3BtnLock.classList.add('hide');
-    card3BtnDraft.addEventListener('click', () => tab4.click());
-    card3BtnDraft.classList.remove('hide');
+    p1.classList.add("complete");
+    p2.classList.add("complete");
+    p3.classList.add("in-progress");
+    card3.classList.add("current");
+    card1BtnComplete.addEventListener("click", () => tab2.click());
+    card1BtnComplete.classList.remove("hide");
+    card2BtnLock.classList.add("hide");
+    card2BtnDraft.addEventListener("click", () => tab3.click());
+    card2BtnComplete.classList.remove("hide");
+    card3BtnLock.classList.add("hide");
+    card3BtnDraft.addEventListener("click", () => tab4.click());
+    card3BtnDraft.classList.remove("hide");
     // Company Details
-    coCompleteBtn.classList.remove('hide');
+    coCompleteBtn.classList.remove("hide");
     // Payment
-    paymentCompleteBtn.classList.remove('hide')
+    paymentCompleteBtn.classList.remove("hide");
     // e-KYC
     let usersToVerify = users_to_verify;
     usersToVerify.forEach(fillTable);
@@ -341,7 +343,7 @@ async function retrievePaymentSession(event, unique_id) {
     let response = await fetch(
       "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
       {
-        method: 'POST',
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -353,10 +355,16 @@ async function retrievePaymentSession(event, unique_id) {
       window.location.href = data._session.payment_link;
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 function fillTable(item) {
-  ekycTable.innerHTML += `<tr><td>${item.legal_name}</td><td>${item.role}</td><td>${item.status}</td></tr>`
+  let verificationLink
+  if (item.verified == 'false') {
+    verificationLink = `<a href=${'https://' + window.location.hostname + '/e-kyc/start?verification?' + item.verification_uuid}>Start verifying</a>`;
+  } else {
+    verificationLink = 'Verified';
+  }
+  ekycTable.innerHTML += `<tr><td class="text-block-74">${item.legal_name}</td><td class="text-block-74">${item.email}</td><td class="text-block-74">${item.role}</td><td class="text-block-74">${verificationLink}</td></tr>`;
 }
