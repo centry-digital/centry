@@ -51,6 +51,7 @@ let ekycBanner = document.getElementById("ekyc-banner");
 let ekycEmpty = document.getElementById("ekyc-empty");
 let ekycNotEmpty = document.getElementById("ekyc-not-empty");
 let ekycTable = document.getElementById("ekyc-table-body");
+let ekycCompleteBtn = document.getElementById("ekyc-complete");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -88,11 +89,6 @@ async function retrieveIncorporationData(emailSave, uuid) {
     if (response.ok) {
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       populateData(incorporationData, uniqueId, usersToVerify);
-      // if (data.incorporation_data.status == "Draft") {
-      //   populateData(incorporationData.status, uniqueId, usersToVerify);
-      // } else if (data.incorporation_data.status == "Submitted") {
-      //   populateData(incorporationData.status, uniqueId, usersToVerify);
-      // }
     }
   } catch (err) {
     console.error(err);
@@ -158,6 +154,7 @@ function populateData(data, unique_id, users_to_verify) {
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
     let usersToVerify = users_to_verify;
+    checkVerificationStatus(usersToVerify);
     usersToVerify.forEach(fillTable);
     ekycNotEmpty.classList.remove("hide");
   }
@@ -390,9 +387,9 @@ function fillTable(item) {
       </div>
     `;
   } else if (item.verified == "submitted") {
-    verificationLink = `<div style="color:#111827">Verification in progress</div>`;
+    verificationLink = `<div style="color:#4f46e5">Verification in progress</div>`;
   } else {
-    verificationLink = `<div style="color:#111827">Pending</div>`;
+    verificationLink = `<div style="color:#4f46e5">Pending review</div>`;
   }
 
   if (item.role.length > 1) {
@@ -402,4 +399,12 @@ function fillTable(item) {
   }
 
   ekycTable.innerHTML += `<tr style="vertical-align:top;"><td class="text-block-74" style="padding:4px 6px 0 0">${item.legal_name}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${item.email}</td><td class="text-block-74" style="padding:4px 6px 0 6px">${roles}</td><td class="text-block-74" style="text-align:right;padding:4px 0 0 6px">${verificationLink}</td></tr>`;
+}
+
+function checkVerificationStatus(users) {
+  verificationStatuses = users.map(u => u.verified);
+  let checkStatuses = verificationStatuses.contains('false') || verificationStatuses.contains('pending') || verificationStatuses.contains('submitted') || verificationStatuses.contains('declined') || verificationStatuses.contains('resubmission')
+  if (!checkStatuses) {
+    ekycCompleteBtn.classList.remove('hide');
+  }
 }
