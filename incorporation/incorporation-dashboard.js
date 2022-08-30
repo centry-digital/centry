@@ -181,10 +181,10 @@ function populateData(data, unique_id, users_to_verify) {
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnDraft.addEventListener("click", () => tab3.click());
+    card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnDraft.addEventListener("click", () => tab3.click());
+    card3BtnComplete.addEventListener("click", () => tab3.click());
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
     card4BtnDraft.addEventListener("click", () => tab4.click());
@@ -199,6 +199,36 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus,item));
+    declarationsNotEmpty.classList.remove("hide");
+  } else if (currentStatus == "Incorporating") {
+    // Overview
+    p1.classList.add("complete");
+    p2.classList.add("complete");
+    p3.classList.add("complete");
+    p4.classList.add("complete");
+    card1BtnComplete.addEventListener("click", () => tab2.click());
+    card1BtnComplete.classList.remove("hide");
+    card2BtnLock.classList.add("hide");
+    card2BtnComplete.addEventListener("click", () => tab3.click());
+    card2BtnComplete.classList.remove("hide");
+    card3BtnLock.classList.add("hide");
+    card3BtnComplete.addEventListener("click", () => tab3.click());
+    card3BtnComplete.classList.remove("hide");
+    card4BtnLock.classList.add("hide");
+    card4BtnComplete.addEventListener("click", () => tab3.click());
+    card4BtnComplete.classList.remove("hide");
+    // Company Details
+    coCompleteBtn.classList.remove("hide");
+    // Payment
+    paymentCompleteBtn.classList.remove("hide");
+    // e-KYC
+    ekycCompleteBtn.classList.remove("hide");
+    let usersToVerify = users_to_verify;
+    usersToVerify.forEach(fillEkycTable);
+    ekycNotEmpty.classList.remove("hide");
+    // Declarations
+    declarationsCompleteBtn.classList.remove("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus,item));
     declarationsNotEmpty.classList.remove("hide");
   }
@@ -459,10 +489,11 @@ function fillDeclarationsTable(currentStatus,item) {
   }
   declarationsTable.innerHTML = `<tr style="vertical-align:top;">
                                   <td class="text-block-74" style="padding:4px 6px 0 0">Letter & Declaration for Application for Registration of a Company</td>
-                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">Pending</td>
+                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">${status}</td>
                                 </tr>`;
   declarationsTable.innerHTML += `<tr style="vertical-align:top;">
                                     <td class="text-block-74" style="padding:4px 6px 0 0">Section 201 & Consent to Act - ${item.legal_name}</td>
                                     <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">${status}</td>
+                                  }
                                   </tr>`;
 }
