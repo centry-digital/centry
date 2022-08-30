@@ -3,6 +3,11 @@ let type = query.get("session");
 let data, data2;
 // Overview
 let coName = document.getElementById("company-name-container");
+let statusBanner = document.getElementById("status-banner");
+let statusBannerSymbolIncomplete = document.getElementById("status-banner-symbol-incomplete");
+let statusBannerSymbolComplete = document.getElementById("status-banner-symbol-complete");
+let statusBannerNumber = document.getElementById("status-banner-number");
+let statusBannerText = document.getElementById("status-banner-text");
 let p1 = document.getElementById("progress-1");
 let p2 = document.getElementById("progress-2");
 let p3 = document.getElementById("progress-3");
@@ -113,6 +118,8 @@ function populateData(data, unique_id, users_to_verify) {
   let currentStatus = data.status;
   if (currentStatus == "Draft") {
     // Overview
+    statusBannerNumber.innerText = "0";
+    statusBannerSymbolIncomplete.classList.remove("hide");
     p1.classList.add("in-progress");
     card1.classList.add("current");
     card1BtnDraft.addEventListener("click", () => tab2.click());
@@ -130,6 +137,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
+    statusBannerNumber.innerText = "1";
+    statusBannerSymbolIncomplete.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("in-progress");
     card2.classList.add("current");
@@ -155,6 +164,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Paid") {
     // Overview
+    statusBannerNumber.innerText = "2";
+    statusBannerSymbolIncomplete.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("in-progress");
@@ -180,6 +191,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "KYC Complete") {
     // Overview
+    statusBannerNumber.innerText = "3";
+    statusBannerSymbolIncomplete.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
@@ -210,6 +223,10 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Incorporating") {
     // Overview
+    statusBanner.classList.add("complete");
+    statusBannerNumber.innerText = "4";
+    statusBannerSymbolComplete.classList.remove("hide");
+    statusBannerSymbolText.innerText = "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
