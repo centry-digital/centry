@@ -46,6 +46,9 @@ let paymentReady = document.getElementById('payment-ready');
 let paymentNotReady = document.getElementById('payment-not-ready');
 let paymentLoading = document.getElementById('payment-loading');
 let paymentCompleteBtn = document.getElementById("payment-complete");
+// e-KYC
+let ekycBanner = document.getElementById('ekyc-banner');
+let ekycTable = document.getElementById('ekyc-table-body');
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -106,6 +109,8 @@ function populateData(data, unique_id, users_to_verify) {
     // Payment
     paymentBanner.classList.remove('hide');
     paymentNotReady.classList.remove('hide');
+    // e-KYC
+    ekycBanner.classList.remove('hide');
   } else if (currentStatus == 'Submitted') {
     // Overview
     p1.classList.add('complete');
@@ -125,6 +130,8 @@ function populateData(data, unique_id, users_to_verify) {
       retrievePaymentSession(event, unique_id);
     });
     paymentReady.classList.remove('hide');
+    // e-KYC
+    ekycBanner.classList.remove('hide');
   } else if (currentStatus == 'Paid') {
     // Overview
     p1.classList.add('complete');
@@ -143,6 +150,9 @@ function populateData(data, unique_id, users_to_verify) {
     coCompleteBtn.classList.remove('hide');
     // Payment
     paymentCompleteBtn.classList.remove('hide')
+    // e-KYC
+    let usersToVerify = data.users_to_verify;
+    usersToVerify.forEach(fillTable);
   }
 
   // Populate Data
@@ -345,4 +355,8 @@ async function retrievePaymentSession(event, unique_id) {
   } catch (error) {
     console.error(error)
   }
+}
+
+function fillTable(item) {
+  ekycTable.innerHTML += `<tr><td>${item.legal_name}</td><td>${item.role}</td><td>${item.status}</td></tr>`
 }
