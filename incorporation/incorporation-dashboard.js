@@ -367,11 +367,11 @@ function fillTable(item) {
       window.location.hostname +
       "/e-kyc/start?verification=" +
       item.verification_uuid
-    } style="display: flex; align-items: center; justify-content: flex-end;column-gap:6px"><span style="color:#4f46e5;text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol" style="color:#9ca3af"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-    east
+    } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+    trending_flat
   </span></div></a>`;
   } else {
     verificationLink = "Verified";
   }
-  ekycTable.innerHTML += `<tr><td class="text-block-74" style="padding-bottom:4px">${item.legal_name}</td><td class="text-block-74" style="padding-bottom:4px">${item.email}</td><td class="text-block-74" style="padding-bottom:4px">${item.role}</td><td class="text-block-74" style="text-align:right;padding-bottom:4px">${verificationLink}</td></tr>`;
+  ekycTable.innerHTML += `<tr><td class="text-block-74" style="padding-top:4px">${item.legal_name}</td><td class="text-block-74" style="padding-top:4px">${item.email}</td><td class="text-block-74" style="padding-top:4px">${item.role}</td><td class="text-block-74" style="text-align:right;padding-top:4px">${verificationLink}</td></tr>`;
 }
