@@ -402,7 +402,7 @@ function fillTable(item) {
 }
 
 function checkVerificationStatus(users) {
-  verificationStatuses = users.map(u => u.verified);
+  let verificationStatuses = users.map(u => u.verified);
   let checkStatuses = verificationStatuses.contains('false') || verificationStatuses.contains('pending') || verificationStatuses.contains('submitted') || verificationStatuses.contains('declined') || verificationStatuses.contains('resubmission')
   if (!checkStatuses) {
     ekycCompleteBtn.classList.remove('hide');
