@@ -362,15 +362,15 @@ async function retrievePaymentSession(event, unique_id) {
 function fillTable(item) {
   let verificationLink;
   if (item.verified == "false") {
-  //   verificationLink = `<a href=${
-  //     "https://" +
-  //     window.location.hostname +
-  //     "/e-kyc/start?verification=" +
-  //     item.verification_uuid
-  //   } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-  //   keyboard_arrow_right
-  // </span></div></a>`;
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span><div class="div-block-270">
+    //   verificationLink = `<a href=${
+    //     "https://" +
+    //     window.location.hostname +
+    //     "/e-kyc/start?verification=" +
+    //     item.verification_uuid
+    //   } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;"><span style="text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+    //   keyboard_arrow_right
+    // </span></div></a>`;
+    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span>
         <div
           class="dashboard-nav common-symbol-filled complete"
         >
@@ -381,7 +381,7 @@ function fillTable(item) {
             check_circle
           </span>
         </div>
-      </div></div>
+      </div>
     `;
   } else {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span><div class="div-block-270">
