@@ -199,7 +199,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach(fillDeclarationsTable);
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus,item));
     declarationsNotEmpty.classList.remove("hide");
   }
 
@@ -424,8 +424,7 @@ function fillEkycTable(item) {
                               check_circle
                             </span>
                           </div>
-                        </div>
-    `;
+                        </div>`;
   } else if (item.verified == "submitted") {
     verificationLink = `<div style="color:#4f46e5">Verification in progress</div>`;
   } else {
@@ -446,13 +445,24 @@ function fillEkycTable(item) {
                           </tr>`;
 }
 
-function fillDeclarationsTable(item) {
+function fillDeclarationsTable(currentStatus,item) {
+  let status = "Pending"
+  if (currentStatus == "Incorporating") {
+    status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+                <span style="color:#111827">Completed</span>
+                <div class="dashboard-nav common-symbol-filled complete">
+                  <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+                    check_circle
+                  </span>
+                </div>
+              </div>`;
+  }
   declarationsTable.innerHTML = `<tr style="vertical-align:top;">
                                   <td class="text-block-74" style="padding:4px 6px 0 0">Letter & Declaration for Application for Registration of a Company</td>
                                   <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">Pending</td>
                                 </tr>`;
   declarationsTable.innerHTML += `<tr style="vertical-align:top;">
                                     <td class="text-block-74" style="padding:4px 6px 0 0">Section 201 & Consent to Act - ${item.legal_name}</td>
-                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">Pending</td>
+                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;">${status}</td>
                                   </tr>`;
 }
