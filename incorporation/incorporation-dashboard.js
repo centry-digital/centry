@@ -384,7 +384,7 @@ function fillTable(item) {
       </div></div>
     `;
   } else {
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;><span style="color:#111827">Verified</span><div class="div-block-270">
+    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;"><span style="color:#111827">Verified</span><div class="div-block-270">
         <div
           class="dashboard-nav common-symbol-filled complete"
         >
