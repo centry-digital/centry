@@ -360,11 +360,19 @@ async function retrievePaymentSession(event, unique_id) {
 }
 
 function fillTable(item) {
-  let verificationLink
-  if (item.verified == 'false') {
-    verificationLink = `<a href=${'https://' + window.location.hostname + '/e-kyc/start?verification?' + item.verification_uuid}>Start verifying</a>`;
+  ekycTable.innerHTML = '<div class="div-block-261"></div>';
+  let verificationLink;
+  if (item.verified == "false") {
+    verificationLink = `<div class="div-block-271"><a href=${
+      "https://" +
+      window.location.hostname +
+      "/e-kyc/start?verification=" +
+      item.verification_uuid
+    }><span style="color:#4f46e5;text-decoration:underline;">Start verifying</span><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+    keyboard_tab
+  </span></a></div>`;
   } else {
-    verificationLink = 'Verified';
+    verificationLink = "Verified";
   }
-  ekycTable.innerHTML += `<tr><td class="text-block-74">${item.legal_name}</td><td class="text-block-74">${item.email}</td><td class="text-block-74">${item.role}</td><td class="text-block-74">${verificationLink}</td></tr>`;
+  ekycTable.innerHTML += `<tr><td class="text-block-74">${item.legal_name}</td><td class="text-block-74">${item.email}</td><td class="text-block-74">${item.role}</td><td class="text-block-74" style="text-align:right;">${verificationLink}</td></tr>`;
 }
