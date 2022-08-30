@@ -363,14 +363,14 @@ function fillTable(item) {
   ekycTable.innerHTML = '<div class="div-block-261"></div>';
   let verificationLink;
   if (item.verified == "false") {
-    verificationLink = `<div class="div-block-271"><a href=${
+    verificationLink = `<a href=${
       "https://" +
       window.location.hostname +
       "/e-kyc/start?verification=" +
       item.verification_uuid
-    }><span style="color:#4f46e5;text-decoration:underline;">Start verifying</span><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+    } style="display: flex; align-items: center; justify-items: end;column-gap:6px"><span style="color:#4f46e5;text-decoration:underline;">Start verifying</span><div class="html-embed-51 common-symbol"><span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
     keyboard_tab
-  </span></a></div>`;
+  </span></div></a>`;
   } else {
     verificationLink = "Verified";
   }
