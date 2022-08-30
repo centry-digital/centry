@@ -226,7 +226,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerSymbolText.innerText = "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    statusBannerText.innerText = "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
