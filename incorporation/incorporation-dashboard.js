@@ -4,8 +4,12 @@ let data, data2;
 // Overview
 let coName = document.getElementById("company-name-container");
 let statusBanner = document.getElementById("status-banner");
-let statusBannerSymbolIncomplete = document.getElementById("status-banner-symbol-incomplete");
-let statusBannerSymbolComplete = document.getElementById("status-banner-symbol-complete");
+let statusBannerSymbolIncomplete = document.getElementById(
+  "status-banner-symbol-incomplete"
+);
+let statusBannerSymbolComplete = document.getElementById(
+  "status-banner-symbol-complete"
+);
 let statusBannerNumber = document.getElementById("status-banner-number");
 let statusBannerText = document.getElementById("status-banner-text");
 let p1 = document.getElementById("progress-1");
@@ -71,10 +75,20 @@ let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
 // Back to Overview Button
 let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
+let toCoDetailsTab = document.querySelectorAll('[data-button="co-details-tab"]');
+let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
+let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 for (i = 0; i < backToOverview.length; i++) {
-  backToOverview[i].addEventListener('click', () => {
-    tab1.click();
-  });
+  backToOverview[i].addEventListener("click", () => { tab1.click(); });
+}
+for (i = 0; i < toCoDetailsTab.length; i++) {
+  toCoDetailsTab[i].addEventListener("click", () => { tab2.click(); });
+}
+for (i = 0; i < toPaymentTab.length; i++) {
+  toPaymentTab[i].addEventListener("click", () => { tab3.click(); });
+}
+for (i = 0; i < toEkycTab.length; i++) {
+  toEkycTab[i].addEventListener("click", () => { tab4.click(); });
 }
 
 if (query == "") {
@@ -120,6 +134,7 @@ function populateData(data, unique_id, users_to_verify) {
     // Overview
     statusBannerNumber.innerText = "0";
     statusBannerSymbolIncomplete.classList.remove("hide");
+    statusBanner.classList.remove("hide");
     p1.classList.add("in-progress");
     card1.classList.add("current");
     card1BtnDraft.addEventListener("click", () => tab2.click());
@@ -139,6 +154,7 @@ function populateData(data, unique_id, users_to_verify) {
     // Overview
     statusBannerNumber.innerText = "1";
     statusBannerSymbolIncomplete.classList.remove("hide");
+    statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("in-progress");
     card2.classList.add("current");
@@ -166,6 +182,7 @@ function populateData(data, unique_id, users_to_verify) {
     // Overview
     statusBannerNumber.innerText = "2";
     statusBannerSymbolIncomplete.classList.remove("hide");
+    statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("in-progress");
@@ -193,6 +210,7 @@ function populateData(data, unique_id, users_to_verify) {
     // Overview
     statusBannerNumber.innerText = "3";
     statusBannerSymbolIncomplete.classList.remove("hide");
+    statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
@@ -219,14 +237,16 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus,item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Incorporating") {
     // Overview
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerText.innerText = "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    statusBannerText.innerText =
+      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
@@ -253,7 +273,7 @@ function populateData(data, unique_id, users_to_verify) {
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus,item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
   }
 
@@ -462,7 +482,12 @@ async function retrievePaymentSession(event, unique_id) {
 function fillEkycTable(item) {
   let verificationLink, roles;
   if (item.verified == "false" || item.verified == "pending") {
-    verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid} style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
+    verificationLink = `<a href=${
+      "https://" +
+      window.location.hostname +
+      "/e-kyc/start?verification=" +
+      item.verification_uuid
+    } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
                           <span style="text-decoration:underline;">Start verifying</span>
                           <div class="html-embed-51 common-symbol">
                             <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
@@ -499,8 +524,8 @@ function fillEkycTable(item) {
                           </tr>`;
 }
 
-function fillDeclarationsTable(currentStatus,item) {
-  let status = "Pending"
+function fillDeclarationsTable(currentStatus, item) {
+  let status = "Pending";
   if (currentStatus == "Incorporating") {
     status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
                 <span style="color:#111827">Completed</span>
