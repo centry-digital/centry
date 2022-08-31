@@ -1,6 +1,9 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
 let data, data2;
+
+// Dashboard Content
+let dashboard = document.getElementById("dashboard");
 // Overview
 let coName = document.getElementById("company-name-container");
 let statusBanner = document.getElementById("status-banner");
@@ -74,21 +77,33 @@ let tab3 = document.getElementById("tab-3");
 let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
 // Back to Overview Button
-let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
-let toCoDetailsTab = document.querySelectorAll('[data-button="co-details-tab"]');
+let backToOverview = document.querySelectorAll(
+  '[data-button="back-to-overview"]'
+);
+let toCoDetailsTab = document.querySelectorAll(
+  '[data-button="co-details-tab"]'
+);
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 for (i = 0; i < backToOverview.length; i++) {
-  backToOverview[i].addEventListener("click", () => { tab1.click(); });
+  backToOverview[i].addEventListener("click", () => {
+    tab1.click();
+  });
 }
 for (i = 0; i < toCoDetailsTab.length; i++) {
-  toCoDetailsTab[i].addEventListener("click", () => { tab2.click(); });
+  toCoDetailsTab[i].addEventListener("click", () => {
+    tab2.click();
+  });
 }
 for (i = 0; i < toPaymentTab.length; i++) {
-  toPaymentTab[i].addEventListener("click", () => { tab3.click(); });
+  toPaymentTab[i].addEventListener("click", () => {
+    tab3.click();
+  });
 }
 for (i = 0; i < toEkycTab.length; i++) {
-  toEkycTab[i].addEventListener("click", () => { tab4.click(); });
+  toEkycTab[i].addEventListener("click", () => {
+    tab4.click();
+  });
 }
 
 if (query == "") {
@@ -121,6 +136,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
     if (response.ok) {
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       populateData(incorporationData, uniqueId, usersToVerify);
+      dashboard.classList.remove("hide");
     }
   } catch (err) {
     console.error(err);
@@ -491,11 +507,11 @@ function fillEkycTable(item) {
     } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
                           <span style="text-decoration:underline;">Verification link</span>
                           </a>`;
-                          // <div class="html-embed-51 common-symbol">
-                          //   <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-                          //     keyboard_arrow_right
-                          //   </span>
-                          // </div>
+    // <div class="html-embed-51 common-symbol">
+    //   <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+    //     keyboard_arrow_right
+    //   </span>
+    // </div>
   } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
                           <span style="color:#111827">Verified</span>
