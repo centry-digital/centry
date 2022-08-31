@@ -4,6 +4,7 @@ let data, data2;
 
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
+let dashboardLoading = document.getElementById("dashboard-loading");
 // Overview
 let coName = document.getElementById("company-name-container");
 let statusBanner = document.getElementById("status-banner");
@@ -137,6 +138,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
+      dashboardLoading.classList.add("hide");
     }
   } catch (err) {
     console.error(err);
