@@ -37,8 +37,8 @@ let card4BtnComplete = document.getElementById("overview-btn-4-complete");
 let card4BtnLock = document.getElementById("overview-lock-4");
 let card4BtnDraft = document.getElementById("overview-btn-4-draft");
 let card5BtnComplete = document.getElementById("overview-btn-4-complete");
-let card5BtnLock = document.getElementById("overview-lock-4");
-let card5BtnDraft = document.getElementById("overview-btn-4-draft");
+let card5BtnLock = document.getElementById("overview-lock-5");
+let card5BtnDraft = document.getElementById("overview-btn-5-draft");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
 let coDetails = document.getElementById("inc-details-not-empty");
