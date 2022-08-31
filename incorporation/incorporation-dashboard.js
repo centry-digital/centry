@@ -328,7 +328,6 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
-    ssmBanner.classList.remove("hide");
     ssmNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Success") {
     // Overview
@@ -372,7 +371,6 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmCompleteBtn.classList.remove("hide");
-    ssmBanner.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
   }
 
