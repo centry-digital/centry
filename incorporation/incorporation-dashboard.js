@@ -20,10 +20,12 @@ let p1 = document.getElementById("progress-1");
 let p2 = document.getElementById("progress-2");
 let p3 = document.getElementById("progress-3");
 let p4 = document.getElementById("progress-4");
+let p5 = document.getElementById("progress-5");
 let card1 = document.getElementById("card-1");
 let card2 = document.getElementById("card-2");
 let card3 = document.getElementById("card-3");
 let card4 = document.getElementById("card-4");
+let card5 = document.getElementById("card-5");
 let card1BtnDraft = document.getElementById("overview-btn-1-draft");
 let card1BtnComplete = document.getElementById("overview-btn-1-complete");
 let card2BtnComplete = document.getElementById("overview-btn-2-complete");
@@ -35,6 +37,9 @@ let card3BtnDraft = document.getElementById("overview-btn-3-draft");
 let card4BtnComplete = document.getElementById("overview-btn-4-complete");
 let card4BtnLock = document.getElementById("overview-lock-4");
 let card4BtnDraft = document.getElementById("overview-btn-4-draft");
+let card5BtnComplete = document.getElementById("overview-btn-4-complete");
+let card5BtnLock = document.getElementById("overview-lock-4");
+let card5BtnDraft = document.getElementById("overview-btn-4-draft");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
 let coDetails = document.getElementById("inc-details-not-empty");
@@ -77,6 +82,7 @@ let tab2 = document.getElementById("tab-2");
 let tab3 = document.getElementById("tab-3");
 let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
+let tab6 = document.getElementById("tab-6");
 // Back to Overview Button
 let backToOverview = document.querySelectorAll(
   '[data-button="back-to-overview"]'
@@ -168,6 +174,9 @@ function populateData(data, unique_id, users_to_verify) {
     // Declarations
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
+    // SSM
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
     statusBannerNumber.innerText = "1";
@@ -196,6 +205,9 @@ function populateData(data, unique_id, users_to_verify) {
     // Declarations
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
+    // SSM
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Paid") {
     // Overview
     statusBannerNumber.innerText = "2";
@@ -222,6 +234,9 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
+    // SSM
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "KYC Complete") {
@@ -257,6 +272,9 @@ function populateData(data, unique_id, users_to_verify) {
     // Declarations
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
+    // SSM
+    declarationsBanner.classList.remove("hide");
+    declarationsEmpty.classList.remove("hide");
   } else if (currentStatus == "Incorporating") {
     // Overview
     statusBanner.classList.remove("notice");
@@ -281,6 +299,9 @@ function populateData(data, unique_id, users_to_verify) {
     card4BtnLock.classList.add("hide");
     card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
+    card5BtnLock.classList.add("hide");
+    card5BtnDraft.addEventListener("click", () => tab6.click());
+    card5BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
     // Payment
@@ -293,6 +314,8 @@ function populateData(data, unique_id, users_to_verify) {
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    declarationsNotEmpty.classList.remove("hide");
+    // SSM
     declarationsNotEmpty.classList.remove("hide");
   }
 
