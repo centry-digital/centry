@@ -338,8 +338,8 @@ function populateData(data, unique_id, users_to_verify) {
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerHeader.innerText =
-      "🎉 Congratulations! ${data.company_name} Sdn. Bhd. has been successfully incorporated! Hang on tight, our team will reach out to you with the next steps.";
-    statusBannerText.classList.add("hide");
+      `🎉 Congratulations! ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+    statusBannerText.innerText =  "Hang on tight, our team will reach out to you with the next steps.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
