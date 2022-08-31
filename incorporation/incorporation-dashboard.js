@@ -14,6 +14,7 @@ let statusBannerSymbolComplete = document.getElementById(
   "status-banner-symbol-complete"
 );
 let statusBannerNumber = document.getElementById("status-banner-number");
+let statusBannerHeader = document.getElementById("status-banner-header");
 let statusBannerText = document.getElementById("status-banner-text");
 let p1 = document.getElementById("progress-1");
 let p2 = document.getElementById("progress-2");
@@ -81,6 +82,7 @@ let ssmEmpty = document.getElementById("ssm-empty");
 let ssmNotEmpty = document.getElementById("ssm-not-empty");
 let ssmCompleteBtn = document.getElementById("ssm-complete");
 let ssmSuccess = document.getElementById("ssm-success");
+let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -335,8 +337,9 @@ function populateData(data, unique_id, users_to_verify) {
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerText.innerText =
-      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    statusBannerHeader.innerText =
+      "🎉 Congratulations! ${data.company_name} Sdn. Bhd. has been successfully incorporated! Hang on tight, our team will reach out to you with the next steps.";
+    statusBannerText.classList.add("hide");
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
@@ -354,8 +357,8 @@ function populateData(data, unique_id, users_to_verify) {
     card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
     card5BtnLock.classList.add("hide");
-    card5BtnDraft.addEventListener("click", () => tab6.click());
-    card5BtnDraft.classList.remove("hide");
+    card5BtnComplete.addEventListener("click", () => tab6.click());
+    card5BtnComplete.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
     // Payment
@@ -370,6 +373,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
+    ssmSuccessCoName.innerText = data.company_name + " Sdn. Bhd.";
     ssmCompleteBtn.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
   }
