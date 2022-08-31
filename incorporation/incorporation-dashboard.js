@@ -37,7 +37,7 @@ let card3BtnDraft = document.getElementById("overview-btn-3-draft");
 let card4BtnComplete = document.getElementById("overview-btn-4-complete");
 let card4BtnLock = document.getElementById("overview-lock-4");
 let card4BtnDraft = document.getElementById("overview-btn-4-draft");
-let card5BtnComplete = document.getElementById("overview-btn-4-complete");
+let card5BtnComplete = document.getElementById("overview-btn-5-complete");
 let card5BtnLock = document.getElementById("overview-lock-5");
 let card5BtnDraft = document.getElementById("overview-btn-5-draft");
 // Details
