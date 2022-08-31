@@ -1,7 +1,6 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
 let data, data2;
-
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
@@ -76,6 +75,12 @@ let declarationsEmpty = document.getElementById("declarations-empty");
 let declarationsNotEmpty = document.getElementById("declarations-not-empty");
 let declarationsTable = document.getElementById("declarations-table-body");
 let declarationsCompleteBtn = document.getElementById("declarations-complete");
+// SSM
+let ssmBanner = document.getElementById("ssm-banner");
+let ssmEmpty = document.getElementById("ssm-empty");
+let ssmNotEmpty = document.getElementById("ssm-not-empty");
+let ssmCompleteBtn = document.getElementById("ssm-complete");
+let ssmSuccess = document.getElementById("ssm-success");
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -175,8 +180,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
     // SSM
-    declarationsBanner.classList.remove("hide");
-    declarationsEmpty.classList.remove("hide");
+    ssmBanner.classList.remove("hide");
+    ssmEmpty.classList.remove("hide");
   } else if (currentStatus == "Submitted") {
     // Overview
     statusBannerNumber.innerText = "1";
@@ -206,8 +211,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
     // SSM
-    declarationsBanner.classList.remove("hide");
-    declarationsEmpty.classList.remove("hide");
+    ssmBanner.classList.remove("hide");
+    ssmEmpty.classList.remove("hide");
   } else if (currentStatus == "Paid") {
     // Overview
     statusBannerNumber.innerText = "2";
@@ -237,8 +242,8 @@ function populateData(data, unique_id, users_to_verify) {
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
     // SSM
-    declarationsBanner.classList.remove("hide");
-    declarationsEmpty.classList.remove("hide");
+    ssmBanner.classList.remove("hide");
+    ssmEmpty.classList.remove("hide");
   } else if (currentStatus == "KYC Complete") {
     // Overview
     statusBannerNumber.innerText = "3";
@@ -273,8 +278,8 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
-    declarationsBanner.classList.remove("hide");
-    declarationsEmpty.classList.remove("hide");
+    ssmBanner.classList.remove("hide");
+    ssmEmpty.classList.remove("hide");
   } else if (currentStatus == "Incorporating") {
     // Overview
     statusBanner.classList.remove("notice");
@@ -316,7 +321,52 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
+    ssmBanner.classList.remove("hide");
+    ssmNotEmpty.classList.remove("hide");
+  } else if (currentStatus == "Success") {
+    // Overview
+    statusBanner.classList.remove("notice");
+    statusBanner.classList.add("complete");
+    statusBannerNumber.innerText = "4";
+    statusBannerSymbolComplete.classList.remove("hide");
+    statusBannerText.innerText =
+      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    statusBanner.classList.remove("hide");
+    p1.classList.add("complete");
+    p2.classList.add("complete");
+    p3.classList.add("complete");
+    p4.classList.add("complete");
+    card1BtnComplete.addEventListener("click", () => tab2.click());
+    card1BtnComplete.classList.remove("hide");
+    card2BtnLock.classList.add("hide");
+    card2BtnComplete.addEventListener("click", () => tab3.click());
+    card2BtnComplete.classList.remove("hide");
+    card3BtnLock.classList.add("hide");
+    card3BtnComplete.addEventListener("click", () => tab4.click());
+    card3BtnComplete.classList.remove("hide");
+    card4BtnLock.classList.add("hide");
+    card4BtnComplete.addEventListener("click", () => tab5.click());
+    card4BtnComplete.classList.remove("hide");
+    card5BtnLock.classList.add("hide");
+    card5BtnDraft.addEventListener("click", () => tab6.click());
+    card5BtnDraft.classList.remove("hide");
+    // Company Details
+    coCompleteBtn.classList.remove("hide");
+    // Payment
+    paymentCompleteBtn.classList.remove("hide");
+    // e-KYC
+    ekycCompleteBtn.classList.remove("hide");
+    let usersToVerify = users_to_verify;
+    usersToVerify.forEach(fillEkycTable);
+    ekycNotEmpty.classList.remove("hide");
+    // Declarations
+    declarationsCompleteBtn.classList.remove("hide");
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
+    // SSM
+    ssmCompleteBtn.classList.remove("hide");
+    ssmBanner.classList.remove("hide");
+    ssmSuccess.classList.remove("hide");
   }
 
   // Populate Data
