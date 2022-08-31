@@ -97,6 +97,7 @@ let toCoDetailsTab = document.querySelectorAll(
 );
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
+let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
     tab1.click();
@@ -115,6 +116,11 @@ for (i = 0; i < toPaymentTab.length; i++) {
 for (i = 0; i < toEkycTab.length; i++) {
   toEkycTab[i].addEventListener("click", () => {
     tab4.click();
+  });
+}
+for (i = 0; i < toSsmTab.length; i++) {
+  toSsmTab[i].addEventListener("click", () => {
+    tab5.click();
   });
 }
 
