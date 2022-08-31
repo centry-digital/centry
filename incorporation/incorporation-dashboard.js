@@ -259,7 +259,6 @@ function populateData(data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("complete");
     p4.classList.add("in-progress");
-    card4.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
@@ -268,6 +267,7 @@ function populateData(data, unique_id, users_to_verify) {
     card3BtnLock.classList.add("hide");
     card3BtnComplete.addEventListener("click", () => tab4.click());
     card3BtnComplete.classList.remove("hide");
+    card4.classList.add("current");
     card4BtnLock.classList.add("hide");
     card4BtnDraft.addEventListener("click", () => tab5.click());
     card4BtnDraft.classList.remove("hide");
@@ -293,7 +293,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerText.innerText =
-      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+    "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
@@ -310,6 +310,7 @@ function populateData(data, unique_id, users_to_verify) {
     card4BtnLock.classList.add("hide");
     card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
+    card5.classList.add("current");
     card5BtnLock.classList.add("hide");
     card5BtnDraft.addEventListener("click", () => tab6.click());
     card5BtnDraft.classList.remove("hide");
