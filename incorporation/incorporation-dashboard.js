@@ -519,7 +519,6 @@ function fillEkycTable(item) {
 
   ekycTable.innerHTML += `<tr style="vertical-align:top;">
                             <td class="text-block-74" style="padding:4px 6px 0 0">${item.legal_name}</td>
-                            <td class="text-block-74" style="padding:4px 6px 0 6px">${item.email}</td>
                             <td class="text-block-74" style="padding:4px 6px 0 6px">${roles}</td>
                             <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px">${verificationLink}</td>
                           </tr>`;
