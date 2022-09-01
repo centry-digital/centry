@@ -26,6 +26,7 @@ let card2 = document.getElementById("card-2");
 let card3 = document.getElementById("card-3");
 let card4 = document.getElementById("card-4");
 let card5 = document.getElementById("card-5");
+let card1BtnStart = document.getElementById("start-incorporating-btn");
 let card1BtnDraft = document.getElementById("overview-btn-1-draft");
 let card1BtnComplete = document.getElementById("overview-btn-1-complete");
 let card2BtnComplete = document.getElementById("overview-btn-2-complete");
@@ -126,10 +127,35 @@ for (i = 0; i < toSsmTab.length; i++) {
   });
 }
 
-// if (query == "") {
-//   window.location.href =
-//     "https://" + window.location.hostname + "/incorporation/get-started";
-// }
+if (query == "") {
+  card1BtnStart.classList.remove("hide");
+  // Overview
+  statusBannerHeader.innerText = "Start incorporating your dream company"
+  statusBannerText.innerText = "Complete 4 easy steps below to incorporate your dream company! Get started by clicking on the 'Start Incorporating' button below."
+  statusBannerSymbolIncomplete.classList.remove("hide");
+  statusBanner.classList.remove("hide");
+  p1.classList.add("in-progress");
+  card1.classList.add("current");
+  card1BtnDraft.addEventListener("click", () => tab2.click());
+  card1BtnDraft.classList.remove("hide");
+  // Company Details
+  coEmpty.classList.remove("hide");
+  // Payment
+  paymentBanner.classList.remove("hide");
+  paymentNotReady.classList.remove("hide");
+  // e-KYC
+  ekycBanner.classList.remove("hide");
+  ekycEmpty.classList.remove("hide");
+  // Declarations
+  declarationsBanner.classList.remove("hide");
+  declarationsEmpty.classList.remove("hide");
+  // SSM
+  ssmBanner.classList.remove("hide");
+  ssmEmpty.classList.remove("hide");
+  // Unhide dashboard
+  dashboard.classList.remove("hide");
+}
+
 if (type == "resume") {
   let emailSave = query.get("email");
   let uuid = query.get("unid");
@@ -178,6 +204,7 @@ function populateData(data, unique_id, users_to_verify) {
     card1BtnDraft.classList.remove("hide");
     // Company Details
     coEditBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentBanner.classList.remove("hide");
     paymentNotReady.classList.remove("hide");
@@ -205,6 +232,7 @@ function populateData(data, unique_id, users_to_verify) {
     card2BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentReady.addEventListener("click", (event) => {
       paymentReady.classList.add("hide");
@@ -240,6 +268,7 @@ function populateData(data, unique_id, users_to_verify) {
     card3BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
@@ -275,6 +304,7 @@ function populateData(data, unique_id, users_to_verify) {
     card4BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
@@ -318,6 +348,7 @@ function populateData(data, unique_id, users_to_verify) {
     card5BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
@@ -361,6 +392,7 @@ function populateData(data, unique_id, users_to_verify) {
     card5BtnComplete.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
+    coDetails.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
