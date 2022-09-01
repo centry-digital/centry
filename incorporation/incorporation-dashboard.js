@@ -126,10 +126,10 @@ for (i = 0; i < toSsmTab.length; i++) {
   });
 }
 
-if (query == "") {
-  window.location.href =
-    "https://" + window.location.hostname + "/incorporation/get-started";
-}
+// if (query == "") {
+//   window.location.href =
+//     "https://" + window.location.hostname + "/incorporation/get-started";
+// }
 if (type == "resume") {
   let emailSave = query.get("email");
   let uuid = query.get("unid");
@@ -338,7 +338,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerHeader.innerText =
-      `🎉 Congratulations! ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+      `🎉 Congratulations, ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
     statusBannerText.innerText =  "Hang on tight, our team will reach out to you with the next steps.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
