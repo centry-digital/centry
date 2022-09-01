@@ -171,11 +171,13 @@ async function getIncorporationData() {
         body: JSON.stringify(retrievalObject),
       }
     );
-    let data = await response.json();
+    // let data = await response.json();
     if (response.ok) {
-      document.getElementById("inc-invalid-code").classList.add("hide");
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
-      getNextTab();
+      // document.getElementById("inc-invalid-code").classList.add("hide");
+      // sessionStorage.setItem("incorporation-data", JSON.stringify(data));
+      // getNextTab();
+      let encodedEmail = encodeURIComponent(retrieveEmailValue);
+      window.location.href = `https://${window.location.hostname}/incorporation/dashboard?session=resume&email=${encodedEmail}&unid=${uniqueCode}`
     } else {
       document.getElementById("inc-invalid-code").classList.remove("hide");
       retrieveBtn.classList.remove("hide");
