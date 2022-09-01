@@ -181,7 +181,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
     let incorporationData = data.incorporation_data;
     let usersToVerify = data.users_to_verify;
     if (response.ok) {
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
+      sessionStorage.setItem("incorporation-data", JSON.stringify(data.incorporation_data));
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
       dashboardLoading.classList.add("hide");
