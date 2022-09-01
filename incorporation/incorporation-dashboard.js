@@ -136,8 +136,8 @@ if (query == "") {
   statusBanner.classList.remove("hide");
   p1.classList.add("in-progress");
   card1.classList.add("current");
-  card1BtnDraft.addEventListener("click", () => tab2.click());
-  card1BtnDraft.classList.remove("hide");
+  card1BtnStart.addEventListener("click", () => tab2.click());
+  card1BtnStart.classList.remove("hide");
   // Company Details
   coEmpty.classList.remove("hide");
   // Payment
@@ -154,6 +154,7 @@ if (query == "") {
   ssmEmpty.classList.remove("hide");
   // Unhide dashboard
   dashboard.classList.remove("hide");
+  dashboardLoading.classList.add("hide");
 }
 
 if (type == "resume") {
