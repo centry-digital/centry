@@ -130,8 +130,9 @@ for (i = 0; i < toSsmTab.length; i++) {
 if (query == "") {
   card1BtnStart.classList.remove("hide");
   // Overview
-  statusBannerHeader.innerText = "Start incorporating your dream company"
-  statusBannerText.innerText = "Complete 4 easy steps below to incorporate your dream company! Get started by clicking on the 'Start Incorporating' button below."
+  statusBannerHeader.innerText = "Start incorporating your dream company";
+  statusBannerText.innerText =
+    "Complete 4 easy steps below to incorporate your dream company! Get started by clicking on the 'Start Incorporating' button below.";
   statusBannerSymbolIncomplete.classList.remove("hide");
   statusBanner.classList.remove("hide");
   p1.classList.add("in-progress");
@@ -157,10 +158,14 @@ if (query == "") {
   dashboardLoading.classList.add("hide");
 }
 
-if (type == "resume") {
-  let emailSave = query.get("email");
-  let uuid = query.get("unid");
-  retrieveIncorporationData(emailSave, uuid);
+if (query.get("session") && query.get("email") && query.get("unid")) {
+  if (type == "resume") {
+    let emailSave = query.get("email");
+    let uuid = query.get("unid");
+    retrieveIncorporationData(emailSave, uuid);
+  }
+} else {
+  window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
 }
 
 async function retrieveIncorporationData(emailSave, uuid) {
@@ -181,7 +186,10 @@ async function retrieveIncorporationData(emailSave, uuid) {
     let incorporationData = data.incorporation_data;
     let usersToVerify = data.users_to_verify;
     if (response.ok) {
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data.incorporation_data));
+      sessionStorage.setItem(
+        "incorporation-data",
+        JSON.stringify(data.incorporation_data)
+      );
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
       dashboardLoading.classList.add("hide");
@@ -326,7 +334,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerText.innerText =
-    "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
@@ -369,9 +377,9 @@ function populateData(data, unique_id, users_to_verify) {
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerHeader.innerText =
-      `🎉 Congratulations, ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
-    statusBannerText.innerText =  "Hang on tight, our team will reach out to you with the next steps.";
+    statusBannerHeader.innerText = `🎉 Congratulations, ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+    statusBannerText.innerText =
+      "Hang on tight, our team will reach out to you with the next steps.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
