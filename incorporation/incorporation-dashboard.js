@@ -156,16 +156,16 @@ if (query == "") {
   // Unhide dashboard
   dashboard.classList.remove("hide");
   dashboardLoading.classList.add("hide");
-}
-
-if (query.get("session") && query.get("email") && query.get("unid")) {
-  if (type == "resume") {
-    let emailSave = query.get("email");
-    let uuid = query.get("unid");
-    retrieveIncorporationData(emailSave, uuid);
-  }
 } else {
-  window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
+  if (query.get("session") && query.get("email") && query.get("unid")) {
+    if (type == "resume") {
+      let emailSave = query.get("email");
+      let uuid = query.get("unid");
+      retrieveIncorporationData(emailSave, uuid);
+    }
+  } else {
+    window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
+  }
 }
 
 async function retrieveIncorporationData(emailSave, uuid) {
