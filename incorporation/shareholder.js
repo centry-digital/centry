@@ -346,11 +346,11 @@ function addShareholderInputGroup() {
   shareholderNameCorp1.addEventListener("keyup", updateButtons);
 
   //Set input field - Corporate shareholder representative
-  shareholderNameLabelCorp2.innerText =
-    "Corporate representative legal name displayed per NRIC / ID / Passport";
-  // shareholderNameCorp2Description.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
-  shareholderNameCorp2Description.innerHTML =
-    '<span>The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document. </span><span class="text-span-27">*</span>';
+  // shareholderNameLabelCorp2.innerText =
+  //   "Corporate representative legal name displayed per NRIC / ID / Passport";
+  shareholderNameLabelCorp2.innerHTML =
+    '<span>Corporate representative legal name displayed per NRIC / ID / Passport </span><span class="text-span-27">*</span>';
+  shareholderNameCorp2Description.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   shareholderNameCorp2.type = "text";
   shareholderNameCorp2.name = "Corporate-representative-name";
   shareholderNameCorp2.setAttribute(
