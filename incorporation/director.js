@@ -93,7 +93,8 @@ function addDirectorInputGroup() {
   directorInputGroup.setAttribute("data-incorporation-data", "director");
 
   // Set input field - Director FName
-  directorFNameLabel.innerText = "First name / given name";
+  // directorFNameLabel.innerText = "First name / given name";
+  directorFNameLabel.innerHTML = '<span>First name / given name </span><span class="text-span-27">*</span>';
   directorFName.type = "text";
   directorFName.name = "Director-first-name";
   directorFName.setAttribute("data-name", "Director-first-name");
@@ -104,7 +105,8 @@ function addDirectorInputGroup() {
   directorFName.addEventListener("keyup", updateDirectorLegalName);
 
   // Set input field - Director LName
-  directorLNameLabel.innerText = "Last name / family name";
+  // directorLNameLabel.innerText = "Last name / family name";
+  directorLNameLabel.innerHTML = '<span>Last name / family name </span><span class="text-span-27">*</span>';
   directorLName.type = "text";
   directorLName.name = "Director-last-name";
   directorLName.setAttribute("data-name", "Director-last-name");
@@ -115,7 +117,8 @@ function addDirectorInputGroup() {
   directorLName.addEventListener("keyup", updateDirectorLegalName);
   
   //Set input field - Director Name
-  directorNameLabel.innerText = "Legal name displayed per NRIC / ID / Passport";
+  // directorNameLabel.innerText = "Legal name displayed per NRIC / ID / Passport";
+  directorNameLabel.innerHTML = '<span>Legal name displayed per NRIC / ID / Passport </span><span class="text-span-27">*</span>';
   removeDirectorButton.type = "button";
   removeDirectorButton.innerText = "remove";
   directorLegalNameDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
@@ -128,7 +131,8 @@ function addDirectorInputGroup() {
   directorName.addEventListener("keyup", validateField);
 
   //Set input field - Director Email
-  directorEmailLabel.innerText = "Email address";
+  // directorEmailLabel.innerText = "Email address";
+  directorEmailLabel.innerHTML = '<span>Email address </span><span class="text-span-27">*</span>';
   directorEmail.type = "email";
   directorEmail.name = "Director-email";
   directorEmail.setAttribute("data-name", "Director-email");
@@ -138,7 +142,8 @@ function addDirectorInputGroup() {
   directorEmail.addEventListener("keyup", validateField);
 
   //Set input field - Director Phone
-  directorPhoneLabel.innerText = "Phone number";
+  // directorPhoneLabel.innerText = "Phone number";
+  directorPhoneLabel.innerHTML = '<span>Phone number</span><span class="text-span-27"></span>';
   directorPhone.type = "phone";
   directorPhone.name = "Director-phone";
   directorPhone.setAttribute("data-name", "Director-phone");
@@ -148,7 +153,8 @@ function addDirectorInputGroup() {
   directorPhone.addEventListener("keyup", validateField);
 
   //Set input field - Director Country
-  directorCountryLabel.innerText = "Country of Residence";
+  // directorCountryLabel.innerText = "Country of Residence";
+  directorCountryLabel.innerHTML = '<span>Country of Residence</span><span class="text-span-27">*</span>';
   directorCountry.name = "Director-country-of-residence";
   directorCountry.setAttribute("data-name", "Director-country-of-residence");
   directorCountry.setAttribute("data-incorporation-data", "director-country");
