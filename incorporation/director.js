@@ -143,7 +143,7 @@ function addDirectorInputGroup() {
 
   //Set input field - Director Phone
   // directorPhoneLabel.innerText = "Phone number";
-  directorPhoneLabel.innerHTML = '<span>Phone number</span><span class="text-span-27">*</span>';
+  directorPhoneLabel.innerHTML = '<span>Phone number </span><span class="text-span-27">*</span>';
   directorPhone.type = "phone";
   directorPhone.name = "Director-phone";
   directorPhone.setAttribute("data-name", "Director-phone");
@@ -154,7 +154,7 @@ function addDirectorInputGroup() {
 
   //Set input field - Director Country
   // directorCountryLabel.innerText = "Country of Residence";
-  directorCountryLabel.innerHTML = '<span>Country of Residence</span><span class="text-span-27">*</span>';
+  directorCountryLabel.innerHTML = '<span>Country of Residence </span><span class="text-span-27">*</span>';
   directorCountry.name = "Director-country-of-residence";
   directorCountry.setAttribute("data-name", "Director-country-of-residence");
   directorCountry.setAttribute("data-incorporation-data", "director-country");
