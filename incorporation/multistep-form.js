@@ -1,8 +1,8 @@
-window.addEventListener('beforeunload', quitPrompt);
+window.addEventListener("beforeunload", quitPrompt);
 
 function quitPrompt(event) {
   event.preventDefault();
-  return '';
+  return "";
 }
 
 let activeTabId = "w-tabs-0-data-w-tab-0";
@@ -294,10 +294,14 @@ function validateInput() {
   } else {
     flag_6 = false;
   }
-  let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
-  let flag_8 = incorporationSummary.businessAddressCity ? true : false;
-  let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
-  let flag_10 = incorporationSummary.businessAddressState ? true : false;
+  // let flag_7 = incorporationSummary.businessAddressLine1 ? true : false;
+  // let flag_8 = incorporationSummary.businessAddressCity ? true : false;
+  // let flag_9 = incorporationSummary.businessAddressPostcode ? true : false;
+  // let flag_10 = incorporationSummary.businessAddressState ? true : false;
+  let flag_7 = true; //making business address optional
+  let flag_8 = true; //making business address optional
+  let flag_9 = true; //making business address optional
+  let flag_10 = true; //making business address optional
   let flag_20 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
     if (incorporationSummary.directors[dirNo].fname != "") {
@@ -629,7 +633,13 @@ function validateField(e) {
       !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
   ) {
     e.target.classList.add("invalid-field");
-  } else if (e.target.value == "") {
+  } else if (
+    e.target.value == "" &&
+    e.target.getAttribute("data-incorporation-data") != "business-address-1" &&
+    e.target.getAttribute("data-incorporation-data") != "business-address-city" &&
+    e.target.getAttribute("data-incorporation-data") != "business-address-postcode" &&
+    e.target.getAttribute("data-incorporation-data") != "business-address-state"
+  ) {
     e.target.classList.add("invalid-field");
   } else {
     e.target.classList.remove("invalid-field");
@@ -1003,9 +1013,9 @@ function prepareSubmissionObject() {
 }
 
 function submitIncorporation() {
-  window.addEventListener('beforeunload', quitPrompt);
+  window.addEventListener("beforeunload", quitPrompt);
   incNextButton.innerText = "Preparing payment page...";
-  incorporationLoading.classList.remove('hide');
+  incorporationLoading.classList.remove("hide");
 
   prepareSubmissionObject();
   incorporationObject.status = "Submitted";
@@ -1139,7 +1149,7 @@ async function saveDraft_existing() {
       body: JSON.stringify(incorporationObject),
     });
     let data = await response.json();
-    if (response.ok ) {
+    if (response.ok) {
       sessionStorage.setItem("incorporation-data", JSON.stringify(data));
       saveBtn1.innerText = "Saved";
       document.getElementById("w-tabs-1-data-w-tab-3").click();
