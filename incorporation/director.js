@@ -143,7 +143,7 @@ function addDirectorInputGroup() {
 
   //Set input field - Director Phone
   // directorPhoneLabel.innerText = "Phone number";
-  directorPhoneLabel.innerHTML = '<span>Phone number</span><span class="text-span-27"></span>';
+  directorPhoneLabel.innerHTML = '<span>Phone number</span><span class="text-span-27">*</span>';
   directorPhone.type = "phone";
   directorPhone.name = "Director-phone";
   directorPhone.setAttribute("data-name", "Director-phone");
