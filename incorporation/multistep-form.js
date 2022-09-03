@@ -620,6 +620,7 @@ for (let countrySelect of document.querySelectorAll(
 }
 
 let [dirEmailValidity, shEmailValidity] = [true, true];
+let shEmailFields, shEmail, arrEmailDuplicate = []
 function validateField(e) {
   getSummary();
   if (
@@ -668,9 +669,9 @@ function validateField(e) {
       dirEmailFields[i].classList.add("invalid-field");
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
-    let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
-    let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
-    let arrEmailDuplicate = []
+    shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
+    shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
+    arrEmailDuplicate = []
     shEmail.forEach((email,index) => {
       if (e.target.value == email && e.target.getAttribute("shareholder-email-input") != index) {
         arrEmailDuplicate.push(index)
