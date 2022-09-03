@@ -729,6 +729,8 @@ function errorDisplay(e) {
   let errorIcon = document.createElement("div");
   errorIcon.classList.add("html-embed-56");
   errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
+  console.log(e.target);
+  console.log(e.target.parentElement);
   e.target.parentElement.appendChild(errorIcon);
 }
 
