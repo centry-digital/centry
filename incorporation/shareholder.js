@@ -742,10 +742,10 @@ function validateShEmails() {
   )
   if (arrEmailDuplicate.length > 0) {
     document.getElementById("shareholder-email-error").classList.remove("hide");
-    dirEmailValidity = false;
+    shEmailValidity = false;
   } else {
     document.getElementById("shareholder-email-error").classList.add("hide");
-    dirEmailValidity = true;
+    shEmailValidity = true;
   }
   shEmailFields.forEach(field => {
     field.classList.remove("invalid-field");
