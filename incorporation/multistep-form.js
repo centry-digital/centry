@@ -629,20 +629,27 @@ function validateField(e) {
       e.target.getAttribute("data-incorporation-data") == "shareholder-phone") &&
     !regexPhone.test(e.target.value)
   ) {
-    e.target.classList.add("invalid-field");
+    errorDisplay(e);
+    // e.target.classList.add("invalid-field");
+    // let errorIcon = document.createElement("div");
+    // errorIcon.classList.add("html-embed-56");
+    // errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
+    // e.target.parentElement.appendChild("errorIcon");
   } else if (
     (e.target.getAttribute("data-incorporation-data") == "company-email" ||
       e.target.getAttribute("data-incorporation-data") == "director-email" ||
       e.target.getAttribute("data-incorporation-data") == "shareholder-email") &&
     !regexEmail.test(e.target.value)
   ) {
-    e.target.classList.add("invalid-field");
+    errorDisplay(e);
+    // e.target.classList.add("invalid-field");
   } else if (
     e.target.getAttribute("data-incorporation-data") == "number-of-shares" &&
     (!regexShares.test(e.target.value) ||
       !(Math.round(e.target.value) > 0 && Math.round(e.target.value) <= 1000))
   ) {
-    e.target.classList.add("invalid-field");
+    errorDisplay(e);
+    // e.target.classList.add("invalid-field");
   } else if (e.target.value == "") {
     e.target.classList.add("invalid-field");
   } else if (e.target.getAttribute("data-incorporation-data") == "director-email") {
@@ -664,9 +671,17 @@ function validateField(e) {
     }
     dirEmailFields.forEach(field => {
       field.classList.remove("invalid-field");
+      let errIcon = field.parentElement.querySelector(".html-embed-56")
+      if (errIcon) {
+        field.parentElement.removeChild(errIcon);
+      }
     })
     arrEmailDuplicate.forEach(i => {
       dirEmailFields[i].classList.add("invalid-field");
+      let errorIcon = document.createElement("div");
+      errorIcon.classList.add("html-embed-56");
+      errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
+      dirEmailFields[i].parentElement.appendChild("errorIcon");
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
     shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
@@ -687,14 +702,34 @@ function validateField(e) {
     }
     shEmailFields.forEach(field => {
       field.classList.remove("invalid-field");
+      let errIcon = field.parentElement.querySelector(".html-embed-56")
+      if (errIcon) {
+        field.parentElement.removeChild(errIcon);
+      }
     })
     arrEmailDuplicate.forEach(i => {
       shEmailFields[i].classList.add("invalid-field");
+      let errorIcon = document.createElement("div");
+      errorIcon.classList.add("html-embed-56");
+      errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
+      shEmailFields[i].parentElement.appendChild("errorIcon");
     })
   } else {
     e.target.classList.remove("invalid-field");
+    let errIcon = e.target.parentElement.querySelector(".html-embed-56")
+    if (errIcon) {
+      e.target.parentElement.removeChild(errIcon);
+    }
   }
   validateInput();
+}
+
+function errorDisplay(e) {
+  e.target.classList.add("invalid-field");
+  let errorIcon = document.createElement("div");
+  errorIcon.classList.add("html-embed-56");
+  errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
+  e.target.parentElement.appendChild(errorIcon);
 }
 
 //Summary
