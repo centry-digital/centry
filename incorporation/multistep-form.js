@@ -652,7 +652,7 @@ function validateField(e) {
     dirEmail = incorporationSummary.directors.map(director => director.email);
     arrEmailDuplicate = []
     dirEmail.forEach((email,index) => {
-      if (e.target.value == email) {
+      if (e.target.value == email && e.target.getAttribute("director-email-input") != index) {
         arrEmailDuplicate.push(index)
       }
     })
@@ -663,19 +663,15 @@ function validateField(e) {
       document.getElementById("director-email-error").classList.add("hide");
       dirEmailValidity = true;
     }
-    dirEmailFields.forEach((field,index) => {
-      if (arrEmailDuplicate[index] == index) {
-        field.classList.add("invalid-field");
-      } else {
-        field.classList.remove("invalid-field");
-      }
+    arrEmailDuplicate.forEach(i => {
+      dirEmailFields[i].classList.add("invalid-field");
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
-    let shEmaiFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
+    let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
     let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
     let arrEmailDuplicate = []
     shEmail.forEach((email,index) => {
-      if (e.target.value == email) {
+      if (e.target.value == email && e.target.getAttribute("shareholder-email-input") != index) {
         arrEmailDuplicate.push(index)
       }
     })
@@ -686,12 +682,8 @@ function validateField(e) {
       document.getElementById("shareholder-email-error").classList.add("hide");
       shEmailValidity = true;
     }
-    shEmaiFields.forEach((field,index) => {
-      if (arrEmailDuplicate[index] == index) {
-        field.classList.add("invalid-field");
-      } else {
-        field.classList.remove("invalid-field");
-      }
+    arrEmailDuplicate.forEach(i => {
+      shEmailFields[i].classList.add("invalid-field");
     })
   } else {
     e.target.classList.remove("invalid-field");

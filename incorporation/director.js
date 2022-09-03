@@ -136,7 +136,7 @@ function addDirectorInputGroup() {
   directorEmail.type = "email";
   directorEmail.name = "Director-email";
   directorEmail.setAttribute("data-name", "Director-email");
-  directorEmail.setAttribute("data-incorporation-data", "director-email");
+  directorEmail.setAttribute("data-incorporation-data", "director-email");  
   directorEmail.setAttribute("maxlength", "256");
   directorEmail.setAttribute("required", "");
   directorEmail.addEventListener("keyup", validateField);
@@ -208,14 +208,23 @@ function addDirectorInputGroup() {
   //Append element to DOM
   directorGroup.appendChild(directorInputGroup);
   mapDirectorCountrySelect();
+  applyInputNumbering();
   validateInput();
   updateButtons();
-  removeDirectorButton.addEventListener("click", removeDirector);
+  removeDirectorButton.addEventListener("click", removeDirector);  
 }
 
 function removeDirector(el) {
   const director = el.target.parentElement;
   director.remove();
+  applyInputNumbering();
   validateInput();
   updateButtons();
+}
+
+function applyInputNumbering() {
+  let dirEmailGroups = document.querySelectorAll('[data-incorporation-data="director-email"]');
+  dirEmailGroups.forEach((group, index) => {
+    group.setAttribute("director-email-input", index);
+  })
 }

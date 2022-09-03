@@ -528,6 +528,7 @@ function addShareholderInputGroup() {
   //Append element to DOM
   shareholderGroup.appendChild(shareholderInputGroup);
   removeShareholderButton.addEventListener("click", removeShareholder);
+  applyInputNumbering();
 
   //rerun function to calculate shares
   calculateShares();
@@ -538,6 +539,7 @@ function addShareholderInputGroup() {
 function removeShareholder(el) {
   const shareholder = el.target.parentElement;
   shareholder.remove();
+  applyInputNumbering();
   updateShares();
   updateButtons();
 }
@@ -668,4 +670,11 @@ function updateShares() {
     }
     updateButtons();
   }
+}
+
+function applyInputNumbering() {
+  let shEmailGroups = document.querySelectorAll('[data-incorporation-data="shareholder-email"]');
+  shEmailGroups.forEach((group, index) => {
+    group.setAttribute("sahreholder-email-input", index);
+  })
 }
