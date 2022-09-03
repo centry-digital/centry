@@ -4,7 +4,7 @@
 }
 
 .invalid-field {
-    border: 1px solid #be123d;
+    border: 1px solid #be123d !important;
     box-shadow: 0 0 0 1px #be123d;
 }
 
