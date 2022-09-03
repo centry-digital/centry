@@ -622,7 +622,7 @@ for (let countrySelect of document.querySelectorAll(
 
 let dirEmailValidity, shEmailValidity;
 function validateField(e) {
-  validateInput();
+  getSummary();
   if (
     (e.target.getAttribute("data-incorporation-data") == "office-number" ||
       e.target.getAttribute("data-incorporation-data") == "director-phone" ||
@@ -694,6 +694,7 @@ function validateField(e) {
   } else {
     e.target.classList.remove("invalid-field");
   }
+  validateInput();
 }
 
 //Summary
