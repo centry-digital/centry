@@ -134,10 +134,44 @@ function addShareholderInputGroup() {
   const inputSubGroup100Shares = document.createElement("div");
   const shareholderSharesLabel = document.createElement("label");
   const inputWrapperShares = document.createElement("div");
+  const inputWrapperSharesInput = document.createElement("div");
   const inputShareholderSharesPct = document.createElement("input");
   const shareholderSharesNumWrapper = document.createElement("div");
   const shareholderSharesNum1 = document.createElement("span");
   const shareholderSharesNum2 = document.createElement("span");
+  const errorIconFNameInd = document.createElement("div");
+  const errorIconLNameInd = document.createElement("div");
+  const errorIconNameInd = document.createElement("div");
+  const errorIconNameCorp = document.createElement("div");
+  const errorIconFNameCorpRep = document.createElement("div");
+  const errorIconLNameCorpRep = document.createElement("div");
+  const errorIconNameCorpRep = document.createElement("div");
+  const errorIconEmail = document.createElement("div");
+  const errorIconPhone = document.createElement("div");
+  const errorIconShares = document.createElement("div");
+  
+  //Setup errorIcons
+  errorIconFNameInd.classList.add("html-embed-56", "hide");
+  errorIconFNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLNameInd.classList.add("html-embed-56", "hide");
+  errorIconLNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameInd.classList.add("html-embed-56", "hide");
+  errorIconNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameCorp.classList.add("html-embed-56", "hide");
+  errorIconNameCorp.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconFNameCorpRep.classList.add("html-embed-56", "hide");
+  errorIconFNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLNameCorpRep.classList.add("html-embed-56", "hide");
+  errorIconLNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameCorpRep.classList.add("html-embed-56", "hide");
+  errorIconNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconEmail.classList.add("html-embed-56", "hide");
+  errorIconEmail.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconPhone.classList.add("html-embed-56", "hide");
+  errorIconPhone.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconShares.classList.add("html-embed-56", "hide");
+  errorIconShares.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+
 
   //Add classes
   shareholderInputGroup.classList.add("shareholder-input-group-additional");
@@ -230,6 +264,7 @@ function addShareholderInputGroup() {
   inputSubGroup100Shares.classList.add("input-subgroup-100");
   shareholderSharesLabel.classList.add("field-label");
   inputWrapperShares.classList.add("shareholding-wrapper");
+  inputWrapperSharesInput.classList.add("input-wrapper");
   inputShareholderSharesPct.classList.add(
     "centry-shareholding-field",
     "text-sm",
@@ -478,13 +513,16 @@ function addShareholderInputGroup() {
   inputFieldBlock50_1.appendChild(shareholderFNameLabelInd);
   inputFieldBlock50_1.appendChild(inputWrapperFNameInd);
   inputWrapperFNameInd.appendChild(shareholderFNameInd);
+  inputWrapperFNameInd.appendChild(errorIconFNameInd);
   inputFieldBlock50_2.appendChild(shareholderLNameLabelInd);
   inputFieldBlock50_2.appendChild(inputWrapperLNameInd);
   inputWrapperLNameInd.appendChild(shareholderLNameInd);
+  inputWrapperLNameInd.appendChild(errorIconLNameInd);
   inputSubGroup100Ind.appendChild(shareholderNameLabelInd);
   inputSubGroup100Ind.appendChild(shareholderNameIndDescription);
   inputSubGroup100Ind.appendChild(inputWrapperInd);
   inputWrapperInd.appendChild(shareholderNameInd);
+  inputWrapperInd.appendChild(errorIconNameInd);
 
   //Corporate Shareholder
   inputSubGroupCorp.appendChild(inputSubGroup100Corp1);
@@ -493,36 +531,44 @@ function addShareholderInputGroup() {
   inputSubGroup100Corp1.appendChild(shareholderNameLabelCorp1);
   inputSubGroup100Corp1.appendChild(inputWrapperCorp1);
   inputWrapperCorp1.appendChild(shareholderNameCorp1);
+  inputWrapperCorp1.appendChild(errorIconNameCorp);
   inputSubGroup50_2.appendChild(inputFieldBlock50_3);
   inputSubGroup50_2.appendChild(inputFieldBlock50_4);
   inputFieldBlock50_3.appendChild(shareholderFNameLabelCorpRep);
   inputFieldBlock50_3.appendChild(inputWrapperFNameCorpRep);
   inputWrapperFNameCorpRep.appendChild(shareholderFNameCorpRep);
+  inputWrapperFNameCorpRep.appendChild(errorIconFNameCorpRep);
   inputFieldBlock50_4.appendChild(shareholderLNameLabelCorpRep);
   inputFieldBlock50_4.appendChild(inputWrapperLNameCorpRep);
   inputWrapperLNameCorpRep.appendChild(shareholderLNameCorpRep);
+  inputWrapperLNameCorpRep.appendChild(errorIconLNameCorpRep);
   inputSubGroup100Corp2.appendChild(shareholderNameLabelCorp2);
   inputSubGroup100Corp2.appendChild(shareholderNameCorp2Description);
   inputSubGroup100Corp2.appendChild(inputWrapperCorp2);
   inputWrapperCorp2.appendChild(shareholderNameCorp2);
+  inputWrapperCorp2.appendChild(errorIconNameCorpRep);
 
   //Shareholder Email
   inputSubGroup50_3.appendChild(inputFieldBlock50_5);
   inputFieldBlock50_5.appendChild(shareholderEmailLabel);
   inputFieldBlock50_5.appendChild(inputWrapperEmail);
   inputWrapperEmail.appendChild(shareholderEmail);
+  inputWrapperEmail.appendChild(errorIconEmail);
 
   //Director Phone
   inputSubGroup50_3.appendChild(inputFieldBlock50_6);
   inputFieldBlock50_6.appendChild(shareholderPhoneLabel);
   inputFieldBlock50_6.appendChild(inputWrapperPhone);
   inputWrapperPhone.appendChild(shareholderPhone);
+  inputWrapperPhone.appendChild(errorIconPhone);
 
   //Number of Shares
   inputSubGroup100Shares.appendChild(shareholderSharesLabel);
   inputSubGroup100Shares.appendChild(inputWrapperShares);
-  inputWrapperShares.appendChild(inputShareholderSharesPct);
+  inputWrapperShares.appendChild(inputWrapperSharesInput);
   inputWrapperShares.appendChild(shareholderSharesNumWrapper);
+  inputWrapperSharesInput.appendChild(inputShareholderSharesPct);
+  inputWrapperSharesInput.appendChild(errorIconShares);
   shareholderSharesNumWrapper.appendChild(shareholderSharesNum1);
   shareholderSharesNumWrapper.appendChild(shareholderSharesNum2);
 

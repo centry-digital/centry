@@ -57,6 +57,23 @@ function addDirectorInputGroup() {
   const directorEmail = document.createElement("input");
   const directorPhone = document.createElement("input");
   const directorCountry = document.createElement("select");
+  const errorIconFName = document.createElement("div");
+  const errorIconLName = document.createElement("div");
+  const errorIconName = document.createElement("div");
+  const errorIconEmail = document.createElement("div");
+  const errorIconPhone = document.createElement("div");
+
+  //Setup errorIcons
+  errorIconFName.classList.add("html-embed-56", "hide");
+  errorIconFName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLName.classList.add("html-embed-56", "hide");
+  errorIconLName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconName.classList.add("html-embed-56", "hide");
+  errorIconName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconEmail.classList.add("html-embed-56", "hide");
+  errorIconEmail.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconPhone.classList.add("html-embed-56", "hide");
+  errorIconPhone.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
 
   //Add classes
   directorInputGroup.classList.add("director-input-group-additional");
@@ -175,12 +192,14 @@ function addDirectorInputGroup() {
   inputFieldBlock50_1.appendChild(directorFNameLabel);
   inputFieldBlock50_1.appendChild(inputWrapperFName);
   inputWrapperFName.appendChild(directorFName);
+  inputWrapperFName.appendChild(errorIconFName);
 
   // Director LName
   inputSubGroup50_1.appendChild(inputFieldBlock50_2);
   inputFieldBlock50_2.appendChild(directorLNameLabel);
   inputFieldBlock50_2.appendChild(inputWrapperLName);
   inputWrapperLName.appendChild(directorLName);
+  inputWrapperLName.appendChild(errorIconLName);
   
   //Director Name
   inputSubGroup100_1.appendChild(directorLabelWrapper);
@@ -188,18 +207,21 @@ function addDirectorInputGroup() {
   directorLabelWrapper.appendChild(directorNameLabel);
   inputSubGroup100_1.appendChild(inputWrapperDirector);
   inputWrapperDirector.appendChild(directorName);
+  inputWrapperDirector.appendChild(errorIconName);
 
   //Director Email
   inputSubGroup50_2.appendChild(inputFieldBlock50_3);
   inputFieldBlock50_3.appendChild(directorEmailLabel);
   inputFieldBlock50_3.appendChild(inputWrapperEmail);
   inputWrapperEmail.appendChild(directorEmail);
+  inputWrapperEmail.appendChild(errorIconEmail);
 
   //Director Phone
   inputSubGroup50_2.appendChild(inputFieldBlock50_4);
   inputFieldBlock50_4.appendChild(directorPhoneLabel);
   inputFieldBlock50_4.appendChild(inputWrapperPhone);
   inputWrapperPhone.appendChild(directorPhone);
+  inputWrapperPhone.appendChild(errorIconPhone);
 
   //Director Country
   inputSubGroup100_2.appendChild(directorCountryLabel);
