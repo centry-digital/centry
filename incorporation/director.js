@@ -232,7 +232,6 @@ function addDirectorInputGroup() {
   directorGroup.appendChild(directorInputGroup);
   mapDirectorCountrySelect();
   applyDirEmailIndex();
-  validateDirEmails();
   validateInput();
   updateButtons();
   removeDirectorButton.addEventListener("click", removeDirector);  
@@ -242,6 +241,7 @@ function removeDirector(el) {
   const director = el.target.parentElement;
   director.remove();
   applyDirEmailIndex();
+  validateDirEmails();
   validateInput();
   updateButtons();
 }
