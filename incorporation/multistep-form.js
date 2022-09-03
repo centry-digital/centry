@@ -595,8 +595,6 @@ document
 
 //Validate fields
 let inputFields = document.querySelectorAll("[data-incorporation-data]");
-let dirEmail;
-let arrEmailDuplicate = []
 for (let i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("keyup", validateField);
 }
@@ -648,8 +646,8 @@ function validateField(e) {
     e.target.classList.add("invalid-field");
   } else if (e.target.getAttribute("data-incorporation-data") == "director-email") {
     let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
-    dirEmail = incorporationSummary.directors.map(director => director.email);
-    arrEmailDuplicate = []
+    let dirEmail = incorporationSummary.directors.map(director => director.email);
+    let arrEmailDuplicate = []
     dirEmail.forEach((email,index) => {
       if (e.target.value == email && e.target.getAttribute("director-email-input") != index) {
         arrEmailDuplicate.push(index)

@@ -676,6 +676,6 @@ function updateShares() {
 function applyShEmailIndex() {
   let shEmailGroups = document.querySelectorAll('[data-incorporation-data="shareholder-email"]');
   shEmailGroups.forEach((group, index) => {
-    group.setAttribute("sahreholder-email-input", index);
+    group.setAttribute("shareholder-email-input", index);
   })
 }
