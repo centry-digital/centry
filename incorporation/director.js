@@ -255,7 +255,7 @@ function applyDirEmailIndex() {
 
 function validateDirEmails() {
   let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
-  let dirEmail = incorporationSummary.directors.map(director => director.email);
+  let dirEmail = dirEmailFields.map(field => field.value);
   let arrEmailDuplicate = []
   let duplicates = dirEmail.filter((item,index) => dirEmail.indexOf(item) != index)
   duplicates.forEach((dupEmail) =>

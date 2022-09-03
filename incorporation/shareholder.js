@@ -729,7 +729,7 @@ function applyShEmailIndex() {
 
 function validateShEmails() {
   let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
-  let shEmail = incorporationSummary.directors.map(director => director.email);
+  let shEmail = shEmailFields.map(field => field.value);
   let arrEmailDuplicate = []
   let duplicates = shEmail.filter((item,index) => shEmail.indexOf(item) != index)
   duplicates.forEach((dupEmail) =>
