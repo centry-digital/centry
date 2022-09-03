@@ -330,7 +330,7 @@ function validateInput() {
   }
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (regexEmail.test(incorporationSummary.directors[dirNo].email)) {
+    if (regexEmail.test(incorporationSummary.directors[dirNo].email) && dirEmailValidity) {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -380,7 +380,7 @@ function validateInput() {
       }
       flag_16 = true;
       flag_17 = false;
-      if (regexEmail.test(incorporationSummary.shareholders[shNo].email)) {
+      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -620,6 +620,7 @@ for (let countrySelect of document.querySelectorAll(
   countrySelect.addEventListener("change", validateField);
 }
 
+let dirEmailValidity, shEmailValidity;
 function validateField(e) {
   validateInput();
   if (
@@ -645,7 +646,7 @@ function validateField(e) {
   } else if (e.target.value == "") {
     e.target.classList.add("invalid-field");
   } else if (e.target.getAttribute("data-incorporation-data") == "director-email") {
-    let dirEmaiFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
+    let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
     let dirEmail = incorporationSummary.directors.map(director => director.email);
     let arrEmailDuplicate = []
     dirEmail.forEach((email,index) => {
@@ -655,10 +656,16 @@ function validateField(e) {
     })
     if (arrEmailDuplicate.length > 0) {
       document.getElementById("director-email-error").classList.remove("hide");
+      dirEmailValidity = false;
+    } else {
+      document.getElementById("director-email-error").classList.add("hide");
+      dirEmailValidity = true;
     }
-    dirEmaiFields.forEach((field,index) => {
+    dirEmailFields.forEach((field,index) => {
       if (arrEmailDuplicate[index] == index) {
         field.classList.add("invalid-field");
+      } else {
+        field.classList.remove("invalid-field");
       }
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
@@ -672,10 +679,16 @@ function validateField(e) {
     })
     if (arrEmailDuplicate.length > 0) {
       document.getElementById("shareholder-email-error").classList.remove("hide");
+      shEmailValidity = false;
+    } else {
+      document.getElementById("shareholder-email-error").classList.add("hide");
+      shEmailValidity = true;
     }
     shEmaiFields.forEach((field,index) => {
       if (arrEmailDuplicate[index] == index) {
         field.classList.add("invalid-field");
+      } else {
+        field.classList.remove("invalid-field");
       }
     })
   } else {
