@@ -232,6 +232,7 @@ function addDirectorInputGroup() {
   directorGroup.appendChild(directorInputGroup);
   mapDirectorCountrySelect();
   applyDirEmailIndex();
+  validateDirEmails();
   validateInput();
   updateButtons();
   removeDirectorButton.addEventListener("click", removeDirector);  
@@ -249,5 +250,34 @@ function applyDirEmailIndex() {
   let dirEmailGroups = document.querySelectorAll('[data-incorporation-data="director-email"]');
   dirEmailGroups.forEach((group, index) => {
     group.setAttribute("director-email-input", index);
+  })
+}
+
+function validateDirEmails() {
+  let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
+  let dirEmail = incorporationSummary.directors.map(director => director.email);
+  let arrEmailDuplicate = []
+  let duplicates = dirEmail.filter((item,index) => dirEmail.indexOf(item) != index)
+  duplicates.forEach((dupEmail) =>
+    dirEmail.forEach((email,index) => {
+      if (email == dupEmail) {
+        arrEmailDuplicate.push(index);
+      }
+    })
+  )
+  if (arrEmailDuplicate.length > 0) {
+    document.getElementById("director-email-error").classList.remove("hide");
+    dirEmailValidity = false;
+  } else {
+    document.getElementById("director-email-error").classList.add("hide");
+    dirEmailValidity = true;
+  }
+  dirEmailFields.forEach(field => {
+    field.classList.remove("invalid-field");
+    field.parentElement.querySelector(".html-embed-56").classList.add('hide')
+  })
+  arrEmailDuplicate.forEach(i => {
+    dirEmailFields[i].classList.add("invalid-field");
+    dirEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
   })
 }

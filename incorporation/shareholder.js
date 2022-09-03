@@ -587,6 +587,7 @@ function removeShareholder(el) {
   const shareholder = el.target.parentElement;
   shareholder.remove();
   applyShEmailIndex();
+  validateShEmails();
   updateShares();
   updateButtons();
 }
@@ -723,5 +724,34 @@ function applyShEmailIndex() {
   let shEmailGroups = document.querySelectorAll('[data-incorporation-data="shareholder-email"]');
   shEmailGroups.forEach((group, index) => {
     group.setAttribute("shareholder-email-input", index);
+  })
+}
+
+function validateShEmails() {
+  let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
+  let shEmail = incorporationSummary.directors.map(director => director.email);
+  let arrEmailDuplicate = []
+  let duplicates = shEmail.filter((item,index) => shEmail.indexOf(item) != index)
+  duplicates.forEach((dupEmail) =>
+    shEmail.forEach((email,index) => {
+      if (email == dupEmail) {
+        arrEmailDuplicate.push(index);
+      }
+    })
+  )
+  if (arrEmailDuplicate.length > 0) {
+    document.getElementById("shareholder-email-error").classList.remove("hide");
+    dirEmailValidity = false;
+  } else {
+    document.getElementById("shareholder-email-error").classList.add("hide");
+    dirEmailValidity = true;
+  }
+  shEmailFields.forEach(field => {
+    field.classList.remove("invalid-field");
+    field.parentElement.querySelector(".html-embed-56").classList.add('hide')
+  })
+  arrEmailDuplicate.forEach(i => {
+    shEmailFields[i].classList.add("invalid-field");
+    shEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
   })
 }
