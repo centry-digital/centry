@@ -621,7 +621,7 @@ for (let countrySelect of document.querySelectorAll(
   countrySelect.addEventListener("change", validateField);
 }
 
-let dirEmailValidity, shEmailValidity;
+let [dirEmailValidity, shEmailValidity] = [true, true];
 function validateField(e) {
   getSummary();
   if (
@@ -662,8 +662,8 @@ function validateField(e) {
       document.getElementById("director-email-error").classList.add("hide");
       dirEmailValidity = true;
     }
-    dirEmailFields.forEach(i => {
-      dirEmailFields[i].classList.remove("invalid-field");
+    dirEmailFields.forEach(field => {
+      field.classList.remove("invalid-field");
     })
     arrEmailDuplicate.forEach(i => {
       dirEmailFields[i].classList.add("invalid-field");
@@ -684,8 +684,8 @@ function validateField(e) {
       document.getElementById("shareholder-email-error").classList.add("hide");
       shEmailValidity = true;
     }
-    shEmailFields.forEach(i => {
-      shEmailFields[i].classList.remove("invalid-field");
+    shEmailFields.forEach(field => {
+      field.classList.remove("invalid-field");
     })
     arrEmailDuplicate.forEach(i => {
       shEmailFields[i].classList.add("invalid-field");
