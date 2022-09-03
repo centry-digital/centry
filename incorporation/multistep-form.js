@@ -651,7 +651,8 @@ function validateField(e) {
     errorDisplay(e);
     // e.target.classList.add("invalid-field");
   } else if (e.target.value == "") {
-    e.target.classList.add("invalid-field");
+    errorDisplay(e);
+    // e.target.classList.add("invalid-field");
   } else if (e.target.getAttribute("data-incorporation-data") == "director-email") {
     let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
     let dirEmail = incorporationSummary.directors.map(director => director.email);
@@ -671,17 +672,11 @@ function validateField(e) {
     }
     dirEmailFields.forEach(field => {
       field.classList.remove("invalid-field");
-      let errIcon = field.parentElement.querySelector(".html-embed-56")
-      if (errIcon) {
-        field.parentElement.removeChild(errIcon);
-      }
+      field.parentElement.querySelector(".html-embed-56").classList.add('hide')
     })
     arrEmailDuplicate.forEach(i => {
       dirEmailFields[i].classList.add("invalid-field");
-      let errorIcon = document.createElement("div");
-      errorIcon.classList.add("html-embed-56");
-      errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
-      dirEmailFields[i].parentElement.appendChild("errorIcon");
+      dirEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
     shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
@@ -702,36 +697,22 @@ function validateField(e) {
     }
     shEmailFields.forEach(field => {
       field.classList.remove("invalid-field");
-      let errIcon = field.parentElement.querySelector(".html-embed-56")
-      if (errIcon) {
-        field.parentElement.removeChild(errIcon);
-      }
+      field.parentElement.querySelector(".html-embed-56").classList.add('hide')
     })
     arrEmailDuplicate.forEach(i => {
       shEmailFields[i].classList.add("invalid-field");
-      let errorIcon = document.createElement("div");
-      errorIcon.classList.add("html-embed-56");
-      errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
-      shEmailFields[i].parentElement.appendChild("errorIcon");
+      shEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
     })
   } else {
     e.target.classList.remove("invalid-field");
-    let errIcon = e.target.parentElement.querySelector(".html-embed-56")
-    if (errIcon) {
-      e.target.parentElement.removeChild(errIcon);
-    }
+    e.target.parentElement.querySelector(".html-embed-56").classList.add('hide')
   }
   validateInput();
 }
 
 function errorDisplay(e) {
   e.target.classList.add("invalid-field");
-  let errorIcon = document.createElement("div");
-  errorIcon.classList.add("html-embed-56");
-  errorIcon.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>'
-  console.log(e.target);
-  console.log(e.target.parentElement);
-  e.target.parentElement.appendChild(errorIcon);
+  e.target.parentElement.querySelector(".html-embed-56").classList.remove('hide')
 }
 
 //Summary
