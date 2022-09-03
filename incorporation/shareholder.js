@@ -589,6 +589,7 @@ function removeShareholder(el) {
   applyShEmailIndex();
   validateShEmails();
   updateShares();
+  validateInput();
   updateButtons();
 }
 
