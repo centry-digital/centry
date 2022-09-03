@@ -330,7 +330,7 @@ function validateInput() {
   }
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (regexEmail.test(incorporationSummary.directors[dirNo].email) && dirEmailValidity) {
+    if (regexEmail.test(incorporationSummary.directors[dirNo].email)) {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -380,7 +380,7 @@ function validateInput() {
       }
       flag_16 = true;
       flag_17 = false;
-      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
+      if (regexEmail.test(incorporationSummary.shareholders[shNo].email)) {
         flag_17 = true;
       } else {
         flag_17 = false;
