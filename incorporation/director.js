@@ -208,7 +208,7 @@ function addDirectorInputGroup() {
   //Append element to DOM
   directorGroup.appendChild(directorInputGroup);
   mapDirectorCountrySelect();
-  applyInputNumbering();
+  applyDirEmailIndex();
   validateInput();
   updateButtons();
   removeDirectorButton.addEventListener("click", removeDirector);  
@@ -217,12 +217,12 @@ function addDirectorInputGroup() {
 function removeDirector(el) {
   const director = el.target.parentElement;
   director.remove();
-  applyInputNumbering();
+  applyDirEmailIndex();
   validateInput();
   updateButtons();
 }
 
-function applyInputNumbering() {
+function applyDirEmailIndex() {
   let dirEmailGroups = document.querySelectorAll('[data-incorporation-data="director-email"]');
   dirEmailGroups.forEach((group, index) => {
     group.setAttribute("director-email-input", index);
