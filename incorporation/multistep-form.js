@@ -653,6 +653,7 @@ function validateField(e) {
     dirEmail.forEach((email,index) => {
       if (e.target.value == email && e.target.getAttribute("director-email-input") != index) {
         arrEmailDuplicate.push(index)
+        arrEmailDuplicate.push(e.target.getAttribute("director-email-input"))
       }
     })
     if (arrEmailDuplicate.length > 0) {
@@ -675,6 +676,7 @@ function validateField(e) {
     shEmail.forEach((email,index) => {
       if (e.target.value == email && e.target.getAttribute("shareholder-email-input") != index) {
         arrEmailDuplicate.push(index)
+        arrEmailDuplicate.push(e.target.getAttribute("shareholder-email-input"))
       }
     })
     if (arrEmailDuplicate.length > 0) {
