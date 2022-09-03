@@ -835,7 +835,7 @@ function getSummary() {
       shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
       incorporationSummary.shareholders[shNo].fname = incorporationSummary.shareholderNamesInd[shNo].fname;
       shareholderFName_shNo.classList.add("summary-text", "text-sm");
-      shareholderFName_shNo.innerText = derNamesInd[shNo].fname;
+      shareholderFName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].fname;
       incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].lname;
       shareholderLName_shNo.classList.add("summary-text", "text-sm");
       shareholderLName_shNo.innerText = "Last name: " + incorporationSummary.shareholderNamesInd[shNo].lname;
