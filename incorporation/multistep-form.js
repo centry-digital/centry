@@ -1,5 +1,4 @@
 window.addEventListener("beforeunload", quitPrompt);
-
 function quitPrompt(event) {
   event.preventDefault();
   return "";
@@ -330,7 +329,7 @@ function validateInput() {
   }
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (regexEmail.test(incorporationSummary.directors[dirNo].email)) {
+    if (regexEmail.test(incorporationSummary.directors[dirNo].email) && dirEmailValidity) {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -380,7 +379,7 @@ function validateInput() {
       }
       flag_16 = true;
       flag_17 = false;
-      if (regexEmail.test(incorporationSummary.shareholders[shNo].email)) {
+      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -435,7 +434,7 @@ function validateInput() {
         break;
       }
       flag_17 = false;
-      if (incorporationSummary.shareholders[shNo].email != "") {
+      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -663,6 +662,9 @@ function validateField(e) {
       document.getElementById("director-email-error").classList.add("hide");
       dirEmailValidity = true;
     }
+    dirEmailFields.forEach(i => {
+      dirEmailFields[i].classList.remove("invalid-field");
+    })
     arrEmailDuplicate.forEach(i => {
       dirEmailFields[i].classList.add("invalid-field");
     })
@@ -682,6 +684,9 @@ function validateField(e) {
       document.getElementById("shareholder-email-error").classList.add("hide");
       shEmailValidity = true;
     }
+    shEmailFields.forEach(i => {
+      shEmailFields[i].classList.remove("invalid-field");
+    })
     arrEmailDuplicate.forEach(i => {
       shEmailFields[i].classList.add("invalid-field");
     })
