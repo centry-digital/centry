@@ -1,3 +1,4 @@
+applyShEmailIndex();
 //add shareholder
 const addShareholderButton = document.getElementById("add-shareholder-button");
 addShareholderButton.setAttribute("onClick", "addShareholderInputGroup()");

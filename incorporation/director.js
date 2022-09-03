@@ -1,3 +1,4 @@
+applyDirEmailIndex();
 const addDirectorButton = document.getElementById("add-director-button");
 addDirectorButton.setAttribute("onClick", "addDirectorInputGroup()");
 const directorGroup = document.getElementById("director-group");
