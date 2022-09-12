@@ -664,9 +664,9 @@ function fillEkycTable(item) {
   }
 
   ekycTable.innerHTML += `<tr style="vertical-align:top;">
-                            <td class="text-block-74" style="padding:4px 6px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                            <td class="text-block-74" style="padding:4px 6px 0 6px;word-wrap:normal;">${roles}</td>
-                            <td class="text-block-74" style="padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
+                            <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                            <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                            <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
                             </tr>`;
                             // <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
 }
@@ -684,11 +684,11 @@ function fillDeclarationsTable(currentStatus, item) {
               </div>`;
   }
   declarationsTable.innerHTML = `<tr style="vertical-align:top;">
-                                  <td class="text-block-74" style="padding:4px 6px 0 0;word-wrap:normal;">Letter & Declaration for Application for Registration of a Company</td>
-                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;word-wrap:normal;">${status}</td>
+                                  <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">Letter & Declaration for Application for Registration of a Company</td>
+                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${status}</td>
                                 </tr>`;
   declarationsTable.innerHTML += `<tr style="vertical-align:top;">
-                                    <td class="text-block-74" style="padding:4px 6px 0 0;word-wrap:normal;">Section 201 & Consent to Act - ${item.legal_name}</td>
-                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;color:#4f46e5;word-wrap:normal;">${status}</td>
+                                    <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">Section 201 & Consent to Act - ${item.legal_name}</td>
+                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${status}</td>
                                   </tr>`;
 }
