@@ -646,7 +646,7 @@ function fillEkycTable(item) {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;">
                           <span class="text-xs" style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
-                            <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
+                            <span class="material-symbols-rounded" style="font-size:14px;line-height:1.2rem;">
                               check_circle
                             </span>
                           </div>
