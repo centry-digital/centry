@@ -629,7 +629,7 @@ function fillEkycTable(item) {
       window.location.hostname +
       "/e-kyc/start?verification=" +
       item.verification_uuid
-    } class="text-xs" style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
+    } class="text-xs" style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
                           <span style="text-decoration:underline;">${
                             "https://" +
                             window.location.hostname +
@@ -643,10 +643,10 @@ function fillEkycTable(item) {
                           //   </span>
                           // </div>
   } else if (item.verified == "true") {
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
-                          <span style="color:#111827">Verified</span>
+    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;">
+                          <span class="text-xs" style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
-                            <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+                            <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
                               check_circle
                             </span>
                           </div>
