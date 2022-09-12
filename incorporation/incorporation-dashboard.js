@@ -630,7 +630,12 @@ function fillEkycTable(item) {
       "/e-kyc/start?verification=" +
       item.verification_uuid
     } style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;color:#4f46e5;">
-                          <span style="text-decoration:underline;">Verification link</span>
+                          <span style="text-decoration:underline;">${
+                            "https://" +
+                            window.location.hostname +
+                            "/e-kyc/start?verification=" +
+                            item.verification_uuid
+                          }</span>
                           </a>`;
     // <div class="html-embed-51 common-symbol">
     //   <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">

@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener("DOMContentLoaded", function () {
   if (!window.location.search) {
     return;
   }
@@ -9,7 +9,10 @@ window.addEventListener('DOMContentLoaded', function () {
   iframes.forEach(function (iframe) {
     searchParams.forEach(function (value, key) {
       encodeURIComponent(value);
-      iframe.src += iframe.src.indexOf('?') === -1 ? `?${key}=${value}` : `&${key}=${value}`;
+      iframe.src +=
+        iframe.src.indexOf("?") === -1
+          ? `?${key}=${encodeURIComponent(value)}`
+          : `&${key}=${encodeURIComponent(value)}`;
     });
   });
 });
