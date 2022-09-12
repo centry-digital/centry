@@ -630,21 +630,21 @@ function fillEkycTable(item) {
       "/e-kyc/start?verification=" +
       item.verification_uuid
     } class="text-xs" style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
-                          <span style="text-decoration:underline;">${
+                          <span style="text-decoration:underline;font-weight:400;">${
                             "https://" +
                             window.location.hostname +
                             "/e-kyc/start?verification=" +
                             item.verification_uuid
                           }</span>
+                          <div class="html-embed-51 common-symbol">
+                            <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
+                              arrow_right_alt
+                            </span>
+                          </div>
                           </a>`;
-                          // <div class="html-embed-51 common-symbol">
-                          //   <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
-                          //     keyboard_arrow_right
-                          //   </span>
-                          // </div>
   } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;">
-                          <span class="text-xs" style="color:#111827">Verified</span>
+                          <span style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
                             <span class="material-symbols-rounded" style="font-size:14px;line-height:1.2rem;">
                               check_circle
@@ -677,7 +677,7 @@ function fillDeclarationsTable(currentStatus, item) {
     status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
                 <span style="color:#111827">Completed</span>
                 <div class="dashboard-nav common-symbol-filled complete">
-                  <span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">
+                  <span class="material-symbols-rounded" style="font-size:14px;line-height:1.2rem;">
                     check_circle
                   </span>
                 </div>
