@@ -629,7 +629,7 @@ function fillEkycTable(item) {
       window.location.hostname +
       "/e-kyc/start?verification=" +
       item.verification_uuid
-    } class="text-xs" style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
+    } style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
                           <span style="text-decoration:underline;font-weight:400;">${
                             "https://" +
                             window.location.hostname +
