@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   iframes.forEach(function (iframe) {
     searchParams.forEach(function (value, key) {
-    	console.log(key + ": " + value)
+      encodeURIComponent(value);
       iframe.src += iframe.src.indexOf('?') === -1 ? `?${key}=${value}` : `&${key}=${value}`;
     });
   });
