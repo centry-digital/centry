@@ -666,8 +666,9 @@ function fillEkycTable(item) {
   ekycTable.innerHTML += `<tr style="vertical-align:top;">
                             <td class="text-block-74" style="padding:4px 6px 0 0;word-wrap:normal;">${item.legal_name}</td>
                             <td class="text-block-74" style="padding:4px 6px 0 6px;word-wrap:normal;">${roles}</td>
-                            <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
-                          </tr>`;
+                            <td class="text-block-74" style="padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
+                            </tr>`;
+                            // <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
 }
 
 function fillDeclarationsTable(currentStatus, item) {
