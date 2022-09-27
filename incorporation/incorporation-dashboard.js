@@ -199,10 +199,12 @@ async function retrieveIncorporationData(emailSave, uuid) {
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
       dashboardLoading.classList.add("hide");
+    } else {
+      dashboardLoading.classList.add("hide");
+      loadingBanner.classList.remove("hide");
     }
   } catch (err) {
-    dashboardLoading.classList.add("hide");
-    loadingBanner.classList.remove("hide");
+    console.error(err);
   }
 }
 
