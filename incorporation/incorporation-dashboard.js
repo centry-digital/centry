@@ -1,11 +1,15 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
+let infoContainer = document.getElementById("info-container");
+let unidContainer = document.getElementById("unid-container");
+let emailContainer = document.getElementById("email-container");
 let data, data2;
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
 // Overview
 let coName = document.getElementById("company-name-container");
+let loadingBanner = document.getElementById("loading-banner");
 let statusBanner = document.getElementById("status-banner");
 let statusBannerSymbolIncomplete = document.getElementById(
   "status-banner-symbol-incomplete"
@@ -137,7 +141,6 @@ if (query == "") {
   statusBanner.classList.remove("hide");
   p1.classList.add("in-progress");
   card1.classList.add("current");
-  card1BtnStart.addEventListener("click", () => tab2.click());
   card1BtnStart.classList.remove("hide");
   // Company Details
   coEmpty.classList.remove("hide");
@@ -190,12 +193,16 @@ async function retrieveIncorporationData(emailSave, uuid) {
         "incorporation-data",
         JSON.stringify(data.incorporation_data)
       );
+      unidContainer.innerText = uuid;
+      emailContainer.innerText = emailSave;
+      infoContainer.classList.remove("hide");
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
       dashboardLoading.classList.add("hide");
     }
   } catch (err) {
-    console.error(err);
+    dashboardLoading.classList.add("hide");
+    loadingBanner.classList.remove("hide");
   }
 }
 
@@ -629,8 +636,8 @@ function fillEkycTable(item) {
       window.location.hostname +
       "/e-kyc/start?verification=" +
       item.verification_uuid
-    } style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
-                          <span style="text-decoration:underline;font-weight:400;">${
+    } target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;color:#4f46e5;">
+                          <span style="text-decoration:underline;">${
                             "https://" +
                             window.location.hostname +
                             "/e-kyc/start?verification=" +
@@ -646,7 +653,7 @@ function fillEkycTable(item) {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:6px;">
                           <span style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
-                            <span class="material-symbols-rounded" style="font-size:14px;line-height:1.2rem;">
+                            <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
                               check_circle
                             </span>
                           </div>
@@ -677,7 +684,7 @@ function fillDeclarationsTable(currentStatus, item) {
     status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
                 <span style="color:#111827">Completed</span>
                 <div class="dashboard-nav common-symbol-filled complete">
-                  <span class="material-symbols-rounded" style="font-size:14px;line-height:1.2rem;">
+                  <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
                     check_circle
                   </span>
                 </div>
