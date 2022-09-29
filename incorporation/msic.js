@@ -1185,12 +1185,12 @@ var select = new SlimSelect({
       incorporationSummary.msicCodes.push(selection.value);
     }
     validateInput();
-    if (incorporationSummary.msicCodes[0] != "-" || incorporationSummary.msicCodes[1] != "-" || incorporationSummary.msicCodes[2] != "-") {
-      document.querySelector(".ss-multi-selected").classList.remove("invalid-field");
-      document.querySelector(".ss-multi-selected").parentElement.parentElement.parentElement.querySelector(".html-embed-56").classList.add('hide')
-    } else if (incorporationSummary.msicCodes == "") {
+    if (incorporationSummary.msicCodes == "") {
       document.querySelector(".ss-multi-selected").classList.add("invalid-field");
       document.querySelector(".ss-multi-selected").parentElement.parentElement.parentElement.querySelector(".html-embed-56").classList.remove('hide')
+    } else {
+      document.querySelector(".ss-multi-selected").classList.remove("invalid-field");
+      document.querySelector(".ss-multi-selected").parentElement.parentElement.parentElement.querySelector(".html-embed-56").classList.add('hide')
     }
   }
 })
