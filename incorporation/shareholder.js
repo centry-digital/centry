@@ -688,13 +688,15 @@ function calculateShares() {
 calculateShares();
 
 function updateShares() {
-  sharesPercent = document.querySelectorAll(
+  sharesPercentNodes = document.querySelectorAll(
     'input[data-shareholding="percent"]'
   );
+  sharesPercent = Array.from(sharesPercentNodes);
   sharesNumber = document.querySelectorAll('span[data-shareholding="number"]');
   totalSharesArray = [];
 
   for (let i = 0; i < sharesPercent.length; i++) {
+    if (sharesPercent[i] == "NaN") continue;
     let percentage = sharesPercent[i].value;
     let percentToNumber = Math.round(percentage);
     totalShares = 0;
