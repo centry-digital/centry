@@ -783,6 +783,7 @@ function getSummary() {
   if (incorporationSummary.businessAddressLine1 == "" && incorporationSummary.businessAddressPostcode == "" && incorporationSummary.businessAddressCity == "") {
     document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.classList.add("hide");
   } else {
+    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.classList.remove("hide");
     document.getElementById("incorporate-review-business-address").innerText =
       incorporationSummary.businessAddressLine1 +
         ", " +
