@@ -696,7 +696,7 @@ function updateShares() {
   totalSharesArray = [];
 
   for (let i = 0; i < sharesPercent.length; i++) {
-    if (sharesPercent[i] == "NaN") continue;
+    // if (sharesPercent[i] == "NaN") continue;
     let percentage = sharesPercent[i].value;
     let percentToNumber = Math.round(percentage);
     totalShares = 0;

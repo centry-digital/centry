@@ -67,7 +67,11 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
   shareholder_lnames_rep[i].value = data.company_shareholders[i].lname_representative;
   shareholder_emails[i].value = data.company_shareholders[i].email;
   shareholder_phones[i].value = data.company_shareholders[i].phone;
-  shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
+  if (data.company_shareholders[i].shares == "") {
+    shareholder_shares[i].value = "";
+  } else {
+    shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
+  }
 }
 tc_accepted = data.tc_accepted;
 if (tc_accepted) {
