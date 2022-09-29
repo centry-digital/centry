@@ -661,7 +661,7 @@ function fillEkycTable(item) {
                           </div>
                         </div>`;
   } else if (item.verified == "submitted") {
-    verificationLink = `<div style="color:#4f46e5">Verification in progress</div>`;
+    verificationLink = `<div style="color:#4f46e5">Verification in progress. You will be notified via email once verification is complete.</div>`;
   } else {
     verificationLink = `<div style="color:#4f46e5">Pending review</div>`;
   }
