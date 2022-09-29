@@ -11,7 +11,9 @@ for (let box of boxes) {
 document.querySelector('[data-incorporation-data="company-name"]').value = data.company_name;
 document.querySelector('[data-incorporation-data="company-name-explanation"]').value = data.name_explanation;
 document.querySelector('[data-incorporation-data="nature-of-business"]').value =data.nature_of_business;
-select.set(data.msic_codes);
+if (data.msic_codes[0] != "-" || data.msic_codes[1] != "-" || data.msic_codes[2] != "-") {
+	select.set(data.msic_codes);
+}
 document.querySelector('[data-incorporation-data="company-email"]').value = data.company_email;
 document.querySelector('[data-incorporation-data="office-number"]').value = data.company_phone;
 document.querySelector('[data-incorporation-data="business-address-1"]').value = data.company_address;
