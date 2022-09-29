@@ -780,16 +780,20 @@ function getSummary() {
   // Fill in summary section
   document.getElementById("incorporate-review-name").innerText = incorporationSummary.companyName || "-";
   document.getElementById("incorporate-review-name-explanation").innerText = incorporationSummary.companyNameExplanation || "-";
-  document.getElementById("incorporate-review-business-address").innerText =
-    incorporationSummary.businessAddressLine1 +
-      ", " +
-      incorporationSummary.businessAddressPostcode +
-      " " +
-      incorporationSummary.businessAddressCity +
-      ", " +
-      incorporationSummary.businessAddressState +
-      ", " +
-      incorporationSummary.businessAddressCountry || "-";
+  if (incorporationSummary.businessAddressLine1 == "" && incorporationSummary.businessAddressPostcode == "" && incorporationSummary.businessAddressCity == "") {
+    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide");
+  } else {
+    document.getElementById("incorporate-review-business-address").innerText =
+      incorporationSummary.businessAddressLine1 +
+        ", " +
+        incorporationSummary.businessAddressPostcode +
+        " " +
+        incorporationSummary.businessAddressCity +
+        ", " +
+        incorporationSummary.businessAddressState +
+        ", " +
+        incorporationSummary.businessAddressCountry || "-";
+  }
   document.getElementById("incorporate-review-company-email").innerText = incorporationSummary.companyEmail || "-";
   document.getElementById("incorporate-review-company-phone").innerText = incorporationSummary.officeNumber || "-";
   document.getElementById("incorporate-review-nature-of-business").innerText = incorporationSummary.natureOfBusiness || "-";
