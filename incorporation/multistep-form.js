@@ -781,7 +781,7 @@ function getSummary() {
   document.getElementById("incorporate-review-name").innerText = incorporationSummary.companyName || "-";
   document.getElementById("incorporate-review-name-explanation").innerText = incorporationSummary.companyNameExplanation || "-";
   if (incorporationSummary.businessAddressLine1 == "" && incorporationSummary.businessAddressPostcode == "" && incorporationSummary.businessAddressCity == "") {
-    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide");
+    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.classList.add("hide");
   } else {
     document.getElementById("incorporate-review-business-address").innerText =
       incorporationSummary.businessAddressLine1 +
