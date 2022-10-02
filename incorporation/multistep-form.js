@@ -1076,6 +1076,10 @@ async function saveDraft_new() {
       saveState = 1;
       saveBtn1.innerText = "Saved";
       document.getElementById("w-tabs-1-data-w-tab-1").click();
+      if (saveState) {
+        document.querySelector('[data-incorporation-data="nav-email"]').innerText = incorporationObject.email_save;
+        document.getElementById("incorporation-record-box").classList.remove("hide");
+      }
     }
   } catch (error) {
     console.error(error);

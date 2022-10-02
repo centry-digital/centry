@@ -5,8 +5,12 @@ saveState = 1;
 let boxes = document.querySelectorAll(
   '[data-incorporation-data="unique-code-box"]'
 );
+document.querySelector('[data-incorporation-data="nav-email"]').innerText = data.email_save;
 for (let box of boxes) {
   box.innerText = data.unique_id;
+}
+if (saveState) {
+  document.getElementById("incorporation-record-box").classList.remove("hide");
 }
 document.querySelector('[data-incorporation-data="company-name"]').value = data.company_name;
 document.querySelector('[data-incorporation-data="company-name-explanation"]').value = data.name_explanation;
