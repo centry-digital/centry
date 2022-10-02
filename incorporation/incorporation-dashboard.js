@@ -667,7 +667,7 @@ function fillEkycTable(item) {
   }
 
   if (item.role.length > 1) {
-    roles = item.role.join("\r\n");
+    roles = item.role.join("<br>");
   } else {
     roles = item.role;
   }
