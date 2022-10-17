@@ -698,35 +698,51 @@ function fillDeclarationsTable(currentStatus, item) {
   let status = "Pending";
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating") {
-    status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
-                <span style="color:#111827">Completed</span>
-                <div class="dashboard-nav common-symbol-filled complete">
-                  <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
-                    check_circle
-                  </span>
-                </div>
-              </div>`;
+    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+                  <span style="color:#111827">Completed</span>
+                  <div class="dashboard-nav common-symbol-filled complete">
+                    <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                      check_circle
+                    </span>
+                  </div>
+                </div>`;
+    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+                    <span style="color:#111827">Completed</span>
+                    <div class="dashboard-nav common-symbol-filled complete">
+                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                        check_circle
+                      </span>
+                    </div>
+                  </div>`;
+    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+                    <span style="color:#111827">Completed</span>
+                    <div class="dashboard-nav common-symbol-filled complete">
+                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                        check_circle
+                      </span>
+                    </div>
+                  </div>`;              
   } else if (item.verified != "true") {
     statusLoi = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
     statusS201 = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
     statusLoa = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
   } else if (item.verified == "true") {
-    statusLoi = `<span>Please check your email for </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-    statusS201 = `<span>Please check your email for </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-    statusLoa = `<span>Please check your email for </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
+    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
+    statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
   }
   declarationsLoiTable.innerHTML = `<tr style="vertical-align:top;">
                                   <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusLoi}</td>
+                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
                                 </tr>`;
   declarationsS201Table.innerHTML += `<tr style="vertical-align:top;">
                                     <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusS201}</td>
+                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
                                   </tr>`;
   if (item.role.includes("Corporate Representative")) {
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusLoa}</td>
+                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
                                     </tr>`;
     declarationsLoaTable.classList.remove("hide");
   }
