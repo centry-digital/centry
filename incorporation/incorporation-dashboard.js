@@ -79,7 +79,15 @@ let ekycCompleteBtn = document.getElementById("ekyc-complete");
 let declarationsBanner = document.getElementById("declarations-banner");
 let declarationsEmpty = document.getElementById("declarations-empty");
 let declarationsNotEmpty = document.getElementById("declarations-not-empty");
-let declarationsTable = document.getElementById("declarations-table-body");
+let declarationsLoiTable = document.getElementById(
+  "declarations-loi-table-body"
+);
+let declarationsS201Table = document.getElementById(
+  "declarations-s201-table-body"
+);
+let declarationsLoaTable = document.getElementById(
+  "declarations-loa-table-body"
+);
 let declarationsCompleteBtn = document.getElementById("declarations-complete");
 // SSM
 let ssmBanner = document.getElementById("ssm-banner");
@@ -276,6 +284,7 @@ function populateData(data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("in-progress");
     card3.classList.add("current");
+    card4.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
@@ -284,6 +293,9 @@ function populateData(data, unique_id, users_to_verify) {
     card3BtnLock.classList.add("hide");
     card3BtnDraft.addEventListener("click", () => tab4.click());
     card3BtnDraft.classList.remove("hide");
+    card4BtnLock.classList.add("hide");
+    card4BtnDraft.addEventListener("click", () => tab5.click());
+    card4BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -294,8 +306,10 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    declarationsBanner.classList.remove("hide");
-    declarationsEmpty.classList.remove("hide");
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    declarationsNotEmpty.classList.remove("hide");
+    // declarationsBanner.classList.remove("hide");
+    // declarationsEmpty.classList.remove("hide");
     // SSM
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
@@ -667,9 +681,9 @@ function fillEkycTable(item) {
   }
 
   if (item.role.length > 1) {
-    roles = item.role.join("<br>");
+    roles = "- " + item.role.join("<br>" + "- ");
   } else {
-    roles = item.role;
+    roles = "- " + item.role;
   }
 
   ekycTable.innerHTML += `<tr style="vertical-align:top;">
@@ -677,11 +691,12 @@ function fillEkycTable(item) {
                             <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                             <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
                             </tr>`;
-                            // <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
+  // <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
 }
 
 function fillDeclarationsTable(currentStatus, item) {
   let status = "Pending";
+  let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating") {
     status = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
                 <span style="color:#111827">Completed</span>
@@ -691,13 +706,24 @@ function fillDeclarationsTable(currentStatus, item) {
                   </span>
                 </div>
               </div>`;
+  } else if (item.verified == "pending") {
+    statusLoi = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusS201 = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusLoa = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
   }
-  declarationsTable.innerHTML = `<tr style="vertical-align:top;">
-                                  <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">Letter & Declaration for Application for Registration of a Company</td>
-                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${status}</td>
+  declarationsLoiTable.innerHTML = `<tr style="vertical-align:top;">
+                                  <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusLoi}</td>
                                 </tr>`;
-  declarationsTable.innerHTML += `<tr style="vertical-align:top;">
-                                    <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">Section 201 & Consent to Act - ${item.legal_name}</td>
-                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${status}</td>
+  declarationsS201Table.innerHTML += `<tr style="vertical-align:top;">
+                                    <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusS201}</td>
                                   </tr>`;
+  if (item.role.includes("Corporate Representative")) {
+    declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
+                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;color:#4f46e5;word-wrap:normal;">${statusLoa}</td>
+                                    </tr>`;
+    declarationsLoaTable.classList.remove("hide");
+  }
 }
