@@ -706,10 +706,14 @@ function fillDeclarationsTable(currentStatus, item) {
                   </span>
                 </div>
               </div>`;
-  } else if (item.verified == "pending") {
-    statusLoi = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusS201 = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusLoa = `<span style="text-decoration:underline;" onClick='tab4.click();'>Pending e-KYC</span>`;
+  } else if (item.verified != "true") {
+    statusLoi = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusS201 = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusLoa = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+  } else if (item.verified == "true") {
+    statusLoi = `<span style="text-decoration:underline;">Please check your email for </span><span style="font-weight:500;font-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;font-decoration:underline;">access code</span>`;
+    statusS201 = `<span style="text-decoration:underline;">Please check your email for </span><span style="font-weight:500;font-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;font-decoration:underline;">access code</span>`;
+    statusLoa = `<span style="text-decoration:underline;">Please check your email for </span><span style="font-weight:500;font-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;font-decoration:underline;">access code</span>`;
   }
   declarationsLoiTable.innerHTML = `<tr style="vertical-align:top;">
                                   <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
