@@ -700,7 +700,7 @@ function fillEkycTable(item) {
                       </tr>
                     </tbody>`
   } else if (item.verified == "submitted") {
-    verificationLink = `<div style="color:#4f46e5;justify-content:flex-end">Verification in progress. You will be notified via email once verification is complete.</div>`;
+    verificationLink = `<div style="color:#4f46e5;text-align:right;">Verification in progress. You will be notified via email once verification is complete.</div>`;
     tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
                       <tr>
                         <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
@@ -716,7 +716,7 @@ function fillEkycTable(item) {
                       </tr>
                     </tbody>`
   } else {
-    verificationLink = `<div style="color:#4f46e5;justify-content:flex-end">Pending review</div>`;
+    verificationLink = `<div style="color:#4f46e5;text-align:right;">Pending review</div>`;
     tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
                       <tr>
                         <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
