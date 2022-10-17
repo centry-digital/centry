@@ -73,7 +73,7 @@ let paymentCompleteBtn = document.getElementById("payment-complete");
 let ekycBanner = document.getElementById("ekyc-banner");
 let ekycEmpty = document.getElementById("ekyc-empty");
 let ekycNotEmpty = document.getElementById("ekyc-not-empty");
-let ekycTable = document.getElementById("ekyc-table-body");
+let ekycTable = document.getElementById("ekyc-table");
 let ekycCompleteBtn = document.getElementById("ekyc-complete");
 // Declarations
 let declarationsBanner = document.getElementById("declarations-banner");
@@ -645,26 +645,37 @@ async function retrievePaymentSession(event, unique_id) {
 }
 
 function fillEkycTable(item) {
-  let verificationLink, roles;
+  let verificationLink, tableContent, roles;
+  if (item.role.length > 1) {
+    roles = "- " + item.role.join("<br>" + "- ");
+  } else {
+    roles = "- " + item.role;
+  }
   if (item.verified == "false" || item.verified == "pending") {
-    verificationLink = `<a href=${
-      "https://" +
-      window.location.hostname +
-      "/e-kyc/start?verification=" +
-      item.verification_uuid
-    } target="_blank" style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;color:#4f46e5;">
-                          <span style="text-decoration:underline;">${
-                            "https://" +
-                            window.location.hostname +
-                            "/e-kyc/start?verification=" +
-                            item.verification_uuid
-                          }</span>
-                          <div class="html-embed-51 common-symbol">
-                            <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
-                              arrow_right_alt
-                            </span>
-                          </div>
-                          </a>`;
+    verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
+                          target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
+                            <span style="text-decoration:underline;">${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}</span>
+                            <div class="html-embed-51 common-symbol">
+                              <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
+                                arrow_right_alt
+                              </span>
+                            </div>
+                        </a>`;
+    tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
+                      <tr>
+                        <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
+                        <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
+                        <th class="text-block-76" style="padding:0 0 4px 10px;">Verification</th>
+                      </tr>
+                    </thead>
+                    <tbody style="width:100%">
+                      <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                      </tr>
+                    </tbody>`
+    
   } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
@@ -674,24 +685,57 @@ function fillEkycTable(item) {
                             </span>
                           </div>
                         </div>`;
+    tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
+                      <tr>
+                        <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
+                        <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
+                        <th class="text-block-76" style="text-align:right;padding:4px 0 0 6px">Verification</th>
+                      </tr>
+                    </thead>
+                    <tbody style="width:100%">
+                      <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                      </tr>
+                    </tbody>`
   } else if (item.verified == "submitted") {
     verificationLink = `<div style="color:#4f46e5;justify-content:flex-end">Verification in progress. You will be notified via email once verification is complete.</div>`;
+    tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
+                      <tr>
+                        <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
+                        <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
+                        <th class="text-block-76" style="text-align:right;padding:4px 0 0 6px">Verification</th>
+                      </tr>
+                    </thead>
+                    <tbody style="width:100%">
+                      <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                      </tr>
+                    </tbody>`
   } else {
     verificationLink = `<div style="color:#4f46e5;justify-content:flex-end">Pending review</div>`;
+    tableContent = `<thead style="border-bottom:1px solid #e5e7eb">
+                      <tr>
+                        <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
+                        <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
+                        <th class="text-block-76" style="text-align:right;padding:4px 0 0 6px">Verification</th>
+                      </tr>
+                    </thead>
+                    <tbody style="width:100%">
+                      <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                      </tr>
+                    </tbody>`
   }
 
-  if (item.role.length > 1) {
-    roles = "- " + item.role.join("<br>" + "- ");
-  } else {
-    roles = "- " + item.role;
-  }
+  
 
-  ekycTable.innerHTML += `<tr style="vertical-align:top;">
-                            <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                            <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                            <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                            </tr>`;
-  // <td class="text-block-74" style="text-align:right;padding:4px 0 0 6px;word-wrap:normal;">${verificationLink}</td>
+  ekycTable.innerHTML += tableContent;
 }
 
 function fillDeclarationsTable(currentStatus, item) {
