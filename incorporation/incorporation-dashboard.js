@@ -88,6 +88,9 @@ let declarationsS201Table = document.getElementById(
 let declarationsLoaTable = document.getElementById(
   "declarations-loa-table-body"
 );
+let declarationsLoaContainer = document.getElementById(
+  "declarations-loa-container"
+)
 let declarationsCompleteBtn = document.getElementById("declarations-complete");
 // SSM
 let ssmBanner = document.getElementById("ssm-banner");
@@ -784,6 +787,7 @@ function fillDeclarationsTable(currentStatus, item) {
                                     <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
                                   </tr>`;
   if (item.role.includes("Corporate Representative")) {
+    declarationsLoaContainer.classList.remove("hide");
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                                       <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
