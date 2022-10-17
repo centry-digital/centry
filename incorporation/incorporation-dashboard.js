@@ -698,7 +698,7 @@ function fillDeclarationsTable(currentStatus, item) {
   let status = "Pending";
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating") {
-    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                   <span style="color:#111827">Completed</span>
                   <div class="dashboard-nav common-symbol-filled complete">
                     <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -706,7 +706,7 @@ function fillDeclarationsTable(currentStatus, item) {
                     </span>
                   </div>
                 </div>`;
-    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
                       <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -714,7 +714,7 @@ function fillDeclarationsTable(currentStatus, item) {
                       </span>
                     </div>
                   </div>`;
-    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:6px;">
+    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
                       <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
