@@ -110,6 +110,11 @@ function addDirectorInputGroup() {
 
   //Set input group - Director
   directorInputGroup.setAttribute("data-incorporation-data", "director");
+  removeDirectorContainer.id = "remove-director-container";
+  removeDirectorContainer.style.display = "flex";
+  removeDirectorContainer.style.justifyContent = "flex-end";
+  removeDirectorButton.type = "button";
+  removeDirectorButton.innerText = "remove";
 
   // Set input field - Director FName
   // directorFNameLabel.innerText = "First name / given name";
@@ -138,10 +143,6 @@ function addDirectorInputGroup() {
   //Set input field - Director Name
   // directorNameLabel.innerText = "Legal name displayed per NRIC / ID / Passport";
   directorNameLabel.innerHTML = '<span>Legal name displayed per NRIC / ID / Passport </span><span class="text-span-27">*</span>';
-  removeDirectorContainer.style.display = "flex";
-  removeDirectorContainer.style.justifyContent = "flex-end";
-  removeDirectorButton.type = "button";
-  removeDirectorButton.innerText = "remove";
   directorLegalNameDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
   directorName.type = "text";
   directorName.name = "Legal name displayed per NRIC / ID / Passport";
