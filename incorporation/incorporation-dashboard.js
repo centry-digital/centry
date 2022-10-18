@@ -742,9 +742,8 @@ function fillEkycTable(item) {
 }
 
 function fillDeclarationsTable(currentStatus, item) {
-  let status = "Pending";
   let statusLoi, statusS201, statusLoa;
-  if (currentStatus == "Incorporating") {
+  if (currentStatus == "Incorporating" || currentStatus == "Success") {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                   <span style="color:#111827">Completed</span>
                   <div class="dashboard-nav common-symbol-filled complete">
@@ -770,9 +769,9 @@ function fillDeclarationsTable(currentStatus, item) {
                     </div>
                   </div>`;              
   } else if (item.verified != "true") {
-    statusLoi = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusS201 = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusLoa = `<span style="text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusS201 = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusLoa = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
   } else if (item.verified == "true") {
     statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
     statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
