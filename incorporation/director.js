@@ -243,7 +243,7 @@ function addDirectorInputGroup() {
 }
 
 function removeDirector(el) {
-  const director = el.target.parentElement;
+  const director = el.target.parentElement.parentElement;
   director.remove();
   applyDirEmailIndex();
   validateDirEmails();
