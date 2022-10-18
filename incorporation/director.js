@@ -44,6 +44,7 @@ function addDirectorInputGroup() {
   const inputWrapperPhone = document.createElement("div");
   const inputWrapperCountry = document.createElement("div");
   const directorLabelWrapper = document.createElement("div");
+  const removeDirectorContainer = document.createElement("div");
   const removeDirectorButton = document.createElement("button");
   const directorFNameLabel = document.createElement("label");
   const directorLNameLabel = document.createElement("label");
@@ -137,6 +138,8 @@ function addDirectorInputGroup() {
   //Set input field - Director Name
   // directorNameLabel.innerText = "Legal name displayed per NRIC / ID / Passport";
   directorNameLabel.innerHTML = '<span>Legal name displayed per NRIC / ID / Passport </span><span class="text-span-27">*</span>';
+  removeDirectorContainer.style.display = "flex";
+  removeDirectorContainer.style.justifyContent = "flex-end";
   removeDirectorButton.type = "button";
   removeDirectorButton.innerText = "remove";
   directorLegalNameDescription.innerText = "The name in this field will be used in all official documents for the company. Please edit this field if the automatic name capturing does not accurately reflect your legal name per your government-issued identification document.";
@@ -181,7 +184,8 @@ function addDirectorInputGroup() {
   directorCountry.addEventListener("keyup", validateField);
 
   //Append elements to Director Input Groups
-  directorInputGroup.appendChild(removeDirectorButton);
+  directorInputGroup.appendChild(removeDirectorContainer);
+  removeDirectorContainer.appendChild(removeDirectorButton);
   directorInputGroup.appendChild(inputSubGroup50_1);
   directorInputGroup.appendChild(inputSubGroup100_1);
   directorInputGroup.appendChild(inputSubGroup50_2);

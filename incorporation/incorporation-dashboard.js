@@ -360,7 +360,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerText.innerText =
-      "🎉 You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
+      "You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
