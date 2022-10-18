@@ -670,12 +670,8 @@ function fillEkycTable(item, index) {
                           </tr>
                         </thead>`;
   } else {
-    tableHeadingLeft = `<thead style="border-bottom:1px solid #e5e7eb">
-                          <tr></tr>
-                        </thead>`;
-    tableHeadingRight = `<thead style="border-bottom:1px solid #e5e7eb">
-                          <tr></tr>
-                        </thead>`;
+    tableHeadingLeft = `<thead><tr></tr></thead>`;
+    tableHeadingRight = `<thead><tr></tr></thead>`;
   }
   if (item.verified == "false" || item.verified == "pending") {
     verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
