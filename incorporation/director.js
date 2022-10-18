@@ -254,7 +254,7 @@ function removeDirector(el) {
   validateDirEmails();
   validateInput();
   updateButtons();
-  addEventDirectorCountry()
+  addEventDirectorCountry();
 }
 
 function applyDirEmailIndex() {
