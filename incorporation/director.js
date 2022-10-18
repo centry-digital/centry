@@ -244,9 +244,7 @@ function addDirectorInputGroup() {
   validateInput();
   updateButtons();
   removeDirectorButton.addEventListener("click", removeDirector);
-  for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
-    countrySelect.addEventListener("change", validateField);
-  }
+  addEventDirectorCountry()
 }
 
 function removeDirector(el) {
@@ -256,6 +254,7 @@ function removeDirector(el) {
   validateDirEmails();
   validateInput();
   updateButtons();
+  addEventDirectorCountry()
 }
 
 function applyDirEmailIndex() {

@@ -615,9 +615,12 @@ document
 document
   .querySelector('[data-incorporation-data="business-address-state"]')
   .removeEventListener("keyup", validateField);
-for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
-  countrySelect.addEventListener("change", validateField);
+function addEventDirectorCountry() {
+  for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
+    countrySelect.addEventListener("change", validateField);
+  }
 }
+addEventDirectorCountry();
 
 let [dirEmailValidity, shEmailValidity] = [true, true];
 function validateField(e) {
