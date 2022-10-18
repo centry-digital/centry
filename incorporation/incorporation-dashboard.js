@@ -309,7 +309,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    usersToVerify.forEach((item, index) => fillDeclarationsTable(currentStatus, item, index));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
     // declarationsEmpty.classList.remove("hide");
