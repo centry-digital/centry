@@ -657,6 +657,7 @@ function fillEkycTable(item, index) {
   if (index == 0) {
     tableHeadingLeft = `<thead style="border-bottom:1px solid #e5e7eb">
                           <tr>
+                            <th class="text-block-76" style="padding:0 10px 4px 0">No</th>
                             <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
                             <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
                             <th class="text-block-76" style="padding:0 0 4px 10px;">Verification</th>
@@ -664,6 +665,7 @@ function fillEkycTable(item, index) {
                         </thead>`;
     tableHeadingRight = `<thead style="border-bottom:1px solid #e5e7eb">
                           <tr>
+                            <th class="text-block-76" style="padding:0 10px 4px 0">No</th>
                             <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
                             <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
                             <th class="text-block-76" style="text-align:right;padding:0 0 4px 10px;">Verification</th>
@@ -686,6 +688,7 @@ function fillEkycTable(item, index) {
     tableContent = `${tableHeadingLeft}
                     <tbody style="width:100%">
                       <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                         <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
@@ -704,6 +707,7 @@ function fillEkycTable(item, index) {
     tableContent = `${tableHeadingRight}
                     <tbody style="width:100%">
                       <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                         <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
@@ -714,6 +718,7 @@ function fillEkycTable(item, index) {
     tableContent = `${tableHeadingRight}
                     <tbody style="width:100%">
                       <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                         <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
@@ -724,16 +729,17 @@ function fillEkycTable(item, index) {
     tableContent = `${tableHeadingRight}
                     <tbody style="width:100%">
                       <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                         <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
                       </tr>
                     </tbody>`
-  }
+  };
   ekycTable.innerHTML += tableContent;
 }
 
-function fillDeclarationsTable(currentStatus, item) {
+function fillDeclarationsTable(currentStatus, item, index) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
@@ -770,19 +776,22 @@ function fillDeclarationsTable(currentStatus, item) {
     statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
   }
   declarationsLoiTable.innerHTML = `<tr style="vertical-align:top;">
-                                  <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                  <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
-                                </tr>`;
+                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
+                                    </tr>`;
   declarationsS201Table.innerHTML += `<tr style="vertical-align:top;">
-                                    <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                    <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
-                                  </tr>`;
+                                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                        <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
+                                      </tr>`;
   if (item.role.includes("Corporate Representative")) {
     declarationsLoaContainer.classList.remove("hide");
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
-                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
-                                    </tr>`;
+                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                                          <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
+                                        </tr>`;
     declarationsLoaTable.classList.remove("hide");
   }
 }
