@@ -688,7 +688,7 @@ function fillEkycTable(item, index) {
     tableContent = `${tableHeadingLeft}
                     <tbody style="width:100%">
                       <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                         <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                         <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
