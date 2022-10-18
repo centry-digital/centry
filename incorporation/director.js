@@ -63,6 +63,7 @@ function addDirectorInputGroup() {
   const errorIconName = document.createElement("div");
   const errorIconEmail = document.createElement("div");
   const errorIconPhone = document.createElement("div");
+  const errorIconCountry = document.createElement("div");
 
   //Setup errorIcons
   errorIconFName.classList.add("html-embed-56", "hide");
@@ -75,6 +76,8 @@ function addDirectorInputGroup() {
   errorIconEmail.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconPhone.classList.add("html-embed-56", "hide");
   errorIconPhone.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconCountry.classList.add("html-embed-56", "hide");
+  errorIconCountry.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
 
   //Add classes
   directorInputGroup.classList.add("director-input-group-additional");
@@ -232,6 +235,7 @@ function addDirectorInputGroup() {
   inputSubGroup100_2.appendChild(directorCountryLabel);
   inputSubGroup100_2.appendChild(inputWrapperCountry);
   inputWrapperCountry.appendChild(directorCountry);
+  inputWrapperCountry.appendChild(errorIconCountry);
 
   //Append element to DOM
   directorGroup.appendChild(directorInputGroup);
@@ -239,7 +243,10 @@ function addDirectorInputGroup() {
   applyDirEmailIndex();
   validateInput();
   updateButtons();
-  removeDirectorButton.addEventListener("click", removeDirector);  
+  removeDirectorButton.addEventListener("click", removeDirector);
+  for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
+    countrySelect.addEventListener("change", validateField);
+  }
 }
 
 function removeDirector(el) {
