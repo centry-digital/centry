@@ -734,7 +734,7 @@ let loaNo = 1
 function fillDeclarationsTable(currentStatus, item, index) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
-    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
+    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                   <span style="color:#111827">Completed</span>
                   <div class="dashboard-nav common-symbol-filled complete">
                     <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -742,7 +742,7 @@ function fillDeclarationsTable(currentStatus, item, index) {
                     </span>
                   </div>
                 </div>`;
-    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
+    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
                       <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -750,7 +750,7 @@ function fillDeclarationsTable(currentStatus, item, index) {
                       </span>
                     </div>
                   </div>`;
-    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
+    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
                       <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -770,19 +770,19 @@ function fillDeclarationsTable(currentStatus, item, index) {
   declarationsLoiTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                      <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
+                                      <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
                                     </tr>`;
   declarationsS201Table.innerHTML += `<tr style="vertical-align:top;">
                                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
                                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
+                                        <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
                                       </tr>`;
   if (item.role.includes("Corporate Representative")) {
     declarationsLoaContainer.classList.remove("hide");
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${loaNo}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                          <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
+                                          <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
     loaNo++;
