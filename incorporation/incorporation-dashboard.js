@@ -706,7 +706,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
   let checkDeclarationLoi = item.declarations.find((declaration) => {return declaration.doc_type == "letter_of_incorporation" && declaration.status != "signed"});
   let checkDeclarationS201 = item.declarations.find((declaration) => {return declaration.doc_type == "s201" && declaration.status != "signed"});
-  let checkDeclarationLoa = item.declarations.find((declaration) => {return declaration.role.includes("Corporate Representative") && declaration.doc_type == "letter_of_authorisation" && declaration.status != "signed"});
+  let checkDeclarationLoa = item.declarations.find((declaration) => {return item.role.includes("Corporate Representative") && declaration.doc_type == "letter_of_authorisation" && declaration.status != "signed"});
   // if (currentStatus == "Incorporating" || currentStatus == "Success") {
   if (item.verified == "false") {
     statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
