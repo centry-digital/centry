@@ -734,9 +734,9 @@ function fillDeclarationsTable(currentStatus, item) {
     statusS201 = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
     statusLoa = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
   } else if (item.verified != "false") {
-    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
-    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
-    statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
+    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
   }
   declarationsLoiTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
