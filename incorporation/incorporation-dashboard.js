@@ -3,7 +3,7 @@ let type = query.get("session");
 let infoContainer = document.getElementById("info-container");
 let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
-let data, data2;
+let data;
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
@@ -301,7 +301,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(unique_id, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
     // declarationsEmpty.classList.remove("hide");
@@ -702,7 +702,7 @@ function fillEkycTable(item) {
 
 let indexDeclaration = 1;
 let indexDeclarationLoa = 1;
-function fillDeclarationsTable(currentStatus, item) {
+function fillDeclarationsTable(unique_id, currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
@@ -736,7 +736,15 @@ function fillDeclarationsTable(currentStatus, item) {
   } else if (item.verified != "false") {
     statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
     statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-    statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    statusLoa = `<div>Please check your email to retrieve your LoA</div>
+                  <a href="https://e-kyc.centry.digital/upload-loa?h_declaration_uuid=${item.declaration_uuid}" target="_blank">
+                    <span style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
+                    <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
+                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                        upload
+                      </span>
+                    </div>
+                  </a>`;
   }
   declarationsLoiTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
@@ -753,7 +761,7 @@ function fillDeclarationsTable(currentStatus, item) {
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclarationLoa}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                          <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
+                                          <td class="text-block-74" style="display:flex;column-gap:10px;text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
     indexDeclarationLoa++;
