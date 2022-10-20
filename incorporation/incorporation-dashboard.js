@@ -301,7 +301,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item, index) => fillDeclarationsTable(currentStatus, item, index));
+    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
     // declarationsEmpty.classList.remove("hide");
@@ -639,14 +639,15 @@ async function retrievePaymentSession(event, unique_id) {
   }
 }
 
-function fillEkycTable(item, index) {
+let indexEkyc = 1
+function fillEkycTable(item) {
   let verificationLink, tableContent, tableHeading, roles;
   if (item.role.length > 1) {
     roles = "- " + item.role.join("<br>" + "- ");
   } else {
     roles = "- " + item.role;
   }
-  if (index == 0) {
+  if (indexEkyc == 1) {
     tableHeading = `<thead style="border-bottom:1px solid #e5e7eb">
                           <tr>
                             <th class="text-block-76" style="padding:0 10px 4px 0;width:40px;">No</th>
@@ -666,6 +667,7 @@ function fillEkycTable(item, index) {
   } else {
     tableHeading = `<thead><tr></tr></thead>`;
   }
+  indexEkyc++;
   if (item.verified == "false") {
     verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
                           target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
@@ -743,8 +745,8 @@ function fillEkycTable(item, index) {
   ekycTable.innerHTML += tableContent;
 }
 
-let loaNo = 1
-function fillDeclarationsTable(currentStatus, item, index) {
+let indexDeclaration = 1
+function fillDeclarationsTable(currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
@@ -781,23 +783,23 @@ function fillDeclarationsTable(currentStatus, item, index) {
     statusLoa = `<span>Please check your email to retrieve your </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;color:#4f46e5;text-decoration:underline;">access code</span>`;
   }
   declarationsLoiTable.innerHTML += `<tr style="vertical-align:top;">
-                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                                       <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoi}</td>
                                     </tr>`;
   declarationsS201Table.innerHTML += `<tr style="vertical-align:top;">
-                                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
                                         <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                                         <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusS201}</td>
                                       </tr>`;
   if (item.role.includes("Corporate Representative")) {
     declarationsLoaContainer.classList.remove("hide");
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
-                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${loaNo}</td>
+                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                                           <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
-    loaNo++;
   }
+  indexDeclaration++;
 }
