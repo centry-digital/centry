@@ -301,7 +301,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(unique_id, currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
     // declarationsEmpty.classList.remove("hide");
@@ -340,7 +340,7 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmBanner.classList.remove("hide");
@@ -385,7 +385,7 @@ function populateData(data, unique_id, users_to_verify) {
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmNotEmpty.classList.remove("hide");
@@ -429,7 +429,7 @@ function populateData(data, unique_id, users_to_verify) {
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmSuccessCoName.innerText = data.company_name + " Sdn. Bhd.";
@@ -702,7 +702,7 @@ function fillEkycTable(item) {
 
 let indexDeclaration = 1;
 let indexDeclarationLoa = 1;
-function fillDeclarationsTable(unique_id, currentStatus, item) {
+function fillDeclarationsTable(data, currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
@@ -736,11 +736,11 @@ function fillDeclarationsTable(unique_id, currentStatus, item) {
   } else if (item.verified != "false") {
     statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
     statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-    statusLoa = `<div>Please check your email to retrieve your LoA</div>
-                  <a href="https://e-kyc.centry.digital/upload-loa?h_declaration_uuid=${item.declaration_uuid}" target="_blank">
-                    <span style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
+    statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
+                  <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
+                    <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
                     <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
-                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                      <span class="material-symbols-rounded" style="font-size:16px;line-height:1.25rem;width:16px;height:16px;"">
                         upload
                       </span>
                     </div>
@@ -761,7 +761,7 @@ function fillDeclarationsTable(unique_id, currentStatus, item) {
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclarationLoa}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                          <td class="text-block-74" style="display:flex;column-gap:10px;text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
+                                          <td class="text-block-74" style="display:flex;flex-direction: column;align-items:flex-end;padding:4px 0 0 10px;word-wrap:normal;row-gap:6px;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
     indexDeclarationLoa++;
