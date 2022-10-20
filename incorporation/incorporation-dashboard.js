@@ -656,18 +656,9 @@ function fillEkycTable(item) {
                             <th class="text-block-76" style="padding:0 0 4px 10px;">Verification</th>
                           </tr>
                         </thead>`;
-    // tableHeadingRight = `<thead style="border-bottom:1px solid #e5e7eb">
-    //                       <tr>
-    //                         <th class="text-block-76" style="padding:0 10px 4px 0;width:40px;">No</th>
-    //                         <th class="text-block-76" style="padding:0 10px 4px 0">Name</th>
-    //                         <th class="text-block-76" style="padding:0 10px 4px 10px">Role(s)</th>
-    //                         <th class="text-block-76" style="text-align:right;padding:0 0 4px 10px;">Verification</th>
-    //                       </tr>
-    //                     </thead>`;
   } else {
     tableHeading = `<thead><tr></tr></thead>`;
   }
-  indexEkyc++;
   if (item.verified == "false") {
     verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
                           target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
@@ -678,29 +669,10 @@ function fillEkycTable(item) {
                               </span>
                             </div>
                         </a>`;
-    tableContent = `${tableHeading}
-                    <tbody style="width:100%">
-                      <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                      </tr>
-                    </tbody>`
-    
   } else if (item.verified == "pending") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">AI-automated verification in progress</span>
                         </div>`;
-    tableContent = `${tableHeading}
-                    <tbody style="width:100%">
-                      <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                      </tr>
-                    </tbody>`
   }else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
@@ -710,39 +682,22 @@ function fillEkycTable(item) {
                             </span>
                           </div>
                         </div>`;
-    tableContent = `${tableHeading}
-                    <tbody style="width:100%">
-                      <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                      </tr>
-                    </tbody>`
   } else if (item.verified == "submitted") {
     verificationLink = `<div style="color:#111827">Verification in progress. You will be notified via email once verification is complete.</div>`;
-    tableContent = `${tableHeading}
-                    <tbody style="width:100%">
-                      <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                      </tr>
-                    </tbody>`
   } else {
     verificationLink = `<div style="color:#111827">Pending review</div>`;
-    tableContent = `${tableHeading}
-                    <tbody style="width:100%">
-                      <tr style="vertical-align:top;">
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
-                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
-                      </tr>
-                    </tbody>`
   };
+  tableContent = `${tableHeading}
+                  <tbody style="width:100%">
+                    <tr style="vertical-align:top;">
+                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexEkyc}</td>
+                      <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                      <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                      <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                    </tr>
+                  </tbody>`
   ekycTable.innerHTML += tableContent;
+  indexEkyc++;
 }
 
 let indexDeclaration = 1
