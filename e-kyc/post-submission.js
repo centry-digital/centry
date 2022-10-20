@@ -19,8 +19,8 @@ if (
     verification_object.last_name = query.get("lname");
     verification_object.dob = query.get("dob");
     verification_object.nationality = query.get("nationality");
-    verification_object.unique_id = query.get("unique_id");
-    verification_object.email_save = query.get("email_save");
+    // verification_object.unique_id = query.get("unique_id");
+    // verification_object.email_save = query.get("email_save");
     sessionToken = query.get("token");
     submitVerification(sessionToken, verification_object.verification_uuid);
 

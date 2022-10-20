@@ -666,10 +666,10 @@ function fillEkycTable(item, index) {
   } else {
     tableHeading = `<thead><tr></tr></thead>`;
   }
-  if (item.verified == "false" || item.verified == "pending") {
+  if (item.verified == "false") {
     verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
                           target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
-                            <span style="text-decoration:underline;">${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}</span>
+                            <span style="text-decoration:underline;">Start verification</span>
                             <div class="html-embed-51 common-symbol">
                               <span class="material-symbols-rounded" style="font-size:18px;line-height:1.25rem;">
                                 arrow_right_alt
@@ -686,7 +686,20 @@ function fillEkycTable(item, index) {
                       </tr>
                     </tbody>`
     
-  } else if (item.verified == "true") {
+  } else if (item.verified == "pending") {
+    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
+                          <span style="color:#111827">AI-automated verification in progress</span>
+                        </div>`;
+    tableContent = `${tableHeading}
+                    <tbody style="width:100%">
+                      <tr style="vertical-align:top;">
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${index+1}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
+                        <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
+                        <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
+                      </tr>
+                    </tbody>`
+  }else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
