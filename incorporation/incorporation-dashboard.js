@@ -700,7 +700,8 @@ function fillEkycTable(item) {
   indexEkyc++;
 }
 
-let indexDeclaration = 1
+let indexDeclaration = 1;
+let indexDeclarationLoa = 1;
 function fillDeclarationsTable(currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
   if (currentStatus == "Incorporating" || currentStatus == "Success") {
@@ -750,11 +751,12 @@ function fillDeclarationsTable(currentStatus, item) {
   if (item.role.includes("Corporate Representative")) {
     declarationsLoaContainer.classList.remove("hide");
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
-                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
+                                          <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclarationLoa}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
                                           <td class="text-block-74" style="text-align:right;padding:4px 0 0 10px;word-wrap:normal;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
+    indexDeclarationLoa++;
   }
   indexDeclaration++;
 }
