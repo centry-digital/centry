@@ -704,7 +704,16 @@ let indexDeclaration = 1;
 let indexDeclarationLoa = 1;
 function fillDeclarationsTable(data, currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
-  if (currentStatus == "Incorporating" || currentStatus == "Success") {
+  let checkDeclarationLoi = item.declarations.find((declaration) => {return declaration.doc_type == "letter_of_incorporation" && declaration.status != signed});
+  let checkDeclarationS201 = item.declarations.find((declaration) => {return declaration.doc_type == "s201" && declaration.status != signed});
+  let checkDeclarationLoa = item.declarations.find((declaration) => {return declaration.role.includes("Corporate Representative") && declaration.doc_type == "letter_of_authorisation" && declaration.status != signed});
+  // if (currentStatus == "Incorporating" || currentStatus == "Success") {
+  if (item.verified == "false") {
+    statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusS201 = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+    statusLoa = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
+  }
+  if (item.verified != "false" && checkDeclarationLoi == null) {
     statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                   <span style="color:#111827">Completed</span>
                   <div class="dashboard-nav common-symbol-filled complete">
@@ -713,6 +722,10 @@ function fillDeclarationsTable(data, currentStatus, item) {
                     </span>
                   </div>
                 </div>`;
+  } else {
+    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+  }
+  if (item.verified != "false" && checkDeclarationS201 == null) {
     statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
@@ -721,6 +734,10 @@ function fillDeclarationsTable(data, currentStatus, item) {
                       </span>
                     </div>
                   </div>`;
+  } else {
+    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+  }
+  if (item.verified != "false" && checkDeclarationLoa == null) {                  
     statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
@@ -729,13 +746,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
                       </span>
                     </div>
                   </div>`;              
-  } else if (item.verified == "false") {
-    statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusS201 = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-    statusLoa = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-  } else if (item.verified != "false") {
-    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+  } else {
     statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
                   <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
                     <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
