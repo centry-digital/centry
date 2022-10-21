@@ -587,7 +587,7 @@ function removeShareholder(el) {
   const shareholder = el.target.parentElement;
   shareholder.remove();
   applyShEmailIndex();
-  validateShEmails();
+  // validateShEmails();
   updateShares();
   validateInput();
   updateButtons();

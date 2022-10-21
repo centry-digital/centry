@@ -681,30 +681,30 @@ function validateField(e) {
       dirEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
     })
   } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
-    let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
-    let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
-    let arrEmailDuplicate = []
-    shEmail.forEach((email,index) => {
-      if (e.target.value == email && e.target.getAttribute("shareholder-email-input") != index) {
-        arrEmailDuplicate.push(index)
-        arrEmailDuplicate.push(e.target.getAttribute("shareholder-email-input"))
-      }
-    })
-    if (arrEmailDuplicate.length > 0) {
-      document.getElementById("shareholder-email-error").classList.remove("hide");
-      shEmailValidity = false;
-    } else {
-      document.getElementById("shareholder-email-error").classList.add("hide");
-      shEmailValidity = true;
-    }
-    shEmailFields.forEach(field => {
-      field.classList.remove("invalid-field");
-      field.parentElement.querySelector(".html-embed-56").classList.add('hide')
-    })
-    arrEmailDuplicate.forEach(i => {
-      shEmailFields[i].classList.add("invalid-field");
-      shEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
-    })
+    // let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
+    // let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
+    // let arrEmailDuplicate = []
+    // shEmail.forEach((email,index) => {
+    //   if (e.target.value == email && e.target.getAttribute("shareholder-email-input") != index) {
+    //     arrEmailDuplicate.push(index)
+    //     arrEmailDuplicate.push(e.target.getAttribute("shareholder-email-input"))
+    //   }
+    // })
+    // if (arrEmailDuplicate.length > 0) {
+    //   document.getElementById("shareholder-email-error").classList.remove("hide");
+    //   shEmailValidity = false;
+    // } else {
+    //   document.getElementById("shareholder-email-error").classList.add("hide");
+    //   shEmailValidity = true;
+    // }
+    // shEmailFields.forEach(field => {
+    //   field.classList.remove("invalid-field");
+    //   field.parentElement.querySelector(".html-embed-56").classList.add('hide')
+    // })
+    // arrEmailDuplicate.forEach(i => {
+    //   shEmailFields[i].classList.add("invalid-field");
+    //   shEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
+    // })
   } else {
     e.target.classList.remove("invalid-field");
     e.target.parentElement.querySelector(".html-embed-56").classList.add('hide')

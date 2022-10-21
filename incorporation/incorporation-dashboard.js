@@ -772,7 +772,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
     declarationsLoaTable.innerHTML += `<tr style="vertical-align:top;">
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclarationLoa}</td>
                                           <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${item.legal_name}</td>
-                                          <td class="text-block-74" style="display:flex;flex-direction: column;align-items:flex-end;padding:4px 0 0 10px;word-wrap:normal;row-gap:6px;">${statusLoa}</td>
+                                          <td class="text-block-74" style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;padding:4px 0 0 10px;word-wrap:normal;row-gap:6px;">${statusLoa}</td>
                                         </tr>`;
     declarationsLoaTable.classList.remove("hide");
     indexDeclarationLoa++;
