@@ -711,21 +711,9 @@ function fillDeclarationsTable(data, currentStatus, item) {
     statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
     statusS201 = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
     statusLoa = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
-  }
-  if (item.verified != "false" && checkDeclarationLoi == null) {
-    statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
-                  <span style="color:#111827">Completed</span>
-                  <div class="dashboard-nav common-symbol-filled complete">
-                    <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
-                      check_circle
-                    </span>
-                  </div>
-                </div>`;
   } else {
-    statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-  }
-  if (item.verified != "false" && checkDeclarationS201 == null) {
-    statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
+    if (item.verified != "false" && checkDeclarationLoi == null) {
+      statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
                       <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
@@ -733,28 +721,41 @@ function fillDeclarationsTable(data, currentStatus, item) {
                       </span>
                     </div>
                   </div>`;
-  } else {
-    statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
-  }
-  if (item.verified != "false" && checkDeclarationLoa == null) {                  
-    statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
-                    <span style="color:#111827">Completed</span>
-                    <div class="dashboard-nav common-symbol-filled complete">
-                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
-                        check_circle
-                      </span>
-                    </div>
-                  </div>`;              
-  } else {
-    statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
-                  <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
-                    <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
-                    <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
-                      <span class="material-symbols-rounded" style="font-size:16px;line-height:1.25rem;width:16px;height:16px;"">
-                        upload
-                      </span>
-                    </div>
-                  </a>`;
+    } else {
+      statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    }
+    if (item.verified != "false" && checkDeclarationS201 == null) {
+      statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
+                      <span style="color:#111827">Completed</span>
+                      <div class="dashboard-nav common-symbol-filled complete">
+                        <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                          check_circle
+                        </span>
+                      </div>
+                    </div>`;
+    } else {
+      statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+    }
+    if (item.verified != "false" && checkDeclarationLoa == null) {                  
+      statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
+                      <span style="color:#111827">Completed</span>
+                      <div class="dashboard-nav common-symbol-filled complete">
+                        <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                          check_circle
+                        </span>
+                      </div>
+                    </div>`;              
+    } else {
+      statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
+                    <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
+                      <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
+                      <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
+                        <span class="material-symbols-rounded" style="font-size:16px;line-height:1.25rem;width:16px;height:16px;"">
+                          upload
+                        </span>
+                      </div>
+                    </a>`;
+    }
   }
   declarationsLoiTable.innerHTML += `<tr style="vertical-align:top;">
                                       <td class="text-block-74" style="padding:4px 10px 0 0;word-wrap:normal;">${indexDeclaration}</td>
