@@ -613,7 +613,6 @@ function populateData(data, unique_id, users_to_verify) {
     coSh[i].elContainer.appendChild(coSh[i].elLName);
     coSh[i].elContainer.appendChild(coSh[i].elEmail);
     coSh[i].elContainer.appendChild(coSh[i].elPhone);
-    coSh[i].elContainer.appendChild(coSh[i].elCountry);
     coShContainer.appendChild(coSh[i].elContainer);
   }
 }
