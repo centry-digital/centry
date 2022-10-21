@@ -680,7 +680,7 @@ function validateField(e) {
       dirEmailFields[i].classList.add("invalid-field");
       dirEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
     })
-  } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
+  // } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
     // let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
     // let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
     // let arrEmailDuplicate = []
