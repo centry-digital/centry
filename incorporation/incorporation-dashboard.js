@@ -188,7 +188,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
       }
     );
     data = await response.json();
-    let uniqueId = data.unique_id;
+    let uniqueId = data.incorporation_data.unique_id;
     let incorporationData = data.incorporation_data;
     let usersToVerify = data.users_to_verify;
     if (response.ok) {
@@ -211,9 +211,9 @@ async function retrieveIncorporationData(emailSave, uuid) {
   }
 }
 
-function populateData(data, unique_id, users_to_verify) {
+function populateData(incorporation_data, unique_id, users_to_verify) {
   // Adjust aesthetics based on status
-  let currentStatus = data.status;
+  let currentStatus = incorporation_data.status;
   if (currentStatus == "Draft") {
     // Overview
     statusBannerNumber.innerText = "0";
@@ -395,7 +395,7 @@ function populateData(data, unique_id, users_to_verify) {
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerHeader.innerText = `🎉 Congratulations, ${data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+    statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
     statusBannerText.innerText =
       "Hang on tight, our team will reach out to you with the next steps.";
     statusBanner.classList.remove("hide");
@@ -432,73 +432,73 @@ function populateData(data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
-    ssmSuccessCoName.innerText = data.company_name + " Sdn. Bhd.";
+    ssmSuccessCoName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
     ssmCompleteBtn.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
   }
 
   // Populate Data
-  if (data.company_name != "") {
-    coName.innerText = data.company_name + " Sdn. Bhd.";
+  if (incorporation_data.company_name != "") {
+    coName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
   }
   // co details
-  coName2.innerText = data.company_name
-    ? data.company_name + " Sdn. Bhd."
+  coName2.innerText = incorporation_data.company_name
+    ? incorporation_data.company_name + " Sdn. Bhd."
     : "-";
-  coNameExp.innerText = data.name_explanation ? data.name_explanation : "-";
-  coNature.innerText = data.nature_of_business ? data.nature_of_business : "-";
-  coMsic1.innerText = data.msic_codes[0];
-  coMsic2.innerText = data.msic_codes[1];
-  coMsic3.innerText = data.msic_codes[2];
+  coNameExp.innerText = incorporation_data.name_explanation ? incorporation_data.name_explanation : "-";
+  coNature.innerText = incorporation_data.nature_of_business ? incorporation_data.nature_of_business : "-";
+  coMsic1.innerText = incorporation_data.msic_codes[0];
+  coMsic2.innerText = incorporation_data.msic_codes[1];
+  coMsic3.innerText = incorporation_data.msic_codes[2];
   coAdd.innerText =
-    data.company_address && data.company_postcode && data.company_city
-      ? data.company_address +
+    incorporation_data.company_address && incorporation_data.company_postcode && incorporation_data.company_city
+      ? incorporation_data.company_address +
         ", " +
-        data.company_postcode +
+        incorporation_data.company_postcode +
         " " +
-        data.company_city +
+        incorporation_data.company_city +
         ", " +
-        data.company_state +
+        incorporation_data.company_state +
         ", " +
-        data.company_country
+        incorporation_data.company_country
       : "-";
-  coEmail.innerText = data.company_email ? data.company_email : "-";
-  coPhone.innerText = data.company_phone ? data.company_phone : "-";
+  coEmail.innerText = incorporation_data.company_email ? incorporation_data.company_email : "-";
+  coPhone.innerText = incorporation_data.company_phone ? incorporation_data.company_phone : "-";
   coDetails.classList.remove("hide");
-  for (let i = 0; i < data.company_directors.length; i++) {
+  for (let i = 0; i < incorporation_data.company_directors.length; i++) {
     coDir[i] = {};
     coDir[i].elContainer = document.createElement("div");
     coDir[i].elName = document.createElement("div");
     coDir[i].elName.classList.add("text-block-72", "text-sm");
     coDir[i].elName.innerText =
       "Legal name: " +
-      (data.company_directors[i].name ? data.company_directors[i].name : "-");
+      (incorporation_data.company_directors[i].name ? incorporation_data.company_directors[i].name : "-");
     coDir[i].elFName = document.createElement("div");
     coDir[i].elFName.classList.add("text-block-73", "text-sm");
     coDir[i].elFName.innerText =
       "First name: " +
-      (data.company_directors[i].fname ? data.company_directors[i].fname : "-");
+      (incorporation_data.company_directors[i].fname ? incorporation_data.company_directors[i].fname : "-");
     coDir[i].elLName = document.createElement("div");
     coDir[i].elLName.classList.add("text-block-73", "text-sm");
     coDir[i].elLName.innerText =
       "Last name: " +
-      (data.company_directors[i].lname ? data.company_directors[i].lname : "-");
+      (incorporation_data.company_directors[i].lname ? incorporation_data.company_directors[i].lname : "-");
     coDir[i].elEmail = document.createElement("div");
     coDir[i].elEmail.classList.add("text-block-73", "text-sm");
     coDir[i].elEmail.innerText =
       "Email: " +
-      (data.company_directors[i].email ? data.company_directors[i].email : "-");
+      (incorporation_data.company_directors[i].email ? incorporation_data.company_directors[i].email : "-");
     coDir[i].elPhone = document.createElement("div");
     coDir[i].elPhone.classList.add("text-block-73", "text-sm");
     coDir[i].elPhone.innerText =
       "Phone: " +
-      (data.company_directors[i].phone ? data.company_directors[i].phone : "-");
+      (incorporation_data.company_directors[i].phone ? incorporation_data.company_directors[i].phone : "-");
     coDir[i].elCountry = document.createElement("div");
     coDir[i].elCountry.classList.add("text-block-73", "text-sm");
     coDir[i].elCountry.innerText =
       "Country of Residence: " +
-      (data.company_directors[i].country
-        ? data.company_directors[i].country
+      (incorporation_data.company_directors[i].country
+        ? incorporation_data.company_directors[i].country
         : "-");
     coDir[i].elContainer.appendChild(coDir[i].elName);
     coDir[i].elContainer.appendChild(coDir[i].elFName);
@@ -508,105 +508,105 @@ function populateData(data, unique_id, users_to_verify) {
     coDir[i].elContainer.appendChild(coDir[i].elCountry);
     coDirContainer.appendChild(coDir[i].elContainer);
   }
-  for (let i = 0; i < data.company_shareholders.length; i++) {
+  for (let i = 0; i < incorporation_data.company_shareholders.length; i++) {
     coSh[i] = {};
     coSh[i].elContainer = document.createElement("div");
     coSh[i].elContainer2 = document.createElement("div");
     coSh[i].elContainer2.classList.add("div-block-254");
-    if (data.company_shareholders[i].type == "Individual") {
+    if (incorporation_data.company_shareholders[i].type == "Individual") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText = data.company_shareholders[i].name_individual
-        ? data.company_shareholders[i].name_individual
+      coSh[i].elName.innerText = incorporation_data.company_shareholders[i].name_individual
+        ? incorporation_data.company_shareholders[i].name_individual
         : "-";
       coSh[i].elShares = document.createElement("div");
       coSh[i].elShares.classList.add("text-block-72", "text-sm");
       coSh[i].elShares.innerText =
         "Shares: " +
-        (data.company_shareholders[i].shares
-          ? data.company_shareholders[i].shares
+        (incorporation_data.company_shareholders[i].shares
+          ? incorporation_data.company_shareholders[i].shares
           : "-");
       coSh[i].elFName = document.createElement("div");
       coSh[i].elFName.classList.add("text-block-73", "text-sm");
       coSh[i].elFName.innerText =
         "First name: " +
-        (data.company_shareholders[i].fname_individual
-          ? data.company_shareholders[i].fname_individual
+        (incorporation_data.company_shareholders[i].fname_individual
+          ? incorporation_data.company_shareholders[i].fname_individual
           : "-");
       coSh[i].elLName = document.createElement("div");
       coSh[i].elLName.classList.add("text-block-73", "text-sm");
       coSh[i].elLName.innerText =
         "Last name: " +
-        (data.company_shareholders[i].lname_individual
-          ? data.company_shareholders[i].lname_individual
+        (incorporation_data.company_shareholders[i].lname_individual
+          ? incorporation_data.company_shareholders[i].lname_individual
           : "-");
       coSh[i].elEmail = document.createElement("div");
       coSh[i].elEmail.classList.add("text-block-73", "text-sm");
       coSh[i].elEmail.innerText =
         "Email: " +
-        (data.company_shareholders[i].email
-          ? data.company_shareholders[i].email
+        (incorporation_data.company_shareholders[i].email
+          ? incorporation_data.company_shareholders[i].email
           : "-");
       coSh[i].elPhone = document.createElement("div");
       coSh[i].elPhone.classList.add("text-block-73", "text-sm");
       coSh[i].elPhone.innerText =
         "Phone: " +
-        (data.company_shareholders[i].phone
-          ? data.company_shareholders[i].phone
+        (incorporation_data.company_shareholders[i].phone
+          ? incorporation_data.company_shareholders[i].phone
           : "-");
-    } else if (data.company_shareholders[i].type == "Corporate") {
+    } else if (incorporation_data.company_shareholders[i].type == "Corporate") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText = data.company_shareholders[i].name_corporate
-        ? data.company_shareholders[i].name_corporate
+      coSh[i].elName.innerText = incorporation_data.company_shareholders[i].name_corporate
+        ? incorporation_data.company_shareholders[i].name_corporate
         : "-";
       coSh[i].elShares = document.createElement("div");
       coSh[i].elShares.classList.add("text-block-72", "text-sm");
       coSh[i].elShares.innerText =
         "Shares: " +
-        (data.company_shareholders[i].shares
-          ? data.company_shareholders[i].shares
+        (incorporation_data.company_shareholders[i].shares
+          ? incorporation_data.company_shareholders[i].shares
           : "-");
       coSh[i].elNameRep = document.createElement("div");
       coSh[i].elNameRep.classList.add("text-block-73", "text-sm");
       coSh[i].elNameRep.innerText =
         "Representative legal name: " +
-        (data.company_shareholders[i].name_representative
-          ? data.company_shareholders[i].name_representative
+        (incorporation_data.company_shareholders[i].name_representative
+          ? incorporation_data.company_shareholders[i].name_representative
           : "-");
       coSh[i].elFName = document.createElement("div");
       coSh[i].elFName.classList.add("text-block-73", "text-sm");
       coSh[i].elFName.innerText =
         "Representative first name: " +
-        (data.company_shareholders[i].fname_representative
-          ? data.company_shareholders[i].fname_representative
+        (incorporation_data.company_shareholders[i].fname_representative
+          ? incorporation_data.company_shareholders[i].fname_representative
           : "-");
       coSh[i].elLName = document.createElement("div");
       coSh[i].elLName.classList.add("text-block-73", "text-sm");
       coSh[i].elLName.innerText =
         "Representative last name: " +
-        (data.company_shareholders[i].lname_representative
-          ? data.company_shareholders[i].lname_representative
+        (incorporation_data.company_shareholders[i].lname_representative
+          ? incorporation_data.company_shareholders[i].lname_representative
           : "-");
       coSh[i].elEmail = document.createElement("div");
       coSh[i].elEmail.classList.add("text-block-73", "text-sm");
       coSh[i].elEmail.innerText =
         "Email: " +
-        (data.company_shareholders[i].email
-          ? data.company_shareholders[i].email
+        (incorporation_data.company_shareholders[i].email
+          ? incorporation_data.company_shareholders[i].email
           : "-");
       coSh[i].elPhone = document.createElement("div");
       coSh[i].elPhone.classList.add("text-block-73", "text-sm");
       coSh[i].elPhone.innerText =
         "Phone: " +
-        (data.company_shareholders[i].phone
-          ? data.company_shareholders[i].phone
+        (incorporation_data.company_shareholders[i].phone
+          ? incorporation_data.company_shareholders[i].phone
           : "-");
     }
     coSh[i].elContainer.appendChild(coSh[i].elContainer2);
     coSh[i].elContainer2.appendChild(coSh[i].elName);
     coSh[i].elContainer2.appendChild(coSh[i].elShares);
-    if (data.company_shareholders[i].type == "Corporate") {
+    if (incorporation_data.company_shareholders[i].type == "Corporate") {
       coSh[i].elContainer.appendChild(coSh[i].elNameRep);
     }
     coSh[i].elContainer.appendChild(coSh[i].elFName);
@@ -617,7 +617,8 @@ function populateData(data, unique_id, users_to_verify) {
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);
-async function retrievePaymentSession(event, unique_id) {
+async function retrievePaymentSession(event, unid) {
+  let body_object = {unique_id: unid};
   try {
     let response = await fetch(
       "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
@@ -626,7 +627,7 @@ async function retrievePaymentSession(event, unique_id) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ unique_id: unique_id }),
+        body: JSON.stringify({unique_id: unique_id }),
       }
     );
     let data = await response.json();
