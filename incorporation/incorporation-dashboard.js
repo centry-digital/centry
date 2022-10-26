@@ -618,7 +618,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
 }
 // window.history.pushState({}, document.title, window.location.pathname);
 async function retrievePaymentSession(event, unid) {
-  let body_object = {unique_id: unid};
+  let request_body = {unique_id: unid};
   try {
     let response = await fetch(
       "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
@@ -627,7 +627,7 @@ async function retrievePaymentSession(event, unid) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({unique_id: unique_id }),
+        body: JSON.stringify(request_body),
       }
     );
     let data = await response.json();
