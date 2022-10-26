@@ -659,7 +659,7 @@ function fillEkycTable(item) {
   } else {
     tableHeading = `<thead><tr></tr></thead>`;
   }
-  if (item.verified == "false") {
+  if (item.verified == "false" || item.verified == "pending") {
     verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
                           target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
                             <span style="text-decoration:underline;">Start verification</span>
@@ -669,10 +669,6 @@ function fillEkycTable(item) {
                               </span>
                             </div>
                         </a>`;
-  } else if (item.verified == "pending") {
-    verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
-                          <span style="color:#111827">AI-automated verification in progress</span>
-                        </div>`;
   }else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
@@ -683,7 +679,7 @@ function fillEkycTable(item) {
                           </div>
                         </div>`;
   } else if (item.verified == "submitted") {
-    verificationLink = `<div style="color:#111827">Verification in progress. You will be notified via email once verification is complete.</div>`;
+    verificationLink = `<span style="color:#111827">AI-automated verification in progress</span>`;
   } else {
     verificationLink = `<div style="color:#111827">Pending review</div>`;
   };
