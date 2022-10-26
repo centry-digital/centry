@@ -215,6 +215,9 @@ async function retrieveIncorporationData(emailSave, uuid) {
 
 function populateData(incorporation_data, unique_id, users_to_verify) {
   // Adjust aesthetics based on status
+  let declarationsStatus = []
+  users_to_verify.forEach((user)=>user.declarations.forEach((declaration)=>declarationsStatus.push(declaration.status)));
+  let allDeclarationsStatusSigned = declarationsStatus.some((status) => status != "signed");
   let currentStatus = incorporation_data.status;
   if (currentStatus == "Draft") {
     // Overview
@@ -281,7 +284,6 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("in-progress");
     card3.classList.add("current");
-    card4.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
@@ -291,8 +293,15 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     card3BtnDraft.addEventListener("click", () => tab4.click());
     card3BtnDraft.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    card4BtnDraft.addEventListener("click", () => tab5.click());
-    card4BtnDraft.classList.remove("hide");
+    if (allDeclarationsStatusSigned) {
+      card4.classList.add("current");
+      card4BtnDraft.addEventListener("click", () => tab5.click());
+      card4BtnDraft.classList.remove("hide");
+    } else {
+      card4.classList.add("complete");
+      card4BtnComplete.addEventListener("click", () => tab5.click());
+      card4BtnComplete.classList.remove("hide");
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
