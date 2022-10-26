@@ -301,7 +301,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
     // declarationsEmpty.classList.remove("hide");
@@ -340,7 +340,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmBanner.classList.remove("hide");
@@ -385,7 +385,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmNotEmpty.classList.remove("hide");
@@ -429,7 +429,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(data, currentStatus, item));
+    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
     ssmSuccessCoName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
