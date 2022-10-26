@@ -746,7 +746,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
                     </div>`;              
     } else {
       statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
-                    <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}&h_email=${data.email_save}&h_unid=${data.unique_id}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
+                    <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}&h_email=${encodeURIComponent(data.email_save)}&h_unid=${data.unique_id}" target="_blank" style="display:flex;column-gap:6px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
                       <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
                       <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
                         <span class="material-symbols-rounded" style="font-size:16px;line-height:1.25rem;width:16px;height:16px;"">
