@@ -298,7 +298,6 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
       card4BtnDraft.addEventListener("click", () => tab5.click());
       card4BtnDraft.classList.remove("hide");
     } else {
-      card4.classList.add("complete");
       card4BtnComplete.addEventListener("click", () => tab5.click());
       card4BtnComplete.classList.remove("hide");
     }
