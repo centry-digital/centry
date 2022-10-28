@@ -683,7 +683,7 @@ function fillEkycTable(item) {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
-                            <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                            <span class="material-symbols-rounded outline-filled" style="font-size:14px;line-height:1.25rem;">
                               check_circle
                             </span>
                           </div>
@@ -723,7 +723,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
       statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
                     <div class="dashboard-nav common-symbol-filled complete">
-                      <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                      <span class="material-symbols-rounded outline-filled" style="font-size:14px;line-height:1.25rem;">
                         check_circle
                       </span>
                     </div>
@@ -735,7 +735,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
       statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                       <span style="color:#111827">Completed</span>
                       <div class="dashboard-nav common-symbol-filled complete">
-                        <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                        <span class="material-symbols-rounded outline-filled" style="font-size:14px;line-height:1.25rem;">
                           check_circle
                         </span>
                       </div>
@@ -747,7 +747,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
       statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                       <span style="color:#111827">Completed</span>
                       <div class="dashboard-nav common-symbol-filled complete">
-                        <span class="material-symbols-rounded" style="font-size:14px;line-height:1.25rem;">
+                        <span class="material-symbols-rounded outline-filled" style="font-size:14px;line-height:1.25rem;">
                           check_circle
                         </span>
                       </div>
