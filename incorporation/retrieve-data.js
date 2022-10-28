@@ -1,6 +1,7 @@
 let data = sessionStorage.getItem("incorporation-data");
 data = JSON.parse(data);
 if (
+  data.status == "Submitted" ||
   data.status == "Paid" ||
   data.status == "KYC Complete" ||
   data.status == "Incorporating" ||
