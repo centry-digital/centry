@@ -331,7 +331,10 @@ function validateInput() {
   }
   let flag_12 = false;
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
-    if (regexEmail.test(incorporationSummary.directors[dirNo].email) && dirEmailValidity) {
+    if (
+      regexEmail.test(incorporationSummary.directors[dirNo].email) &&
+      dirEmailValidity
+    ) {
       flag_12 = true;
     } else {
       flag_12 = false;
@@ -381,7 +384,10 @@ function validateInput() {
       }
       flag_16 = true;
       flag_17 = false;
-      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
+      if (
+        regexEmail.test(incorporationSummary.shareholders[shNo].email) &&
+        shEmailValidity
+      ) {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -436,7 +442,10 @@ function validateInput() {
         break;
       }
       flag_17 = false;
-      if (regexEmail.test(incorporationSummary.shareholders[shNo].email) && shEmailValidity) {
+      if (
+        regexEmail.test(incorporationSummary.shareholders[shNo].email) &&
+        shEmailValidity
+      ) {
         flag_17 = true;
       } else {
         flag_17 = false;
@@ -616,7 +625,9 @@ document
   .querySelector('[data-incorporation-data="business-address-state"]')
   .removeEventListener("keyup", validateField);
 function addEventDirectorCountry() {
-  for (let countrySelect of document.querySelectorAll('[data-incorporation-data="director-country"]')) {
+  for (let countrySelect of document.querySelectorAll(
+    '[data-incorporation-data="director-country"]'
+  )) {
     countrySelect.addEventListener("change", validateField);
   }
 }
@@ -628,7 +639,8 @@ function validateField(e) {
   if (
     (e.target.getAttribute("data-incorporation-data") == "office-number" ||
       e.target.getAttribute("data-incorporation-data") == "director-phone" ||
-      e.target.getAttribute("data-incorporation-data") == "shareholder-phone") &&
+      e.target.getAttribute("data-incorporation-data") ==
+        "shareholder-phone") &&
     !regexPhone.test(e.target.value)
   ) {
     errorDisplay(e);
@@ -640,7 +652,8 @@ function validateField(e) {
   } else if (
     (e.target.getAttribute("data-incorporation-data") == "company-email" ||
       e.target.getAttribute("data-incorporation-data") == "director-email" ||
-      e.target.getAttribute("data-incorporation-data") == "shareholder-email") &&
+      e.target.getAttribute("data-incorporation-data") ==
+        "shareholder-email") &&
     !regexEmail.test(e.target.value)
   ) {
     errorDisplay(e);
@@ -655,16 +668,25 @@ function validateField(e) {
   } else if (e.target.value == "") {
     errorDisplay(e);
     // e.target.classList.add("invalid-field");
-  } else if (e.target.getAttribute("data-incorporation-data") == "director-email") {
-    let dirEmailFields = document.querySelectorAll('[data-incorporation-data="director-email"]')
-    let dirEmail = incorporationSummary.directors.map(director => director.email);
-    let arrEmailDuplicate = []
-    dirEmail.forEach((email,index) => {
-      if (e.target.value == email && e.target.getAttribute("director-email-input") != index) {
-        arrEmailDuplicate.push(index)
-        arrEmailDuplicate.push(e.target.getAttribute("director-email-input"))
+  } else if (
+    e.target.getAttribute("data-incorporation-data") == "director-email"
+  ) {
+    let dirEmailFields = document.querySelectorAll(
+      '[data-incorporation-data="director-email"]'
+    );
+    let dirEmail = incorporationSummary.directors.map(
+      (director) => director.email
+    );
+    let arrEmailDuplicate = [];
+    dirEmail.forEach((email, index) => {
+      if (
+        e.target.value == email &&
+        e.target.getAttribute("director-email-input") != index
+      ) {
+        arrEmailDuplicate.push(index);
+        arrEmailDuplicate.push(e.target.getAttribute("director-email-input"));
       }
-    })
+    });
     if (arrEmailDuplicate.length > 0) {
       document.getElementById("director-email-error").classList.remove("hide");
       dirEmailValidity = false;
@@ -672,15 +694,17 @@ function validateField(e) {
       document.getElementById("director-email-error").classList.add("hide");
       dirEmailValidity = true;
     }
-    dirEmailFields.forEach(field => {
+    dirEmailFields.forEach((field) => {
       field.classList.remove("invalid-field");
-      field.parentElement.querySelector(".html-embed-56").classList.add('hide')
-    })
-    arrEmailDuplicate.forEach(i => {
+      field.parentElement.querySelector(".html-embed-56").classList.add("hide");
+    });
+    arrEmailDuplicate.forEach((i) => {
       dirEmailFields[i].classList.add("invalid-field");
-      dirEmailFields[i].parentElement.querySelector(".html-embed-56").classList.remove('hide')
-    })
-  // } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
+      dirEmailFields[i].parentElement
+        .querySelector(".html-embed-56")
+        .classList.remove("hide");
+    });
+    // } else if (e.target.getAttribute("data-incorporation-data") == "shareholder-email") {
     // let shEmailFields = document.querySelectorAll('[data-incorporation-data="shareholder-email"]')
     // let shEmail = incorporationSummary.shareholders.map(shareholder => shareholder.email);
     // let arrEmailDuplicate = []
@@ -707,14 +731,18 @@ function validateField(e) {
     // })
   } else {
     e.target.classList.remove("invalid-field");
-    e.target.parentElement.querySelector(".html-embed-56").classList.add('hide')
+    e.target.parentElement
+      .querySelector(".html-embed-56")
+      .classList.add("hide");
   }
   validateInput();
 }
 
 function errorDisplay(e) {
   e.target.classList.add("invalid-field");
-  e.target.parentElement.querySelector(".html-embed-56").classList.remove('hide')
+  e.target.parentElement
+    .querySelector(".html-embed-56")
+    .classList.remove("hide");
 }
 
 //Summary
@@ -726,67 +754,156 @@ function getSummary() {
   incorporationSummary.shareholders = [];
   document.getElementById("incorporate-summary-directors-wrapper").innerHTML =
     "";
-  document.getElementById("incorporate-summary-shareholders-wrapper").innerHTML = "";
-  incorporationSummary.companyName = document.querySelector('input[data-incorporation-data="company-name"]').value;
-  incorporationSummary.companyNameExplanation = document.querySelector('textarea[data-incorporation-data="company-name-explanation"]').value;
-  incorporationSummary.natureOfBusiness = document.querySelector('textarea[data-incorporation-data="nature-of-business"]').value;
-  incorporationSummary.companyEmail = document.querySelector('input[data-incorporation-data="company-email"]').value;
-  incorporationSummary.officeNumber = document.querySelector('input[data-incorporation-data="office-number"]').value;
-  incorporationSummary.businessAddressLine1 = document.querySelector('input[data-incorporation-data="business-address-1"]').value;
-  incorporationSummary.businessAddressCity = document.querySelector('input[data-incorporation-data="business-address-city"]').value;
-  incorporationSummary.businessAddressPostcode = document.querySelector('input[data-incorporation-data="business-address-postcode"]').value;
-  incorporationSummary.businessAddressState = document.querySelector('select[data-incorporation-data="business-address-state"]').value;
+  document.getElementById(
+    "incorporate-summary-shareholders-wrapper"
+  ).innerHTML = "";
+  incorporationSummary.companyName = document.querySelector(
+    'input[data-incorporation-data="company-name"]'
+  ).value;
+  incorporationSummary.companyNameExplanation = document.querySelector(
+    'textarea[data-incorporation-data="company-name-explanation"]'
+  ).value;
+  incorporationSummary.natureOfBusiness = document.querySelector(
+    'textarea[data-incorporation-data="nature-of-business"]'
+  ).value;
+  incorporationSummary.companyEmail = document.querySelector(
+    'input[data-incorporation-data="company-email"]'
+  ).value;
+  incorporationSummary.officeNumber = document.querySelector(
+    'input[data-incorporation-data="office-number"]'
+  ).value;
+  incorporationSummary.businessAddressLine1 = document.querySelector(
+    'input[data-incorporation-data="business-address-1"]'
+  ).value;
+  incorporationSummary.businessAddressCity = document.querySelector(
+    'input[data-incorporation-data="business-address-city"]'
+  ).value;
+  incorporationSummary.businessAddressPostcode = document.querySelector(
+    'input[data-incorporation-data="business-address-postcode"]'
+  ).value;
+  incorporationSummary.businessAddressState = document.querySelector(
+    'select[data-incorporation-data="business-address-state"]'
+  ).value;
   incorporationSummary.businessAddressCountry = "Malaysia";
-  incorporationSummary.numberOfDirectors = document.querySelectorAll('[data-incorporation-data="director"]').length;
-  incorporationSummary.directorFNames = document.querySelectorAll('input[data-incorporation-data="director-fname"]');
-  incorporationSummary.directorLNames = document.querySelectorAll('input[data-incorporation-data="director-lname"]');
-  incorporationSummary.directorNames = document.querySelectorAll('input[data-incorporation-data="director-name"]');
-  incorporationSummary.directorEmails = document.querySelectorAll('input[data-incorporation-data="director-email"]');
-  incorporationSummary.directorPhones = document.querySelectorAll('input[data-incorporation-data="director-phone"]');
-  incorporationSummary.directorCountries = document.querySelectorAll('select[data-incorporation-data="director-country"]');
+  incorporationSummary.numberOfDirectors = document.querySelectorAll(
+    '[data-incorporation-data="director"]'
+  ).length;
+  incorporationSummary.directorFNames = document.querySelectorAll(
+    'input[data-incorporation-data="director-fname"]'
+  );
+  incorporationSummary.directorLNames = document.querySelectorAll(
+    'input[data-incorporation-data="director-lname"]'
+  );
+  incorporationSummary.directorNames = document.querySelectorAll(
+    'input[data-incorporation-data="director-name"]'
+  );
+  incorporationSummary.directorEmails = document.querySelectorAll(
+    'input[data-incorporation-data="director-email"]'
+  );
+  incorporationSummary.directorPhones = document.querySelectorAll(
+    'input[data-incorporation-data="director-phone"]'
+  );
+  incorporationSummary.directorCountries = document.querySelectorAll(
+    'select[data-incorporation-data="director-country"]'
+  );
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
     incorporationSummary.directors.push({});
-    incorporationSummary.directors[dirNo].fname = incorporationSummary.directorFNames[dirNo].value;
-    incorporationSummary.directors[dirNo].lname = incorporationSummary.directorLNames[dirNo].value;
-    incorporationSummary.directors[dirNo].name = incorporationSummary.directorNames[dirNo].value;
-    incorporationSummary.directors[dirNo].email = incorporationSummary.directorEmails[dirNo].value;
-    incorporationSummary.directors[dirNo].phone = incorporationSummary.directorPhones[dirNo].value;
-    incorporationSummary.directors[dirNo].country = incorporationSummary.directorCountries[dirNo].value;
+    incorporationSummary.directors[dirNo].fname =
+      incorporationSummary.directorFNames[dirNo].value;
+    incorporationSummary.directors[dirNo].lname =
+      incorporationSummary.directorLNames[dirNo].value;
+    incorporationSummary.directors[dirNo].name =
+      incorporationSummary.directorNames[dirNo].value;
+    incorporationSummary.directors[dirNo].email =
+      incorporationSummary.directorEmails[dirNo].value;
+    incorporationSummary.directors[dirNo].phone =
+      incorporationSummary.directorPhones[dirNo].value;
+    incorporationSummary.directors[dirNo].country =
+      incorporationSummary.directorCountries[dirNo].value;
   }
-  incorporationSummary.numberOfShareholders = document.querySelectorAll('[data-incorporation-data="shareholder"]').length;
-  incorporationSummary.shareholderType = document.querySelectorAll('input[data-incorporation-data="shareholder-type-hidden"]');
-  incorporationSummary.shareholderFNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-fname"]');
-  incorporationSummary.shareholderLNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-lname"]');
-  incorporationSummary.shareholderNamesInd = document.querySelectorAll('input[data-incorporation-data="individual-shareholder-name"]');
-  incorporationSummary.shareholderNamesCorp = document.querySelectorAll('input[data-incorporation-data="corporate-shareholder-name"]');
-  incorporationSummary.shareholderFNamesRep = document.querySelectorAll('input[data-incorporation-data="corporate-representative-fname"]');
-  incorporationSummary.shareholderLNamesRep = document.querySelectorAll('input[data-incorporation-data="corporate-representative-lname"]');
-  incorporationSummary.shareholderReps = document.querySelectorAll('input[data-incorporation-data="corporate-representative-name"]');
-  incorporationSummary.shareholderEmails = document.querySelectorAll('input[data-incorporation-data="shareholder-email"]');
-  incorporationSummary.shareholderPhones = document.querySelectorAll('input[data-incorporation-data="shareholder-phone"]');
-  incorporationSummary.shareholderShares = document.querySelectorAll('input[data-incorporation-data="number-of-shares"]');
+  incorporationSummary.numberOfShareholders = document.querySelectorAll(
+    '[data-incorporation-data="shareholder"]'
+  ).length;
+  incorporationSummary.shareholderType = document.querySelectorAll(
+    'input[data-incorporation-data="shareholder-type-hidden"]'
+  );
+  incorporationSummary.shareholderFNamesInd = document.querySelectorAll(
+    'input[data-incorporation-data="individual-shareholder-fname"]'
+  );
+  incorporationSummary.shareholderLNamesInd = document.querySelectorAll(
+    'input[data-incorporation-data="individual-shareholder-lname"]'
+  );
+  incorporationSummary.shareholderNamesInd = document.querySelectorAll(
+    'input[data-incorporation-data="individual-shareholder-name"]'
+  );
+  incorporationSummary.shareholderNamesCorp = document.querySelectorAll(
+    'input[data-incorporation-data="corporate-shareholder-name"]'
+  );
+  incorporationSummary.shareholderFNamesRep = document.querySelectorAll(
+    'input[data-incorporation-data="corporate-representative-fname"]'
+  );
+  incorporationSummary.shareholderLNamesRep = document.querySelectorAll(
+    'input[data-incorporation-data="corporate-representative-lname"]'
+  );
+  incorporationSummary.shareholderReps = document.querySelectorAll(
+    'input[data-incorporation-data="corporate-representative-name"]'
+  );
+  incorporationSummary.shareholderEmails = document.querySelectorAll(
+    'input[data-incorporation-data="shareholder-email"]'
+  );
+  incorporationSummary.shareholderPhones = document.querySelectorAll(
+    'input[data-incorporation-data="shareholder-phone"]'
+  );
+  incorporationSummary.shareholderShares = document.querySelectorAll(
+    'input[data-incorporation-data="number-of-shares"]'
+  );
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     incorporationSummary.shareholders.push({});
-    incorporationSummary.shareholders[shNo].type = incorporationSummary.shareholderType[shNo].value;
-    incorporationSummary.shareholderNamesInd[shNo].fname = incorporationSummary.shareholderFNamesInd[shNo].value;
-    incorporationSummary.shareholderNamesInd[shNo].lname = incorporationSummary.shareholderLNamesInd[shNo].value;
-    incorporationSummary.shareholderNamesInd[shNo].name = incorporationSummary.shareholderNamesInd[shNo].value;
-    incorporationSummary.shareholderNamesCorp[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].value;
-    incorporationSummary.shareholderReps[shNo].fname = incorporationSummary.shareholderFNamesRep[shNo].value;
-    incorporationSummary.shareholderReps[shNo].lname = incorporationSummary.shareholderLNamesRep[shNo].value;
-    incorporationSummary.shareholders[shNo].rep = incorporationSummary.shareholderReps[shNo].value;
-    incorporationSummary.shareholders[shNo].email = incorporationSummary.shareholderEmails[shNo].value;
-    incorporationSummary.shareholders[shNo].phone = incorporationSummary.shareholderPhones[shNo].value;
-    incorporationSummary.shareholders[shNo].shares = incorporationSummary.shareholderShares[shNo].value;
+    incorporationSummary.shareholders[shNo].type =
+      incorporationSummary.shareholderType[shNo].value;
+    incorporationSummary.shareholderNamesInd[shNo].fname =
+      incorporationSummary.shareholderFNamesInd[shNo].value;
+    incorporationSummary.shareholderNamesInd[shNo].lname =
+      incorporationSummary.shareholderLNamesInd[shNo].value;
+    incorporationSummary.shareholderNamesInd[shNo].name =
+      incorporationSummary.shareholderNamesInd[shNo].value;
+    incorporationSummary.shareholderNamesCorp[shNo].name =
+      incorporationSummary.shareholderNamesCorp[shNo].value;
+    incorporationSummary.shareholderReps[shNo].fname =
+      incorporationSummary.shareholderFNamesRep[shNo].value;
+    incorporationSummary.shareholderReps[shNo].lname =
+      incorporationSummary.shareholderLNamesRep[shNo].value;
+    incorporationSummary.shareholders[shNo].rep =
+      incorporationSummary.shareholderReps[shNo].value;
+    incorporationSummary.shareholders[shNo].email =
+      incorporationSummary.shareholderEmails[shNo].value;
+    incorporationSummary.shareholders[shNo].phone =
+      incorporationSummary.shareholderPhones[shNo].value;
+    incorporationSummary.shareholders[shNo].shares =
+      incorporationSummary.shareholderShares[shNo].value;
   }
 
   // Fill in summary section
-  document.getElementById("incorporate-review-name").innerText = incorporationSummary.companyName || "-";
-  document.getElementById("incorporate-review-name-explanation").innerText = incorporationSummary.companyNameExplanation || "-";
-  if (incorporationSummary.businessAddressLine1 == "" && incorporationSummary.businessAddressPostcode == "" && incorporationSummary.businessAddressCity == "") {
-    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.classList.add("hide");
+  document.getElementById("incorporate-review-name").innerText =
+    incorporationSummary.companyName || "-";
+  document.getElementById("incorporate-review-name-explanation").innerText =
+    incorporationSummary.companyNameExplanation || "-";
+  if (
+    incorporationSummary.businessAddressLine1 == "" &&
+    incorporationSummary.businessAddressPostcode == "" &&
+    incorporationSummary.businessAddressCity == ""
+  ) {
+    document
+      .getElementById("incorporate-review-business-address")
+      .parentElement.parentElement.parentElement.parentElement.classList.add(
+        "hide"
+      );
   } else {
-    document.getElementById("incorporate-review-business-address").parentElement.parentElement.parentElement.parentElement.classList.remove("hide");
+    document
+      .getElementById("incorporate-review-business-address")
+      .parentElement.parentElement.parentElement.parentElement.classList.remove(
+        "hide"
+      );
     document.getElementById("incorporate-review-business-address").innerText =
       incorporationSummary.businessAddressLine1 +
         ", " +
@@ -798,12 +915,18 @@ function getSummary() {
         ", " +
         incorporationSummary.businessAddressCountry || "-";
   }
-  document.getElementById("incorporate-review-company-email").innerText = incorporationSummary.companyEmail || "-";
-  document.getElementById("incorporate-review-company-phone").innerText = incorporationSummary.officeNumber || "-";
-  document.getElementById("incorporate-review-nature-of-business").innerText = incorporationSummary.natureOfBusiness || "-";
-  document.getElementById("incorporate-review-msic-1").innerText = incorporationSummary.msicCodes[0] || "-";
-  document.getElementById("incorporate-review-msic-2").innerText = incorporationSummary.msicCodes[1] || "-";
-  document.getElementById("incorporate-review-msic-3").innerText = incorporationSummary.msicCodes[2] || "-";
+  document.getElementById("incorporate-review-company-email").innerText =
+    incorporationSummary.companyEmail || "-";
+  document.getElementById("incorporate-review-company-phone").innerText =
+    incorporationSummary.officeNumber || "-";
+  document.getElementById("incorporate-review-nature-of-business").innerText =
+    incorporationSummary.natureOfBusiness || "-";
+  document.getElementById("incorporate-review-msic-1").innerText =
+    incorporationSummary.msicCodes[0] || "-";
+  document.getElementById("incorporate-review-msic-2").innerText =
+    incorporationSummary.msicCodes[1] || "-";
+  document.getElementById("incorporate-review-msic-3").innerText =
+    incorporationSummary.msicCodes[2] || "-";
 
   //Fill in director section
   const summaryDirectorsWrapper = document.getElementById(
@@ -821,17 +944,23 @@ function getSummary() {
     directorGroup_dirNo.classList.add("incorporate-summary-director");
     directorGroupInner_dirNo.classList.add("input-subgroup-100");
     directorName_dirNo.classList.add("field-label");
-    directorName_dirNo.innerText = "Legal name: " + incorporationSummary.directors[dirNo].name;
+    directorName_dirNo.innerText =
+      "Legal name: " + incorporationSummary.directors[dirNo].name;
     directorFName_dirNo.classList.add("summary-text", "text-sm");
-    directorFName_dirNo.innerText = "First name: " + incorporationSummary.directors[dirNo].fname;
+    directorFName_dirNo.innerText =
+      "First name: " + incorporationSummary.directors[dirNo].fname;
     directorLName_dirNo.classList.add("summary-text", "text-sm");
-    directorLName_dirNo.innerText = "Last name: " + incorporationSummary.directors[dirNo].lname;
+    directorLName_dirNo.innerText =
+      "Last name: " + incorporationSummary.directors[dirNo].lname;
     directorEmail_dirNo.classList.add("summary-text", "text-sm");
-    directorEmail_dirNo.innerText = "Email: " + incorporationSummary.directors[dirNo].email;
+    directorEmail_dirNo.innerText =
+      "Email: " + incorporationSummary.directors[dirNo].email;
     directorPhone_dirNo.classList.add("summary-text", "text-sm");
-    directorPhone_dirNo.innerText = "Phone: " + incorporationSummary.directors[dirNo].phone;
+    directorPhone_dirNo.innerText =
+      "Phone: " + incorporationSummary.directors[dirNo].phone;
     directorCountry_dirNo.classList.add("summary-text", "text-sm");
-    directorCountry_dirNo.innerText = "Country of residence: " + incorporationSummary.directors[dirNo].country;
+    directorCountry_dirNo.innerText =
+      "Country of residence: " + incorporationSummary.directors[dirNo].country;
     summaryDirectorsWrapper.appendChild(directorGroup_dirNo);
     directorGroup_dirNo.appendChild(directorGroupInner_dirNo);
     directorGroupInner_dirNo.appendChild(directorName_dirNo);
@@ -868,33 +997,50 @@ function getSummary() {
     shareholderGroupBody_shNo.classList.add("input-wrapper");
     shareholderName_shNo.classList.add("field-label");
     shareholderShares_shNo.classList.add("field-label");
-    shareholderShares_shNo.innerText = "Number of shares: " + incorporationSummary.shareholders[shNo].shares;
+    shareholderShares_shNo.innerText =
+      "Number of shares: " + incorporationSummary.shareholders[shNo].shares;
     if (incorporationSummary.shareholders[shNo].type == "Individual") {
-      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].name;
-      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].name;
-      incorporationSummary.shareholders[shNo].fname = incorporationSummary.shareholderNamesInd[shNo].fname;
+      incorporationSummary.shareholders[shNo].name =
+        incorporationSummary.shareholderNamesInd[shNo].name;
+      shareholderName_shNo.innerText =
+        incorporationSummary.shareholderNamesInd[shNo].name;
+      incorporationSummary.shareholders[shNo].fname =
+        incorporationSummary.shareholderNamesInd[shNo].fname;
       shareholderFName_shNo.classList.add("summary-text", "text-sm");
-      shareholderFName_shNo.innerText = incorporationSummary.shareholderNamesInd[shNo].fname;
-      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesInd[shNo].lname;
+      shareholderFName_shNo.innerText =
+        incorporationSummary.shareholderNamesInd[shNo].fname;
+      incorporationSummary.shareholders[shNo].name =
+        incorporationSummary.shareholderNamesInd[shNo].lname;
       shareholderLName_shNo.classList.add("summary-text", "text-sm");
-      shareholderLName_shNo.innerText = "Last name: " + incorporationSummary.shareholderNamesInd[shNo].lname;
+      shareholderLName_shNo.innerText =
+        "Last name: " + incorporationSummary.shareholderNamesInd[shNo].lname;
     } else if (incorporationSummary.shareholders[shNo].type == "Corporate") {
-      incorporationSummary.shareholders[shNo].name = incorporationSummary.shareholderNamesCorp[shNo].name;
-      shareholderName_shNo.innerText = incorporationSummary.shareholderNamesCorp[shNo].name;
+      incorporationSummary.shareholders[shNo].name =
+        incorporationSummary.shareholderNamesCorp[shNo].name;
+      shareholderName_shNo.innerText =
+        incorporationSummary.shareholderNamesCorp[shNo].name;
       shareholderRep_shNo.classList.add("summary-text", "text-sm");
-      shareholderRep_shNo.innerText = "Representative legal name: " + incorporationSummary.shareholders[shNo].rep;
+      shareholderRep_shNo.innerText =
+        "Representative legal name: " +
+        incorporationSummary.shareholders[shNo].rep;
       shareholderRepFName_shNo.classList.add("summary-text", "text-sm");
-      shareholderRepFName_shNo.innerText = "Representative first name: " + incorporationSummary.shareholderReps[shNo].fname;
+      shareholderRepFName_shNo.innerText =
+        "Representative first name: " +
+        incorporationSummary.shareholderReps[shNo].fname;
       shareholderRepLName_shNo.classList.add("summary-text", "text-sm");
-      shareholderRepLName_shNo.innerText = "Representative last name: " + incorporationSummary.shareholderReps[shNo].lname;
+      shareholderRepLName_shNo.innerText =
+        "Representative last name: " +
+        incorporationSummary.shareholderReps[shNo].lname;
       shareholderGroupBody_shNo.appendChild(shareholderRep_shNo);
       shareholderGroupBody_shNo.appendChild(shareholderRepFName_shNo);
       shareholderGroupBody_shNo.appendChild(shareholderRepLName_shNo);
     }
     shareholderEmail_shNo.classList.add("summary-text", "text-sm");
-    shareholderEmail_shNo.innerText = "Email: " + incorporationSummary.shareholders[shNo].email;
+    shareholderEmail_shNo.innerText =
+      "Email: " + incorporationSummary.shareholders[shNo].email;
     shareholderPhone_shNo.classList.add("summary-text", "text-sm");
-    shareholderPhone_shNo.innerText = "Phone: " + incorporationSummary.shareholders[shNo].phone;
+    shareholderPhone_shNo.innerText =
+      "Phone: " + incorporationSummary.shareholders[shNo].phone;
 
     summaryShareholdersWrapper.appendChild(shareholderGroup_shNo);
     shareholderGroup_shNo.appendChild(shareholderGroupInner_shNo);
@@ -912,21 +1058,36 @@ function prepareSubmissionObject() {
   // Prepare submission object
   incorporationObject = {};
   incorporationObject.data = {};
-  saveState ? (incorporationObject.first_save = false) : (incorporationObject.first_save = true);
-  incorporationObject.unique_id = document.getElementById("incorporation-id").value;
+  saveState
+    ? (incorporationObject.first_save = false)
+    : (incorporationObject.first_save = true);
+  incorporationObject.unique_id =
+    document.getElementById("incorporation-id").value;
   incorporationObject.data.company_name = incorporationSummary.companyName;
-  incorporationObject.data.name_explanation = incorporationSummary.companyNameExplanation;
-  incorporationObject.data.nature_of_business = incorporationSummary.natureOfBusiness;
+  incorporationObject.data.name_explanation =
+    incorporationSummary.companyNameExplanation;
+  incorporationObject.data.nature_of_business =
+    incorporationSummary.natureOfBusiness;
   incorporationObject.data.msic_codes = [];
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[0] || "-");
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[1] || "-");
-  incorporationObject.data.msic_codes.push(incorporationSummary.msicCodes[2] || "-");
+  incorporationObject.data.msic_codes.push(
+    incorporationSummary.msicCodes[0] || "-"
+  );
+  incorporationObject.data.msic_codes.push(
+    incorporationSummary.msicCodes[1] || "-"
+  );
+  incorporationObject.data.msic_codes.push(
+    incorporationSummary.msicCodes[2] || "-"
+  );
   incorporationObject.data.company_email = incorporationSummary.companyEmail;
   incorporationObject.data.company_phone = incorporationSummary.officeNumber;
-  incorporationObject.data.company_address = incorporationSummary.businessAddressLine1;
-  incorporationObject.data.company_city = incorporationSummary.businessAddressCity;
-  incorporationObject.data.company_postcode = incorporationSummary.businessAddressPostcode;
-  incorporationObject.data.company_state = incorporationSummary.businessAddressState;
+  incorporationObject.data.company_address =
+    incorporationSummary.businessAddressLine1;
+  incorporationObject.data.company_city =
+    incorporationSummary.businessAddressCity;
+  incorporationObject.data.company_postcode =
+    incorporationSummary.businessAddressPostcode;
+  incorporationObject.data.company_state =
+    incorporationSummary.businessAddressState;
   incorporationObject.data.company_country = "Malaysia";
   incorporationObject.data.company_directors = [];
   for (let dirNo = 0; dirNo < incorporationSummary.numberOfDirectors; dirNo++) {
@@ -943,13 +1104,20 @@ function prepareSubmissionObject() {
   for (let shNo = 0; shNo < incorporationSummary.numberOfShareholders; shNo++) {
     let shareholder = {};
     shareholder.type = incorporationSummary.shareholders[shNo].type;
-    shareholder.name_individual = incorporationSummary.shareholderNamesInd[shNo].name;
-    shareholder.fname_individual = incorporationSummary.shareholderNamesInd[shNo].fname;
-    shareholder.lname_individual = incorporationSummary.shareholderNamesInd[shNo].lname;
-    shareholder.name_corporate = incorporationSummary.shareholderNamesCorp[shNo].name;
-    shareholder.name_representative = incorporationSummary.shareholders[shNo].rep;
-    shareholder.fname_representative = incorporationSummary.shareholderReps[shNo].fname;
-    shareholder.lname_representative = incorporationSummary.shareholderReps[shNo].lname;
+    shareholder.name_individual =
+      incorporationSummary.shareholderNamesInd[shNo].name;
+    shareholder.fname_individual =
+      incorporationSummary.shareholderNamesInd[shNo].fname;
+    shareholder.lname_individual =
+      incorporationSummary.shareholderNamesInd[shNo].lname;
+    shareholder.name_corporate =
+      incorporationSummary.shareholderNamesCorp[shNo].name;
+    shareholder.name_representative =
+      incorporationSummary.shareholders[shNo].rep;
+    shareholder.fname_representative =
+      incorporationSummary.shareholderReps[shNo].fname;
+    shareholder.lname_representative =
+      incorporationSummary.shareholderReps[shNo].lname;
     shareholder.email = incorporationSummary.shareholders[shNo].email;
     shareholder.phone = incorporationSummary.shareholders[shNo].phone;
     shareholder.shares = incorporationSummary.shareholders[shNo].shares;
@@ -960,30 +1128,38 @@ function prepareSubmissionObject() {
   incorporationObject.data.tc_accepted = tc_accepted;
 }
 
-// function submitIncorporation() {
-//   window.addEventListener("beforeunload", quitPrompt);
-//   incNextButton.innerText = "Preparing payment page...";
-//   incorporationLoading.classList.remove("hide");
+function submitIncorporation() {
+  window.addEventListener("beforeunload", quitPrompt);
+  incNextButton.innerText = "Preparing payment page...";
+  incorporationLoading.classList.remove("hide");
 
-//   prepareSubmissionObject();
-//   incorporationObject.status = "Submitted";
+  prepareSubmissionObject();
+  incorporationObject.status = "Submitted";
 
-//   fetch(apiUrl + "incorporation/new_incorporation", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(incorporationObject),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // console.log(data)
-//       window.location.href = data._session.payment_link;
-//     })
-//     .catch((error) => {
-//       console.error("Error: ", error);
-//     });
-// }
+  fetch(apiUrl + "incorporation/new_incorporation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(incorporationObject),
+  })
+    .then((response) => (res = response.json()))
+    .then((data) => {
+      if ("payload" in data) {
+        if (data.payload.status != "Draft") {
+          confirm(
+            "Your company's incorporation status is no longer in draft. Redirecting you back to dashboard"
+          );
+          window.location.href = data.payload.redirect_url;
+        }
+      } else if ("_session" in data && "payment_link" in data._session) {
+        window.location.href = data._session.payment_link;
+      }
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+}
 
 // Slider to save draft
 let saveSliderBtn = document.getElementById("save-slider-button");
@@ -1078,8 +1254,12 @@ async function saveDraft_new() {
       saveBtn1.innerText = "Saved";
       document.getElementById("w-tabs-1-data-w-tab-1").click();
       if (saveState) {
-        document.querySelector('[data-incorporation-data="nav-email"]').innerText = incorporationObject.email_save;
-        document.getElementById("incorporation-record-box").classList.remove("hide");
+        document.querySelector(
+          '[data-incorporation-data="nav-email"]'
+        ).innerText = incorporationObject.email_save;
+        document
+          .getElementById("incorporation-record-box")
+          .classList.remove("hide");
       }
     }
   } catch (error) {
