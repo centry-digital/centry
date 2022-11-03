@@ -960,30 +960,30 @@ function prepareSubmissionObject() {
   incorporationObject.data.tc_accepted = tc_accepted;
 }
 
-function submitIncorporation() {
-  window.addEventListener("beforeunload", quitPrompt);
-  incNextButton.innerText = "Preparing payment page...";
-  incorporationLoading.classList.remove("hide");
+// function submitIncorporation() {
+//   window.addEventListener("beforeunload", quitPrompt);
+//   incNextButton.innerText = "Preparing payment page...";
+//   incorporationLoading.classList.remove("hide");
 
-  prepareSubmissionObject();
-  incorporationObject.status = "Submitted";
+//   prepareSubmissionObject();
+//   incorporationObject.status = "Submitted";
 
-  fetch(apiUrl + "incorporation/new_incorporation", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(incorporationObject),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data)
-      window.location.href = data._session.payment_link;
-    })
-    .catch((error) => {
-      console.error("Error: ", error);
-    });
-}
+//   fetch(apiUrl + "incorporation/new_incorporation", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(incorporationObject),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // console.log(data)
+//       window.location.href = data._session.payment_link;
+//     })
+//     .catch((error) => {
+//       console.error("Error: ", error);
+//     });
+// }
 
 // Slider to save draft
 let saveSliderBtn = document.getElementById("save-slider-button");
