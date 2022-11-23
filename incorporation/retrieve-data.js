@@ -1,4 +1,4 @@
-let data = sessionStorage.getItem("incorporation-data");
+data = sessionStorage.getItem("incorporation-data");
 data = JSON.parse(data);
 if (
   data.status == "Submitted" ||
