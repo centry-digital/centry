@@ -4,6 +4,7 @@ function quitPrompt(event) {
   return "";
 }
 
+let data;
 let activeTabId = "w-tabs-0-data-w-tab-0";
 let currentSideNav, currentSideIcon;
 let nextSideNav, nextSideIcon, nextTab;
@@ -1247,9 +1248,11 @@ async function saveDraft_new() {
       },
       body: JSON.stringify(incorporationObject),
     });
-    let data = await response.json();
+    let data_res = await response.json();
     if (response.ok) {
-      sessionStorage.setItem("incorporation-data", JSON.stringify(data));
+      sessionStorage.setItem("incorporation-data", JSON.stringify(data_res));
+      data.email_save = data_res.email_save;
+      data.unique_id = data_res.unique_id;
       saveState = 1;
       saveBtn1.innerText = "Saved";
       document.getElementById("w-tabs-1-data-w-tab-1").click();
