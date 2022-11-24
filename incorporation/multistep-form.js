@@ -4,7 +4,7 @@ function quitPrompt(event) {
   return "";
 }
 
-let data;
+let data = {};
 let activeTabId = "w-tabs-0-data-w-tab-0";
 let currentSideNav, currentSideIcon;
 let nextSideNav, nextSideIcon, nextTab;
@@ -1145,16 +1145,16 @@ function submitIncorporation() {
     body: JSON.stringify(incorporationObject),
   })
     .then((response) => (res = response.json()))
-    .then((data) => {
-      if ("payload" in data) {
-        if (data.payload.status != "Draft") {
+    .then((data_res) => {
+      if ("payload" in data_res) {
+        if (data_res.payload.status != "Draft") {
           confirm(
             "Your company's incorporation status is no longer in draft. Redirecting you back to dashboard"
           );
-          window.location.href = data.payload.redirect_url;
+          window.location.href = data_res.payload.redirect_url;
         }
-      } else if ("_session" in data && "payment_link" in data._session) {
-        window.location.href = data._session.payment_link;
+      } else if ("_session" in data_res && "payment_link" in data_res._session) {
+        window.location.href = data_res._session.payment_link;
       }
     })
     .catch((error) => {
