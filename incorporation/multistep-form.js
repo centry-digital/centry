@@ -1241,7 +1241,7 @@ async function saveDraft_new() {
   incorporationObject.email_save = emailSaveField.value;
 
   try {
-    let response = await fetch(apiUrl + "incorporation/save_draft", {
+    let response = await fetch(apiUrl + "incorporation/draft/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1276,7 +1276,7 @@ async function saveDraft_existing() {
   incorporationObject.status = "Draft";
 
   try {
-    let response = await fetch(apiUrl + "incorporation/save_draft", {
+    let response = await fetch(apiUrl + "incorporation/draft/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
