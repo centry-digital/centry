@@ -252,6 +252,11 @@ let tab1_validation = false;
 let tab2_validation = false;
 let tab3_validation = false;
 let tab4_validation = false;
+let iconNav0 = document.getElementById("sidenav-heading-icon-0");
+let iconNav1 = document.getElementById("sidenav-heading-icon-1");
+let iconNav2 = document.getElementById("sidenav-heading-icon-2");
+let iconNav3 = document.getElementById("sidenav-heading-icon-3");
+let iconNav4 = document.getElementById("sidenav-heading-icon-4");
 let icon0 = document.getElementById("sidenav-icon-0");
 let icon1 = document.getElementById("sidenav-icon-1");
 let icon2 = document.getElementById("sidenav-icon-2");
@@ -508,30 +513,38 @@ function validateInput() {
   tab0_validation = flag_1 && flag_2;
   if (tab0_validation) {
     icon0.classList.add("complete");
+    iconNav0.classList.add("complete");
   } else {
     icon0.classList.remove("complete");
+    iconNav0.classList.remove("complete");
   }
 
   tab1_validation = flag_3 && flag_4;
   if (tab1_validation) {
     icon1.classList.add("complete");
+    iconNav1.classList.add("complete");
   } else {
     icon1.classList.remove("complete");
+    iconNav1.classList.remove("complete");
   }
 
   tab2_validation = flag_5 && flag_6 && flag_7 && flag_8 && flag_9 && flag_10;
   if (tab2_validation) {
     icon2.classList.add("complete");
+    iconNav2.classList.add("complete");
   } else {
     icon2.classList.remove("complete");
+    iconNav2.classList.remove("complete");
   }
 
   tab3_validation =
     flag_20 && flag_21 && flag_11 && flag_12 && flag_13 && flag_14;
   if (tab3_validation) {
     icon3.classList.add("complete");
+    iconNav3.classList.add("complete");
   } else {
     icon3.classList.remove("complete");
+    iconNav3.classList.remove("complete");
   }
 
   !flag_14
@@ -542,8 +555,10 @@ function validateInput() {
     flag_22 && flag_23 && flag_15 && flag_16 && flag_17 && flag_18 && flag_19;
   if (tab4_validation) {
     icon4.classList.add("complete");
+    iconNav4.classList.add("complete");
   } else {
     icon4.classList.remove("complete");
+    iconNav4.classList.remove("complete");
   }
 
   // console.log(
