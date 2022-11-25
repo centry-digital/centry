@@ -1257,6 +1257,7 @@ async function saveDraft_new() {
       saveBtn1.innerText = "Saved";
       document.getElementById("w-tabs-1-data-w-tab-1").click();
       if (saveState) {
+        incorporationShareBtn.classList.remove("hide");
         document.querySelector(
           '[data-incorporation-data="nav-email"]'
         ).innerText = incorporationObject.email_save;
