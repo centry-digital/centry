@@ -3,7 +3,7 @@ let type = query.get("session");
 let infoContainer = document.getElementById("info-container");
 let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
-let data;
+let data = {};
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
@@ -187,14 +187,17 @@ async function retrieveIncorporationData(emailSave, uuid) {
         body: JSON.stringify(retrievalObject),
       }
     );
-    data = await response.json();
-    let uniqueId = data.incorporation_data.unique_id;
-    let incorporationData = data.incorporation_data;
-    let usersToVerify = data.users_to_verify;
+    data_res = await response.json();
+    let uniqueId = data_res.incorporation_data.unique_id;
+    let incorporationData = data_res.incorporation_data;
+    let usersToVerify = data_res.users_to_verify;
     if (response.ok) {
+      data.email_save = incorporationData.email_save;
+      data.unique_id = incorporationData.unique_id;
+      incorporationShareBtn.classList.remove("hide");
       sessionStorage.setItem(
         "incorporation-data",
-        JSON.stringify(data.incorporation_data)
+        JSON.stringify(incorporationData)
       );
       unidContainer.innerText = uuid;
       emailContainer.innerText = emailSave;

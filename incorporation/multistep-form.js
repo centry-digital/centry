@@ -71,6 +71,7 @@ function getNextTab() {
 }
 
 function getPrevTab() {
+  window.scrollTo(0,0);
   if (activeTabId == "w-tabs-0-data-w-tab-5") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-5");
