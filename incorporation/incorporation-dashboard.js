@@ -95,11 +95,17 @@ let ssmSuccess = document.getElementById("ssm-success");
 let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Tabs
 let tab1 = document.getElementById("tab-1");
+tab1.addEventListener("click", () => window.scrollTo(0,0));
 let tab2 = document.getElementById("tab-2");
+tab2.addEventListener("click", () => window.scrollTo(0,0));
 let tab3 = document.getElementById("tab-3");
+tab3.addEventListener("click", () => window.scrollTo(0,0));
 let tab4 = document.getElementById("tab-4");
+tab4.addEventListener("click", () => window.scrollTo(0,0));
 let tab5 = document.getElementById("tab-5");
+tab5.addEventListener("click", () => window.scrollTo(0,0));
 let tab6 = document.getElementById("tab-6");
+tab6.addEventListener("click", () => window.scrollTo(0,0));
 // Back to Overview Button
 let backToOverview = document.querySelectorAll(
   '[data-button="back-to-overview"]'
@@ -110,9 +116,6 @@ let toCoDetailsTab = document.querySelectorAll(
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
-for (i = 1; i <= 5; i++ ) {
-  tab[i].addEventListener("click", () => window.scrollTo(0,0));
-}
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
     tab1.click();
