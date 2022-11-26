@@ -110,6 +110,9 @@ let toCoDetailsTab = document.querySelectorAll(
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
+for (i = 1; i <= 5; i++ ) {
+  tab[i].addEventListener("click", () => window.scrollTo(0,0));
+}
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
     tab1.click();
