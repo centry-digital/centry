@@ -130,6 +130,9 @@ let shareholder_phones = document.querySelectorAll(
 let shareholder_shares = document.querySelectorAll(
   '[data-incorporation-data="number-of-shares"]'
 );
+let shareholder_shares_indicator = document.querySelectorAll(
+  '[data-shareholding="number"]'
+);
 for (let i = 0; i < data.company_shareholders.length; i++) {
   if (data.company_shareholders[i].type == "Individual") {
     shareholder_types_ind[i].click();
@@ -152,8 +155,10 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
   shareholder_phones[i].value = data.company_shareholders[i].phone;
   if (data.company_shareholders[i].shares == "") {
     shareholder_shares[i].value = "";
+    shareholder_shares_indicator[i].value = 0
   } else {
     shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
+    shareholder_shares_indicator[i].value = data.company_shareholders[i].shares;
   }
 }
 tc_accepted = data.tc_accepted;
