@@ -175,6 +175,7 @@ let incorporationSideNavUnclickable = document.querySelectorAll(
 for (const tab of incorporationSideNavClickable) {
   tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
+    window.scrollTo(0,0);
     let sidenavTab = tab.getAttribute("data-incorporation-sidenav-clickable");
     let n;
     switch (sidenavTab) {
