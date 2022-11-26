@@ -152,25 +152,25 @@ function addShareholderInputGroup() {
   
   //Setup errorIcons
   errorIconFNameInd.classList.add("html-embed-56", "hide");
-  errorIconFNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconFNameInd.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconLNameInd.classList.add("html-embed-56", "hide");
-  errorIconLNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLNameInd.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconNameInd.classList.add("html-embed-56", "hide");
-  errorIconNameInd.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameInd.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconNameCorp.classList.add("html-embed-56", "hide");
-  errorIconNameCorp.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameCorp.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconFNameCorpRep.classList.add("html-embed-56", "hide");
-  errorIconFNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconFNameCorpRep.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconLNameCorpRep.classList.add("html-embed-56", "hide");
-  errorIconLNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLNameCorpRep.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconNameCorpRep.classList.add("html-embed-56", "hide");
-  errorIconNameCorpRep.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconNameCorpRep.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconEmail.classList.add("html-embed-56", "hide");
-  errorIconEmail.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconEmail.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconPhone.classList.add("html-embed-56", "hide");
-  errorIconPhone.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconPhone.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconShares.classList.add("html-embed-56", "hide");
-  errorIconShares.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconShares.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
 
 
   //Add classes
