@@ -67,17 +67,17 @@ function addDirectorInputGroup() {
 
   //Setup errorIcons
   errorIconFName.classList.add("html-embed-56", "hide");
-  errorIconFName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconFName.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconLName.classList.add("html-embed-56", "hide");
-  errorIconLName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconLName.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconName.classList.add("html-embed-56", "hide");
-  errorIconName.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconName.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconEmail.classList.add("html-embed-56", "hide");
-  errorIconEmail.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconEmail.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconPhone.classList.add("html-embed-56", "hide");
-  errorIconPhone.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconPhone.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
   errorIconCountry.classList.add("html-embed-56", "hide");
-  errorIconCountry.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px;line-height:1.25rem;">error</span>';
+  errorIconCountry.innerHTML = '<span class="material-symbols-rounded symbol-outline" style="font-size:20px;line-height:1.25rem;">error</span>';
 
   //Add classes
   directorInputGroup.classList.add("director-input-group-additional");
