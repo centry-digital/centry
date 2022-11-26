@@ -4,6 +4,7 @@ let infoContainer = document.getElementById("info-container");
 let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
 let data = {};
+let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
@@ -172,6 +173,13 @@ if (query == "") {
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
   }
+}
+
+function errorDisplay(e) {
+  e.target.classList.add("invalid-field");
+  e.target.parentElement
+    .querySelector(".html-embed-56")
+    .classList.remove("hide");
 }
 
 async function retrieveIncorporationData(emailSave, uuid) {
