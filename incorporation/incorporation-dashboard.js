@@ -5,6 +5,7 @@ let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
 let data = {};
 let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
+let apiUrl = "https://api.centry.digital/api:";
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading = document.getElementById("dashboard-loading");
@@ -186,7 +187,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
   let retrievalObject = { email: emailSave };
   try {
     let response = await fetch(
-      `https://api.centry.digital/api:incorporation/incorporation/${uuid}`,
+      `${apiUrl}incorporation/incorporation/${uuid}`,
       {
         method: "POST",
         headers: {
@@ -642,7 +643,7 @@ async function retrievePaymentSession(event, unid) {
   let request_body = {unique_id: unid};
   try {
     let response = await fetch(
-      "https://api.centry.digital/api:incorporation/new_incorporation/retrieve_payment_session",
+      `${apiUrl}incorporation/new_incorporation/retrieve_payment_session`,
       {
         method: "POST",
         headers: {
