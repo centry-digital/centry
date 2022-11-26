@@ -155,10 +155,10 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
   shareholder_phones[i].value = data.company_shareholders[i].phone;
   if (data.company_shareholders[i].shares == "") {
     shareholder_shares[i].value = "";
-    shareholder_shares_indicator[i].value = 0
+    shareholder_shares_indicator[i].innerText = 0
   } else {
     shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
-    shareholder_shares_indicator[i].value = data.company_shareholders[i].shares;
+    shareholder_shares_indicator[i].innerText = data.company_shareholders[i].shares;
   }
 }
 tc_accepted = data.tc_accepted;
