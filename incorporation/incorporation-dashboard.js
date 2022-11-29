@@ -680,6 +680,7 @@ async function retrievePaymentSession(event, unid) {
 
 let indexEkyc = 1
 function fillEkycTable(item) {
+  ekycTable.innerHTML = "";
   let verificationLink, tableContent, tableHeading, roles;
   if (item.role.length > 1) {
     roles = "- " + item.role.join("<br>" + "- ");
@@ -737,7 +738,11 @@ function fillEkycTable(item) {
 
 let indexDeclaration = 1;
 let indexDeclarationLoa = 1;
+
 function fillDeclarationsTable(data, currentStatus, item) {
+  declarationsLoiTable.innerHTML = "";
+  declarationsS201Table.innerHTML = "";
+  declarationsLoaTable.innerHTML = "";
   let statusLoi, statusS201, statusLoa;
   let checkDeclarationLoi = item.declarations.find((declaration) => {return declaration.doc_type == "letter_of_incorporation" && declaration.status != "signed"});
   let checkDeclarationS201 = item.declarations.find((declaration) => {return declaration.doc_type == "s201" && declaration.status != "signed"});
