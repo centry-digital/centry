@@ -1,7 +1,7 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
 let emailSave = query.get("email");
-let uuid = query.get("unid");
+let unid = query.get("unid");
 let infoContainer = document.getElementById("info-container");
 let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
@@ -99,17 +99,17 @@ let ssmSuccess = document.getElementById("ssm-success");
 let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Tabs
 let tab1 = document.getElementById("tab-1");
-tab1.addEventListener("click", tabClick(0));
 let tab2 = document.getElementById("tab-2");
-tab2.addEventListener("click", tabClick(1));
 let tab3 = document.getElementById("tab-3");
-tab3.addEventListener("click", tabClick(2));
 let tab4 = document.getElementById("tab-4");
-tab4.addEventListener("click", tabClick(3));
 let tab5 = document.getElementById("tab-5");
-tab5.addEventListener("click", tabClick(4));
 let tab6 = document.getElementById("tab-6");
-tab6.addEventListener("click", tabClick(5));
+tab1.addEventListener("click", () => tabClick(0), false);
+tab2.addEventListener("click", () => tabClick(1), false);
+tab3.addEventListener("click", () => tabClick(2), false);
+tab4.addEventListener("click", () => tabClick(3), false);
+tab5.addEventListener("click", () => tabClick(4), false);
+tab6.addEventListener("click", () => tabClick(5), false);
 // Back to Overview Button
 let backToOverview = document.querySelectorAll(
   '[data-button="back-to-overview"]'
@@ -177,7 +177,7 @@ if (query == "") {
 } else {
   if (query.get("session") && query.get("email") && query.get("unid")) {
     if (type == "resume") {
-      retrieveIncorporationData(emailSave, uuid);
+      retrieveIncorporationData(emailSave, unid);
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
@@ -185,8 +185,9 @@ if (query == "") {
 }
 
 async function tabClick(tabNo) {
+  tabContents[tabNo].classList.add("hide");
   dashboardLoader[tabNo].classList.remove("hide");
-  await retrieveIncorporationData(emailSave, uuid);
+  await retrieveIncorporationData(emailSave, unid);
   window.scrollTo(0,0);
   dashboardLoader[tabNo].classList.add("hide");
   tabContents[tabNo].classList.remove("hide");
@@ -199,11 +200,11 @@ function errorDisplay(e) {
     .classList.remove("hide");
 }
 
-async function retrieveIncorporationData(emailSave, uuid) {
+async function retrieveIncorporationData(emailSave, unid) {
   let retrievalObject = { email: emailSave };
   try {
     let response = await fetch(
-      `${apiUrl}incorporation/incorporation/${uuid}`,
+      `${apiUrl}incorporation/incorporation/${unid}`,
       {
         method: "POST",
         headers: {
@@ -224,7 +225,7 @@ async function retrieveIncorporationData(emailSave, uuid) {
         "incorporation-data",
         JSON.stringify(incorporationData)
       );
-      unidContainer.innerText = uuid;
+      unidContainer.innerText = unid;
       emailContainer.innerText = emailSave;
       infoContainer.classList.remove("hide");
       populateData(incorporationData, uniqueId, usersToVerify);
