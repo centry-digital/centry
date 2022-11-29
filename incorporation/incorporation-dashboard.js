@@ -76,12 +76,15 @@ let paymentNotReady = document.getElementById("payment-not-ready");
 let paymentLoading = document.getElementById("payment-loading");
 let paymentCompleteBtn = document.getElementById("payment-complete");
 // e-KYC
+let indexEkyc = 1
 let ekycBanner = document.getElementById("ekyc-banner");
 let ekycEmpty = document.getElementById("ekyc-empty");
 let ekycNotEmpty = document.getElementById("ekyc-not-empty");
 let ekycTable = document.getElementById("ekyc-table");
 let ekycCompleteBtn = document.getElementById("ekyc-complete");
 // Declarations
+let indexDeclaration = 1;
+let indexDeclarationLoa = 1;
 let declarationsBanner = document.getElementById("declarations-banner");
 let declarationsEmpty = document.getElementById("declarations-empty");
 let declarationsNotEmpty = document.getElementById("declarations-not-empty");
@@ -337,9 +340,16 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
     let usersToVerify = users_to_verify;
+    indexEkyc = 1
+    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
+    indexDeclaration = 1;
+    indexDeclarationLoa = 1;
+    declarationsLoiTable.innerHTML = "";
+    declarationsS201Table.innerHTML = "";
+    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
@@ -376,9 +386,16 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
+    indexEkyc = 1
+    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
+    indexDeclaration = 1;
+    indexDeclarationLoa = 1;
+    declarationsLoiTable.innerHTML = "";
+    declarationsS201Table.innerHTML = "";
+    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
@@ -420,10 +437,17 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
+    indexEkyc = 1
+    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
+    indexDeclaration = 1;
+    indexDeclarationLoa = 1;
+    declarationsLoiTable.innerHTML = "";
+    declarationsS201Table.innerHTML = "";
+    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
@@ -464,10 +488,17 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
+    indexEkyc = 1
+    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
+    indexDeclaration = 1;
+    indexDeclarationLoa = 1;
+    declarationsLoiTable.innerHTML = "";
+    declarationsS201Table.innerHTML = "";
+    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
@@ -678,9 +709,7 @@ async function retrievePaymentSession(event, unid) {
   }
 }
 
-let indexEkyc = 1
 function fillEkycTable(item) {
-  ekycTable.innerHTML = "";
   let verificationLink, tableContent, tableHeading, roles;
   if (item.role.length > 1) {
     roles = "- " + item.role.join("<br>" + "- ");
@@ -736,13 +765,7 @@ function fillEkycTable(item) {
   indexEkyc++;
 }
 
-let indexDeclaration = 1;
-let indexDeclarationLoa = 1;
-
 function fillDeclarationsTable(data, currentStatus, item) {
-  declarationsLoiTable.innerHTML = "";
-  declarationsS201Table.innerHTML = "";
-  declarationsLoaTable.innerHTML = "";
   let statusLoi, statusS201, statusLoa;
   let checkDeclarationLoi = item.declarations.find((declaration) => {return declaration.doc_type == "letter_of_incorporation" && declaration.status != "signed"});
   let checkDeclarationS201 = item.declarations.find((declaration) => {return declaration.doc_type == "s201" && declaration.status != "signed"});
