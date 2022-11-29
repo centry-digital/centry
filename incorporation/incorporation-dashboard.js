@@ -1,14 +1,18 @@
 let query = new URLSearchParams(window.location.search);
 let type = query.get("session");
+let emailSave = query.get("email");
+let uuid = query.get("unid");
 let infoContainer = document.getElementById("info-container");
 let unidContainer = document.getElementById("unid-container");
 let emailContainer = document.getElementById("email-container");
 let data = {};
 let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let apiUrl = "https://api.centry.digital/api:";
+let dashboardLoader = Array.from(document.querySelectorAll('[data-dashboard="loader"]'));
+let tabContents = Array.from(document.querySelectorAll('[data-dashboard="tab-content"]'));
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
-let dashboardLoading = document.getElementById("dashboard-loading");
+let dashboardLoading0 = document.getElementById("dashboard-loading-0");
 // Overview
 let coName = document.getElementById("company-name-container");
 let loadingBanner = document.getElementById("loading-banner");
@@ -169,17 +173,23 @@ if (query == "") {
   ssmEmpty.classList.remove("hide");
   // Unhide dashboard
   dashboard.classList.remove("hide");
-  dashboardLoading.classList.add("hide");
+  dashboardLoading0.classList.add("hide");
 } else {
   if (query.get("session") && query.get("email") && query.get("unid")) {
     if (type == "resume") {
-      let emailSave = query.get("email");
-      let uuid = query.get("unid");
       retrieveIncorporationData(emailSave, uuid);
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
   }
+}
+
+async function tabClick(tabNo) {
+  dashboardLoader[tabNo].classList.remove("hide");
+  await retrieveIncorporationData(emailSave, uuid);
+  window.scrollTo(0,0);
+  dashboardLoader[tabNo].classList.add("hide");
+  tabContents[tabNo].classList.remove("hide");
 }
 
 function errorDisplay(e) {
@@ -219,13 +229,13 @@ async function retrieveIncorporationData(emailSave, uuid) {
       infoContainer.classList.remove("hide");
       populateData(incorporationData, uniqueId, usersToVerify);
       dashboard.classList.remove("hide");
-      dashboardLoading.classList.add("hide");
+      dashboardLoading0.classList.add("hide");
     } else {
-      dashboardLoading.classList.add("hide");
+      dashboardLoading0.classList.add("hide");
       loadingBanner.classList.remove("hide");
     }
   } catch (err) {
-    dashboardLoading.classList.add("hide");
+    dashboardLoading0.classList.add("hide");
     loadingBanner.classList.remove("hide");
     console.error(err);
   }
