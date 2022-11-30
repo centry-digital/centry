@@ -114,12 +114,8 @@ tab4.addEventListener("click", () => tabClick(3), false);
 tab5.addEventListener("click", () => tabClick(4), false);
 tab6.addEventListener("click", () => tabClick(5), false);
 // Back to Overview Button
-let backToOverview = document.querySelectorAll(
-  '[data-button="back-to-overview"]'
-);
-let toCoDetailsTab = document.querySelectorAll(
-  '[data-button="co-details-tab"]'
-);
+let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
+let toCoDetailsTab = document.querySelectorAll('[data-button="co-details-tab"]');
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
@@ -188,12 +184,16 @@ if (query == "") {
 }
 
 async function tabClick(tabNo) {
-  tabContents[tabNo].classList.add("hide");
-  dashboardLoader[tabNo].classList.remove("hide");
-  await retrieveIncorporationData(emailSave, unid);
+  if (query.get("session") && query.get("email") && query.get("unid")) {
+    if (type == "resume") {
+      tabContents[tabNo].classList.add("hide");
+      dashboardLoader[tabNo].classList.remove("hide");
+      await retrieveIncorporationData(emailSave, unid);
+      dashboardLoader[tabNo].classList.add("hide");
+      tabContents[tabNo].classList.remove("hide");
+    }
+  }
   window.scrollTo(0,0);
-  dashboardLoader[tabNo].classList.add("hide");
-  tabContents[tabNo].classList.remove("hide");
 }
 
 function errorDisplay(e) {
