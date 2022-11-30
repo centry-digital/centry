@@ -189,11 +189,14 @@ async function tabClick(tabNo) {
       tabContents[tabNo].classList.add("hide");
       dashboardLoader[tabNo].classList.remove("hide");
       await retrieveIncorporationData(emailSave, unid);
+      window.scrollTo(0,0);
       dashboardLoader[tabNo].classList.add("hide");
       tabContents[tabNo].classList.remove("hide");
     }
+  } else {
+    window.scrollTo(0,0);
+    tabContents[tabNo].classList.remove("hide");
   }
-  window.scrollTo(0,0);
 }
 
 function errorDisplay(e) {
