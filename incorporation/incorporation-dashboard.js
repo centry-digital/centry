@@ -512,6 +512,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
+    ssmNotEmpty.classList.add("hide");
     ssmSuccessCoName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
     ssmCompleteBtn.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
