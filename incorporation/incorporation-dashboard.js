@@ -295,16 +295,20 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("in-progress");
+    card1.classList.remove("current");
     card2.classList.add("current");
+    card1BtnDraft.classList.add("hide");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
     card2BtnDraft.addEventListener("click", () => tab3.click());
     card2BtnDraft.classList.remove("hide");
     // Company Details
+    coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Payment
+    paymentNotReady.classList.add("hide");
     paymentReady.addEventListener("click", (event) => {
       paymentReady.classList.add("hide");
       paymentLoading.classList.remove("hide");
@@ -328,10 +332,12 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("in-progress");
+    card2.classList.remove("current");
     card3.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
+    card2BtnDraft.classList.add("hide");
     card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
@@ -341,25 +347,30 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     if (allDeclarationsStatusSigned) {
       card4.classList.add("current");
       card4BtnDraft.addEventListener("click", () => tab5.click());
+      card4BtnComplete.classList.add("hide");
       card4BtnDraft.classList.remove("hide");
     } else {
       card4BtnComplete.addEventListener("click", () => tab5.click());
+      card4BtnDraft.classList.add("hide");
       card4BtnComplete.classList.remove("hide");
     }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Payment
+    paymentReady.classList.add("hide");
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
+    ekycEmpty.classList.add("hide");
+    ekycBanner.classList.add("hide");
     let usersToVerify = users_to_verify;
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
+    declarationsEmpty.classList.add("hide");
+    declarationsBanner.classList.add("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
-    // declarationsBanner.classList.remove("hide");
-    // declarationsEmpty.classList.remove("hide");
     // SSM
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
@@ -372,15 +383,17 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("complete");
     p4.classList.add("in-progress");
+    card3.classList.remove("current");
+    card4.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
     card2BtnComplete.addEventListener("click", () => tab3.click());
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
+    card3BtnDraft.classList.add("hide");
     card3BtnComplete.addEventListener("click", () => tab4.click());
     card3BtnComplete.classList.remove("hide");
-    card4.classList.add("current");
     card4BtnLock.classList.add("hide");
     card4BtnDraft.addEventListener("click", () => tab5.click());
     card4BtnDraft.classList.remove("hide");
@@ -405,6 +418,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     statusBanner.classList.remove("notice");
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
+    statusBannerSymbolIncomplete.classList.add("hide");
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerText.innerText =
       "You have completed all the required steps to incorporate your company! Our team is now hard at work making it happen and will let you know once your company has been successfully incorporated.";
@@ -413,6 +427,8 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("complete");
     p4.classList.add("complete");
+    card4.classList.remove("current");
+    card5.classList.add("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
@@ -422,9 +438,9 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     card3BtnComplete.addEventListener("click", () => tab4.click());
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
+    card4BtnDraft.classList.add("hide");
     card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
-    card5.classList.add("current");
     card5BtnLock.classList.add("hide");
     card5BtnDraft.addEventListener("click", () => tab6.click());
     card5BtnDraft.classList.remove("hide");
@@ -443,12 +459,15 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
+    ssmBanner.classList.add("hide");
+    ssmEmpty.classList.add("hide");
     ssmNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Success") {
     // Overview
     statusBanner.classList.remove("notice");
     statusBanner.classList.add("complete");
     statusBannerNumber.innerText = "4";
+    statusBannerSymbolIncomplete.classList.add("hide");
     statusBannerSymbolComplete.classList.remove("hide");
     statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
     statusBannerText.innerText =
@@ -458,6 +477,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p2.classList.add("complete");
     p3.classList.add("complete");
     p4.classList.add("complete");
+    card5.classList.remove("current");
     card1BtnComplete.addEventListener("click", () => tab2.click());
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
@@ -470,6 +490,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     card4BtnComplete.addEventListener("click", () => tab5.click());
     card4BtnComplete.classList.remove("hide");
     card5BtnLock.classList.add("hide");
+    card5BtnDraft.classList.add("hide");
     card5BtnComplete.addEventListener("click", () => tab6.click());
     card5BtnComplete.classList.remove("hide");
     // Company Details
