@@ -254,6 +254,15 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
   users_to_verify.forEach((user)=>user.declarations.forEach((declaration)=>declarationsStatus.push(declaration.status)));
   let allDeclarationsStatusSigned = declarationsStatus.some((status) => status != "signed");
   let currentStatus = incorporation_data.status;
+  // Resetting parameters
+  indexEkyc = 1
+  indexDeclaration = 1;
+  indexDeclarationLoa = 1;
+  ekycTable.innerHTML = "";
+  coDirContainer.innerHTML = "";
+  declarationsLoiTable.innerHTML = "";
+  declarationsS201Table.innerHTML = "";
+  declarationsLoaTable.innerHTML = "";
   if (currentStatus == "Draft") {
     // Overview
     statusBannerNumber.innerText = "0";
@@ -343,16 +352,9 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
     let usersToVerify = users_to_verify;
-    indexEkyc = 1
-    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    indexDeclaration = 1;
-    indexDeclarationLoa = 1;
-    declarationsLoiTable.innerHTML = "";
-    declarationsS201Table.innerHTML = "";
-    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // declarationsBanner.classList.remove("hide");
@@ -389,16 +391,9 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
-    indexEkyc = 1
-    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    indexDeclaration = 1;
-    indexDeclarationLoa = 1;
-    declarationsLoiTable.innerHTML = "";
-    declarationsS201Table.innerHTML = "";
-    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
@@ -440,17 +435,10 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
-    indexEkyc = 1
-    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    indexDeclaration = 1;
-    indexDeclarationLoa = 1;
-    declarationsLoiTable.innerHTML = "";
-    declarationsS201Table.innerHTML = "";
-    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
@@ -491,17 +479,10 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     // e-KYC
     ekycCompleteBtn.classList.remove("hide");
     let usersToVerify = users_to_verify;
-    indexEkyc = 1
-    ekycTable.innerHTML = "";
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    indexDeclaration = 1;
-    indexDeclarationLoa = 1;
-    declarationsLoiTable.innerHTML = "";
-    declarationsS201Table.innerHTML = "";
-    declarationsLoaTable.innerHTML = "";
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
     // SSM
