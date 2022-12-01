@@ -260,6 +260,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
   indexDeclarationLoa = 1;
   ekycTable.innerHTML = "";
   coDirContainer.innerHTML = "";
+  coShContainer.innerHTML = "";
   declarationsLoiTable.innerHTML = "";
   declarationsS201Table.innerHTML = "";
   declarationsLoaTable.innerHTML = "";
