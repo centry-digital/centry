@@ -294,6 +294,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     statusBannerSymbolIncomplete.classList.remove("hide");
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
+    p1.classList.remove("in-progress");
     p2.classList.add("in-progress");
     card1.classList.remove("current");
     card2.classList.add("current");
@@ -331,6 +332,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
+    p2.classList.remove("in-progress");
     p3.classList.add("in-progress");
     card2.classList.remove("current");
     card3.classList.add("current");
@@ -382,6 +384,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
+    p3.classList.remove("in-progress");
     p4.classList.add("in-progress");
     card3.classList.remove("current");
     card4.classList.add("current");
@@ -426,6 +429,7 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p1.classList.add("complete");
     p2.classList.add("complete");
     p3.classList.add("complete");
+    p4.classList.remove("in-progress");
     p4.classList.add("complete");
     card4.classList.remove("current");
     card5.classList.add("current");
