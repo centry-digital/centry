@@ -792,7 +792,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
                     </div>
                   </div>`;
     } else {
-      statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+      statusLoi = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span>`;
     }
     if (item.verified != "false" && checkDeclarationS201 == null) {
       statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
@@ -804,7 +804,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
                       </div>
                     </div>`;
     } else {
-      statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span> & </span><span style="font-weight:500;text-decoration:underline;">access code</span>`;
+      statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span>`;
     }
     if (item.verified != "false" && checkDeclarationLoa == null) {                  
       statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
