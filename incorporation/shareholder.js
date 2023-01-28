@@ -594,7 +594,7 @@ function removeShareholder(el) {
 }
 
 // Shareholder radio buttons
-radioDivs = document.querySelectorAll(".w-radio");
+radioDivs = document.querySelectorAll('[data-shareholder-type]');
 for (const radioDiv of radioDivs) {
   radioDiv.style.cursor = "pointer";
   radioDiv.addEventListener("click", selectRadio);
