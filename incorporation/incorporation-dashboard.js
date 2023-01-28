@@ -69,6 +69,7 @@ let coDirContainer = document.getElementById("company-directors-container");
 let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
+let cosecPlan = document.getElementById("cosec_plan");
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -695,6 +696,11 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     coSh[i].elContainer.appendChild(coSh[i].elEmail);
     coSh[i].elContainer.appendChild(coSh[i].elPhone);
     coShContainer.appendChild(coSh[i].elContainer);
+  }
+  if (incorporation_data.cosec_plan == "all_in") {
+    cosecPlan.innerText = "All-inclusive";
+  } else if (incorporation_data.cosec_plan == "lite") {
+    cosecPlan.innerText = "Lite";
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);

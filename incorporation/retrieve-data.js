@@ -161,6 +161,12 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
     shareholder_shares_indicator[i].innerText = data.company_shareholders[i].shares;
   }
 }
+cosecPlan = data.cosec_plan;
+if (cosecPlan == "all_in") {
+  radioCosecAllIn.click();
+} else if (cosecPlan == "lite") {
+  radioCosecLite.click();
+}
 tc_accepted = data.tc_accepted;
 if (tc_accepted) {
   document.getElementById("tc-acceptance").classList.add("checked");

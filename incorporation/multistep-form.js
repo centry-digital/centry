@@ -16,6 +16,7 @@ let incorporationLoading = document.getElementById("inc-loading");
 let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
+let cosecPlan = "all_in"
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
@@ -1070,6 +1071,9 @@ function getSummary() {
     shareholderGroupBody_shNo.appendChild(shareholderEmail_shNo);
     shareholderGroupBody_shNo.appendChild(shareholderPhone_shNo);
   }
+
+  // record Cosec Plan selection
+  incorporationSummary.cosec_plan = cosecPlan;
 }
 getSummary();
 
@@ -1144,6 +1148,7 @@ function prepareSubmissionObject() {
     shareholder.need_kyc = parseInt(shareholder.shares) >= 250;
     incorporationObject.data.company_shareholders.push(shareholder);
   }
+  incorporationObject.data.cosec_plan = incorporationSummary.cosec_plan;
   incorporationObject.data.tc_accepted = tc_accepted;
 }
 
