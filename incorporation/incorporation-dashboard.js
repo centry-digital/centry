@@ -76,6 +76,10 @@ let paymentReady = document.getElementById("payment-ready");
 let paymentNotReady = document.getElementById("payment-not-ready");
 let paymentLoading = document.getElementById("payment-loading");
 let paymentCompleteBtn = document.getElementById("payment-complete");
+let paymentCosec1 = document.getElementById("payment-cosec-1");
+let paymentCosec2 = document.getElementById("payment-cosec-2");
+let paymentCosecTotal = document.getElementById("payment-cosec-total");
+let paymentTotal = document.getElementById("payment-total");
 // e-KYC
 let indexEkyc = 1
 let ekycBanner = document.getElementById("ekyc-banner");
@@ -699,8 +703,16 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
   }
   if (incorporation_data.cosec_plan == "all_in") {
     cosecPlan.innerText = "All-inclusive";
+    paymentCosec1.innerText = "RM450"
+    paymentCosec2.innerText = "RM450"
+    paymentCosecTotal.innerText = "RM450"
+    paymentTotal.innerText = "RM1,849"
   } else if (incorporation_data.cosec_plan == "lite") {
     cosecPlan.innerText = "Lite";
+    paymentCosec1.innerText = "RM240"
+    paymentCosec2.innerText = "RM240"
+    paymentCosecTotal.innerText = "RM240"
+    paymentTotal.innerText = "RM1,639"
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);
