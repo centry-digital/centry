@@ -33,24 +33,28 @@ incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
+    window.scrollTo(0,0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-0");
     nextSideNav = document.getElementById("inc-sidenav-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
+    window.scrollTo(0,0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-1");
     nextSideNav = document.getElementById("inc-sidenav-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
+    window.scrollTo(0,0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-2");
     nextSideNav = document.getElementById("inc-sidenav-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
+    window.scrollTo(0,0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-3");
     nextSideNav = document.getElementById("inc-sidenav-4");
@@ -66,7 +70,6 @@ function getNextTab() {
   if (activeTabId != "w-tabs-0-data-w-tab-5") {
     currentSideNav.classList.remove("active");
     nextSideNav.classList.add("active");
-    window.scrollTo(0,0);
   }
   updateButtons();
 }
