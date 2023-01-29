@@ -32,7 +32,6 @@ incorporationForm.addEventListener("keypress", function (event) {
 incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
-  window.scrollTo(0,0);
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
     nextTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-0");
@@ -67,6 +66,7 @@ function getNextTab() {
   if (activeTabId != "w-tabs-0-data-w-tab-5") {
     currentSideNav.classList.remove("active");
     nextSideNav.classList.add("active");
+    window.scrollTo(0,0);
   }
   updateButtons();
 }
