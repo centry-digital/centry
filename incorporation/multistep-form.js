@@ -61,6 +61,7 @@ function getNextTab() {
     activeTabId = "w-tabs-0-data-w-tab-4";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
+    window.scrollTo(0,0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-5");
     currentSideNav = document.getElementById("inc-sidenav-4");
     nextSideNav = document.getElementById("inc-sidenav-5");
