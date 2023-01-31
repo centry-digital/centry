@@ -1263,6 +1263,7 @@ function validateSaveEmail(e) {
 
 async function saveDraft_new() {
   saveBtn0.innerText = "Saving...";
+  getSummary();
   prepareSubmissionObject();
   incorporationObject.status = "Draft";
   incorporationObject.email_save = emailSaveField.value;
@@ -1300,6 +1301,7 @@ async function saveDraft_new() {
 
 async function saveDraft_existing() {
   saveBtn1.innerText = "Saving...";
+  getSummary();
   prepareSubmissionObject();
   incorporationObject.status = "Draft";
 
