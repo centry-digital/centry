@@ -1220,8 +1220,6 @@ function saveDraft() {
     box.innerHTML = uniqueCodeValue;
   }
   saveDraft_new();
-  // document.getElementById("w-tabs-1-data-w-tab-1").click();
-  // saveState = 1;
 }
 
 let emailSaveField = document.getElementById("new_save_email");
@@ -1293,6 +1291,7 @@ async function saveDraft_new() {
           .getElementById("incorporation-record-box")
           .classList.remove("hide");
       }
+      document.title = data_res.unique_id + " - Incorporate Your Company Online - Centry";
     }
   } catch (error) {
     console.error(error);
