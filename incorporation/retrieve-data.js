@@ -1,5 +1,6 @@
 data = sessionStorage.getItem("incorporation-data");
 data = JSON.parse(data);
+document.title = data.unique_id + " - Incorporate Your Company Online - Centry"
 if (
   data.status == "Submitted" ||
   data.status == "Paid" ||

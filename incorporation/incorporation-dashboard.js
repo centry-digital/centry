@@ -181,6 +181,7 @@ if (query == "") {
 } else {
   if (query.get("session") && query.get("email") && query.get("unid")) {
     if (type == "resume") {
+      document.title = unid + " - Incorporate Your Company Online - Centry"
       retrieveIncorporationData(emailSave, unid);
     }
   } else {
