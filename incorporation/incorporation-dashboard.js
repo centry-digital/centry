@@ -182,7 +182,7 @@ if (query == "") {
   if (query.get("session") && query.get("email") && query.get("unid")) {
     if (type == "resume") {
       document.title = unid + " - Incorporate Your Company Online - Centry"
-      retrieveIncorporationData(emailSave, unid);
+      retrieveIncorporationData(emailSave, unid, true);
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
@@ -194,7 +194,7 @@ async function tabClick(tabNo) {
     if (type == "resume") {
       tabContents[tabNo].classList.add("hide");
       dashboardLoader[tabNo].classList.remove("hide");
-      await retrieveIncorporationData(emailSave, unid);
+      await retrieveIncorporationData(emailSave, unid, false);
       window.scrollTo(0,0);
       dashboardLoader[tabNo].classList.add("hide");
       tabContents[tabNo].classList.remove("hide");
@@ -212,7 +212,7 @@ function errorDisplay(e) {
     .classList.remove("hide");
 }
 
-async function retrieveIncorporationData(emailSave, unid) {
+async function retrieveIncorporationData(emailSave, unid, pageLoad) {
   let retrievalObject = { email: emailSave };
   try {
     let response = await fetch(
@@ -240,7 +240,7 @@ async function retrieveIncorporationData(emailSave, unid) {
       unidContainer.innerText = unid;
       emailContainer.innerText = emailSave;
       infoContainer.classList.remove("hide");
-      populateData(incorporationData, uniqueId, usersToVerify);
+      populateData(incorporationData, uniqueId, usersToVerify, pageLoad);
       dashboard.classList.remove("hide");
       dashboardLoading0.classList.add("hide");
     } else {
@@ -254,7 +254,7 @@ async function retrieveIncorporationData(emailSave, unid) {
   }
 }
 
-function populateData(incorporation_data, unique_id, users_to_verify) {
+function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) {
   // Adjust aesthetics based on status
   let declarationsStatus = []
   users_to_verify.forEach((user)=>user.declarations.forEach((declaration)=>declarationsStatus.push(declaration.status)));
@@ -277,7 +277,9 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     statusBanner.classList.remove("hide");
     p1.classList.add("in-progress");
     card1.classList.add("current");
-    card1BtnDraft.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnDraft.addEventListener("click", () => tab2.click());
+    }
     card1BtnDraft.classList.remove("hide");
     // Company Details
     coEditBtn.classList.remove("hide");
@@ -305,22 +307,28 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     card1.classList.remove("current");
     card2.classList.add("current");
     card1BtnDraft.classList.add("hide");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnComplete.addEventListener("click", () => tab2.click());
+    }
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnDraft.addEventListener("click", () => tab3.click());
-    card2BtnDraft.classList.remove("hide");
+    if (pageLoad) {
+      card2BtnDraft.addEventListener("click", () => tab3.click());
+    }
+      card2BtnDraft.classList.remove("hide");
     // Company Details
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Payment
     paymentNotReady.classList.add("hide");
-    paymentReady.addEventListener("click", (event) => {
-      paymentReady.classList.add("hide");
-      paymentLoading.classList.remove("hide");
-      retrievePaymentSession(event, unique_id);
-    });
+    if (pageLoad) {
+      paymentReady.addEventListener("click", (event) => {
+        paymentReady.classList.add("hide");
+        paymentLoading.classList.remove("hide");
+        retrievePaymentSession(event, unique_id);
+      });
+    }
     paymentReady.classList.remove("hide");
     // e-KYC
     ekycBanner.classList.remove("hide");
@@ -342,25 +350,33 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p3.classList.add("in-progress");
     card2.classList.remove("current");
     card3.classList.add("current");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnComplete.addEventListener("click", () => tab2.click());
+    }
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
     card2BtnDraft.classList.add("hide");
-    card2BtnComplete.addEventListener("click", () => tab3.click());
+    if (pageLoad) {
+      card2BtnComplete.addEventListener("click", () => tab3.click());
+    }
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnDraft.addEventListener("click", () => tab4.click());
+    if (pageLoad) {
+      card3BtnDraft.addEventListener("click", () => tab4.click());
+    }
     card3BtnDraft.classList.remove("hide");
     card4BtnLock.classList.add("hide");
     if (allDeclarationsStatusSigned) {
       card4.classList.add("current");
-      card4BtnDraft.addEventListener("click", () => tab5.click());
       card4BtnComplete.classList.add("hide");
       card4BtnDraft.classList.remove("hide");
     } else {
-      card4BtnComplete.addEventListener("click", () => tab5.click());
       card4BtnDraft.classList.add("hide");
       card4BtnComplete.classList.remove("hide");
+    }
+    if (pageLoad) {
+      card4BtnDraft.addEventListener("click", () => tab5.click());
+      card4BtnComplete.addEventListener("click", () => tab5.click());
     }
     // Company Details
     coCompleteBtn.classList.remove("hide");
@@ -394,17 +410,25 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p4.classList.add("in-progress");
     card3.classList.remove("current");
     card4.classList.add("current");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnComplete.addEventListener("click", () => tab2.click());
+    }
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnComplete.addEventListener("click", () => tab3.click());
+    if (pageLoad) {
+      card2BtnComplete.addEventListener("click", () => tab3.click());
+    }
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
     card3BtnDraft.classList.add("hide");
-    card3BtnComplete.addEventListener("click", () => tab4.click());
+    if (pageLoad) {
+      card3BtnComplete.addEventListener("click", () => tab4.click());
+    }
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    card4BtnDraft.addEventListener("click", () => tab5.click());
+    if (pageLoad) {
+      card4BtnDraft.addEventListener("click", () => tab5.click());
+    }
     card4BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
@@ -439,20 +463,30 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p4.classList.add("complete");
     card4.classList.remove("current");
     card5.classList.add("current");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnComplete.addEventListener("click", () => tab2.click());
+    }
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnComplete.addEventListener("click", () => tab3.click());
+    if (pageLoad) {
+      card2BtnComplete.addEventListener("click", () => tab3.click());
+    }
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnComplete.addEventListener("click", () => tab4.click());
+    if (pageLoad) {
+      card3BtnComplete.addEventListener("click", () => tab4.click());
+    }
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
     card4BtnDraft.classList.add("hide");
-    card4BtnComplete.addEventListener("click", () => tab5.click());
+    if (pageLoad) {
+      card4BtnComplete.addEventListener("click", () => tab5.click());
+    }
     card4BtnComplete.classList.remove("hide");
     card5BtnLock.classList.add("hide");
-    card5BtnDraft.addEventListener("click", () => tab6.click());
+    if (pageLoad) {
+      card5BtnDraft.addEventListener("click", () => tab6.click());
+    }
     card5BtnDraft.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
@@ -488,20 +522,30 @@ function populateData(incorporation_data, unique_id, users_to_verify) {
     p3.classList.add("complete");
     p4.classList.add("complete");
     card5.classList.remove("current");
-    card1BtnComplete.addEventListener("click", () => tab2.click());
+    if (pageLoad) {
+      card1BtnComplete.addEventListener("click", () => tab2.click());
+    }
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
-    card2BtnComplete.addEventListener("click", () => tab3.click());
+    if (pageLoad) {
+      card2BtnComplete.addEventListener("click", () => tab3.click());
+    }
     card2BtnComplete.classList.remove("hide");
     card3BtnLock.classList.add("hide");
-    card3BtnComplete.addEventListener("click", () => tab4.click());
+    if (pageLoad) {
+      card3BtnComplete.addEventListener("click", () => tab4.click());
+    }
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    card4BtnComplete.addEventListener("click", () => tab5.click());
+    if (pageLoad) {
+      card4BtnComplete.addEventListener("click", () => tab5.click());
+    }
     card4BtnComplete.classList.remove("hide");
     card5BtnLock.classList.add("hide");
     card5BtnDraft.classList.add("hide");
-    card5BtnComplete.addEventListener("click", () => tab6.click());
+    if (pageLoad) {
+      card5BtnComplete.addEventListener("click", () => tab6.click());
+    }
     card5BtnComplete.classList.remove("hide");
     // Company Details
     coCompleteBtn.classList.remove("hide");
