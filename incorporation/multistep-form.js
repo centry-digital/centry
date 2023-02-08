@@ -16,7 +16,8 @@ let incorporationLoading = document.getElementById("inc-loading");
 let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
-let cosecPlan = "all_in"
+let cosecPlan = "lite";
+let openAllianceAccount = true;
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
@@ -1078,6 +1079,7 @@ function getSummary() {
 
   // record Cosec Plan selection
   incorporationSummary.cosec_plan = cosecPlan;
+  incorporationSummary.open_alliance_account = openAllianceAccount;
 }
 getSummary();
 
@@ -1153,6 +1155,7 @@ function prepareSubmissionObject() {
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.cosec_plan = incorporationSummary.cosec_plan;
+  incorporationObject.data.open_alliance_account = incorporationSummary.open_alliance_account;
   incorporationObject.data.tc_accepted = tc_accepted;
 }
 

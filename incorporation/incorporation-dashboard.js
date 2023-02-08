@@ -70,6 +70,8 @@ let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
 let cosecPlan = document.getElementById("cosec_plan");
+let coBtnOptInAlliance = document.getElementById("btn-optin-alliance");
+let coOptedInAlliance = document.getElementById("opted-in-alliance");
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -79,7 +81,9 @@ let paymentCompleteBtn = document.getElementById("payment-complete");
 let paymentCosec1 = document.getElementById("payment-cosec-1");
 let paymentCosec2 = document.getElementById("payment-cosec-2");
 let paymentCosecTotal = document.getElementById("payment-cosec-total");
+let paymentTotalDesc = document.getElementById("payment-total-desc");
 let paymentTotal = document.getElementById("payment-total");
+let paymentCashBack = document.getElementById("payment-cashback");
 // e-KYC
 let indexEkyc = 1
 let ekycBanner = document.getElementById("ekyc-banner");
@@ -183,10 +187,36 @@ if (query == "") {
     if (type == "resume") {
       document.title = unid + " - Incorporate Your Company Online - Centry"
       retrieveIncorporationData(emailSave, unid, true);
+      coBtnOptInAlliance.addEventListener("click", allianceOptIn);
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
   }
+}
+
+async function allianceOptIn() {
+  try {
+    let response = await fetch(
+      `${apiUrl}incorporation/new_incorporation/alliance`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          unid: unid,
+          email_save: emailSave
+        }),
+      }
+    );
+    if (response.ok) {
+      coBtnOptInAlliance.classList.add("hide");
+      coOptedInAlliance.classList.remove("hide");
+      paymentCashBack.classList.remove("hide");
+    }
+    } catch(error) {
+      console.error(error);
+    }
 }
 
 async function tabClick(tabNo) {
@@ -752,12 +782,23 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     paymentCosec2.innerText = "RM450"
     paymentCosecTotal.innerText = "RM450"
     paymentTotal.innerText = "RM1,849"
+    paymentTotalDesc.innerText = "RM1,849"
   } else if (incorporation_data.cosec_plan == "lite") {
     cosecPlan.innerText = "Lite";
-    paymentCosec1.innerText = "RM240"
-    paymentCosec2.innerText = "RM240"
-    paymentCosecTotal.innerText = "RM240"
-    paymentTotal.innerText = "RM1,639"
+    paymentCosec1.innerText = "RM480"
+    paymentCosec2.innerText = "RM480"
+    paymentCosecTotal.innerText = "RM480"
+    paymentTotal.innerText = "RM1,679"
+    paymentTotalDesc.innerText = "RM1,679"
+  }
+  if (incorporation_data.open_alliance) {
+    coBtnOptInAlliance.classList.add("hide");
+    coOptedInAlliance.classList.remove("hide");
+    paymentCashBack.classList.remove("hide");
+  } else {
+    paymentCashBack.classList.add("hide");
+    coOptedInAlliance.classList.add("hide");
+    coBtnOptInAlliance.classList.remove("hide");
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);

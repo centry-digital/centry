@@ -168,6 +168,12 @@ if (cosecPlan == "all_in") {
 } else if (cosecPlan == "lite") {
   radioCosecLite.click();
 }
+openAllianceAccount = data.open_alliance;
+if (openAllianceAccount) {
+  openAllianceAccount.checked = true;
+} else {
+  openAllianceAccount.checked = false;
+}
 tc_accepted = data.tc_accepted;
 if (tc_accepted) {
   document.getElementById("tc-acceptance").classList.add("checked");
