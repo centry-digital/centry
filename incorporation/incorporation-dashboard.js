@@ -31,11 +31,13 @@ let p2 = document.getElementById("progress-2");
 let p3 = document.getElementById("progress-3");
 let p4 = document.getElementById("progress-4");
 let p5 = document.getElementById("progress-5");
+let p6 = document.getElementById("progress-6");
 let card1 = document.getElementById("card-1");
 let card2 = document.getElementById("card-2");
 let card3 = document.getElementById("card-3");
 let card4 = document.getElementById("card-4");
 let card5 = document.getElementById("card-5");
+let card6 = document.getElementById("card-6");
 let card1BtnStart = document.getElementById("start-incorporating-btn");
 let card1BtnDraft = document.getElementById("overview-btn-1-draft");
 let card1BtnComplete = document.getElementById("overview-btn-1-complete");
@@ -51,6 +53,9 @@ let card4BtnDraft = document.getElementById("overview-btn-4-draft");
 let card5BtnComplete = document.getElementById("overview-btn-5-complete");
 let card5BtnLock = document.getElementById("overview-lock-5");
 let card5BtnDraft = document.getElementById("overview-btn-5-draft");
+let card6BtnComplete = document.getElementById("overview-btn-6-complete");
+let card6BtnLock = document.getElementById("overview-lock-6");
+let card6BtnDraft = document.getElementById("overview-btn-6-draft");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
 let coDetails = document.getElementById("inc-details-not-empty");
@@ -70,8 +75,9 @@ let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
 let cosecPlan = document.getElementById("cosec_plan");
-let coBtnOptInAlliance = document.getElementById("btn-optin-alliance");
+let coBankAccBlock = document.getElementById("co-bank-account-block");
 let coOptedInAlliance = document.getElementById("opted-in-alliance");
+let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -102,13 +108,28 @@ let declarationsS201Table = document.getElementById("declarations-s201-table-bod
 let declarationsLoaTable = document.getElementById("declarations-loa-table-body");
 let declarationsLoaContainer = document.getElementById("declarations-loa-container")
 let declarationsCompleteBtn = document.getElementById("declarations-complete");
-// SSM
+// Submission
 let ssmBanner = document.getElementById("ssm-banner");
 let ssmEmpty = document.getElementById("ssm-empty");
 let ssmNotEmpty = document.getElementById("ssm-not-empty");
 let ssmCompleteBtn = document.getElementById("ssm-complete");
 let ssmSuccess = document.getElementById("ssm-success");
 let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
+// Alliance Bank
+let allianceStatus = document.getElementById("alliance-status");
+let allianceCompleteBtn = document.getElementById("bank-account-complete");
+let alliancePending = document.getElementById("bank-account-pending-block");
+let alliancePendingIndicator = document.getElementById("bank-account-pending-indicator");
+let alliancePendingConnector = document.getElementById("bank-account-pending-connector");
+let allianceInProgress = document.getElementById("bank-account-in-progress-block");
+let allianceInProgressIndicator = document.getElementById("bank-account-in-progress-indicator");
+let allianceInProgressConnector = document.getElementById("bank-account-in-progress-connector");
+let allianceQuery = document.getElementById("bank-account-query-block");
+let allianceQueryIndicator = document.getElementById("bank-account-query-indicator");
+let allianceQueryConnector = document.getElementById("bank-account-query-connector");
+let allianceSuccess = document.getElementById("bank-account-success-block");
+let allianceSuccessIndicator = document.getElementById("bank-account-success-indicator");
+
 // Tabs
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -116,18 +137,22 @@ let tab3 = document.getElementById("tab-3");
 let tab4 = document.getElementById("tab-4");
 let tab5 = document.getElementById("tab-5");
 let tab6 = document.getElementById("tab-6");
+let tab7 = document.getElementById("tab-7");
 tab1.addEventListener("click", () => tabClick(0), false);
 tab2.addEventListener("click", () => tabClick(1), false);
 tab3.addEventListener("click", () => tabClick(2), false);
 tab4.addEventListener("click", () => tabClick(3), false);
 tab5.addEventListener("click", () => tabClick(4), false);
 tab6.addEventListener("click", () => tabClick(5), false);
-// Back to Overview Button
+tab7.addEventListener("click", () => tabClick(6), false);
+// Page Link Buttons
 let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
 let toCoDetailsTab = document.querySelectorAll('[data-button="co-details-tab"]');
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
+let optinAlliance = document.querySelectorAll('[data-button="optin-alliance"]');
+// 
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
     tab1.click();
@@ -167,6 +192,9 @@ if (query == "") {
   card1BtnStart.classList.remove("hide");
   // Company Details
   coEmpty.classList.remove("hide");
+  coAllianceTabLink.addEventListener("click", () => {
+    tabClick(6);
+  })
   // Payment
   paymentBanner.classList.remove("hide");
   paymentNotReady.classList.remove("hide");
@@ -187,7 +215,10 @@ if (query == "") {
     if (type == "resume") {
       document.title = unid + " - Incorporate Your Company Online - Centry"
       retrieveIncorporationData(emailSave, unid, true);
-      coBtnOptInAlliance.addEventListener("click", allianceOptIn);
+      coBankAccBlock.classList.remove("hide");
+      for (i = 0; i < optinAlliance.length; i++) {
+        optinAlliance.addEventListener("click", allianceOptIn);
+      }
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
@@ -197,7 +228,7 @@ if (query == "") {
 async function allianceOptIn() {
   try {
     let response = await fetch(
-      `${apiUrl}incorporation/new_incorporation/alliance`,
+      `${apiUrl}incorporation/new_incorporation/alliance_opt_in`,
       {
         method: "POST",
         headers: {
@@ -210,7 +241,9 @@ async function allianceOptIn() {
       }
     );
     if (response.ok) {
-      coBtnOptInAlliance.classList.add("hide");
+      for (i = 0; i < optinAlliance.length; i++) {
+        optinAlliance.classList.add("hide");
+      }
       coOptedInAlliance.classList.remove("hide");
       paymentCashBack.classList.remove("hide");
     }
@@ -259,6 +292,7 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
     let uniqueId = data_res.incorporation_data.unique_id;
     let incorporationData = data_res.incorporation_data;
     let usersToVerify = data_res.users_to_verify;
+    let bankingData = data_res.banking;
     if (response.ok) {
       data.email_save = incorporationData.email_save;
       data.unique_id = incorporationData.unique_id;
@@ -270,7 +304,7 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
       unidContainer.innerText = unid;
       emailContainer.innerText = emailSave;
       infoContainer.classList.remove("hide");
-      populateData(incorporationData, uniqueId, usersToVerify, pageLoad);
+      populateData(incorporationData, uniqueId, usersToVerify, pageLoad, bankingData);
       dashboard.classList.remove("hide");
       dashboardLoading0.classList.add("hide");
     } else {
@@ -284,12 +318,13 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
   }
 }
 
-function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) {
+function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, banking_data) {
   // Adjust aesthetics based on status
   let declarationsStatus = []
   users_to_verify.forEach((user)=>user.declarations.forEach((declaration)=>declarationsStatus.push(declaration.status)));
   let allDeclarationsStatusSigned = declarationsStatus.some((status) => status != "signed");
   let currentStatus = incorporation_data.status;
+  let openAlliance = incorporation_data.open_alliance
   // Resetting parameters
   indexEkyc = 1
   indexDeclaration = 1;
@@ -306,6 +341,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     statusBannerSymbolIncomplete.classList.remove("hide");
     statusBanner.classList.remove("hide");
     p1.classList.add("in-progress");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+    }
     card1.classList.add("current");
     if (pageLoad) {
       card1BtnDraft.addEventListener("click", () => tab2.click());
@@ -334,6 +373,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     p1.classList.add("complete");
     p1.classList.remove("in-progress");
     p2.classList.add("in-progress");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+    }
     card1.classList.remove("current");
     card2.classList.add("current");
     card1BtnDraft.classList.add("hide");
@@ -378,6 +421,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     p2.classList.add("complete");
     p2.classList.remove("in-progress");
     p3.classList.add("in-progress");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+    }
     card2.classList.remove("current");
     card3.classList.add("current");
     if (pageLoad) {
@@ -438,6 +485,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     p3.classList.add("complete");
     p3.classList.remove("in-progress");
     p4.classList.add("in-progress");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+    }
     card3.classList.remove("current");
     card4.classList.add("current");
     if (pageLoad) {
@@ -491,6 +542,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     p3.classList.add("complete");
     p4.classList.remove("in-progress");
     p4.classList.add("complete");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+    }
     card4.classList.remove("current");
     card5.classList.add("current");
     if (pageLoad) {
@@ -552,6 +607,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     p3.classList.add("complete");
     p4.classList.add("complete");
     card5.classList.remove("current");
+    card6.classList.add("current");
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
@@ -577,6 +633,21 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
       card5BtnComplete.addEventListener("click", () => tab6.click());
     }
     card5BtnComplete.classList.remove("hide");
+    if (openAlliance) {
+      p4.style.borderRadius = 0;
+      p5.classList.remove("hide");
+      if (banking_data.status != "success") {
+        p5.classList.add("in-progress");
+        card6BtnLock.classList.add("hide");
+        card6BtnDraft.classList.remove("hide");
+      } else {
+        p5.classList.remove("in-progress");
+        p5.classList.add("complete");
+        card6BtnLock.classList.add("hide");
+        card6BtnDraft.classList.add("hide");
+        card6BtnComplete.classList.remove("hide");
+      }
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -591,11 +662,48 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     declarationsCompleteBtn.classList.remove("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
-    // SSM
+    // Submission
     ssmNotEmpty.classList.add("hide");
     ssmSuccessCoName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
     ssmCompleteBtn.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+      if (banking_data.status == "pending") {
+      } else if (banking_data.status == "meeting_scheduled" || banking_data.status == "in_progress") {
+        alliancePending.classList.add("success");
+        alliancePendingIndicator.classList.add("success");
+        alliancePendingConnector.classList.add("success");
+        allianceInProgress.classList.add("pending");
+        allianceInProgressIndicator.classList.add("pending");
+        allianceInProgressConnector.classList.add("pending");
+      } else if (banking_data.status == "query") {
+        alliancePending.classList.add("success");
+        alliancePendingIndicator.classList.add("success");
+        alliancePendingConnector.classList.add("success");
+        allianceInProgress.classList.add("success");
+        allianceInProgressIndicator.classList.add("success");
+        allianceInProgressConnector.classList.add("success");
+        alliaceQuery.classList.remove("hide");
+        alliaceQuery.classList.add("pending");
+        alliaceQueryIndicator.classList.add("pending");
+        alliaceQueryConnector.classList.add("pending");
+      } else if (banking_data.status == "success") {
+        allianceCompleteBtn.classList.remove("hide");
+        alliancePending.classList.add("success");
+        alliancePendingIndicator.classList.add("success");
+        alliancePendingConnector.classList.add("complete");
+        allianceInProgress.classList.add("success");
+        allianceInProgressIndicator.classList.add("success");
+        allianceInProgressConnector.classList.add("success");
+        alliaceQuery.classList.add("hide");
+        allianceSuccess.classList.add("success");
+        allianceSuccessIndicator.classList.add("success");
+      }
+    } else {
+      allianceStatus.classList.add("hide");
+    }
   }
 
   // Populate Data
@@ -792,13 +900,17 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad) 
     paymentTotalDesc.innerText = "RM1,679"
   }
   if (incorporation_data.open_alliance) {
-    coBtnOptInAlliance.classList.add("hide");
+    for (i = 0; i < optinAlliance.length; i++) {
+      optinAlliance.classList.add("hide");
+    }
     coOptedInAlliance.classList.remove("hide");
     paymentCashBack.classList.remove("hide");
   } else {
     paymentCashBack.classList.add("hide");
     coOptedInAlliance.classList.add("hide");
-    coBtnOptInAlliance.classList.remove("hide");
+    for (i = 0; i < optinAlliance.length; i++) {
+      optinAlliance.classList.remove("hide");
+    }
   }
 }
 // window.history.pushState({}, document.title, window.location.pathname);
