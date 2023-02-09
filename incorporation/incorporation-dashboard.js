@@ -378,9 +378,13 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     // Declarations
     declarationsBanner.classList.remove("hide");
     declarationsEmpty.classList.remove("hide");
-    // SSM
+    // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+    }
   } else if (currentStatus == "Submitted") {
     // Overview
     statusBannerNumber.innerText = "1";
@@ -429,6 +433,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     // SSM
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+    }
   } else if (currentStatus == "Paid") {
     // Overview
     statusBannerNumber.innerText = "2";
@@ -490,9 +498,13 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     declarationsBanner.classList.add("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
-    // SSM
+    // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+    }
   } else if (currentStatus == "KYC Complete") {
     // Overview
     statusBannerNumber.innerText = "3";
@@ -543,9 +555,13 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     // Declarations
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
-    // SSM
+    // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+    }
   } else if (currentStatus == "Incorporating") {
     // Overview
     statusBanner.classList.remove("notice");
@@ -607,10 +623,14 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     declarationsCompleteBtn.classList.remove("hide");
     usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
     declarationsNotEmpty.classList.remove("hide");
-    // SSM
+    // Submission
     ssmBanner.classList.add("hide");
     ssmEmpty.classList.add("hide");
     ssmNotEmpty.classList.remove("hide");
+    // Alliance
+    if (openAlliance) {
+      allianceStatus.classList.remove("hide");
+    }
   } else if (currentStatus == "Success") {
     // Overview
     statusBannerSymbolIncomplete.classList.add("hide");

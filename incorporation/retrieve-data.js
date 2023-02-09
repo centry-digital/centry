@@ -169,6 +169,7 @@ if (cosecPlan == "all_in") {
   radioCosecLite.click();
 }
 openAllianceAccount = data.open_alliance;
+cboxAlliance.checked = openAllianceAccount;
 if (openAllianceAccount) {
   openAllianceAccount.checked = true;
 } else {

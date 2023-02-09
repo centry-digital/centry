@@ -1161,7 +1161,7 @@ function prepareSubmissionObject() {
 
 function submitIncorporation() {
   window.addEventListener("beforeunload", quitPrompt);
-  incNextButton.innerText = "Preparing payment page...";
+  incNextButton.innerText = "Preparing payment page     ";
   incorporationLoading.classList.remove("hide");
 
   prepareSubmissionObject();
