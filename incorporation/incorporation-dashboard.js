@@ -335,6 +335,11 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   declarationsLoiTable.innerHTML = "";
   declarationsS201Table.innerHTML = "";
   declarationsLoaTable.innerHTML = "";
+  if (pageLoad) {
+    card6BtnLock.classList.add("hide");
+    card6BtnDraft.addEventListener("click", () => tab7.click());
+    card6BtnDraft.classList.remove("hide");
+  }
   if (currentStatus == "Draft") {
     // Overview
     statusBannerNumber.innerText = "0";
@@ -657,12 +662,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
       statusBannerNumber2.innerText = "5";
       if (banking_data.status != "success") {
         p5.classList.add("in-progress");
-        card6BtnLock.classList.add("hide");
-        card6BtnDraft.classList.remove("hide");
       } else {
         p5.classList.remove("in-progress");
         p5.classList.add("complete");
-        card6BtnLock.classList.add("hide");
         card6BtnDraft.classList.add("hide");
         card6BtnComplete.classList.remove("hide");
       }
