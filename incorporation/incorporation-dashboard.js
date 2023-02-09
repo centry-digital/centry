@@ -24,6 +24,7 @@ let statusBannerSymbolComplete = document.getElementById(
   "status-banner-symbol-complete"
 );
 let statusBannerNumber = document.getElementById("status-banner-number");
+let statusBannerNumber2 = document.getElementById("status-banner-number-2");
 let statusBannerHeader = document.getElementById("status-banner-header");
 let statusBannerText = document.getElementById("status-banner-text");
 let p1 = document.getElementById("progress-1");
@@ -31,7 +32,6 @@ let p2 = document.getElementById("progress-2");
 let p3 = document.getElementById("progress-3");
 let p4 = document.getElementById("progress-4");
 let p5 = document.getElementById("progress-5");
-let p6 = document.getElementById("progress-6");
 let card1 = document.getElementById("card-1");
 let card2 = document.getElementById("card-2");
 let card3 = document.getElementById("card-3");
@@ -344,6 +344,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
     }
     card1.classList.add("current");
     if (pageLoad) {
@@ -376,6 +377,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
     }
     card1.classList.remove("current");
     card2.classList.add("current");
@@ -424,6 +426,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
     }
     card2.classList.remove("current");
     card3.classList.add("current");
@@ -488,6 +491,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
     }
     card3.classList.remove("current");
     card4.classList.add("current");
@@ -545,6 +549,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
     }
     card4.classList.remove("current");
     card5.classList.add("current");
@@ -593,14 +598,25 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     ssmNotEmpty.classList.remove("hide");
   } else if (currentStatus == "Success") {
     // Overview
-    statusBanner.classList.remove("notice");
-    statusBanner.classList.add("complete");
-    statusBannerNumber.innerText = "4";
     statusBannerSymbolIncomplete.classList.add("hide");
     statusBannerSymbolComplete.classList.remove("hide");
-    statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
-    statusBannerText.innerText =
-      "Hang on tight, our team will reach out to you with the next steps.";
+    if (openAlliance && banking_data.status != "success") {
+      statusBannerNumber.innerText = "4";
+      statusBannerHeader.innerText = `${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+      statusBannerText.innerText = "Hang on tight, our partners from Alliance Bank will reach out to you to get your bank account opened at your doorstep.";
+    } else if (openAlliance && banking_data.status == "success") {
+      statusBannerNumber.innerText = "5";
+      statusBanner.classList.remove("notice");
+      statusBanner.classList.add("complete");
+      statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. & the bank account is fully set up!`;
+      statusBannerText.innerText = "Your company setup is now complete. Go reach for the stars! ⭐️ ";
+    } else {
+      statusBannerNumber.innerText = "4";
+      statusBanner.classList.remove("notice");
+      statusBanner.classList.add("complete");
+      statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
+      statusBannerText.innerText = "Hang on tight, our team will reach out to you with the next steps.";
+    }
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
     p2.classList.add("complete");
@@ -636,6 +652,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       p4.style.borderRadius = 0;
       p5.classList.remove("hide");
+      statusBannerNumber2.innerText = "5";
       if (banking_data.status != "success") {
         p5.classList.add("in-progress");
         card6BtnLock.classList.add("hide");
