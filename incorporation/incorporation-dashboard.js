@@ -713,7 +713,14 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
         alliancePending.classList.add("pending");
         alliancePendingIndicator.classList.add("pending");
         alliancePendingConnector.classList.add("pending");
-      } else if (banking_data.status == "meeting_scheduled" || banking_data.status == "in_progress") {
+      } else if (banking_data.status == "meeting_scheduled") {
+        allianceIncorporating.classList.add("success");
+        allianceIncorporatingIndicator.classList.add("success");
+        allianceIncorporatingConnector.classList.add("success");
+        alliancePending.classList.add("success");
+        alliancePendingIndicator.classList.add("success");
+        alliancePendingConnector.classList.add("success");
+      } else if (banking_data.status == "in_progress") {
         allianceIncorporating.classList.add("success");
         allianceIncorporatingIndicator.classList.add("success");
         allianceIncorporatingConnector.classList.add("success");
