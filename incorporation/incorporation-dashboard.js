@@ -667,7 +667,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (pageLoad) {
       card5BtnComplete.addEventListener("click", () => tab6.click());
     }
-    if (pageLoad && openAlliance && banking_data.status == "success") {
+    if (pageLoad) {
       card6BtnComplete.addEventListener("click", () => tab7.click());
     }
     card5BtnComplete.classList.remove("hide");
