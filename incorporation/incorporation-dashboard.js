@@ -719,10 +719,10 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
         allianceInProgress.classList.add("success");
         allianceInProgressIndicator.classList.add("success");
         allianceInProgressConnector.classList.add("success");
-        alliaceQuery.classList.remove("hide");
-        alliaceQuery.classList.add("pending");
-        alliaceQueryIndicator.classList.add("pending");
-        alliaceQueryConnector.classList.add("pending");
+        allianceQuery.classList.remove("hide");
+        allianceQuery.classList.add("pending");
+        allianceQueryIndicator.classList.add("pending");
+        allianceQueryConnector.classList.add("pending");
       } else if (banking_data.status == "success") {
         allianceCompleteBtn.classList.remove("hide");
         alliancePending.classList.add("success");
@@ -731,7 +731,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
         allianceInProgress.classList.add("success");
         allianceInProgressIndicator.classList.add("success");
         allianceInProgressConnector.classList.add("success");
-        alliaceQuery.classList.add("hide");
+        allianceQuery.classList.add("hide");
         allianceSuccess.classList.add("success");
         allianceSuccessIndicator.classList.add("success");
       }
