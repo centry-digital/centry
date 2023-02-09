@@ -118,6 +118,9 @@ let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Alliance Bank
 let allianceStatus = document.getElementById("alliance-status");
 let allianceCompleteBtn = document.getElementById("bank-account-complete");
+let allianceIncorporating = document.getElementById("bank-account-incorporating-block");
+let allianceIncorporatingIndicator = document.getElementById("bank-account-incorporating-indicator");
+let allianceIncorporatingConnector = document.getElementById("bank-account-incorporating-connector");
 let alliancePending = document.getElementById("bank-account-pending-block");
 let alliancePendingIndicator = document.getElementById("bank-account-pending-indicator");
 let alliancePendingConnector = document.getElementById("bank-account-pending-connector");
@@ -246,6 +249,7 @@ async function allianceOptIn() {
       }
       coOptedInAlliance.classList.remove("hide");
       paymentCashBack.classList.remove("hide");
+      allianceStatus.classList.remove("hide");
     }
     } catch(error) {
       console.error(error);
@@ -692,7 +696,16 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance) {
       allianceStatus.classList.remove("hide");
       if (banking_data.status == "pending") {
+        allianceIncorporating.classList.add("success");
+        allianceIncorporatingIndicator.classList.add("success");
+        allianceIncorporatingConnector.classList.add("success");
+        alliancePending.classList.add("pending");
+        alliancePendingIndicator.classList.add("pending");
+        alliancePendingConnector.classList.add("pending");
       } else if (banking_data.status == "meeting_scheduled" || banking_data.status == "in_progress") {
+        allianceIncorporating.classList.add("success");
+        allianceIncorporatingIndicator.classList.add("success");
+        allianceIncorporatingConnector.classList.add("success");
         alliancePending.classList.add("success");
         alliancePendingIndicator.classList.add("success");
         alliancePendingConnector.classList.add("success");
