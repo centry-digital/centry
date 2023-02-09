@@ -217,7 +217,7 @@ if (query == "") {
       retrieveIncorporationData(emailSave, unid, true);
       coBankAccBlock.classList.remove("hide");
       for (i = 0; i < optinAlliance.length; i++) {
-        optinAlliance.addEventListener("click", allianceOptIn);
+        optinAlliance[i].addEventListener("click", allianceOptIn);
       }
     }
   } else {
@@ -242,7 +242,7 @@ async function allianceOptIn() {
     );
     if (response.ok) {
       for (i = 0; i < optinAlliance.length; i++) {
-        optinAlliance.classList.add("hide");
+        optinAlliance[i].classList.add("hide");
       }
       coOptedInAlliance.classList.remove("hide");
       paymentCashBack.classList.remove("hide");
@@ -623,7 +623,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     p3.classList.add("complete");
     p4.classList.add("complete");
     card5.classList.remove("current");
-    card6.classList.add("current");
+    if (openAlliance) {
+      card6.classList.add("current");
+    }
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
@@ -918,7 +920,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   }
   if (incorporation_data.open_alliance) {
     for (i = 0; i < optinAlliance.length; i++) {
-      optinAlliance.classList.add("hide");
+      optinAlliance[i].classList.add("hide");
     }
     coOptedInAlliance.classList.remove("hide");
     paymentCashBack.classList.remove("hide");
@@ -926,7 +928,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     paymentCashBack.classList.add("hide");
     coOptedInAlliance.classList.add("hide");
     for (i = 0; i < optinAlliance.length; i++) {
-      optinAlliance.classList.remove("hide");
+      optinAlliance[i].classList.remove("hide");
     }
   }
 }
