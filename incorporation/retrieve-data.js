@@ -168,8 +168,14 @@ if (cosecPlan == "all_in") {
 } else if (cosecPlan == "lite") {
   radioCosecLite.click();
 }
-openAllianceAccount = data.open_alliance;
-cboxAlliance.checked = openAllianceAccount;
+cboxAlliance.checked = data.open_alliance;
+if (cboxAlliance.checked) {
+  openAllianceAccount = true;
+  summaryPaymentCashback.classList.remove("hide");
+} else {
+  openAllianceAccount = false;
+  summaryPaymentCashback.classList.add("hide");
+}
 if (openAllianceAccount) {
   openAllianceAccount.checked = true;
 } else {
