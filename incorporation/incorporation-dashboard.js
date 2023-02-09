@@ -341,7 +341,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   declarationsS201Table.innerHTML = "";
   declarationsLoaTable.innerHTML = "";
   if (openAlliance) {
-    card6BtnDraftText.innerText = "In progress";
+    card6BtnDraftText.innerText = "Pending";
   } else {
     card6BtnDraftText.innerText = "Opt-in";
   }
@@ -639,6 +639,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
       statusBannerNumber.innerText = "4";
       statusBannerHeader.innerText = `${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
       statusBannerText.innerText = "Hang on tight, our partners from Alliance Bank will reach out to you to get your bank account opened at your doorstep.";
+      card6BtnDraftText.innerText = "In progress";
     } else if (openAlliance && banking_data.status == "success") {
       statusBannerNumber.innerText = "5";
       statusBanner.classList.remove("notice");
