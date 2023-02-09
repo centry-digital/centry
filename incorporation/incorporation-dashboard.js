@@ -678,6 +678,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
       if (banking_data.status != "success") {
         p5.classList.add("in-progress");
       } else {
+        card6.classList.remove("current");
         p5.classList.remove("in-progress");
         p5.classList.add("complete");
         card6BtnDraft.classList.add("hide");
