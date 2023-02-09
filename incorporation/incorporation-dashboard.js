@@ -56,6 +56,7 @@ let card5BtnDraft = document.getElementById("overview-btn-5-draft");
 let card6BtnComplete = document.getElementById("overview-btn-6-complete");
 let card6BtnLock = document.getElementById("overview-lock-6");
 let card6BtnDraft = document.getElementById("overview-btn-6-draft");
+let card6BtnDraftText = document.getElementById("overview-btn-6-draft-text");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
 let coDetails = document.getElementById("inc-details-not-empty");
@@ -196,7 +197,7 @@ if (query == "") {
   // Company Details
   coEmpty.classList.remove("hide");
   coAllianceTabLink.addEventListener("click", () => {
-    tabClick(6);
+    tab7.click();
   })
   // Payment
   paymentBanner.classList.remove("hide");
@@ -339,6 +340,11 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   declarationsLoiTable.innerHTML = "";
   declarationsS201Table.innerHTML = "";
   declarationsLoaTable.innerHTML = "";
+  if (openAlliance) {
+    card6BtnDraftText.innerText = "In progress";
+  } else {
+    card6BtnDraftText.innerText = "Opt-in";
+  }
   if (pageLoad) {
     card6BtnLock.classList.add("hide");
     card6BtnDraft.addEventListener("click", () => tab7.click());
