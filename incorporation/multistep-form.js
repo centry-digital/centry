@@ -17,7 +17,7 @@ let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
 let cosecPlan = "lite";
-let openAllianceAccount = true;
+let openAllianceAccount = false;
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
