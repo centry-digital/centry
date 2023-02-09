@@ -633,7 +633,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     p4.classList.add("complete");
     card5.classList.remove("current");
     if (openAlliance) {
-      card6.classList.add("current");
+      if (banking_data.status != "success") {
+        card6.classList.add("current");
+      }
     }
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
@@ -733,7 +735,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
         allianceCompleteBtn.classList.remove("hide");
         alliancePending.classList.add("success");
         alliancePendingIndicator.classList.add("success");
-        alliancePendingConnector.classList.add("complete");
+        alliancePendingConnector.classList.add("success");
         allianceInProgress.classList.add("success");
         allianceInProgressIndicator.classList.add("success");
         allianceInProgressConnector.classList.add("success");
