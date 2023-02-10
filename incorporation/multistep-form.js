@@ -1162,7 +1162,7 @@ function prepareSubmissionObject() {
 function submitIncorporation() {
   window.addEventListener("beforeunload", quitPrompt);
   incNextButton.innerText = "Preparing payment page";
-  incNextButton.style.paddingRight = "40px;"
+  incNextButton.style.paddingRight = "40px";
   incorporationLoading.classList.remove("hide");
 
   prepareSubmissionObject();
