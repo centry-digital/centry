@@ -8,8 +8,12 @@ let emailContainer = document.getElementById("email-container");
 let data = {};
 let regexEmail = /\w+((\.?[^ ]\w+)+)?@\w+(\.\w+)+/;
 let apiUrl = "https://api.centry.digital/api:";
-let dashboardLoader = Array.from(document.querySelectorAll('[data-dashboard="loader"]'));
-let tabContents = Array.from(document.querySelectorAll('[data-dashboard="tab-content"]'));
+let dashboardLoader = Array.from(
+  document.querySelectorAll('[data-dashboard="loader"]')
+);
+let tabContents = Array.from(
+  document.querySelectorAll('[data-dashboard="tab-content"]')
+);
 // Dashboard Content
 let dashboard = document.getElementById("dashboard");
 let dashboardLoading0 = document.getElementById("dashboard-loading-0");
@@ -92,7 +96,7 @@ let paymentTotalDesc = document.getElementById("payment-total-desc");
 let paymentTotal = document.getElementById("payment-total");
 let paymentCashBack = document.getElementById("payment-cashback");
 // e-KYC
-let indexEkyc = 1
+let indexEkyc = 1;
 let ekycBanner = document.getElementById("ekyc-banner");
 let ekycEmpty = document.getElementById("ekyc-empty");
 let ekycNotEmpty = document.getElementById("ekyc-not-empty");
@@ -104,10 +108,18 @@ let indexDeclarationLoa = 1;
 let declarationsBanner = document.getElementById("declarations-banner");
 let declarationsEmpty = document.getElementById("declarations-empty");
 let declarationsNotEmpty = document.getElementById("declarations-not-empty");
-let declarationsLoiTable = document.getElementById("declarations-loi-table-body");
-let declarationsS201Table = document.getElementById("declarations-s201-table-body");
-let declarationsLoaTable = document.getElementById("declarations-loa-table-body");
-let declarationsLoaContainer = document.getElementById("declarations-loa-container")
+let declarationsLoiTable = document.getElementById(
+  "declarations-loi-table-body"
+);
+let declarationsS201Table = document.getElementById(
+  "declarations-s201-table-body"
+);
+let declarationsLoaTable = document.getElementById(
+  "declarations-loa-table-body"
+);
+let declarationsLoaContainer = document.getElementById(
+  "declarations-loa-container"
+);
 let declarationsCompleteBtn = document.getElementById("declarations-complete");
 // Submission
 let ssmBanner = document.getElementById("ssm-banner");
@@ -119,20 +131,42 @@ let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Alliance Bank
 let allianceStatus = document.getElementById("alliance-status");
 let allianceCompleteBtn = document.getElementById("bank-account-complete");
-let allianceIncorporating = document.getElementById("bank-account-incorporating-block");
-let allianceIncorporatingIndicator = document.getElementById("bank-account-incorporating-indicator");
-let allianceIncorporatingConnector = document.getElementById("bank-account-incorporating-connector");
+let allianceIncorporating = document.getElementById(
+  "bank-account-incorporating-block"
+);
+let allianceIncorporatingIndicator = document.getElementById(
+  "bank-account-incorporating-indicator"
+);
+let allianceIncorporatingConnector = document.getElementById(
+  "bank-account-incorporating-connector"
+);
 let alliancePending = document.getElementById("bank-account-pending-block");
-let alliancePendingIndicator = document.getElementById("bank-account-pending-indicator");
-let alliancePendingConnector = document.getElementById("bank-account-pending-connector");
-let allianceInProgress = document.getElementById("bank-account-in-progress-block");
-let allianceInProgressIndicator = document.getElementById("bank-account-in-progress-indicator");
-let allianceInProgressConnector = document.getElementById("bank-account-in-progress-connector");
+let alliancePendingIndicator = document.getElementById(
+  "bank-account-pending-indicator"
+);
+let alliancePendingConnector = document.getElementById(
+  "bank-account-pending-connector"
+);
+let allianceInProgress = document.getElementById(
+  "bank-account-in-progress-block"
+);
+let allianceInProgressIndicator = document.getElementById(
+  "bank-account-in-progress-indicator"
+);
+let allianceInProgressConnector = document.getElementById(
+  "bank-account-in-progress-connector"
+);
 let allianceQuery = document.getElementById("bank-account-query-block");
-let allianceQueryIndicator = document.getElementById("bank-account-query-indicator");
-let allianceQueryConnector = document.getElementById("bank-account-query-connector");
+let allianceQueryIndicator = document.getElementById(
+  "bank-account-query-indicator"
+);
+let allianceQueryConnector = document.getElementById(
+  "bank-account-query-connector"
+);
 let allianceSuccess = document.getElementById("bank-account-success-block");
-let allianceSuccessIndicator = document.getElementById("bank-account-success-indicator");
+let allianceSuccessIndicator = document.getElementById(
+  "bank-account-success-indicator"
+);
 
 // Tabs
 let tab1 = document.getElementById("tab-1");
@@ -150,13 +184,17 @@ tab5.addEventListener("click", () => tabClick(4), false);
 tab6.addEventListener("click", () => tabClick(5), false);
 tab7.addEventListener("click", () => tabClick(6), false);
 // Page Link Buttons
-let backToOverview = document.querySelectorAll('[data-button="back-to-overview"]');
-let toCoDetailsTab = document.querySelectorAll('[data-button="co-details-tab"]');
+let backToOverview = document.querySelectorAll(
+  '[data-button="back-to-overview"]'
+);
+let toCoDetailsTab = document.querySelectorAll(
+  '[data-button="co-details-tab"]'
+);
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
 let optinAlliance = document.querySelectorAll('[data-button="optin-alliance"]');
-// 
+//
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
     tab1.click();
@@ -198,7 +236,7 @@ if (query == "") {
   coEmpty.classList.remove("hide");
   coAllianceTabLink.addEventListener("click", () => {
     tab7.click();
-  })
+  });
   // Payment
   paymentBanner.classList.remove("hide");
   paymentNotReady.classList.remove("hide");
@@ -217,7 +255,7 @@ if (query == "") {
 } else {
   if (query.get("session") && query.get("email") && query.get("unid")) {
     if (type == "resume") {
-      document.title = unid + " - Incorporate Your Company Online - Centry"
+      document.title = unid + " - Incorporate Your Company Online - Centry";
       retrieveIncorporationData(emailSave, unid, true);
       coBankAccBlock.classList.remove("hide");
       for (i = 0; i < optinAlliance.length; i++) {
@@ -240,7 +278,7 @@ async function allianceOptIn() {
         },
         body: JSON.stringify({
           unid: unid,
-          email_save: emailSave
+          email_save: emailSave,
         }),
       }
     );
@@ -252,9 +290,9 @@ async function allianceOptIn() {
       paymentCashBack.classList.remove("hide");
       allianceStatus.classList.remove("hide");
     }
-    } catch(error) {
-      console.error(error);
-    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function tabClick(tabNo) {
@@ -263,12 +301,12 @@ async function tabClick(tabNo) {
       tabContents[tabNo].classList.add("hide");
       dashboardLoader[tabNo].classList.remove("hide");
       await retrieveIncorporationData(emailSave, unid, false);
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
       dashboardLoader[tabNo].classList.add("hide");
       tabContents[tabNo].classList.remove("hide");
     }
   } else {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     tabContents[tabNo].classList.remove("hide");
   }
 }
@@ -283,16 +321,13 @@ function errorDisplay(e) {
 async function retrieveIncorporationData(emailSave, unid, pageLoad) {
   let retrievalObject = { email: emailSave };
   try {
-    let response = await fetch(
-      `${apiUrl}incorporation/incorporation/${unid}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(retrievalObject),
-      }
-    );
+    let response = await fetch(`${apiUrl}incorporation/incorporation/${unid}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(retrievalObject),
+    });
     data_res = await response.json();
     let uniqueId = data_res.incorporation_data.unique_id;
     let incorporationData = data_res.incorporation_data;
@@ -309,7 +344,13 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
       unidContainer.innerText = unid;
       emailContainer.innerText = emailSave;
       infoContainer.classList.remove("hide");
-      populateData(incorporationData, uniqueId, usersToVerify, pageLoad, bankingData);
+      populateData(
+        incorporationData,
+        uniqueId,
+        usersToVerify,
+        pageLoad,
+        bankingData
+      );
       dashboard.classList.remove("hide");
       dashboardLoading0.classList.add("hide");
     } else {
@@ -323,15 +364,27 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
   }
 }
 
-function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, banking_data) {
+function populateData(
+  incorporation_data,
+  unique_id,
+  users_to_verify,
+  pageLoad,
+  banking_data
+) {
   // Adjust aesthetics based on status
-  let declarationsStatus = []
-  users_to_verify.forEach((user)=>user.declarations.forEach((declaration)=>declarationsStatus.push(declaration.status)));
-  let allDeclarationsStatusSigned = declarationsStatus.some((status) => status != "signed");
+  let declarationsStatus = [];
+  users_to_verify.forEach((user) =>
+    user.declarations.forEach((declaration) =>
+      declarationsStatus.push(declaration.status)
+    )
+  );
+  let allDeclarationsStatusSigned = declarationsStatus.some(
+    (status) => status != "signed"
+  );
   let currentStatus = incorporation_data.status;
-  let openAlliance = incorporation_data.open_alliance
+  let openAlliance = incorporation_data.open_alliance;
   // Resetting parameters
-  indexEkyc = 1
+  indexEkyc = 1;
   indexDeclaration = 1;
   indexDeclarationLoa = 1;
   ekycTable.innerHTML = "";
@@ -409,7 +462,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (pageLoad) {
       card2BtnDraft.addEventListener("click", () => tab3.click());
     }
-      card2BtnDraft.classList.remove("hide");
+    card2BtnDraft.classList.remove("hide");
     // Company Details
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
@@ -496,7 +549,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     // Declarations
     declarationsEmpty.classList.add("hide");
     declarationsBanner.classList.add("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
+    usersToVerify.forEach((item) =>
+      fillDeclarationsTable(incorporation_data, currentStatus, item)
+    );
     declarationsNotEmpty.classList.remove("hide");
     // Submission
     ssmBanner.classList.remove("hide");
@@ -553,7 +608,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     usersToVerify.forEach(fillEkycTable);
     ekycNotEmpty.classList.remove("hide");
     // Declarations
-    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
+    usersToVerify.forEach((item) =>
+      fillDeclarationsTable(incorporation_data, currentStatus, item)
+    );
     declarationsNotEmpty.classList.remove("hide");
     // Submission
     ssmBanner.classList.remove("hide");
@@ -621,7 +678,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
+    usersToVerify.forEach((item) =>
+      fillDeclarationsTable(incorporation_data, currentStatus, item)
+    );
     declarationsNotEmpty.classList.remove("hide");
     // Submission
     ssmBanner.classList.add("hide");
@@ -638,20 +697,23 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (openAlliance && banking_data.status != "success") {
       statusBannerNumber.innerText = "4";
       statusBannerHeader.innerText = `${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
-      statusBannerText.innerText = "Hang on tight, our partners from Alliance Bank will reach out to you to get your bank account opened at your doorstep.";
+      statusBannerText.innerText =
+        "Hang on tight, our partners from Alliance Bank will reach out to you to get your bank account opened at your doorstep.";
       card6BtnDraftText.innerText = "In progress";
     } else if (openAlliance && banking_data.status == "success") {
       statusBannerNumber.innerText = "5";
       statusBanner.classList.remove("notice");
       statusBanner.classList.add("complete");
       statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. & the bank account is fully set up!`;
-      statusBannerText.innerText = "Your company setup is now complete. Go reach for the stars! ⭐️ ";
+      statusBannerText.innerText =
+        "Your company setup is now complete. Go reach for the stars! ⭐️ ";
     } else {
       statusBannerNumber.innerText = "4";
       statusBanner.classList.remove("notice");
       statusBanner.classList.add("complete");
       statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
-      statusBannerText.innerText = "Hang on tight, our team will reach out to you with the next steps.";
+      statusBannerText.innerText =
+        "Hang on tight, our team will reach out to you with the next steps.";
     }
     statusBanner.classList.remove("hide");
     p1.classList.add("complete");
@@ -718,7 +780,9 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     ekycNotEmpty.classList.remove("hide");
     // Declarations
     declarationsCompleteBtn.classList.remove("hide");
-    usersToVerify.forEach((item) => fillDeclarationsTable(incorporation_data, currentStatus, item));
+    usersToVerify.forEach((item) =>
+      fillDeclarationsTable(incorporation_data, currentStatus, item)
+    );
     declarationsNotEmpty.classList.remove("hide");
     // Submission
     ssmNotEmpty.classList.add("hide");
@@ -794,13 +858,19 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   coName2.innerText = incorporation_data.company_name
     ? incorporation_data.company_name + " Sdn. Bhd."
     : "-";
-  coNameExp.innerText = incorporation_data.name_explanation ? incorporation_data.name_explanation : "-";
-  coNature.innerText = incorporation_data.nature_of_business ? incorporation_data.nature_of_business : "-";
+  coNameExp.innerText = incorporation_data.name_explanation
+    ? incorporation_data.name_explanation
+    : "-";
+  coNature.innerText = incorporation_data.nature_of_business
+    ? incorporation_data.nature_of_business
+    : "-";
   coMsic1.innerText = incorporation_data.msic_codes[0];
   coMsic2.innerText = incorporation_data.msic_codes[1];
   coMsic3.innerText = incorporation_data.msic_codes[2];
   coAdd.innerText =
-    incorporation_data.company_address && incorporation_data.company_postcode && incorporation_data.company_city
+    incorporation_data.company_address &&
+    incorporation_data.company_postcode &&
+    incorporation_data.company_city
       ? incorporation_data.company_address +
         ", " +
         incorporation_data.company_postcode +
@@ -811,8 +881,12 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
         ", " +
         incorporation_data.company_country
       : "-";
-  coEmail.innerText = incorporation_data.company_email ? incorporation_data.company_email : "-";
-  coPhone.innerText = incorporation_data.company_phone ? incorporation_data.company_phone : "-";
+  coEmail.innerText = incorporation_data.company_email
+    ? incorporation_data.company_email
+    : "-";
+  coPhone.innerText = incorporation_data.company_phone
+    ? incorporation_data.company_phone
+    : "-";
   coDetails.classList.remove("hide");
   for (let i = 0; i < incorporation_data.company_directors.length; i++) {
     coDir[i] = {};
@@ -821,27 +895,37 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     coDir[i].elName.classList.add("text-block-72", "text-sm");
     coDir[i].elName.innerText =
       "Legal name: " +
-      (incorporation_data.company_directors[i].name ? incorporation_data.company_directors[i].name : "-");
+      (incorporation_data.company_directors[i].name
+        ? incorporation_data.company_directors[i].name
+        : "-");
     coDir[i].elFName = document.createElement("div");
     coDir[i].elFName.classList.add("text-block-73", "text-sm");
     coDir[i].elFName.innerText =
       "First name: " +
-      (incorporation_data.company_directors[i].fname ? incorporation_data.company_directors[i].fname : "-");
+      (incorporation_data.company_directors[i].fname
+        ? incorporation_data.company_directors[i].fname
+        : "-");
     coDir[i].elLName = document.createElement("div");
     coDir[i].elLName.classList.add("text-block-73", "text-sm");
     coDir[i].elLName.innerText =
       "Last name: " +
-      (incorporation_data.company_directors[i].lname ? incorporation_data.company_directors[i].lname : "-");
+      (incorporation_data.company_directors[i].lname
+        ? incorporation_data.company_directors[i].lname
+        : "-");
     coDir[i].elEmail = document.createElement("div");
     coDir[i].elEmail.classList.add("text-block-73", "text-sm");
     coDir[i].elEmail.innerText =
       "Email: " +
-      (incorporation_data.company_directors[i].email ? incorporation_data.company_directors[i].email : "-");
+      (incorporation_data.company_directors[i].email
+        ? incorporation_data.company_directors[i].email
+        : "-");
     coDir[i].elPhone = document.createElement("div");
     coDir[i].elPhone.classList.add("text-block-73", "text-sm");
     coDir[i].elPhone.innerText =
       "Phone: " +
-      (incorporation_data.company_directors[i].phone ? incorporation_data.company_directors[i].phone : "-");
+      (incorporation_data.company_directors[i].phone
+        ? incorporation_data.company_directors[i].phone
+        : "-");
     coDir[i].elCountry = document.createElement("div");
     coDir[i].elCountry.classList.add("text-block-73", "text-sm");
     coDir[i].elCountry.innerText =
@@ -865,7 +949,8 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     if (incorporation_data.company_shareholders[i].type == "Individual") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText = incorporation_data.company_shareholders[i].name_individual
+      coSh[i].elName.innerText = incorporation_data.company_shareholders[i]
+        .name_individual
         ? incorporation_data.company_shareholders[i].name_individual
         : "-";
       coSh[i].elShares = document.createElement("div");
@@ -906,7 +991,8 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
     } else if (incorporation_data.company_shareholders[i].type == "Corporate") {
       coSh[i].elName = document.createElement("div");
       coSh[i].elName.classList.add("text-block-72", "text-sm");
-      coSh[i].elName.innerText = incorporation_data.company_shareholders[i].name_corporate
+      coSh[i].elName.innerText = incorporation_data.company_shareholders[i]
+        .name_corporate
         ? incorporation_data.company_shareholders[i].name_corporate
         : "-";
       coSh[i].elShares = document.createElement("div");
@@ -966,18 +1052,18 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
   }
   if (incorporation_data.cosec_plan == "all_in") {
     cosecPlan.innerText = "All-inclusive";
-    paymentCosec1.innerText = "RM450"
-    paymentCosec2.innerText = "RM450"
-    paymentCosecTotal.innerText = "RM450"
-    paymentTotal.innerText = "RM1,849"
-    paymentTotalDesc.innerText = "RM1,849"
+    paymentCosec1.innerText = "RM450";
+    paymentCosec2.innerText = "RM450";
+    paymentCosecTotal.innerText = "RM450";
+    paymentTotal.innerText = "RM1,849";
+    paymentTotalDesc.innerText = "RM1,849";
   } else if (incorporation_data.cosec_plan == "lite") {
     cosecPlan.innerText = "Lite";
-    paymentCosec1.innerText = "RM480"
-    paymentCosec2.innerText = "RM480"
-    paymentCosecTotal.innerText = "RM480"
-    paymentTotal.innerText = "RM1,679"
-    paymentTotalDesc.innerText = "RM1,679"
+    paymentCosec1.innerText = "RM480";
+    paymentCosec2.innerText = "RM480";
+    paymentCosecTotal.innerText = "RM480";
+    paymentTotal.innerText = "RM1,879";
+    paymentTotalDesc.innerText = "RM1,879";
   }
   if (incorporation_data.open_alliance) {
     for (i = 0; i < optinAlliance.length; i++) {
@@ -995,7 +1081,7 @@ function populateData(incorporation_data, unique_id, users_to_verify, pageLoad, 
 }
 // window.history.pushState({}, document.title, window.location.pathname);
 async function retrievePaymentSession(event, unid) {
-  let request_body = {unique_id: unid};
+  let request_body = { unique_id: unid };
   try {
     let response = await fetch(
       `${apiUrl}incorporation/new_incorporation/retrieve_payment_session`,
@@ -1036,7 +1122,12 @@ function fillEkycTable(item) {
     tableHeading = `<thead><tr></tr></thead>`;
   }
   if (item.verified == "false" || item.verified == "pending") {
-    verificationLink = `<a href=${"https://" + window.location.hostname + "/e-kyc/start?verification=" + item.verification_uuid}
+    verificationLink = `<a href=${
+      "https://" +
+      window.location.hostname +
+      "/e-kyc/start?verification=" +
+      item.verification_uuid
+    }
                           target="_blank" style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;color:#4f46e5;">
                             <span style="text-decoration:underline;">Start verification</span>
                             <div class="html-embed-51 common-symbol">
@@ -1045,7 +1136,7 @@ function fillEkycTable(item) {
                               </span>
                             </div>
                         </a>`;
-  }else if (item.verified == "true") {
+  } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
                           <div class="dashboard-nav common-symbol-filled complete">
@@ -1058,7 +1149,7 @@ function fillEkycTable(item) {
     verificationLink = `<span style="color:#111827">AI-automated verification in progress</span>`;
   } else {
     verificationLink = `<div style="color:#111827">Pending review</div>`;
-  };
+  }
   tableContent = `${tableHeading}
                   <tbody style="width:100%">
                     <tr style="vertical-align:top;">
@@ -1067,16 +1158,29 @@ function fillEkycTable(item) {
                       <td class="text-block-74" style="padding:4px 10px 0 10px;word-wrap:normal;">${roles}</td>
                       <td class="text-block-74" style="padding:4px 0 0 10px;word-wrap:normal;">${verificationLink}</td>
                     </tr>
-                  </tbody>`
+                  </tbody>`;
   ekycTable.innerHTML += tableContent;
   indexEkyc++;
 }
 
 function fillDeclarationsTable(data, currentStatus, item) {
   let statusLoi, statusS201, statusLoa;
-  let checkDeclarationLoi = item.declarations.find((declaration) => {return declaration.doc_type == "letter_of_incorporation" && declaration.status != "signed"});
-  let checkDeclarationS201 = item.declarations.find((declaration) => {return declaration.doc_type == "s201" && declaration.status != "signed"});
-  let checkDeclarationLoa = item.declarations.find((declaration) => {return item.role.includes("Corporate Representative") && declaration.doc_type == "letter_of_authorisation" && declaration.status != "signed"});
+  let checkDeclarationLoi = item.declarations.find((declaration) => {
+    return (
+      declaration.doc_type == "letter_of_incorporation" &&
+      declaration.status != "signed"
+    );
+  });
+  let checkDeclarationS201 = item.declarations.find((declaration) => {
+    return declaration.doc_type == "s201" && declaration.status != "signed";
+  });
+  let checkDeclarationLoa = item.declarations.find((declaration) => {
+    return (
+      item.role.includes("Corporate Representative") &&
+      declaration.doc_type == "letter_of_authorisation" &&
+      declaration.status != "signed"
+    );
+  });
   // if (currentStatus == "Incorporating" || currentStatus == "Success") {
   if (item.verified == "false") {
     statusLoi = `<span style="color:#4f46e5;text-decoration:underline;cursor:pointer;" onClick='tab4.click();'>Pending e-KYC</span>`;
@@ -1107,7 +1211,7 @@ function fillDeclarationsTable(data, currentStatus, item) {
     } else {
       statusS201 = `<span>Please check your email to retrieve your </span><span style="font-weight:500;text-decoration:underline;">e-signing link</span><span>`;
     }
-    if (item.verified != "false" && checkDeclarationLoa == null) {                  
+    if (item.verified != "false" && checkDeclarationLoa == null) {
       statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                       <span style="color:#111827">Completed</span>
                       <div class="dashboard-nav common-symbol-filled complete">
@@ -1115,10 +1219,16 @@ function fillDeclarationsTable(data, currentStatus, item) {
                           check_circle
                         </span>
                       </div>
-                    </div>`;              
+                    </div>`;
     } else {
       statusLoa = `<div>Please check your email to retrieve your LoA. Once signed, kindly upload it here:</div>
-                    <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${data.declarations_session}&h_user=${item.user_uuid}&h_email=${encodeURIComponent(data.email_save)}&h_unid=${data.unique_id}" style="display:flex;column-gap:8px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
+                    <a href="https://e-kyc.centry.digital/upload-loa?h_declarations_session=${
+                      data.declarations_session
+                    }&h_user=${item.user_uuid}&h_email=${encodeURIComponent(
+        data.email_save
+      )}&h_unid=${
+        data.unique_id
+      }" style="display:flex;column-gap:8px;padding:5px 8px 5px 16px;border:1px solid #4f46e5;border-radius:4px;align-items:center;">
                       <span class="text-sm" style="color:#4f46e5;text-decoration:underline;">Upload signed LoA</span>
                       <div class="dashboard-nav common-symbol-filled" style="color:#4f46e5;">
                         <span class="material-symbols-rounded symbol-outline" style="font-size:18px;line-height:1.25rem;width:20px;height:20px;"">
