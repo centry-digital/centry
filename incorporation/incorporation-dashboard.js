@@ -80,9 +80,9 @@ let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
 let cosecPlan = document.getElementById("cosec_plan");
-let coBankAccBlock = document.getElementById("co-bank-account-block");
-let coOptedInAlliance = document.getElementById("opted-in-alliance");
-let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
+// let coBankAccBlock = document.getElementById("co-bank-account-block");
+// let coOptedInAlliance = document.getElementById("opted-in-alliance");
+// let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -233,10 +233,10 @@ if (query == "") {
   card1.classList.add("current");
   card1BtnStart.classList.remove("hide");
   // Company Details
-  coEmpty.classList.remove("hide");
-  coAllianceTabLink.addEventListener("click", () => {
-    tab7.click();
-  });
+  // coEmpty.classList.remove("hide");
+  // coAllianceTabLink.addEventListener("click", () => {
+  //   tab7.click();
+  // });
   // Payment
   paymentBanner.classList.remove("hide");
   paymentNotReady.classList.remove("hide");
@@ -257,9 +257,9 @@ if (query == "") {
     if (type == "resume") {
       document.title = unid + " - Incorporate Your Company Online - Centry";
       retrieveIncorporationData(emailSave, unid, true);
-      coBankAccBlock.classList.remove("hide");
+      // coBankAccBlock.classList.remove("hide");
       for (i = 0; i < optinAlliance.length; i++) {
-        optinAlliance[i].addEventListener("click", allianceOptIn);
+        // optinAlliance[i].addEventListener("click", allianceOptIn);
       }
     }
   } else {
@@ -267,33 +267,33 @@ if (query == "") {
   }
 }
 
-async function allianceOptIn() {
-  try {
-    let response = await fetch(
-      `${apiUrl}incorporation/new_incorporation/alliance_opt_in`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          unid: unid,
-          email_save: emailSave,
-        }),
-      }
-    );
-    if (response.ok) {
-      for (i = 0; i < optinAlliance.length; i++) {
-        optinAlliance[i].classList.add("hide");
-      }
-      coOptedInAlliance.classList.remove("hide");
-      paymentCashBack.classList.remove("hide");
-      allianceStatus.classList.remove("hide");
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
+// async function allianceOptIn() {
+//   try {
+//     let response = await fetch(
+//       `${apiUrl}incorporation/new_incorporation/alliance_opt_in`,
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           unid: unid,
+//           email_save: emailSave,
+//         }),
+//       }
+//     );
+//     if (response.ok) {
+//       for (i = 0; i < optinAlliance.length; i++) {
+//         optinAlliance[i].classList.add("hide");
+//       }
+//       coOptedInAlliance.classList.remove("hide");
+//       paymentCashBack.classList.remove("hide");
+//       allianceStatus.classList.remove("hide");
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 async function tabClick(tabNo) {
   if (query.get("session") && query.get("email") && query.get("unid")) {
