@@ -79,7 +79,7 @@ let coDirContainer = document.getElementById("company-directors-container");
 let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
-let cosecPlan = document.getElementById("cosec_plan");
+// let cosecPlan = document.getElementById("cosec_plan");
 // let coBankAccBlock = document.getElementById("co-bank-account-block");
 // let coOptedInAlliance = document.getElementById("opted-in-alliance");
 // let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
@@ -1051,14 +1051,14 @@ function populateData(
     coShContainer.appendChild(coSh[i].elContainer);
   }
   if (incorporation_data.cosec_plan == "all_in") {
-    cosecPlan.innerText = "All-inclusive";
+    // cosecPlan.innerText = "All-inclusive";
     paymentCosec1.innerText = "RM450";
     paymentCosec2.innerText = "RM450";
     paymentCosecTotal.innerText = "RM450";
     paymentTotal.innerText = "RM1,849";
     paymentTotalDesc.innerText = "RM1,849";
   } else if (incorporation_data.cosec_plan == "lite") {
-    cosecPlan.innerText = "Lite";
+    // cosecPlan.innerText = "Lite";
     paymentCosec1.innerText = "RM480";
     paymentCosec2.innerText = "RM480";
     paymentCosecTotal.innerText = "RM480";
