@@ -233,7 +233,7 @@ if (query == "") {
   card1.classList.add("current");
   card1BtnStart.classList.remove("hide");
   // Company Details
-  // coEmpty.classList.remove("hide");
+  coEmpty.classList.remove("hide");
   // coAllianceTabLink.addEventListener("click", () => {
   //   tab7.click();
   // });
