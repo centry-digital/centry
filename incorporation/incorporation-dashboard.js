@@ -130,43 +130,43 @@ let ssmSuccess = document.getElementById("ssm-success");
 let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
 // Alliance Bank
 // let allianceStatus = document.getElementById("alliance-status");
-let allianceCompleteBtn = document.getElementById("bank-account-complete");
-let allianceIncorporating = document.getElementById(
-  "bank-account-incorporating-block"
-);
-let allianceIncorporatingIndicator = document.getElementById(
-  "bank-account-incorporating-indicator"
-);
-let allianceIncorporatingConnector = document.getElementById(
-  "bank-account-incorporating-connector"
-);
-let alliancePending = document.getElementById("bank-account-pending-block");
-let alliancePendingIndicator = document.getElementById(
-  "bank-account-pending-indicator"
-);
-let alliancePendingConnector = document.getElementById(
-  "bank-account-pending-connector"
-);
-let allianceInProgress = document.getElementById(
-  "bank-account-in-progress-block"
-);
-let allianceInProgressIndicator = document.getElementById(
-  "bank-account-in-progress-indicator"
-);
-let allianceInProgressConnector = document.getElementById(
-  "bank-account-in-progress-connector"
-);
-let allianceQuery = document.getElementById("bank-account-query-block");
-let allianceQueryIndicator = document.getElementById(
-  "bank-account-query-indicator"
-);
-let allianceQueryConnector = document.getElementById(
-  "bank-account-query-connector"
-);
-let allianceSuccess = document.getElementById("bank-account-success-block");
-let allianceSuccessIndicator = document.getElementById(
-  "bank-account-success-indicator"
-);
+// let allianceCompleteBtn = document.getElementById("bank-account-complete");
+// let allianceIncorporating = document.getElementById(
+//   "bank-account-incorporating-block"
+// );
+// let allianceIncorporatingIndicator = document.getElementById(
+//   "bank-account-incorporating-indicator"
+// );
+// let allianceIncorporatingConnector = document.getElementById(
+//   "bank-account-incorporating-connector"
+// );
+// let alliancePending = document.getElementById("bank-account-pending-block");
+// let alliancePendingIndicator = document.getElementById(
+//   "bank-account-pending-indicator"
+// );
+// let alliancePendingConnector = document.getElementById(
+//   "bank-account-pending-connector"
+// );
+// let allianceInProgress = document.getElementById(
+//   "bank-account-in-progress-block"
+// );
+// let allianceInProgressIndicator = document.getElementById(
+//   "bank-account-in-progress-indicator"
+// );
+// let allianceInProgressConnector = document.getElementById(
+//   "bank-account-in-progress-connector"
+// );
+// let allianceQuery = document.getElementById("bank-account-query-block");
+// let allianceQueryIndicator = document.getElementById(
+//   "bank-account-query-indicator"
+// );
+// let allianceQueryConnector = document.getElementById(
+//   "bank-account-query-connector"
+// );
+// let allianceSuccess = document.getElementById("bank-account-success-block");
+// let allianceSuccessIndicator = document.getElementById(
+//   "bank-account-success-indicator"
+// );
 
 // Tabs
 let tab1 = document.getElementById("tab-1");
@@ -193,7 +193,7 @@ let toCoDetailsTab = document.querySelectorAll(
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
-let optinAlliance = document.querySelectorAll('[data-button="optin-alliance"]');
+// let optinAlliance = document.querySelectorAll('[data-button="optin-alliance"]');
 //
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
@@ -258,9 +258,9 @@ if (query == "") {
       document.title = unid + " - Incorporate Your Company Online - Centry";
       retrieveIncorporationData(emailSave, unid, true);
       // coBankAccBlock.classList.remove("hide");
-      for (i = 0; i < optinAlliance.length; i++) {
-        // optinAlliance[i].addEventListener("click", allianceOptIn);
-      }
+      // for (i = 0; i < optinAlliance.length; i++) {
+      //   // optinAlliance[i].addEventListener("click", allianceOptIn);
+      // }
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
@@ -1065,19 +1065,19 @@ function populateData(
     paymentTotal.innerText = "RM1,879";
     paymentTotalDesc.innerText = "RM1,879";
   }
-  if (incorporation_data.open_alliance) {
-    for (i = 0; i < optinAlliance.length; i++) {
-      optinAlliance[i].classList.add("hide");
-    }
-    coOptedInAlliance.classList.remove("hide");
-    paymentCashBack.classList.remove("hide");
-  } else {
-    paymentCashBack.classList.add("hide");
-    coOptedInAlliance.classList.add("hide");
-    for (i = 0; i < optinAlliance.length; i++) {
-      optinAlliance[i].classList.remove("hide");
-    }
-  }
+  // if (incorporation_data.open_alliance) {
+  //   for (i = 0; i < optinAlliance.length; i++) {
+  //     optinAlliance[i].classList.add("hide");
+  //   }
+  //   // coOptedInAlliance.classList.remove("hide");
+  //   paymentCashBack.classList.remove("hide");
+  // } else {
+  //   paymentCashBack.classList.add("hide");
+  //   // coOptedInAlliance.classList.add("hide");
+  //   for (i = 0; i < optinAlliance.length; i++) {
+  //     optinAlliance[i].classList.remove("hide");
+  //   }
+  // }
 }
 // window.history.pushState({}, document.title, window.location.pathname);
 async function retrievePaymentSession(event, unid) {
