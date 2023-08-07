@@ -205,11 +205,11 @@ let tab6 = document.getElementById("tab-6");
 let tab7 = document.getElementById("tab-7");
 tab1.addEventListener("click", () => tabClick(0), false);
 tab2.addEventListener("click", () => tabClick(1), false);
-tab3.addEventListener("click", () => tabClick(2), false);
-tab4.addEventListener("click", () => tabClick(3), false);
-tab5.addEventListener("click", () => tabClick(4), false);
-tab6.addEventListener("click", () => tabClick(5), false);
-tab7.addEventListener("click", () => tabClick(6), false);
+tab3.addEventListener("click", () => tabClick(3), false);
+tab4.addEventListener("click", () => tabClick(4), false);
+tab5.addEventListener("click", () => tabClick(5), false);
+tab6.addEventListener("click", () => tabClick(6), false);
+tab7.addEventListener("click", () => tabClick(2), false);
 // Page Link Buttons
 let backToOverview = document.querySelectorAll(
   '[data-button="back-to-overview"]'
