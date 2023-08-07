@@ -91,6 +91,11 @@ let banksEmpty = document.getElementById("bank-empty");
 let banksNotEmpty = document.getElementById("bank-not-empty");
 let swipey = document.getElementById("swipey-opt-in");
 let swipeyCheck = document.getElementById("swipey-check");
+for (let i = 0; i < banks.length; i++) {
+  banks[i].addEventListener("click", (e) => {
+    bankSelect(e);
+  });
+}
 // let allianceStatus = document.getElementById("alliance-status");
 // let allianceCompleteBtn = document.getElementById("bank-account-complete");
 // let allianceIncorporating = document.getElementById(
