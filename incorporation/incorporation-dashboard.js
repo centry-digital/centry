@@ -534,6 +534,10 @@ function populateData(
     }
     card1BtnDraft.classList.remove("hide");
     card6Btn.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     // Company Details
     coEditBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -596,10 +600,6 @@ function populateData(
       card2BtnDraft.addEventListener("click", () => tab3.click());
     }
     card2BtnDraft.classList.remove("hide");
-    card6BtnLock.classList.add("hide");
-    if (pageLoad) {
-      card6Btn.classList.remove("hide");
-    }
     // Company Details
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
@@ -665,6 +665,10 @@ function populateData(
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
     card1BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     card2BtnLock.classList.add("hide");
     card2BtnDraft.classList.add("hide");
     if (pageLoad) {
@@ -689,10 +693,7 @@ function populateData(
       card4BtnDraft.addEventListener("click", () => tab5.click());
       card4BtnComplete.addEventListener("click", () => tab5.click());
     }
-    card6BtnLock.classList.add("hide");
-    if (pageLoad) {
-      card6Btn.classList.remove("hide");
-    }
+
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -844,6 +845,10 @@ function populateData(
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
     card1BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     card2BtnLock.classList.add("hide");
     if (pageLoad) {
       card2BtnComplete.addEventListener("click", () => tab3.click());
@@ -865,10 +870,6 @@ function populateData(
       card5BtnDraft.addEventListener("click", () => tab6.click());
     }
     card5BtnDraft.classList.remove("hide");
-    card6BtnLock.classList.add("hide");
-    if (pageLoad) {
-      card6Btn.addEventListener("click", () => tab6.click());
-    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -953,6 +954,10 @@ function populateData(
     card4.classList.remove("current");
     card5.classList.remove("current");
     card1BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     card2BtnLock.classList.add("hide");
     if (pageLoad) {
       card2BtnComplete.addEventListener("click", () => tab3.click());
@@ -974,10 +979,6 @@ function populateData(
       card5BtnComplete.addEventListener("click", () => tab6.click());
     }
     card5BtnComplete.classList.remove("hide");
-    card6BtnLock.classList.add("hide");
-    if (pageLoad) {
-      card6Btn.addEventListener("click", () => tab6.click());
-    }
     // if (openAlliance) {
     //   p4.style.borderRadius = 0;
     //   p5.classList.remove("hide");
