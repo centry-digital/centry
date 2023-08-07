@@ -57,9 +57,8 @@ let card4BtnDraft = document.getElementById("overview-btn-4-draft");
 let card5BtnComplete = document.getElementById("overview-btn-5-complete");
 let card5BtnLock = document.getElementById("overview-lock-5");
 let card5BtnDraft = document.getElementById("overview-btn-5-draft");
-let card6BtnComplete = document.getElementById("overview-btn-6-complete");
 let card6BtnLock = document.getElementById("overview-lock-6");
-let card6BtnDraft = document.getElementById("overview-btn-6-draft");
+let card6Btn = document.getElementById("overview-btn-6");
 let card6BtnDraftText = document.getElementById("overview-btn-6-draft-text");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
@@ -83,6 +82,53 @@ let coShContainer = document.getElementById("company-shareholders-container");
 // let coBankAccBlock = document.getElementById("co-bank-account-block");
 // let coOptedInAlliance = document.getElementById("opted-in-alliance");
 // let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
+// Bank account & Business Debit Cards
+let activeBank;
+let swipeyOptIn = false;
+let banks = Array.from(document.querySelectorAll('[data-bank="bank-acc"]'));
+let banksBanner = document.getElementById("bank-banner");
+let banksEmpty = document.getElementById("bank-empty");
+let banksNotEmpty = document.getElementById("bank-not-empty");
+let swipey = document.getElementById("swipey-opt-in");
+let swipeyCheck = document.getElementById("swipey-check");
+// let allianceStatus = document.getElementById("alliance-status");
+// let allianceCompleteBtn = document.getElementById("bank-account-complete");
+// let allianceIncorporating = document.getElementById(
+//   "bank-account-incorporating-block"
+// );
+// let allianceIncorporatingIndicator = document.getElementById(
+//   "bank-account-incorporating-indicator"
+// );
+// let allianceIncorporatingConnector = document.getElementById(
+//   "bank-account-incorporating-connector"
+// );
+// let alliancePending = document.getElementById("bank-account-pending-block");
+// let alliancePendingIndicator = document.getElementById(
+//   "bank-account-pending-indicator"
+// );
+// let alliancePendingConnector = document.getElementById(
+//   "bank-account-pending-connector"
+// );
+// let allianceInProgress = document.getElementById(
+//   "bank-account-in-progress-block"
+// );
+// let allianceInProgressIndicator = document.getElementById(
+//   "bank-account-in-progress-indicator"
+// );
+// let allianceInProgressConnector = document.getElementById(
+//   "bank-account-in-progress-connector"
+// );
+// let allianceQuery = document.getElementById("bank-account-query-block");
+// let allianceQueryIndicator = document.getElementById(
+//   "bank-account-query-indicator"
+// );
+// let allianceQueryConnector = document.getElementById(
+//   "bank-account-query-connector"
+// );
+// let allianceSuccess = document.getElementById("bank-account-success-block");
+// let allianceSuccessIndicator = document.getElementById(
+//   "bank-account-success-indicator"
+// );
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -128,45 +174,6 @@ let ssmNotEmpty = document.getElementById("ssm-not-empty");
 let ssmCompleteBtn = document.getElementById("ssm-complete");
 let ssmSuccess = document.getElementById("ssm-success");
 let ssmSuccessCoName = document.getElementById("ssm-success-co-name");
-// Alliance Bank
-// let allianceStatus = document.getElementById("alliance-status");
-// let allianceCompleteBtn = document.getElementById("bank-account-complete");
-// let allianceIncorporating = document.getElementById(
-//   "bank-account-incorporating-block"
-// );
-// let allianceIncorporatingIndicator = document.getElementById(
-//   "bank-account-incorporating-indicator"
-// );
-// let allianceIncorporatingConnector = document.getElementById(
-//   "bank-account-incorporating-connector"
-// );
-// let alliancePending = document.getElementById("bank-account-pending-block");
-// let alliancePendingIndicator = document.getElementById(
-//   "bank-account-pending-indicator"
-// );
-// let alliancePendingConnector = document.getElementById(
-//   "bank-account-pending-connector"
-// );
-// let allianceInProgress = document.getElementById(
-//   "bank-account-in-progress-block"
-// );
-// let allianceInProgressIndicator = document.getElementById(
-//   "bank-account-in-progress-indicator"
-// );
-// let allianceInProgressConnector = document.getElementById(
-//   "bank-account-in-progress-connector"
-// );
-// let allianceQuery = document.getElementById("bank-account-query-block");
-// let allianceQueryIndicator = document.getElementById(
-//   "bank-account-query-indicator"
-// );
-// let allianceQueryConnector = document.getElementById(
-//   "bank-account-query-connector"
-// );
-// let allianceSuccess = document.getElementById("bank-account-success-block");
-// let allianceSuccessIndicator = document.getElementById(
-//   "bank-account-success-indicator"
-// );
 
 // Tabs
 let tab1 = document.getElementById("tab-1");
@@ -237,6 +244,9 @@ if (query == "") {
   // coAllianceTabLink.addEventListener("click", () => {
   //   tab7.click();
   // });
+  // Bank account & Business debit cards
+  banksBanner.classList.remove("hide");
+  banksEmpty.classList.remove("hide");
   // Payment
   paymentBanner.classList.remove("hide");
   paymentNotReady.classList.remove("hide");
@@ -266,6 +276,56 @@ if (query == "") {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
   }
 }
+
+async function bankSelect(e) {
+  let selectedElement = e.currentTarget;
+  let selectionId = selectedElement.getAttribute("id");
+  if (selectionId === activeBank) {
+    let updateBank = await bankSelection(null);
+    if (updateBank.ok) {
+      activeBank = null;
+      selectedElement.classList.remove("selected");
+    }
+  } else {
+    let updateBank = await bankSelection(selectionId);
+    if (updateBank.ok) {
+      if (activeBank) {
+        document.getElementById(activeBank).classList.remove("selected");
+      }
+      activeBank = selectionId;
+      selectedElement.classList.add("selected");
+    }
+  }
+}
+
+async function bankSelection(selectionId) {
+  try {
+    let response = await fetch(
+      "https://api.centry.digital/api:incorporation/new_incorporation/bank_selection",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          unid: "P33R0W",
+          email_save: "test@test.com",
+          bank: selectionId,
+        }),
+      }
+    );
+    if (response.ok) {
+      return { ok: true };
+    } else {
+      return { ok: false };
+    }
+  } catch (error) {
+    console.log(error);
+    return { ok: false };
+  }
+}
+
+async function swipeyOptIn() {}
 
 // async function allianceOptIn() {
 //   try {
@@ -400,8 +460,8 @@ function populateData(
   // }
   if (pageLoad) {
     card6BtnLock.classList.add("hide");
-    card6BtnDraft.addEventListener("click", () => tab7.click());
-    card6BtnDraft.classList.remove("hide");
+    card6Btn.addEventListener("click", () => tab7.click());
+    card6Btn.classList.remove("hide");
   }
   if (currentStatus == "Draft") {
     // Overview
@@ -415,13 +475,20 @@ function populateData(
     //   statusBannerNumber2.innerText = "5";
     // }
     card1.classList.add("current");
+    card6.classList.add("current");
     if (pageLoad) {
       card1BtnDraft.addEventListener("click", () => tab2.click());
+      card6Btn.addEventListener("click", () => tab7.click());
     }
     card1BtnDraft.classList.remove("hide");
+    card6Btn.classList.remove("hide");
     // Company Details
     coEditBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentBanner.classList.remove("hide");
     paymentNotReady.classList.remove("hide");
@@ -463,6 +530,10 @@ function populateData(
       card2BtnDraft.addEventListener("click", () => tab3.click());
     }
     card2BtnDraft.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.addEventListener("click", () => tab6.click());
+    }
     // Company Details
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
@@ -534,6 +605,10 @@ function populateData(
       card4BtnDraft.addEventListener("click", () => tab5.click());
       card4BtnComplete.addEventListener("click", () => tab5.click());
     }
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.addEventListener("click", () => tab6.click());
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -597,6 +672,10 @@ function populateData(
       card4BtnDraft.addEventListener("click", () => tab5.click());
     }
     card4BtnDraft.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.addEventListener("click", () => tab6.click());
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -666,6 +745,10 @@ function populateData(
       card5BtnDraft.addEventListener("click", () => tab6.click());
     }
     card5BtnDraft.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.addEventListener("click", () => tab6.click());
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -750,10 +833,11 @@ function populateData(
     if (pageLoad) {
       card5BtnComplete.addEventListener("click", () => tab6.click());
     }
-    if (pageLoad) {
-      card6BtnComplete.addEventListener("click", () => tab7.click());
-    }
     card5BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.addEventListener("click", () => tab6.click());
+    }
     // if (openAlliance) {
     //   p4.style.borderRadius = 0;
     //   p5.classList.remove("hide");
