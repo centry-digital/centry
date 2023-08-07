@@ -759,6 +759,10 @@ function populateData(
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
     card1BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     card2BtnLock.classList.add("hide");
     if (pageLoad) {
       card2BtnComplete.addEventListener("click", () => tab3.click());
@@ -775,10 +779,6 @@ function populateData(
       card4BtnDraft.addEventListener("click", () => tab5.click());
     }
     card4BtnDraft.classList.remove("hide");
-    card6BtnLock.classList.add("hide");
-    if (pageLoad) {
-      card6Btn.addEventListener("click", () => tab6.click());
-    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
