@@ -58,7 +58,7 @@ let card5BtnComplete = document.getElementById("overview-btn-5-complete");
 let card5BtnLock = document.getElementById("overview-lock-5");
 let card5BtnDraft = document.getElementById("overview-btn-5-draft");
 let card6BtnLock = document.getElementById("overview-lock-6");
-let card6Btn = document.getElementById("overview-btn-6");
+let card6Btn = document.getElementById("overview-btn-6-draft");
 let card6BtnDraftText = document.getElementById("overview-btn-6-draft-text");
 // Details
 let coEmpty = document.getElementById("inc-details-empty");
@@ -84,7 +84,7 @@ let coShContainer = document.getElementById("company-shareholders-container");
 // let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
 // Bank account & Business Debit Cards
 let activeBank;
-let swipeyOptIn = false;
+let swipeyOptIn;
 let banks = Array.from(document.querySelectorAll('[data-bank="bank-acc"]'));
 let banksBanner = document.getElementById("bank-banner");
 let banksEmpty = document.getElementById("bank-empty");
@@ -438,6 +438,8 @@ async function retrieveIncorporationData(emailSave, unid, pageLoad) {
     data_res = await response.json();
     let uniqueId = data_res.incorporation_data.unique_id;
     let incorporationData = data_res.incorporation_data;
+    activeBank = incorporationData.bank_account;
+    swipeyOptIn = incorporationData.swipey_optin;
     let usersToVerify = data_res.users_to_verify;
     let bankingData = data_res.banking;
     if (response.ok) {
@@ -508,7 +510,6 @@ function populateData(
   if (pageLoad) {
     card6BtnLock.classList.add("hide");
     card6Btn.addEventListener("click", () => tab7.click());
-    card6Btn.classList.remove("hide");
   }
   if (currentStatus == "Draft") {
     // Overview
@@ -523,9 +524,13 @@ function populateData(
     // }
     card1.classList.add("current");
     card6.classList.add("current");
+    card2.classList.remove("current");
+    card3.classList.remove("current");
+    card4.classList.remove("current");
+    card5.classList.remove("current");
     if (pageLoad) {
       card1BtnDraft.addEventListener("click", () => tab2.click());
-      card6Btn.addEventListener("click", () => tab7.click());
+      card6Btn.classList.remove("hide");
     }
     card1BtnDraft.classList.remove("hide");
     card6Btn.classList.remove("hide");
@@ -533,12 +538,10 @@ function populateData(
     coEditBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
-    if (incorporation_data.swipey_optin) {
+    if (swipeyOptIn) {
       swipey.classList.add("selected");
       swipeyCheck.classList.add("selected");
     } else {
@@ -578,7 +581,11 @@ function populateData(
     //   statusBannerNumber2.innerText = "5";
     // }
     card1.classList.remove("current");
+    card6.classList.remove("current");
     card2.classList.add("current");
+    card3.classList.remove("current");
+    card4.classList.remove("current");
+    card5.classList.remove("current");
     card1BtnDraft.classList.add("hide");
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
@@ -591,19 +598,17 @@ function populateData(
     card2BtnDraft.classList.remove("hide");
     card6BtnLock.classList.add("hide");
     if (pageLoad) {
-      card6Btn.addEventListener("click", () => tab6.click());
+      card6Btn.classList.remove("hide");
     }
     // Company Details
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
-    if (incorporation_data.swipey_optin) {
+    if (swipeyOptIn) {
       swipey.classList.add("selected");
       swipeyCheck.classList.add("selected");
     } else {
@@ -650,8 +655,12 @@ function populateData(
     //   p5.classList.remove("hide");
     //   statusBannerNumber2.innerText = "5";
     // }
+    card1.classList.remove("current");
+    card6.classList.remove("current");
     card2.classList.remove("current");
     card3.classList.add("current");
+    card4.classList.add("current");
+    card5.classList.remove("current");
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
@@ -682,18 +691,16 @@ function populateData(
     }
     card6BtnLock.classList.add("hide");
     if (pageLoad) {
-      card6Btn.addEventListener("click", () => tab6.click());
+      card6Btn.classList.remove("hide");
     }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
-    if (incorporation_data.swipey_optin) {
+    if (swipeyOptIn) {
       swipey.classList.add("selected");
       swipeyCheck.classList.add("selected");
     } else {
@@ -741,8 +748,12 @@ function populateData(
     //   p5.classList.remove("hide");
     //   statusBannerNumber2.innerText = "5";
     // }
+    card1.classList.remove("current");
+    card6.classList.remove("current");
+    card2.classList.remove("current");
     card3.classList.remove("current");
     card4.classList.add("current");
+    card5.classList.remove("current");
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
@@ -771,12 +782,10 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
-    if (incorporation_data.swipey_optin) {
+    if (swipeyOptIn) {
       swipey.classList.add("selected");
       swipeyCheck.classList.add("selected");
     } else {
@@ -825,6 +834,10 @@ function populateData(
     //   p5.classList.remove("hide");
     //   statusBannerNumber2.innerText = "5";
     // }
+    card1.classList.remove("current");
+    card6.classList.remove("current");
+    card2.classList.remove("current");
+    card3.classList.remove("current");
     card4.classList.remove("current");
     card5.classList.add("current");
     if (pageLoad) {
@@ -860,10 +873,8 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
@@ -935,6 +946,12 @@ function populateData(
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
+    card1.classList.remove("current");
+    card6.classList.remove("current");
+    card2.classList.remove("current");
+    card3.classList.remove("current");
+    card4.classList.remove("current");
+    card5.classList.remove("current");
     card1BtnComplete.classList.remove("hide");
     card2BtnLock.classList.add("hide");
     if (pageLoad) {
@@ -971,7 +988,7 @@ function populateData(
     //     card6.classList.remove("current");
     //     p5.classList.remove("in-progress");
     //     p5.classList.add("complete");
-    //     card6BtnDraft.classList.add("hide");
+    //     card6Btn.classList.add("hide");
     //     card6BtnComplete.classList.remove("hide");
     //   }
     // }
@@ -979,10 +996,8 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (incorporation_data.bank_account !== null) {
-      document
-        .getElementById(incorporation_data.bank_account)
-        .classList.add("selected");
+    if (activeBank !== null) {
+      document.getElementById(activeBank).classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
