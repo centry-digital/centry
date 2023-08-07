@@ -325,7 +325,7 @@ async function bankSelection(selectionId) {
   }
 }
 
-async function swipeyOptIn() {}
+// async function swipeyOptIn() {}
 
 // async function allianceOptIn() {
 //   try {
