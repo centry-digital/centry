@@ -540,8 +540,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -603,8 +605,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -691,8 +695,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -772,8 +778,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -859,8 +867,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -976,8 +986,10 @@ function populateData(
     }
     if (incorporation_data.swipey_optin) {
       swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
     } else {
       swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
