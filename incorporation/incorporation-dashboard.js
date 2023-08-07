@@ -539,9 +539,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -602,9 +602,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -690,9 +690,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -771,9 +771,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -858,9 +858,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
@@ -975,9 +975,9 @@ function populateData(
         .classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
-      swipeyOptIn.classList.add("selected");
+      swipey.classList.add("selected");
     } else {
-      swipeyOptIn.classList.remove("selected");
+      swipey.classList.remove("selected");
     }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
