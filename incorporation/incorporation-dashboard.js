@@ -96,9 +96,9 @@ for (let i = 0; i < banks.length; i++) {
     bankSelect(e);
   });
 }
-swipey.addEventListener("click", () => {
+swipey.addEventListener("click", async () => {
   swipeyOptIn = !swipeyOptIn;
-  let selection = swipeySelection(swipeyOptIn);
+  let selection = await swipeySelection(swipeyOptIn);
   if (selection.ok) {
     if (swipeyOptIn) {
       swipey.classList.add("selected");
