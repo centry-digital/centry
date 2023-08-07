@@ -96,6 +96,21 @@ for (let i = 0; i < banks.length; i++) {
     bankSelect(e);
   });
 }
+swipey.addEventListener("click", () => {
+  swipeyOptIn = !swipeyOptIn;
+  let selection = swipeySelection(swipeyOptIn);
+  if (selection.ok) {
+    if (swipeyOptIn) {
+      swipey.classList.add("selected");
+      swipeyCheck.classList.add("selected");
+    } else {
+      swipey.classList.remove("selected");
+      swipeyCheck.classList.remove("selected");
+    }
+  } else {
+    console.log("Error updating database");
+  }
+});
 // let allianceStatus = document.getElementById("alliance-status");
 // let allianceCompleteBtn = document.getElementById("bank-account-complete");
 // let allianceIncorporating = document.getElementById(
@@ -316,6 +331,33 @@ async function bankSelection(selectionId) {
           unid: "P33R0W",
           email_save: "test@test.com",
           bank: selectionId,
+        }),
+      }
+    );
+    if (response.ok) {
+      return { ok: true };
+    } else {
+      return { ok: false };
+    }
+  } catch (error) {
+    console.log(error);
+    return { ok: false };
+  }
+}
+
+async function swipeySelection(optin_status) {
+  try {
+    let response = await fetch(
+      "https://api.centry.digital/api:incorporation/new_incorporation/swipey",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          unid: "P33R0W",
+          email_save: "test@test.com",
+          swipey_optin: optin_status,
         }),
       }
     );
