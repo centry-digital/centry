@@ -491,6 +491,11 @@ function populateData(
     coEditBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
     banksNotEmpty.classList.remove("hide");
