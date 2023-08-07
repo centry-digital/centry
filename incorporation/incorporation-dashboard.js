@@ -538,6 +538,11 @@ function populateData(
         .getElementById(incorporation_data.bank_account)
         .classList.add("selected");
     }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
     banksBanner.classList.add("hide");
     banksEmpty.classList.add("hide");
     banksNotEmpty.classList.remove("hide");
@@ -590,6 +595,20 @@ function populateData(
     coEditBtn.classList.add("hide");
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentNotReady.classList.add("hide");
     if (pageLoad) {
@@ -664,6 +683,20 @@ function populateData(
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentReady.classList.add("hide");
     paymentCompleteBtn.classList.remove("hide");
@@ -731,6 +764,20 @@ function populateData(
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
@@ -804,6 +851,20 @@ function populateData(
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
@@ -907,6 +968,20 @@ function populateData(
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
+    // Bank account & Business debit cards
+    if (incorporation_data.bank_account !== null) {
+      document
+        .getElementById(incorporation_data.bank_account)
+        .classList.add("selected");
+    }
+    if (incorporation_data.swipey_optin) {
+      swipeyOptIn.classList.add("selected");
+    } else {
+      swipeyOptIn.classList.remove("selected");
+    }
+    banksBanner.classList.add("hide");
+    banksEmpty.classList.add("hide");
+    banksNotEmpty.classList.remove("hide");
     // Payment
     paymentCompleteBtn.classList.remove("hide");
     // e-KYC
