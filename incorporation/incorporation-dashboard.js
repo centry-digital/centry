@@ -595,6 +595,10 @@ function populateData(
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
     card1BtnComplete.classList.remove("hide");
+    card6BtnLock.classList.add("hide");
+    if (pageLoad) {
+      card6Btn.classList.remove("hide");
+    }
     card2BtnLock.classList.add("hide");
     if (pageLoad) {
       card2BtnDraft.addEventListener("click", () => tab3.click());
