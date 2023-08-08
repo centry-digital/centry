@@ -97,6 +97,8 @@ for (let i = 0; i < banks.length; i++) {
   });
 }
 swipey.addEventListener("click", async () => {
+  swipey.style.pointerEvents = "none";
+  swipey.style.cursor = "wait";
   swipeyOptIn = !swipeyOptIn;
   let selection = await swipeySelection(swipeyOptIn);
   if (selection.ok) {
@@ -110,6 +112,8 @@ swipey.addEventListener("click", async () => {
   } else {
     console.log("Error updating database");
   }
+  swipey.style.pointerEvents = "initial";
+  swipey.style.cursor = "pointer";
 });
 // let allianceStatus = document.getElementById("alliance-status");
 // let allianceCompleteBtn = document.getElementById("bank-account-complete");
