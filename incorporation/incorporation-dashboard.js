@@ -685,19 +685,18 @@ function populateData(
     }
     card3BtnDraft.classList.remove("hide");
     card4BtnLock.classList.add("hide");
-    if (allDeclarationsStatusSigned) {
-      card4.classList.add("current");
+    card4.classList.add("current");
+    if (pageLoad) {
+      card4BtnDraft.addEventListener("click", () => tab5.click());
+      card4BtnComplete.addEventListener("click", () => tab5.click());
+    }
+    if (!allDeclarationsStatusSigned) {
       card4BtnComplete.classList.add("hide");
       card4BtnDraft.classList.remove("hide");
     } else {
       card4BtnDraft.classList.add("hide");
       card4BtnComplete.classList.remove("hide");
     }
-    if (pageLoad) {
-      card4BtnDraft.addEventListener("click", () => tab5.click());
-      card4BtnComplete.addEventListener("click", () => tab5.click());
-    }
-
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -779,10 +778,18 @@ function populateData(
     }
     card3BtnComplete.classList.remove("hide");
     card4BtnLock.classList.add("hide");
+    card4.classList.add("current");
     if (pageLoad) {
       card4BtnDraft.addEventListener("click", () => tab5.click());
+      card4BtnComplete.addEventListener("click", () => tab5.click());
     }
-    card4BtnDraft.classList.remove("hide");
+    if (!allDeclarationsStatusSigned) {
+      card4BtnComplete.classList.add("hide");
+      card4BtnDraft.classList.remove("hide");
+    } else {
+      card4BtnDraft.classList.add("hide");
+      card4BtnComplete.classList.remove("hide");
+    }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
