@@ -20,6 +20,8 @@ let cosecPlan = "lite";
 // let openAllianceAccount = false;
 let activeBank = null;
 let swipeyOptIn = true;
+let swipey = document.getElementById("swipey-opt-in");
+let swipeyCheck = document.getElementById("swipey-check");
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
