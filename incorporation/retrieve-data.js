@@ -163,12 +163,12 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
       data.company_shareholders[i].shares;
   }
 }
-cosecPlan = data.cosec_plan;
-if (cosecPlan == "all_in") {
-  radioCosecAllIn.click();
-} else if (cosecPlan == "lite") {
-  radioCosecLite.click();
-}
+// cosecPlan = data.cosec_plan;
+// if (cosecPlan == "all_in") {
+//   radioCosecAllIn.click();
+// } else if (cosecPlan == "lite") {
+//   radioCosecLite.click();
+// }
 // cboxAlliance.checked = data.open_alliance;
 // if (cboxAlliance.checked) {
 //   openAllianceAccount = true;
