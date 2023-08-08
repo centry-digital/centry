@@ -1,6 +1,6 @@
 data = sessionStorage.getItem("incorporation-data");
 data = JSON.parse(data);
-document.title = data.unique_id + " - Incorporate Your Company Online - Centry"
+document.title = data.unique_id + " - Incorporate Your Company Online - Centry";
 if (
   data.status == "Submitted" ||
   data.status == "Paid" ||
@@ -156,10 +156,11 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
   shareholder_phones[i].value = data.company_shareholders[i].phone;
   if (data.company_shareholders[i].shares == "") {
     shareholder_shares[i].value = "";
-    shareholder_shares_indicator[i].innerText = 0
+    shareholder_shares_indicator[i].innerText = 0;
   } else {
     shareholder_shares[i].value = parseInt(data.company_shareholders[i].shares);
-    shareholder_shares_indicator[i].innerText = data.company_shareholders[i].shares;
+    shareholder_shares_indicator[i].innerText =
+      data.company_shareholders[i].shares;
   }
 }
 cosecPlan = data.cosec_plan;
@@ -168,19 +169,21 @@ if (cosecPlan == "all_in") {
 } else if (cosecPlan == "lite") {
   radioCosecLite.click();
 }
-cboxAlliance.checked = data.open_alliance;
-if (cboxAlliance.checked) {
-  openAllianceAccount = true;
-  summaryPaymentCashback.classList.remove("hide");
-} else {
-  openAllianceAccount = false;
-  summaryPaymentCashback.classList.add("hide");
-}
-if (openAllianceAccount) {
-  openAllianceAccount.checked = true;
-} else {
-  openAllianceAccount.checked = false;
-}
+// cboxAlliance.checked = data.open_alliance;
+// if (cboxAlliance.checked) {
+//   openAllianceAccount = true;
+//   summaryPaymentCashback.classList.remove("hide");
+// } else {
+//   openAllianceAccount = false;
+//   summaryPaymentCashback.classList.add("hide");
+// }
+// if (openAllianceAccount) {
+//   openAllianceAccount.checked = true;
+// } else {
+//   openAllianceAccount.checked = false;
+// }
+activeBank = data.bank_account;
+swipeyOptIn = data.swipey_optin;
 tc_accepted = data.tc_accepted;
 if (tc_accepted) {
   document.getElementById("tc-acceptance").classList.add("checked");
