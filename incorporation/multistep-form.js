@@ -17,7 +17,9 @@ let inputsValidity = false;
 let fieldsValidity = false;
 let saveState = 0;
 let cosecPlan = "lite";
-let openAllianceAccount = false;
+// let openAllianceAccount = false;
+let activeBank = null;
+let swipeyOptIn = true;
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
@@ -34,35 +36,35 @@ incPrevButton.addEventListener("click", getPrevTab);
 
 function getNextTab() {
   if (activeTabId == "w-tabs-0-data-w-tab-0") {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-1");
     currentSideNav = document.getElementById("inc-sidenav-0");
     nextSideNav = document.getElementById("inc-sidenav-1");
     activeTabId = "w-tabs-0-data-w-tab-1";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-1") {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-2");
     currentSideNav = document.getElementById("inc-sidenav-1");
     nextSideNav = document.getElementById("inc-sidenav-2");
     activeTabId = "w-tabs-0-data-w-tab-2";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-2") {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-3");
     currentSideNav = document.getElementById("inc-sidenav-2");
     nextSideNav = document.getElementById("inc-sidenav-3");
     activeTabId = "w-tabs-0-data-w-tab-3";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-3") {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-3");
     nextSideNav = document.getElementById("inc-sidenav-4");
     activeTabId = "w-tabs-0-data-w-tab-4";
     nextTab.click();
   } else if (activeTabId == "w-tabs-0-data-w-tab-4") {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     nextTab = document.getElementById("w-tabs-0-data-w-tab-5");
     currentSideNav = document.getElementById("inc-sidenav-4");
     nextSideNav = document.getElementById("inc-sidenav-5");
@@ -77,7 +79,7 @@ function getNextTab() {
 }
 
 function getPrevTab() {
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
   if (activeTabId == "w-tabs-0-data-w-tab-5") {
     prevTab = document.getElementById("w-tabs-0-data-w-tab-4");
     currentSideNav = document.getElementById("inc-sidenav-5");
@@ -183,7 +185,7 @@ let incorporationSideNavUnclickable = document.querySelectorAll(
 for (const tab of incorporationSideNavClickable) {
   tab.style.cursor = "pointer";
   tab.addEventListener("click", () => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     let sidenavTab = tab.getAttribute("data-incorporation-sidenav-clickable");
     let n;
     switch (sidenavTab) {
@@ -1079,7 +1081,9 @@ function getSummary() {
 
   // record Cosec Plan selection
   incorporationSummary.cosec_plan = cosecPlan;
-  incorporationSummary.open_alliance_account = openAllianceAccount;
+  // incorporationSummary.open_alliance_account = openAllianceAccount;
+  incorporationSummary.active_bank = activeBank;
+  incorporationSummary.swipey_opt_in = swipeyOptIn;
 }
 getSummary();
 
@@ -1155,8 +1159,10 @@ function prepareSubmissionObject() {
     incorporationObject.data.company_shareholders.push(shareholder);
   }
   incorporationObject.data.cosec_plan = incorporationSummary.cosec_plan;
-  incorporationObject.data.open_alliance_account = incorporationSummary.open_alliance_account;
+  // incorporationObject.data.open_alliance_account = incorporationSummary.open_alliance_account;
   incorporationObject.data.tc_accepted = tc_accepted;
+  incorporationObject.data.bank_account = activeBank;
+  incorporationObject.data.swipey_optin = swipeyOptIn;
 }
 
 function submitIncorporation() {
@@ -1184,7 +1190,10 @@ function submitIncorporation() {
           );
           window.location.href = data_res.payload.redirect_url;
         }
-      } else if ("_session" in data_res && "payment_link" in data_res._session) {
+      } else if (
+        "_session" in data_res &&
+        "payment_link" in data_res._session
+      ) {
         window.location.href = data_res._session.payment_link;
       }
     })
@@ -1295,7 +1304,8 @@ async function saveDraft_new() {
           .getElementById("incorporation-record-box")
           .classList.remove("hide");
       }
-      document.title = data_res.unique_id + " - Incorporate Your Company Online - Centry";
+      document.title =
+        data_res.unique_id + " - Incorporate Your Company Online - Centry";
     }
   } catch (error) {
     console.error(error);
