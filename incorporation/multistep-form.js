@@ -20,12 +20,12 @@ let cosecPlan = "lite";
 // let openAllianceAccount = false;
 let activeBank = null;
 let swipeyOptIn = null;
+let swipey = document.getElementById("swipey-opt-in");
+let swipeyCheck = document.getElementById("swipey-check");
 if (swipeyOptIn === null) {
   swipey.classList.add("selected");
   swipeyCheck.classList.add("selected");
 }
-let swipey = document.getElementById("swipey-opt-in");
-let swipeyCheck = document.getElementById("swipey-check");
 let incorporationForm = document.querySelector(
   '[name="wf-form-Incorporation-Form"]'
 );
