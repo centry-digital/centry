@@ -183,6 +183,10 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
 //   openAllianceAccount.checked = false;
 // }
 activeBank = data.bank_account;
+if (activeBank !== null) {
+  console.log(activeBank, activeBank !== null);
+  document.getElementById(activeBank).classList.add("selected");
+}
 swipeyOptIn = data.swipey_optin;
 if (swipeyOptIn) {
   swipey.classList.add("selected");

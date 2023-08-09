@@ -290,7 +290,6 @@ let tc_accepted = false;
 function toggleTcCheckbox() {
   tcAcceptanceToggle.classList.toggle("checked");
   tc_accepted = !tc_accepted;
-  console.log(tc_accepted);
   updateButtons();
 }
 
@@ -1093,9 +1092,6 @@ function getSummary() {
 }
 getSummary();
 
-if (activeBank !== null) {
-  document.getElementById(activeBank).classList.add("selected");
-}
 if (swipeyOptIn === null) {
   swipey.classList.add("selected");
   swipeyCheck.classList.add("selected");
