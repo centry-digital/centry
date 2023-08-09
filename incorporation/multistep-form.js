@@ -19,7 +19,11 @@ let saveState = 0;
 let cosecPlan = "lite";
 // let openAllianceAccount = false;
 let activeBank = null;
-let swipeyOptIn = true;
+let swipeyOptIn = null;
+if (swipeyOptIn === null) {
+  swipey.classList.add("selected");
+  swipeyCheck.classList.add("selected");
+}
 let swipey = document.getElementById("swipey-opt-in");
 let swipeyCheck = document.getElementById("swipey-check");
 let incorporationForm = document.querySelector(
@@ -1088,6 +1092,50 @@ function getSummary() {
   incorporationSummary.swipey_opt_in = swipeyOptIn;
 }
 getSummary();
+
+if (activeBank !== null) {
+  document.getElementById(activeBank).classList.add("selected");
+}
+if (swipeyOptIn === null) {
+  swipey.classList.add("selected");
+  swipeyCheck.classList.add("selected");
+}
+let banks = Array.from(document.querySelectorAll('[data-bank="bank-acc"]'));
+for (let i = 0; i < banks.length; i++) {
+  banks[i].addEventListener("click", (e) => {
+    bankSelect(e);
+  });
+}
+
+swipey.addEventListener("click", async () => {
+  if (swipeyOptIn === null) {
+    swipeyOptIn = false;
+  } else {
+    swipeyOptIn = !swipeyOptIn;
+  }
+  if (swipeyOptIn) {
+    swipey.classList.add("selected");
+    swipeyCheck.classList.add("selected");
+  } else {
+    swipey.classList.remove("selected");
+    swipeyCheck.classList.remove("selected");
+  }
+});
+
+async function bankSelect(e) {
+  let selectedElement = e.currentTarget;
+  let selectionId = selectedElement.getAttribute("id");
+  if (selectionId === activeBank) {
+    activeBank = null;
+    selectedElement.classList.remove("selected");
+  } else {
+    if (activeBank) {
+      document.getElementById(activeBank).classList.remove("selected");
+    }
+    activeBank = selectionId;
+    selectedElement.classList.add("selected");
+  }
+}
 
 function prepareSubmissionObject() {
   // Prepare submission object

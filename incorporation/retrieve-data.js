@@ -184,6 +184,13 @@ for (let i = 0; i < data.company_shareholders.length; i++) {
 // }
 activeBank = data.bank_account;
 swipeyOptIn = data.swipey_optin;
+if (swipeyOptIn) {
+  swipey.classList.add("selected");
+  swipeyCheck.classList.add("selected");
+} else {
+  swipey.classList.remove("selected");
+  swipeyCheck.classList.remove("selected");
+}
 tc_accepted = data.tc_accepted;
 if (tc_accepted) {
   document.getElementById("tc-acceptance").classList.add("checked");
