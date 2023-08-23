@@ -546,7 +546,7 @@ function populateData(
     coEditBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (swipeyOptIn) {
@@ -613,7 +613,7 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (swipeyOptIn) {
@@ -705,7 +705,7 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (swipeyOptIn) {
@@ -798,7 +798,7 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (swipeyOptIn) {
@@ -889,7 +889,7 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
@@ -1012,7 +1012,7 @@ function populateData(
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
     // Bank account & Business debit cards
-    if (activeBank !== null) {
+    if (activeBank) {
       document.getElementById(activeBank).classList.add("selected");
     }
     if (incorporation_data.swipey_optin) {
