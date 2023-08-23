@@ -23,6 +23,7 @@ let swipeyOptIn = null;
 let swipey = document.getElementById("swipey-opt-in");
 let swipeyCheck = document.getElementById("swipey-check");
 if (swipeyOptIn === null) {
+  swipeyOptIn = true;
   swipey.classList.add("selected");
   swipeyCheck.classList.add("selected");
 }
