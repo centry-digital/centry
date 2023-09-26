@@ -78,10 +78,6 @@ let coDirContainer = document.getElementById("company-directors-container");
 let coDir = [];
 let coSh = [];
 let coShContainer = document.getElementById("company-shareholders-container");
-// let cosecPlan = document.getElementById("cosec_plan");
-// let coBankAccBlock = document.getElementById("co-bank-account-block");
-// let coOptedInAlliance = document.getElementById("opted-in-alliance");
-// let coAllianceTabLink = document.getElementById("co-alliance-tab-link");
 // Bank account & Business Debit Cards
 let activeBank;
 let swipeyOptIn;
@@ -115,44 +111,6 @@ swipey.addEventListener("click", async () => {
   swipey.style.pointerEvents = "initial";
   swipey.style.cursor = "pointer";
 });
-// let allianceStatus = document.getElementById("alliance-status");
-// let allianceCompleteBtn = document.getElementById("bank-account-complete");
-// let allianceIncorporating = document.getElementById(
-//   "bank-account-incorporating-block"
-// );
-// let allianceIncorporatingIndicator = document.getElementById(
-//   "bank-account-incorporating-indicator"
-// );
-// let allianceIncorporatingConnector = document.getElementById(
-//   "bank-account-incorporating-connector"
-// );
-// let alliancePending = document.getElementById("bank-account-pending-block");
-// let alliancePendingIndicator = document.getElementById(
-//   "bank-account-pending-indicator"
-// );
-// let alliancePendingConnector = document.getElementById(
-//   "bank-account-pending-connector"
-// );
-// let allianceInProgress = document.getElementById(
-//   "bank-account-in-progress-block"
-// );
-// let allianceInProgressIndicator = document.getElementById(
-//   "bank-account-in-progress-indicator"
-// );
-// let allianceInProgressConnector = document.getElementById(
-//   "bank-account-in-progress-connector"
-// );
-// let allianceQuery = document.getElementById("bank-account-query-block");
-// let allianceQueryIndicator = document.getElementById(
-//   "bank-account-query-indicator"
-// );
-// let allianceQueryConnector = document.getElementById(
-//   "bank-account-query-connector"
-// );
-// let allianceSuccess = document.getElementById("bank-account-success-block");
-// let allianceSuccessIndicator = document.getElementById(
-//   "bank-account-success-indicator"
-// );
 // Payment
 let paymentBanner = document.getElementById("payment-banner");
 let paymentReady = document.getElementById("payment-ready");
@@ -224,7 +182,6 @@ let toCoDetailsTab = document.querySelectorAll(
 let toPaymentTab = document.querySelectorAll('[data-button="payment-tab"]');
 let toEkycTab = document.querySelectorAll('[data-button="ekyc-tab"]');
 let toSsmTab = document.querySelectorAll('[data-button="ssm-tab"]');
-// let optinAlliance = document.querySelectorAll('[data-button="optin-alliance"]');
 //
 for (i = 0; i < backToOverview.length; i++) {
   backToOverview[i].addEventListener("click", () => {
@@ -265,9 +222,6 @@ if (query == "") {
   card1BtnStart.classList.remove("hide");
   // Company Details
   coEmpty.classList.remove("hide");
-  // coAllianceTabLink.addEventListener("click", () => {
-  //   tab7.click();
-  // });
   // Bank account & Business debit cards
   banksBanner.classList.remove("hide");
   banksEmpty.classList.remove("hide");
@@ -291,10 +245,6 @@ if (query == "") {
     if (type == "resume") {
       document.title = unid + " - Incorporate Your Company Online - Centry";
       retrieveIncorporationData(emailSave, unid, true);
-      // coBankAccBlock.classList.remove("hide");
-      // for (i = 0; i < optinAlliance.length; i++) {
-      //   // optinAlliance[i].addEventListener("click", allianceOptIn);
-      // }
     }
   } else {
     window.location.href = `https://${window.location.hostname}/incorporation/get-started`;
@@ -375,36 +325,6 @@ async function swipeySelection(optin_status) {
     return { ok: false };
   }
 }
-
-// async function swipeyOptIn() {}
-
-// async function allianceOptIn() {
-//   try {
-//     let response = await fetch(
-//       `${apiUrl}incorporation/new_incorporation/alliance_opt_in`,
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           unid: unid,
-//           email_save: emailSave,
-//         }),
-//       }
-//     );
-//     if (response.ok) {
-//       for (i = 0; i < optinAlliance.length; i++) {
-//         optinAlliance[i].classList.add("hide");
-//       }
-//       coOptedInAlliance.classList.remove("hide");
-//       paymentCashBack.classList.remove("hide");
-//       allianceStatus.classList.remove("hide");
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 async function tabClick(tabNo) {
   if (query.get("session") && query.get("email") && query.get("unid")) {
@@ -495,7 +415,6 @@ function populateData(
     (status) => status != "signed"
   );
   let currentStatus = incorporation_data.status;
-  // let openAlliance = incorporation_data.open_alliance;
   // Resetting parameters
   indexEkyc = 1;
   indexDeclaration = 1;
@@ -506,11 +425,6 @@ function populateData(
   declarationsLoiTable.innerHTML = "";
   declarationsS201Table.innerHTML = "";
   declarationsLoaTable.innerHTML = "";
-  // if (openAlliance) {
-  //   card6BtnDraftText.innerText = "Pending";
-  // } else {
-  //   card6BtnDraftText.innerText = "Opt-in";
-  // }
   if (pageLoad) {
     card6BtnLock.classList.add("hide");
     card6Btn.addEventListener("click", () => tab7.click());
@@ -521,11 +435,6 @@ function populateData(
     statusBannerSymbolIncomplete.classList.remove("hide");
     statusBanner.classList.remove("hide");
     p1.classList.add("in-progress");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    // }
     card1.classList.add("current");
     card6.classList.add("current");
     card2.classList.remove("current");
@@ -571,10 +480,6 @@ function populateData(
     // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    // }
   } else if (currentStatus == "Submitted") {
     // Overview
     statusBannerNumber.innerText = "1";
@@ -583,11 +488,6 @@ function populateData(
     p1.classList.add("complete");
     p1.classList.remove("in-progress");
     p2.classList.add("in-progress");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    // }
     card1.classList.remove("current");
     card6.classList.remove("current");
     card2.classList.add("current");
@@ -645,10 +545,6 @@ function populateData(
     // SSM
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    // }
   } else if (currentStatus == "Paid") {
     // Overview
     statusBannerNumber.innerText = "2";
@@ -658,11 +554,6 @@ function populateData(
     p2.classList.add("complete");
     p2.classList.remove("in-progress");
     p3.classList.add("in-progress");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    // }
     card1.classList.remove("current");
     card6.classList.remove("current");
     card2.classList.remove("current");
@@ -695,11 +586,11 @@ function populateData(
       card4BtnComplete.addEventListener("click", () => tab5.click());
     }
     if (!allDeclarationsStatusSigned) {
-      card4BtnComplete.classList.add("hide");
-      card4BtnDraft.classList.remove("hide");
-    } else {
       card4BtnDraft.classList.add("hide");
       card4BtnComplete.classList.remove("hide");
+    } else {
+      card4BtnComplete.classList.add("hide");
+      card4BtnDraft.classList.remove("hide");
     }
     // Company Details
     coCompleteBtn.classList.remove("hide");
@@ -737,10 +628,6 @@ function populateData(
     // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    // }
   } else if (currentStatus == "KYC Complete") {
     // Overview
     statusBannerNumber.innerText = "3";
@@ -751,11 +638,6 @@ function populateData(
     p3.classList.add("complete");
     p3.classList.remove("in-progress");
     p4.classList.add("in-progress");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    // }
     card1.classList.remove("current");
     card6.classList.remove("current");
     card2.classList.remove("current");
@@ -826,10 +708,6 @@ function populateData(
     // Submission
     ssmBanner.classList.remove("hide");
     ssmEmpty.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    // }
   } else if (currentStatus == "Incorporating") {
     // Overview
     statusBanner.classList.remove("notice");
@@ -845,11 +723,6 @@ function populateData(
     p3.classList.add("complete");
     p4.classList.remove("in-progress");
     p4.classList.add("complete");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    // }
     card1.classList.remove("current");
     card6.classList.remove("current");
     card2.classList.remove("current");
@@ -919,28 +792,10 @@ function populateData(
     ssmBanner.classList.add("hide");
     ssmEmpty.classList.add("hide");
     ssmNotEmpty.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    // }
   } else if (currentStatus == "Success") {
     // Overview
     statusBannerSymbolIncomplete.classList.add("hide");
     statusBannerSymbolComplete.classList.remove("hide");
-    // if (openAlliance && banking_data.status != "success") {
-    //   statusBannerNumber.innerText = "4";
-    //   statusBannerHeader.innerText = `${incorporation_data.company_name} Sdn. Bhd. has been successfully incorporated!`;
-    //   statusBannerText.innerText =
-    //     "Hang on tight, our partners from Alliance Bank will reach out to you to get your bank account opened at your doorstep.";
-    //   card6BtnDraftText.innerText = "In progress";
-    // } else if (openAlliance && banking_data.status == "success") {
-    //   statusBannerNumber.innerText = "5";
-    //   statusBanner.classList.remove("notice");
-    //   statusBanner.classList.add("complete");
-    //   statusBannerHeader.innerText = `🎉 Congratulations, ${incorporation_data.company_name} Sdn. Bhd. & the bank account is fully set up!`;
-    //   statusBannerText.innerText =
-    //     "Your company setup is now complete. Go reach for the stars! ⭐️ ";
-    // } else {
     statusBannerNumber.innerText = "4";
     statusBanner.classList.remove("notice");
     statusBanner.classList.add("complete");
@@ -954,11 +809,6 @@ function populateData(
     p3.classList.add("complete");
     p4.classList.add("complete");
     card5.classList.remove("current");
-    // if (openAlliance) {
-    //   if (banking_data.status != "success") {
-    //     card6.classList.add("current");
-    //   }
-    // }
     if (pageLoad) {
       card1BtnComplete.addEventListener("click", () => tab2.click());
     }
@@ -994,20 +844,6 @@ function populateData(
       card5BtnComplete.addEventListener("click", () => tab6.click());
     }
     card5BtnComplete.classList.remove("hide");
-    // if (openAlliance) {
-    //   p4.style.borderRadius = 0;
-    //   p5.classList.remove("hide");
-    //   statusBannerNumber2.innerText = "5";
-    //   if (banking_data.status != "success") {
-    //     p5.classList.add("in-progress");
-    //   } else {
-    //     card6.classList.remove("current");
-    //     p5.classList.remove("in-progress");
-    //     p5.classList.add("complete");
-    //     card6Btn.classList.add("hide");
-    //     card6BtnComplete.classList.remove("hide");
-    //   }
-    // }
     // Company Details
     coCompleteBtn.classList.remove("hide");
     coDetails.classList.remove("hide");
@@ -1043,65 +879,6 @@ function populateData(
     ssmSuccessCoName.innerText = incorporation_data.company_name + " Sdn. Bhd.";
     ssmCompleteBtn.classList.remove("hide");
     ssmSuccess.classList.remove("hide");
-    // Alliance
-    // if (openAlliance) {
-    //   allianceStatus.classList.remove("hide");
-    //   if (banking_data.status == "pending") {
-    //     allianceIncorporating.classList.add("success");
-    //     allianceIncorporatingIndicator.classList.add("success");
-    //     allianceIncorporatingConnector.classList.add("success");
-    //     alliancePending.classList.add("pending");
-    //     alliancePendingIndicator.classList.add("pending");
-    //     alliancePendingConnector.classList.add("pending");
-    //   } else if (banking_data.status == "meeting_scheduled") {
-    //     allianceIncorporating.classList.add("success");
-    //     allianceIncorporatingIndicator.classList.add("success");
-    //     allianceIncorporatingConnector.classList.add("success");
-    //     alliancePending.classList.add("success");
-    //     alliancePendingIndicator.classList.add("success");
-    //     alliancePendingConnector.classList.add("success");
-    //   } else if (banking_data.status == "in_progress") {
-    //     allianceIncorporating.classList.add("success");
-    //     allianceIncorporatingIndicator.classList.add("success");
-    //     allianceIncorporatingConnector.classList.add("success");
-    //     alliancePending.classList.add("success");
-    //     alliancePendingIndicator.classList.add("success");
-    //     alliancePendingConnector.classList.add("success");
-    //     allianceInProgress.classList.add("pending");
-    //     allianceInProgressIndicator.classList.add("pending");
-    //     allianceInProgressConnector.classList.add("pending");
-    //   } else if (banking_data.status == "query") {
-    //     allianceIncorporating.classList.add("success");
-    //     allianceIncorporatingIndicator.classList.add("success");
-    //     allianceIncorporatingConnector.classList.add("success");
-    //     alliancePending.classList.add("success");
-    //     alliancePendingIndicator.classList.add("success");
-    //     alliancePendingConnector.classList.add("success");
-    //     allianceInProgress.classList.add("success");
-    //     allianceInProgressIndicator.classList.add("success");
-    //     allianceInProgressConnector.classList.add("success");
-    //     allianceQuery.classList.remove("hide");
-    //     allianceQuery.classList.add("pending");
-    //     allianceQueryIndicator.classList.add("pending");
-    //     allianceQueryConnector.classList.add("pending");
-    //   } else if (banking_data.status == "success") {
-    //     allianceIncorporating.classList.add("success");
-    //     allianceIncorporatingIndicator.classList.add("success");
-    //     allianceIncorporatingConnector.classList.add("success");
-    //     allianceCompleteBtn.classList.remove("hide");
-    //     alliancePending.classList.add("success");
-    //     alliancePendingIndicator.classList.add("success");
-    //     alliancePendingConnector.classList.add("success");
-    //     allianceInProgress.classList.add("success");
-    //     allianceInProgressIndicator.classList.add("success");
-    //     allianceInProgressConnector.classList.add("success");
-    //     allianceQuery.classList.add("hide");
-    //     allianceSuccess.classList.add("success");
-    //     allianceSuccessIndicator.classList.add("success");
-    //   }
-    // } else {
-    //   allianceStatus.classList.add("hide");
-    // }
   }
 
   // Populate Data
@@ -1319,21 +1096,7 @@ function populateData(
     paymentTotal.innerText = "RM1,879";
     paymentTotalDesc.innerText = "RM1,879";
   }
-  // if (incorporation_data.open_alliance) {
-  //   for (i = 0; i < optinAlliance.length; i++) {
-  //     optinAlliance[i].classList.add("hide");
-  //   }
-  //   // coOptedInAlliance.classList.remove("hide");
-  //   paymentCashBack.classList.remove("hide");
-  // } else {
-  //   paymentCashBack.classList.add("hide");
-  //   // coOptedInAlliance.classList.add("hide");
-  //   for (i = 0; i < optinAlliance.length; i++) {
-  //     optinAlliance[i].classList.remove("hide");
-  //   }
-  // }
 }
-// window.history.pushState({}, document.title, window.location.pathname);
 async function retrievePaymentSession(event, unid) {
   let request_body = { unique_id: unid };
   try {
