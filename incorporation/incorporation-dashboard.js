@@ -1156,10 +1156,13 @@ function fillEkycTable(item) {
   } else if (item.verified == "true") {
     verificationLink = `<div style="display:flex;align-items:center;justify-content:flex-start;column-gap:4px;">
                           <span style="color:#111827">Verified</span>
-                          <div class="dashboard-nav common-symbol-filled complete">
-                            <span class="material-symbols-rounded symbol-filled" style="font-size:14px;line-height:1.25rem;">
-                              check_circle
-                            </span>
+                          <div class="div-block-529">
+                            <div class="dashboard-nav common-symbol-filled complete w-embed">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" class="lucide lucide-check-circle-2 lucide-20">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m9 12 2 2 4-4"></path>
+                              </svg>
+                            </div>
                           </div>
                         </div>`;
   } else if (item.verified == "submitted") {
@@ -1207,10 +1210,13 @@ function fillDeclarationsTable(data, currentStatus, item) {
     if (item.verified != "false" && checkDeclarationLoi == null) {
       statusLoi = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                     <span style="color:#111827">Completed</span>
-                    <div class="dashboard-nav common-symbol-filled complete">
-                      <span class="material-symbols-rounded symbol-filled" style="font-size:14px;line-height:1.25rem;">
-                        check_circle
-                      </span>
+                    <div class="div-block-529">
+                      <div class="dashboard-nav common-symbol-filled complete w-embed">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" class="lucide lucide-check-circle-2 lucide-20">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                      </div>
                     </div>
                   </div>`;
     } else {
@@ -1219,10 +1225,13 @@ function fillDeclarationsTable(data, currentStatus, item) {
     if (item.verified != "false" && checkDeclarationS201 == null) {
       statusS201 = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                       <span style="color:#111827">Completed</span>
-                      <div class="dashboard-nav common-symbol-filled complete">
-                        <span class="material-symbols-rounded symbol-filled" style="font-size:14px;line-height:1.25rem;">
-                          check_circle
-                        </span>
+                      <div class="div-block-529">
+                        <div class="dashboard-nav common-symbol-filled complete w-embed">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" class="lucide lucide-check-circle-2 lucide-20">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m9 12 2 2 4-4"></path>
+                          </svg>
+                        </div>
                       </div>
                     </div>`;
     } else {
@@ -1231,10 +1240,13 @@ function fillDeclarationsTable(data, currentStatus, item) {
     if (item.verified != "false" && checkDeclarationLoa == null) {
       statusLoa = `<div style="display:flex;align-items:center;justify-content:flex-end;column-gap:4px;">
                       <span style="color:#111827">Completed</span>
-                      <div class="dashboard-nav common-symbol-filled complete">
-                        <span class="material-symbols-rounded symbol-filled" style="font-size:14px;line-height:1.25rem;">
-                          check_circle
-                        </span>
+                      <div class="div-block-529">
+                        <div class="dashboard-nav common-symbol-filled complete w-embed">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" class="lucide lucide-check-circle-2 lucide-20">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m9 12 2 2 4-4"></path>
+                          </svg>
+                        </div>
                       </div>
                     </div>`;
     } else {
